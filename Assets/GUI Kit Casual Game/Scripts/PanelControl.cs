@@ -24,11 +24,11 @@ namespace LayerLab
             buttonPrev.onClick.AddListener(Click_Prev);
             buttonNext.onClick.AddListener(Click_Next);
 
-            foreach (Transform t in panelTransform)
-            {
-                panels.Add(t.gameObject);
-                t.gameObject.SetActive(false);
-            }
+            // foreach (Transform t in panelTransform)
+            // {
+            //     panels.Add(t.gameObject);
+            //     t.gameObject.SetActive(false);
+            // }
 
             panels[page].SetActive(true);
             isReady = true;
