@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -4284,7 +4284,7 @@ TextureImporter:
       name: Tiles_198
       rect:
         serializedVersion: 2
-        x: 0
+        x: 8
         y: 208
         width: 16
         height: 16
@@ -4297,27 +4297,6 @@ TextureImporter:
       bones: []
       spriteID: b4569e76d858d9b479ad86a45c3f1fd3
       internalID: 1157699244
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tiles_199
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 208
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9acbeb34270ef0e48aa977c00b1fc596
-      internalID: -1155201593
       vertices: []
       indices: 
       edges: []

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.Tilemaps;
 
 namespace Assets.Scripts.ProceduralGeneration
 {
@@ -19,6 +20,11 @@ namespace Assets.Scripts.ProceduralGeneration
         [Space] 
         [SerializeField] private GameObject _wallObject;
         [SerializeField] private GameObject _floorObject;
+        [Space(50f)]
+        [SerializeField] private Tilemap _tilemap;
+        [SerializeField] private Tile _tile;
+        [SerializeField] private RuleTile _ruleTileFloor;
+        [SerializeField] private RuleTile _ruleTileWall;
 
         private GridSpace[,] _grid;
         private int _roomHeight;
@@ -296,23 +302,27 @@ namespace Assets.Scripts.ProceduralGeneration
                     switch (_grid[x, y])
                     {
                         case GridSpace.Empty:
+                            Spawn(x, y, _ruleTileWall);
                             break;
                         case GridSpace.Floor:
-                            Spawn(x, y, _floorObject);
+                            Spawn(x, y, _ruleTileFloor);
                             break;
                         case GridSpace.Wall:
-                            Spawn(x, y, _wallObject);
+                            Spawn(x, y, _ruleTileWall);
                             break;
                     }
                 }
             }
         }
 
-        private void Spawn(float x, float y, GameObject toSpawn)
+        private void Spawn(float x, float y, RuleTile template)
         {
             Vector2 offset = _roomSizeWorldUnits / 2.0f;
             Vector2 spawnPos = new Vector2(x, y) * _worldUnitsInOneGridCell - offset;
-            Instantiate(toSpawn, spawnPos, Quaternion.identity);
+            Vector3Int position = new Vector3Int((int)spawnPos.x, (int)spawnPos.y, 0);
+            //Instantiate(template, spawnPos, Quaternion.identity);
+            
+            _tilemap.SetTile(position, template);
         }
         
         #endregion
