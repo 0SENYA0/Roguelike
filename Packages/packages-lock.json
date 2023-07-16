@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.agava.yandexgames": {
+      "version": "https://github.com/forcepusher/com.agava.yandexgames.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "d1a5a0757dfe41561098875aa33eceeedbe3a4b3"
+    },
     "com.unity.2d.animation": {
       "version": "9.0.3",
       "depth": 1,
