@@ -1,6 +1,9 @@
 using System.Collections.Generic;
+using NavMeshPlus.Components;
 using UnityEngine;
+using UnityEditor.AI;
 using UnityEngine.Tilemaps;
+using UnityEngine.AI;
 
 namespace Assets.Scripts.ProceduralGeneration
 {
@@ -8,22 +11,27 @@ namespace Assets.Scripts.ProceduralGeneration
     {
         [SerializeField] private Vector2 _roomSizeWorldUnits = new Vector2(30, 30);
         [SerializeField] private float _worldUnitsInOneGridCell = 1;
-        [Space] 
-        [SerializeField][Range(0,1f)] private float _chanceWalkerChangeDirection = 0.5f;
-        [SerializeField][Range(0,1f)] private float _chanceWalkerSpawn = 0.05f;
-        [SerializeField][Range(0,1f)] private float _chanceWalkerDestoy = 0.05f;
-        [SerializeField][Range(0,1f)] private float _percentToFill = 0.2f;
+
+        [Space] [SerializeField] [Range(0, 1f)]
+        private float _chanceWalkerChangeDirection = 0.5f;
+
+        [SerializeField] [Range(0, 1f)] private float _chanceWalkerSpawn = 0.05f;
+        [SerializeField] [Range(0, 1f)] private float _chanceWalkerDestoy = 0.05f;
+        [SerializeField] [Range(0, 1f)] private float _percentToFill = 0.2f;
         [SerializeField] private int _maxWalkers = 10;
         [SerializeField] private int _maxCountIterations = 100_000;
-        [Space]
-        [SerializeField][Tooltip("Tilemap grid")] private Tilemap _tilemap;
+        [Space] [SerializeField] private Tilemap _tilemapFloor;
+        [SerializeField] private Tilemap _tilemapWall;
         [SerializeField] private RuleTile _ruleTileFloor;
         [SerializeField] private RuleTile _ruleTileWall;
+        [SerializeField] private NavMeshSurface _navMesh;
 
         private GridSpace[,] _grid;
         private int _roomHeight;
         private int _roomWidth;
         private List<Walker> _walkers = new List<Walker>();
+
+        public NavMeshSurface[] _surfaces;
 
         private void Start()
         {
@@ -32,6 +40,11 @@ namespace Assets.Scripts.ProceduralGeneration
             CreateWalls();
             RemoveSingleWalls();
             SpawnLevel();
+
+            foreach (var surface in _surfaces)
+            {
+                surface.BuildNavMesh();
+            }
         }
 
         #region Setup
@@ -65,7 +78,8 @@ namespace Assets.Scripts.ProceduralGeneration
         private void CreateFirstWalker()
         {
             Walker newWalker = new Walker();
-            Vector2 spawnPosition = new Vector2(Mathf.RoundToInt(_roomWidth / 2.0f), Mathf.RoundToInt(_roomHeight / 2.0f));
+            Vector2 spawnPosition =
+                new Vector2(Mathf.RoundToInt(_roomWidth / 2.0f), Mathf.RoundToInt(_roomHeight / 2.0f));
 
             newWalker.direction = GetRandomDirection();
             newWalker.position = spawnPosition;
@@ -91,7 +105,7 @@ namespace Assets.Scripts.ProceduralGeneration
         }
 
         #endregion
-        
+
         #region CreateFloors
 
         void CreateFloors()
@@ -255,7 +269,7 @@ namespace Assets.Scripts.ProceduralGeneration
                     bool isHeightRangeOut = CheckOutOfRange(cellY, y, _roomHeight);
                     bool isCorners = x != 0 && y != 0;
                     bool isCenter = x == 0 && y == 0;
-                    
+
                     if (isWidthRangeOut || isHeightRangeOut || isCorners || isCenter)
                     {
                         continue;
@@ -283,10 +297,10 @@ namespace Assets.Scripts.ProceduralGeneration
         private bool CheckOutOfRange(int center, int offset, int roomSize) =>
             center + offset < 0 || center + offset > roomSize - 1;
 
-        #endregion 
+        #endregion
 
         #region SpawnLevel
-        
+
         private void SpawnLevel()
         {
             for (int x = 0; x < _roomWidth; x++)
@@ -296,27 +310,27 @@ namespace Assets.Scripts.ProceduralGeneration
                     switch (_grid[x, y])
                     {
                         case GridSpace.Empty:
-                            Spawn(x, y, _ruleTileWall);
+                            Spawn(x, y, _tilemapWall, _ruleTileWall);
                             break;
                         case GridSpace.Floor:
-                            Spawn(x, y, _ruleTileFloor);
+                            Spawn(x, y, _tilemapFloor, _ruleTileFloor);
                             break;
                         case GridSpace.Wall:
-                            Spawn(x, y, _ruleTileWall);
+                            Spawn(x, y, _tilemapWall, _ruleTileWall);
                             break;
                     }
                 }
             }
         }
 
-        private void Spawn(float x, float y, RuleTile template)
+        private void Spawn(float x, float y, Tilemap tilemap, RuleTile template)
         {
             Vector2 offset = _roomSizeWorldUnits / 2.0f;
             Vector2 spawnPos = new Vector2(x, y) * _worldUnitsInOneGridCell - offset;
-            Vector3Int position = new Vector3Int((int)spawnPos.x, (int)spawnPos.y, 0);
-            _tilemap.SetTile(position, template);
+            Vector3Int position = new Vector3Int((int) spawnPos.x, (int) spawnPos.y, 0);
+            tilemap.SetTile(position, template);
         }
-        
+
         #endregion
     }
 }
