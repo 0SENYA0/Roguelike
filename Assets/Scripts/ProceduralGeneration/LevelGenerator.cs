@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 
 namespace Assets.Scripts.ProceduralGeneration
@@ -17,12 +15,8 @@ namespace Assets.Scripts.ProceduralGeneration
         [SerializeField][Range(0,1f)] private float _percentToFill = 0.2f;
         [SerializeField] private int _maxWalkers = 10;
         [SerializeField] private int _maxCountIterations = 100_000;
-        [Space] 
-        [SerializeField] private GameObject _wallObject;
-        [SerializeField] private GameObject _floorObject;
-        [Space(50f)]
-        [SerializeField] private Tilemap _tilemap;
-        [SerializeField] private Tile _tile;
+        [Space]
+        [SerializeField][Tooltip("Tilemap grid")] private Tilemap _tilemap;
         [SerializeField] private RuleTile _ruleTileFloor;
         [SerializeField] private RuleTile _ruleTileWall;
 
@@ -320,8 +314,6 @@ namespace Assets.Scripts.ProceduralGeneration
             Vector2 offset = _roomSizeWorldUnits / 2.0f;
             Vector2 spawnPos = new Vector2(x, y) * _worldUnitsInOneGridCell - offset;
             Vector3Int position = new Vector3Int((int)spawnPos.x, (int)spawnPos.y, 0);
-            //Instantiate(template, spawnPos, Quaternion.identity);
-            
             _tilemap.SetTile(position, template);
         }
         

@@ -6703,7 +6703,7 @@ GameObject:
   - component: {fileID: 910596781}
   - component: {fileID: 910596782}
   m_Layer: 0
-  m_Name: Test
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6727,6 +6727,14 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileSpriteArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 0
@@ -6828,30 +6836,30 @@ Tilemap:
       e33: 0
   - m_RefCount: 0
     m_Data:
-      e00: -2.7150582e+25
+      e00: 3.9e-44
       e01: 0
-      e02: -2.3768479e+29
-      e03: -2.3768479e+29
-      e10: 3.2e-44
+      e02: 3.0001183
+      e03: 3.0001183
+      e10: 0
       e11: 0
-      e12: 4.1e-43
-      e13: 4.1e-43
-      e20: 8.596627e+32
-      e21: -2.4271266e-18
-      e22: 0.0000000061567285
-      e23: 2.0036964
+      e12: 4.3e-43
+      e13: 4.3e-43
+      e20: 5.0599414e-11
+      e21: 9.608571e+27
+      e22: -3.9892543e-19
+      e23: -2.0551949
       e30: 4.5904e-41
-      e31: 4.15e-43
-      e32: 4.12e-43
-      e33: 4.15e-43
+      e31: 4.33e-43
+      e32: 4.3e-43
+      e33: 4.33e-43
   m_TileColorArray:
   - m_RefCount: 0
-    m_Data: {r: NaN, g: NaN, b: NaN, a: NaN}
+    m_Data: {r: 4.8852e-41, g: 4.8852e-41, b: 4.8852e-41, a: 4.8852e-41}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -20, y: -5, z: 0}
-  m_Size: {x: 30, y: 15, z: 1}
+  m_Size: {x: 31, y: 37, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -7149,9 +7157,6 @@ MonoBehaviour:
   _percentToFill: 0.2
   _maxWalkers: 10
   _maxCountIterations: 100000
-  _wallObject: {fileID: 1098094947569083408, guid: b1c7a0e3fce9bed429b4b1f0eac5a12a, type: 3}
-  _floorObject: {fileID: 8201383471854120792, guid: 064fa75c2c9de7f4a9d30ac8de57016d, type: 3}
   _tilemap: {fileID: 910596781}
-  _tile: {fileID: 11400000, guid: af327588715ba3a45b12d56898ee60ac, type: 2}
-  _ruleTileFloor: {fileID: 11400000, guid: 55d7eaff207e5034092d1989d382ad5e, type: 2}
-  _ruleTileWall: {fileID: 11400000, guid: 6a70f1cd386e31c49ad896dc3d586eb4, type: 2}
+  _ruleTileFloor: {fileID: 11400000, guid: 9bc8a51d52ca5f64089af81c8fcb2645, type: 2}
+  _ruleTileWall: {fileID: 11400000, guid: 412012a1fe6333f4b8cb69098efb8146, type: 2}
