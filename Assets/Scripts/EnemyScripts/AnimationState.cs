@@ -6,6 +6,7 @@ namespace Assets.Scripts.EnemyScripts
         Idle,
         Attack,
         Hit,
-        Dei
+        Dei,
+        Walk,
     }
 }
