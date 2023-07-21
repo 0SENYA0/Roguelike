@@ -1,4 +1,3 @@
-using System;
 using Assets.Scripts.EnemyScripts;
 using UnityEngine;
 using AnimationState = Assets.Scripts.EnemyScripts.AnimationState;
@@ -9,8 +8,7 @@ namespace Assets.Scripts.ProceduralGeneration.LevelMovement
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private SpriteAnimation _animation;
-
-        private Vector3 _point;
+        
         private Vector3 _lastTranformPosition;
         private bool _isAnimationPlaying = false;
 
@@ -26,11 +24,6 @@ namespace Assets.Scripts.ProceduralGeneration.LevelMovement
             _lastTranformPosition = transform.position;
         }
 
-        public void SetPoint(Vector3 point)
-        {
-            _point = point;
-        }
-        
         private void UpdateSpriteRender()
         {
             if (_lastTranformPosition.x - transform.position.x < 0)

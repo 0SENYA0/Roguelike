@@ -8,7 +8,6 @@ namespace Assets.Scripts.EnemyScripts
     {
         [SerializeField] [Range(1, 30)] private int _frameRate = 10;
         [SerializeField] private AnimationClip[] _clips;
-        [SerializeField] private bool _isPlaying = true;
 
         public Action OnAnimationComplete;
         
@@ -17,6 +16,7 @@ namespace Assets.Scripts.EnemyScripts
         private float _nextFrameTime;
         private int _currentFrame;
         private int _currentClip;
+        private bool _isPlaying = true;
 
         private void Awake()
         {
@@ -99,7 +99,7 @@ namespace Assets.Scripts.EnemyScripts
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class AnimationClip
     {
         [SerializeField] private AnimationState _state;

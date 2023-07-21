@@ -1377,6 +1377,7 @@ GameObject:
   - component: {fileID: 1318814669}
   - component: {fileID: 1318814668}
   - component: {fileID: 1318814670}
+  - component: {fileID: 1318814671}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -1426,7 +1427,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.07060622, b: 0, a: 1}
+  m_Color: {r: 0.6313726, g: 0.10588236, b: 0.19215688, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1464,9 +1465,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterTarget: {fileID: 1716400659}
-  _maxDistance: 2
+  _hidingDistance: 1.5
   _blackAtDistance: 1
   _renderer: {fileID: 1318814668}
+--- !u!114 &1318814671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318814667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810f417044504442a3ebaa66dbba18f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _frameRate: 30
+  _clips:
+  - _state: 0
+    _sprites:
+    - {fileID: 560021468, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: 1422644437, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: -1215382642, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: -2020639631, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: -1043086060, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: 283486699, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: 1259780276, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: -673393112, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: 1287147263, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: -1355949365, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: -1037852322, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: -954567546, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: -472304476, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: 1619306468, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: -1654370318, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: -988866459, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: -223232362, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: -372843995, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: 1522646620, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: -1493497499, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: -1326021974, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: -588763849, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: 453784195, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: -569509506, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: 484345398, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: -394727770, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: 1007791143, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: 99194293, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: 299650873, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    - {fileID: -1480673837, guid: a2462cd2fad0be9479ab5f7fad54d9a2, type: 3}
+    _isLoop: 1
+    _isAllowNextClip: 0
+    _nextState: 0
 --- !u!1 &1557644200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1684,6 +1734,7 @@ GameObject:
   - component: {fileID: 1716400663}
   - component: {fileID: 1716400665}
   - component: {fileID: 1716400664}
+  - component: {fileID: 1716400666}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -1719,16 +1770,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 810f417044504442a3ebaa66dbba18f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _frameRate: 5
+  _frameRate: 10
   _clips:
   - _state: 1
     _sprites:
     - {fileID: 537224148, guid: 1f12ed934558f4e46b63b37d66c78518, type: 3}
-    - {fileID: -1592031088, guid: 1f12ed934558f4e46b63b37d66c78518, type: 3}
     - {fileID: 537224148, guid: 1f12ed934558f4e46b63b37d66c78518, type: 3}
     - {fileID: -1592031088, guid: 1f12ed934558f4e46b63b37d66c78518, type: 3}
+    - {fileID: -1592031088, guid: 1f12ed934558f4e46b63b37d66c78518, type: 3}
+    - {fileID: 537224148, guid: 1f12ed934558f4e46b63b37d66c78518, type: 3}
+    - {fileID: 537224148, guid: 1f12ed934558f4e46b63b37d66c78518, type: 3}
+    - {fileID: -1592031088, guid: 1f12ed934558f4e46b63b37d66c78518, type: 3}
+    - {fileID: -1592031088, guid: 1f12ed934558f4e46b63b37d66c78518, type: 3}
+    - {fileID: 985614205, guid: 1f12ed934558f4e46b63b37d66c78518, type: 3}
     - {fileID: 985614205, guid: 1f12ed934558f4e46b63b37d66c78518, type: 3}
     - {fileID: -1822257908, guid: 1f12ed934558f4e46b63b37d66c78518, type: 3}
+    - {fileID: -1822257908, guid: 1f12ed934558f4e46b63b37d66c78518, type: 3}
+    _isLoop: 1
+    _isAllowNextClip: 0
+    _nextState: 0
+  - _state: 5
+    _sprites:
+    - {fileID: 1829751815, guid: 1f12ed934558f4e46b63b37d66c78518, type: 3}
+    - {fileID: -259217447, guid: 1f12ed934558f4e46b63b37d66c78518, type: 3}
+    - {fileID: 800838537, guid: 1f12ed934558f4e46b63b37d66c78518, type: 3}
+    - {fileID: -941474887, guid: 1f12ed934558f4e46b63b37d66c78518, type: 3}
+    - {fileID: 1929474367, guid: 1f12ed934558f4e46b63b37d66c78518, type: 3}
+    - {fileID: 1401802995, guid: 1f12ed934558f4e46b63b37d66c78518, type: 3}
+    - {fileID: -1179447481, guid: 1f12ed934558f4e46b63b37d66c78518, type: 3}
+    - {fileID: -709832494, guid: 1f12ed934558f4e46b63b37d66c78518, type: 3}
     _isLoop: 1
     _isAllowNextClip: 0
     _nextState: 0
@@ -1832,6 +1902,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53ebca1c83414492ad4eaf7b7bcd6bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1716400666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716400658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 853cce5ee72b48618c2a11c201aa35f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 1716400661}
+  _animation: {fileID: 1716400660}
 --- !u!1 &1737618912
 GameObject:
   m_ObjectHideFlags: 0

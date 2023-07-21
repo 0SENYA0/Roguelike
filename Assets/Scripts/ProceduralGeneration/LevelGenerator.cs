@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using NavMeshPlus.Components;
 using UnityEngine;
-using UnityEditor.AI;
 using UnityEngine.Tilemaps;
-using UnityEngine.AI;
 
 namespace Assets.Scripts.ProceduralGeneration
 {

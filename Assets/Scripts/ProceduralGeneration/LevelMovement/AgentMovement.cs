@@ -1,5 +1,3 @@
-using System;
-using Assets.Scripts.EnemyScripts;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Tilemaps;
@@ -11,8 +9,7 @@ namespace Assets.Scripts.ProceduralGeneration.LevelMovement
     {
         [SerializeField] private Tilemap _floorTilemap;
         [SerializeField] private CharacterDestinationMarker _marker;
-        [SerializeField] private PlayerMovementAnimation _animation;
-        
+
         private MouseClickTracker _mouseClickTracker;
         private NavMeshAgent _agent;
 
@@ -43,7 +40,6 @@ namespace Assets.Scripts.ProceduralGeneration.LevelMovement
             if (tile != null)
             {
                 _marker.SetPosition(position);
-                _animation.SetPoint(position);
                 SetAgentPosition(position);
             }
         }
