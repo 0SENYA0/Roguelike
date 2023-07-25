@@ -2,7 +2,7 @@ using Assets.Scripts.EnemyScripts;
 using UnityEngine;
 using AnimationState = Assets.Scripts.EnemyScripts.AnimationState;
 
-namespace Assets.Scripts.ProceduralGeneration.LevelMovement
+namespace Assets.Scripts.GenerationSystem.LevelMovement
 {
     public class PlayerMovementAnimation : MonoBehaviour
     {

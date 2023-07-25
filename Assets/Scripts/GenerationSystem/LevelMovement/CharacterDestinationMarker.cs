@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Scripts.ProceduralGeneration.LevelMovement
+namespace Assets.Scripts.GenerationSystem.LevelMovement
 {
     public class CharacterDestinationMarker : MonoBehaviour
     {

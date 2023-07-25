@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Assets.Scripts.ProceduralGeneration.LevelMovement
+namespace Assets.Scripts.GenerationSystem.LevelMovement
 {
     public class MouseClickTracker : MonoBehaviour
     {

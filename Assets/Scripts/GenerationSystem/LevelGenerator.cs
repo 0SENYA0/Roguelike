@@ -1,48 +1,41 @@
 using System.Collections.Generic;
-using NavMeshPlus.Components;
+using DefaultNamespace.Tools;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
-namespace Assets.Scripts.ProceduralGeneration
+namespace Assets.Scripts.GenerationSystem
 {
     public class LevelGenerator : MonoBehaviour
     {
         [SerializeField] private Vector2 _roomSizeWorldUnits = new Vector2(30, 30);
-        [SerializeField] private float _worldUnitsInOneGridCell = 1;
-
-        [Space] [SerializeField] [Range(0, 1f)]
-        private float _chanceWalkerChangeDirection = 0.5f;
-
+        [SerializeField] [Range(0, 1f)] private float _chanceWalkerChangeDirection = 0.5f;
         [SerializeField] [Range(0, 1f)] private float _chanceWalkerSpawn = 0.05f;
         [SerializeField] [Range(0, 1f)] private float _chanceWalkerDestoy = 0.05f;
         [SerializeField] [Range(0, 1f)] private float _percentToFill = 0.2f;
         [SerializeField] private int _maxWalkers = 10;
         [SerializeField] private int _maxCountIterations = 100_000;
-        [Space] [SerializeField] private Tilemap _tilemapFloor;
-        [SerializeField] private Tilemap _tilemapWall;
-        [SerializeField] private RuleTile _ruleTileFloor;
-        [SerializeField] private RuleTile _ruleTileWall;
-        [SerializeField] private NavMeshSurface _navMesh;
+   
+        private const float WorldUnitsInOneGridCell = 1;
 
         private GridSpace[,] _grid;
         private int _roomHeight;
         private int _roomWidth;
         private List<Walker> _walkers = new List<Walker>();
 
-        public NavMeshSurface[] _surfaces;
+        private int _startXPosition;
+        private int _startYPosition;
+        
+        private int _lastXPosition;
+        private int _lastYPosition;
 
-        private void Start()
+        public GridSpace[,] GenerateLevel()
         {
             Setup();
             CreateFloors();
             CreateWalls();
             RemoveSingleWalls();
-            SpawnLevel();
+            CreateInformationSpace();
 
-            foreach (var surface in _surfaces)
-            {
-                surface.BuildNavMesh();
-            }
+            return _grid;
         }
 
         #region Setup
@@ -56,8 +49,8 @@ namespace Assets.Scripts.ProceduralGeneration
 
         private void FindGridSize()
         {
-            _roomHeight = Mathf.RoundToInt(_roomSizeWorldUnits.x / _worldUnitsInOneGridCell);
-            _roomWidth = Mathf.RoundToInt(_roomSizeWorldUnits.y / _worldUnitsInOneGridCell);
+            _roomHeight = Mathf.RoundToInt(_roomSizeWorldUnits.x / WorldUnitsInOneGridCell);
+            _roomWidth = Mathf.RoundToInt(_roomSizeWorldUnits.y / WorldUnitsInOneGridCell);
         }
 
         private void CreateDefaultGrid()
@@ -76,8 +69,9 @@ namespace Assets.Scripts.ProceduralGeneration
         private void CreateFirstWalker()
         {
             Walker newWalker = new Walker();
-            Vector2 spawnPosition =
-                new Vector2(Mathf.RoundToInt(_roomWidth / 2.0f), Mathf.RoundToInt(_roomHeight / 2.0f));
+            Vector2 spawnPosition = new Vector2(Mathf.RoundToInt(_roomWidth / 2.0f), Mathf.RoundToInt(_roomHeight / 2.0f));
+            _startXPosition = (int) spawnPosition.x;
+            _startYPosition = (int) spawnPosition.y;
 
             newWalker.direction = GetRandomDirection();
             newWalker.position = spawnPosition;
@@ -132,7 +126,12 @@ namespace Assets.Scripts.ProceduralGeneration
         private void CreateFloorOnWalkerPosition()
         {
             foreach (Walker walker in _walkers)
-                _grid[(int) walker.position.x, (int) walker.position.y] = GridSpace.Floor;
+            {
+                _lastXPosition = (int) walker.position.x;
+                _lastYPosition = (int) walker.position.y;
+
+                _grid[_lastXPosition, _lastYPosition] = GridSpace.Floor;
+            }
         }
 
         private void TryToDestroyWalker()
@@ -297,36 +296,25 @@ namespace Assets.Scripts.ProceduralGeneration
 
         #endregion
 
-        #region SpawnLevel
+        #region CreateInformationSpace
 
-        private void SpawnLevel()
+        private void CreateInformationSpace()
         {
-            for (int x = 0; x < _roomWidth; x++)
-            {
-                for (int y = 0; y < _roomHeight; y++)
-                {
-                    switch (_grid[x, y])
-                    {
-                        case GridSpace.Empty:
-                            Spawn(x, y, _tilemapWall, _ruleTileWall);
-                            break;
-                        case GridSpace.Floor:
-                            Spawn(x, y, _tilemapFloor, _ruleTileFloor);
-                            break;
-                        case GridSpace.Wall:
-                            Spawn(x, y, _tilemapWall, _ruleTileWall);
-                            break;
-                    }
-                }
-            }
+            CreateStartSpace();
+            CreateLastSpace();
         }
 
-        private void Spawn(float x, float y, Tilemap tilemap, RuleTile template)
+        private void CreateStartSpace()
         {
-            Vector2 offset = _roomSizeWorldUnits / 2.0f;
-            Vector2 spawnPos = new Vector2(x, y) * _worldUnitsInOneGridCell - offset;
-            Vector3Int position = new Vector3Int((int) spawnPos.x, (int) spawnPos.y, 0);
-            tilemap.SetTile(position, template);
+            _grid[_startXPosition, _startYPosition] = GridSpace.First;
+        }
+
+        private void CreateLastSpace()
+        {
+            if (_startXPosition != _lastXPosition && _startYPosition != _lastYPosition)
+                _grid[_lastXPosition, _lastYPosition] = GridSpace.Last;
+            else
+                _grid[_lastXPosition + 1, _lastYPosition - 1] = GridSpace.Last;
         }
 
         #endregion

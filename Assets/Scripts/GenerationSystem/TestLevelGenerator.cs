@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.ProceduralGeneration
+namespace Assets.Scripts.GenerationSystem
 {
     public class TestLevelGenerator : MonoBehaviour
     {

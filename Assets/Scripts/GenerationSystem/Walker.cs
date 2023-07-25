@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Scripts.ProceduralGeneration
+namespace Assets.Scripts.GenerationSystem
 {
     public struct Walker
     {
