@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3664170974951371105}
   - component: {fileID: 4716308812156437210}
   - component: {fileID: 8981151776570709827}
+  - component: {fileID: 3427713942287097414}
+  - component: {fileID: 579604814654363411}
   m_Layer: 0
   m_Name: DaggerMush
   m_TagString: Untagged
@@ -145,3 +147,62 @@ MonoBehaviour:
     _isLoop: 0
     _isAllowNextClip: 0
     _nextState: 0
+--- !u!61 &3427713942287097414
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3550267196358860798}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.06031412, y: 0.3287043}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.43, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 3, y: 3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7117448, y: 0.69182336}
+  m_EdgeRadius: 0
+--- !u!114 &579604814654363411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3550267196358860798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 305d8fa2ce1e4a96abd68f1aeddd5593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: "\u041C\u0430\u0445\u0438\u043D\u0430"
+  _stats: 30;30;60

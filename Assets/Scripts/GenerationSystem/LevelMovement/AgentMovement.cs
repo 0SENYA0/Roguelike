@@ -1,9 +1,8 @@
-using Assets.Scripts.GenerationSystem.LevelMovement;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Tilemaps;
 
-namespace Assets.Scripts.ProceduralGeneration.LevelMovement
+namespace Assets.Scripts.GenerationSystem.LevelMovement
 {
     [RequireComponent(typeof(MouseClickTracker))]
     public class AgentMovement : MonoBehaviour
@@ -25,15 +24,21 @@ namespace Assets.Scripts.ProceduralGeneration.LevelMovement
 
         private void OnEnable()
         {
-            _mouseClickTracker.Click += Click;
+            _mouseClickTracker.MoveClick += SetNewTargetPosition;
         }
 
         private void OnDisable()
         {
-            _mouseClickTracker.Click -= Click;
+            _mouseClickTracker.MoveClick -= SetNewTargetPosition;
         }
 
-        private void Click(Vector3 position)
+        public void SetFixedMovement(Vector3 position)
+        {
+            _marker.SetPosition(position);
+            SetAgentPosition(position);
+        }
+
+        private void SetNewTargetPosition(Vector3 position)
         {
             Vector3Int coordinate = _floorTilemap.WorldToCell(position);
             var tile = _floorTilemap.GetTile(coordinate);
