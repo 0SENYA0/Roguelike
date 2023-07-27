@@ -1,5 +1,3 @@
-using Assets.Scripts.EnemyScripts;
-using DefaultNamespace.Tools;
 using NavMeshPlus.Components;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -17,8 +15,8 @@ namespace Assets.Scripts.GenerationSystem
         [SerializeField] private NavMeshSurface[] _surfaces;
         
         private const float WorldUnitsInOneGridCell = 1;
+        
         private Vector2 _roomSizeWorldUnits;
-
         private GridSpace[,] _grid;
         private int _roomHeight;
         private int _roomWidth;
@@ -72,18 +70,21 @@ namespace Assets.Scripts.GenerationSystem
 
         private void Spawn(float x, float y, Tilemap tilemap, RuleTile template)
         {
-            Vector2 offset = _roomSizeWorldUnits / 2.0f;
-            Vector2 spawnPos = new Vector2(x, y) * WorldUnitsInOneGridCell - offset;
-            Vector3Int position = new Vector3Int((int) spawnPos.x, (int) spawnPos.y, 0);
-            tilemap.SetTile(position, template);
+            tilemap.SetTile(CalculatePosition(x, y), template);
         }
         
         private void Spawn(float x, float y, Tilemap tilemap, Tile template)
         {
+            tilemap.SetTile(CalculatePosition(x, y), template);
+        }
+
+        private Vector3Int CalculatePosition(float x, float y)
+        {
             Vector2 offset = _roomSizeWorldUnits / 2.0f;
             Vector2 spawnPos = new Vector2(x, y) * WorldUnitsInOneGridCell - offset;
             Vector3Int position = new Vector3Int((int) spawnPos.x, (int) spawnPos.y, 0);
-            tilemap.SetTile(position, template);
+            return position;
         }
+            
     }
 }

@@ -3,29 +3,29 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.GenerationSystem.LevelMovement
+namespace Assets.Scripts.InteractiveObjectSystem
 {
     public class CanvasInfoPanel : MonoBehaviour
     {
         [SerializeField] private TMP_Text _lable;
         [SerializeField] private TMP_Text _stats;
-        [SerializeField] private Button _buttonGo;
-        [SerializeField] private Button _buttonNot;
+        [SerializeField] private Button _buttonYes;
+        [SerializeField] private Button _buttonNo;
         [SerializeField] private GameObject _panel;
 
         public event Action<bool> UserResponse;
 
         private void Awake()
         {
-            _buttonGo.onClick.AddListener(CallPositiveResponse);
-            _buttonNot.onClick.AddListener(CallNegativeResponse);
+            _buttonYes.onClick.AddListener(CallPositiveResponse);
+            _buttonNo.onClick.AddListener(CallNegativeResponse);
             _panel.SetActive(false);
         }
 
         private void OnDestroy()
         {
-            _buttonGo.onClick.RemoveListener(CallPositiveResponse);
-            _buttonNot.onClick.RemoveListener(CallNegativeResponse);
+            _buttonYes.onClick.RemoveListener(CallPositiveResponse);
+            _buttonNo.onClick.RemoveListener(CallNegativeResponse);
         }
 
         public void ShowPanel(InteractiveObject interactiveObject)

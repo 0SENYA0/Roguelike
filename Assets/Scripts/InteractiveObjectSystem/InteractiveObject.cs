@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Assets.Scripts.GenerationSystem
+namespace Assets.Scripts.InteractiveObjectSystem
 {
-    public class InteractiveObject : MonoBehaviour
+    public abstract class InteractiveObject : MonoBehaviour
     {
         [SerializeField] private string _name;
         [SerializeField] private string _stats;
@@ -10,14 +10,8 @@ namespace Assets.Scripts.GenerationSystem
         public string Name => _name;
 
         public string Stats => _stats;
-
-
-        public InteractiveObject GetObject()
-        {
-            return this;
-        }
-
-        public void Destroy()
+        
+        public void DestroyObject()
         {
             Destroy(gameObject);
         }

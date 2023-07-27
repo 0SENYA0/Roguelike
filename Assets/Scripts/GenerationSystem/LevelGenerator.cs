@@ -184,8 +184,10 @@ namespace Assets.Scripts.GenerationSystem
 
         private void CheckBoarderOfGrid(ref Walker walker)
         {
-            walker.position.x = Mathf.Clamp(walker.position.x, 1, _roomWidth - 2);
-            walker.position.y = Mathf.Clamp(walker.position.y, 1, _roomHeight - 2);
+            int offset = 2;
+            
+            walker.position.x = Mathf.Clamp(walker.position.x, 1, _roomWidth - offset);
+            walker.position.y = Mathf.Clamp(walker.position.y, 1, _roomHeight - offset);
         }
 
         private int CountOfFloors()

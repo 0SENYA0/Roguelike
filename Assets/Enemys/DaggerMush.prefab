@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4716308812156437210}
   - component: {fileID: 8981151776570709827}
   - component: {fileID: 3427713942287097414}
-  - component: {fileID: 579604814654363411}
+  - component: {fileID: 5766213552215164188}
   m_Layer: 0
   m_Name: DaggerMush
   m_TagString: Untagged
@@ -192,7 +192,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7117448, y: 0.69182336}
   m_EdgeRadius: 0
---- !u!114 &579604814654363411
+--- !u!114 &5766213552215164188
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -201,8 +201,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 3550267196358860798}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 305d8fa2ce1e4a96abd68f1aeddd5593, type: 3}
+  m_Script: {fileID: 11500000, guid: b6a27109d3aa498cb1ad66944c1511be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: "\u041C\u0430\u0445\u0438\u043D\u0430"
-  _stats: 30;30;60
+  _name: "\u0417\u0430\u0449\u0438\u0442\u043D\u0438\u043A"
+  _stats: 20-30-40

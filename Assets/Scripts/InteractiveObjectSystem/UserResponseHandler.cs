@@ -1,15 +1,16 @@
+using Assets.Scripts.GenerationSystem.LevelMovement;
 using UnityEngine;
 
-namespace Assets.Scripts.GenerationSystem.LevelMovement
+namespace Assets.Scripts.InteractiveObjectSystem
 {
     public class UserResponseHandler : MonoBehaviour
     {
         [SerializeField] private CanvasInfoPanel _infoPanel;
         [SerializeField] private MouseClickTracker _clickTracker;
-        [SerializeField] private BattleHandler _battleHandler;
+        [SerializeField] private InteractiveObjectHandler interactiveObjectHandler;
 
         private Vector3 _targetPosition;
-        private InteractiveObject _targetObject;
+        private InteractiveObject _selectedObject;
 
         private void Awake()
         {
@@ -21,11 +22,11 @@ namespace Assets.Scripts.GenerationSystem.LevelMovement
             _clickTracker.ObjectClick -= ShowPanel;
         }
 
-        private void ShowPanel(InteractiveObject interactiveObject, Vector3 position)
+        private void ShowPanel(InteractiveObject selectedObject, Vector3 position)
         {
-            _infoPanel.ShowPanel(interactiveObject);
+            _infoPanel.ShowPanel(selectedObject);
             _targetPosition = position;
-            _targetObject = interactiveObject;
+            _selectedObject = selectedObject;
             _infoPanel.UserResponse += MoveFixedAgent;
         }
 
@@ -34,7 +35,7 @@ namespace Assets.Scripts.GenerationSystem.LevelMovement
             _infoPanel.UserResponse -= MoveFixedAgent;
             
             if (isMoveToTarget)
-                _battleHandler.DisplayBattle(_targetObject, _targetPosition);           
+                interactiveObjectHandler.ProduceInteraction(_selectedObject, _targetPosition);           
         }
     }
 }

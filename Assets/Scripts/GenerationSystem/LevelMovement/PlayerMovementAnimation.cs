@@ -8,6 +8,8 @@ namespace Assets.Scripts.GenerationSystem.LevelMovement
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private SpriteAnimation _animation;
+
+        private readonly float _minDistance = 0.001f;
         
         private Vector3 _lastTranformPosition;
         private bool _isAnimationPlaying = false;
@@ -30,7 +32,7 @@ namespace Assets.Scripts.GenerationSystem.LevelMovement
             {
                 _spriteRenderer.flipX = false;
             }
-            else if (_lastTranformPosition.x - transform.position.x > 0.001f)
+            else if (_lastTranformPosition.x - transform.position.x > _minDistance)
             {
                 _spriteRenderer.flipX = true;
             }
@@ -40,7 +42,7 @@ namespace Assets.Scripts.GenerationSystem.LevelMovement
         {
             var distance = Vector3.Distance(transform.position, _lastTranformPosition);
 
-            if(distance > 0.001f)
+            if(distance > _minDistance)
             {
                 if (_isAnimationPlaying == false)
                 {

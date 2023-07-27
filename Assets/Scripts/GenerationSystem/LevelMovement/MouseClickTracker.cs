@@ -1,3 +1,4 @@
+using Assets.Scripts.InteractiveObjectSystem;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -6,29 +7,28 @@ namespace Assets.Scripts.GenerationSystem.LevelMovement
 {
     public class MouseClickTracker : MonoBehaviour
     {
+        private readonly int _mouseKey = 0;
+        
         public UnityAction<Vector3> MoveClick;
         public UnityAction<InteractiveObject, Vector3> ObjectClick;
  
         private Vector3 _mousePosition;
-        private bool _pointerOverUi;
-        
-        private void FixedUpdate()
-        {
-            _pointerOverUi = EventSystem.current.IsPointerOverGameObject();
-        }
+        private bool _isPointerOverUi;
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(_mouseKey))
             {
-                if(_pointerOverUi)
+                bool _isPointerOverUi = EventSystem.current.IsPointerOverGameObject();
+                
+                if(_isPointerOverUi)
                     return;
                 
                 _mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 
-                if (CastRay(out InteractiveObject data))
+                if (TryGetInteractiveObject(out InteractiveObject selectedObject))
                 {
-                    ObjectClick?.Invoke(data, _mousePosition);
+                    ObjectClick?.Invoke(selectedObject, _mousePosition);
                 }
                 else
                 {
@@ -37,16 +37,16 @@ namespace Assets.Scripts.GenerationSystem.LevelMovement
             }
         }
 
-        private bool CastRay(out InteractiveObject data)
+        private bool TryGetInteractiveObject(out InteractiveObject data)
         {
             data = null;
             
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
 
-            if (hit.collider != null && hit.collider.TryGetComponent(out InteractiveObject detector))
+            if (hit.collider != null && hit.collider.TryGetComponent(out InteractiveObject selectedObject))
             {
-                data = detector.GetObject();
+                data = selectedObject;
                 return true;
             }
 

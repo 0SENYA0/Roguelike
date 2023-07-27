@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Assets.Scripts.GenerationSystem
 {
@@ -26,6 +25,7 @@ namespace Assets.Scripts.GenerationSystem
         private void CreateSpawnPosition(GridSpace[,] grid)
         {
             Vector2 offset = new Vector2(_grid.GetLength(0), _grid.GetLength(1)) / 2.0f;
+            float gridOffset = 0.5f;
             
             for (int i = 0; i < grid.GetLength(0); i++)
             {
@@ -33,7 +33,7 @@ namespace Assets.Scripts.GenerationSystem
                 {
                     if (grid[i, j] == GridSpace.Floor)
                     {
-                        _spawnPosition.Add(new Vector2(i+0.5f, j+0.5f) - offset);
+                        _spawnPosition.Add(new Vector2(i+gridOffset, j+gridOffset) - offset);
                     }
                 }
             }
@@ -83,20 +83,6 @@ namespace Assets.Scripts.GenerationSystem
                     }
                 }
             }
-        }
-
-        private bool TrySpawn()
-        {
-            if (_spawnPosition.Count > 0)
-            {
-                var chance = Random.value;
-                var newPosition = _spawnPosition[0];
-                _spawnPosition.RemoveAt(0);
-                Instantiate(_spawnerItems[0].Template, newPosition, Quaternion.identity, _conteiner);
-                return true;
-            }
-
-            return false;
         }
     }
 
