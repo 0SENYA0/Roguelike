@@ -7,10 +7,7 @@ namespace DefaultNamespace
     {
         private void Start()
         {
-            for (int i = 0; i < 10; i++)
-            {
-                ConsoleTools.LogSuccess($"{Random.value}");
-            }
+            Debug.Log("yes");
         }
     }
 }

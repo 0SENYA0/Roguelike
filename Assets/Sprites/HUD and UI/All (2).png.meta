@@ -1026,7 +1026,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: All (2)_84
+      name: Elements_Metal
       rect:
         serializedVersion: 2
         x: 240
@@ -1047,7 +1047,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: All (2)_85
+      name: Elements_Fire
       rect:
         serializedVersion: 2
         x: 256
@@ -1068,7 +1068,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: All (2)_86
+      name: Elements_Tree
       rect:
         serializedVersion: 2
         x: 272
@@ -1089,7 +1089,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: All (2)_87
+      name: Elements_Earth
       rect:
         serializedVersion: 2
         x: 288
@@ -1110,7 +1110,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: All (2)_88
+      name: Elements_Water
       rect:
         serializedVersion: 2
         x: 304
@@ -1635,7 +1635,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: All (2)_164
+      name: Elements_Metal_Up
       rect:
         serializedVersion: 2
         x: 240
@@ -1656,7 +1656,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: All (2)_165
+      name: Elements_Fire_Up
       rect:
         serializedVersion: 2
         x: 256
@@ -1677,7 +1677,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: All (2)_166
+      name: Elements_Tree_Up
       rect:
         serializedVersion: 2
         x: 272
@@ -1698,7 +1698,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: All (2)_167
+      name: Elements_Earth_Up
       rect:
         serializedVersion: 2
         x: 288
@@ -1719,7 +1719,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: All (2)_168
+      name: Elements_Water_Up
       rect:
         serializedVersion: 2
         x: 304
@@ -2076,7 +2076,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: All (2)_244
+      name: Elements_Metal_Down
       rect:
         serializedVersion: 2
         x: 240
@@ -2097,7 +2097,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: All (2)_245
+      name: Elements_Fire_Down
       rect:
         serializedVersion: 2
         x: 256
@@ -2118,7 +2118,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: All (2)_246
+      name: Elements_Tree_Down
       rect:
         serializedVersion: 2
         x: 272
@@ -2139,7 +2139,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: All (2)_247
+      name: Elements_Earth_Down
       rect:
         serializedVersion: 2
         x: 288
@@ -2160,7 +2160,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: All (2)_248
+      name: Elements_Water_Down
       rect:
         serializedVersion: 2
         x: 304
@@ -2706,7 +2706,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: All (2)_321
+      name: Elements_Metal_Rang
       rect:
         serializedVersion: 2
         x: 240
@@ -2727,7 +2727,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: All (2)_322
+      name: Elements_Fire_rang
       rect:
         serializedVersion: 2
         x: 256
@@ -2748,7 +2748,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: All (2)_323
+      name: Elements_Tree_Rang
       rect:
         serializedVersion: 2
         x: 272
@@ -2769,7 +2769,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: All (2)_324
+      name: Elements_Earth_Rang
       rect:
         serializedVersion: 2
         x: 288
@@ -2790,7 +2790,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: All (2)_325
+      name: Elements_Water_Rang
       rect:
         serializedVersion: 2
         x: 304
@@ -6779,11 +6779,6 @@ TextureImporter:
       All (2)_161: 853699540
       All (2)_162: 2126579154
       All (2)_163: -1759294146
-      All (2)_164: 688264602
-      All (2)_165: -1813694343
-      All (2)_166: 2137055905
-      All (2)_167: -1589491476
-      All (2)_168: -1486293720
       All (2)_169: -1545260659
       All (2)_17: -1526436150
       All (2)_170: -155273457
@@ -6868,11 +6863,6 @@ TextureImporter:
       All (2)_241: -2074880710
       All (2)_242: 55626354
       All (2)_243: -581652659
-      All (2)_244: -555328316
-      All (2)_245: -723912751
-      All (2)_246: 533975548
-      All (2)_247: -1827826393
-      All (2)_248: -356229970
       All (2)_249: -2082597373
       All (2)_25: 1828878305
       All (2)_250: 1427848736
@@ -6954,11 +6944,6 @@ TextureImporter:
       All (2)_319: 345229731
       All (2)_32: -408391837
       All (2)_320: 1661424440
-      All (2)_321: 1800371685
-      All (2)_322: -560689501
-      All (2)_323: -1375063440
-      All (2)_324: 1152570475
-      All (2)_325: -981405877
       All (2)_326: 1148088878
       All (2)_327: -1840365838
       All (2)_328: 810809014
@@ -7529,7 +7514,6 @@ TextureImporter:
       All (2)_837: 644729220
       All (2)_838: -244798692
       All (2)_839: 1619996030
-      All (2)_84: 1072151711
       All (2)_840: 1967582819
       All (2)_841: -498141305
       All (2)_842: -753023553
@@ -7540,7 +7524,6 @@ TextureImporter:
       All (2)_847: -1301705843
       All (2)_848: -1357607572
       All (2)_849: -756384676
-      All (2)_85: 1940197123
       All (2)_850: 1658406764
       All (2)_851: -1168263941
       All (2)_852: 1672830957
@@ -7551,7 +7534,6 @@ TextureImporter:
       All (2)_857: -619816945
       All (2)_858: 124199223
       All (2)_859: 1249019472
-      All (2)_86: 1155763784
       All (2)_860: -1994331261
       All (2)_861: -1759920427
       All (2)_862: 1673030433
@@ -7562,7 +7544,6 @@ TextureImporter:
       All (2)_867: -1416182735
       All (2)_868: 570502832
       All (2)_869: 1220295336
-      All (2)_87: -378148605
       All (2)_870: -1832672798
       All (2)_871: -11647616
       All (2)_872: 795730363
@@ -7573,7 +7554,6 @@ TextureImporter:
       All (2)_877: 371637895
       All (2)_878: -1391772551
       All (2)_879: -16499694
-      All (2)_88: -214666803
       All (2)_880: 1670075034
       All (2)_881: -354534014
       All (2)_882: 2019837433
@@ -7706,6 +7686,26 @@ TextureImporter:
       All (2)_997: -525827600
       All (2)_998: -1000165139
       All (2)_999: -1935140827
+      Elements_Earth: -378148605
+      Elements_Earth_Down: -1827826393
+      Elements_Earth_Rang: 1152570475
+      Elements_Earth_Up: -1589491476
+      Elements_Fire: 1940197123
+      Elements_Fire_Down: -723912751
+      Elements_Fire_Up: -1813694343
+      Elements_Fire_rang: -560689501
+      Elements_Metal: 1072151711
+      Elements_Metal_Down: -555328316
+      Elements_Metal_Rang: 1800371685
+      Elements_Metal_Up: 688264602
+      Elements_Tree: 1155763784
+      Elements_Tree_Down: 533975548
+      Elements_Tree_Rang: -1375063440
+      Elements_Tree_Up: 2137055905
+      Elements_Water: -214666803
+      Elements_Water_Down: -356229970
+      Elements_Water_Rang: -981405877
+      Elements_Water_Up: -1486293720
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
