@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-namespace LayerLab
+namespace Assets.GUI_Kit_Casual_Game.Scripts
 {
     public class PanelControl : MonoBehaviour
     {
@@ -24,11 +21,11 @@ namespace LayerLab
             buttonPrev.onClick.AddListener(Click_Prev);
             buttonNext.onClick.AddListener(Click_Next);
 
-            foreach (Transform t in panelTransform)
-            {
-                panels.Add(t.gameObject);
-                t.gameObject.SetActive(false);
-            }
+            // foreach (Transform t in panelTransform)
+            // {
+            //     panels.Add(t.gameObject);
+            //     t.gameObject.SetActive(false);
+            // }
 
             panels[page].SetActive(true);
             isReady = true;

@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace LayerLab
+namespace Assets.GUI_Kit_Casual_Game.Scripts
 {
     public class Panel : MonoBehaviour
     {
