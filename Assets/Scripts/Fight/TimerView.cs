@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-namespace Fight
+namespace Assets.Fight
 {
     public class TimerView : MonoBehaviour
     {

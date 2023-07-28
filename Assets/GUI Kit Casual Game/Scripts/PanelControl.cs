@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-namespace LayerLab
+namespace Assets.GUI_Kit_Casual_Game.Scripts
 {
     public class PanelControl : MonoBehaviour
     {

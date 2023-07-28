@@ -1,33 +1,20 @@
-using System;
+using System.Linq;
 using UnityEngine;
 
-namespace Fight
+namespace Assets.Fight
 {
     public class UIFight : MonoBehaviour
     {
         [SerializeField] private FightPlace _fightPlace;
-        [SerializeField] private int _countEnenmy;
-        
-        private void OnEnable()
+
+        private void Update()
         {
-            switch (_countEnenmy)
-            {
-                case 1:
-                    _fightPlace.SetOneEnemyPlace();
-                    break;
-                case 2:
-                    _fightPlace.SetTwoEnemyPlace();
-                    break;
-                case 3:
-                    _fightPlace.SetThreeEnemyPlace();
-                    break;
-                case 4:
-                    _fightPlace.SetBossEnemyPlace();
-                    break;
-                default:
-                    _fightPlace.SetBossEnemyPlace();
-                    break;
-            }
+            if (Input.GetKeyDown(KeyCode.R))
+                gameObject.SetActive(false);
         }
+
+        public void SetActiveFightPlace(Player.Player player, Enemy.Enemy[] _enemies) =>
+            _fightPlace.Set(player, _enemies.ToList());
     }
+
 }

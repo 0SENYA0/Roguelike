@@ -1,46 +1,64 @@
+using System.Collections.Generic;
+using Assets.Interface;
 using UnityEngine;
 
-namespace Fight
+namespace Assets.Fight
 {
-    public class FightPlace : MonoBehaviour
+    public class FightPlace : MonoBehaviour, ICoroutineRunner
     {
-        [SerializeField] private OneEnemyPlace _oneEnemyPlace;
-        [SerializeField] private TwoEnemyPlace _twoEnemyPlace;
-        [SerializeField] private ThreeEnemiesPlace _threeEnemiesPlace;
-        [SerializeField] private BossEnemyPlace _bossEnemyPlace;
+        [SerializeField] private List<SpawnPoint> _spawnPoints;
+        [SerializeField] private StepAttackView _stepAttackView;
 
-        public void SetOneEnemyPlace()
+        private const int Enemy = 1;
+        private const int TwoEnemy = 2;
+        private const int ThreeEnemy = 3;
+        private const int Boss = 4;
+
+        public void Set(Player.Player player, List<Enemy.Enemy> _enemies)
         {
-            _oneEnemyPlace.gameObject.SetActive(true);
+            switch (_enemies.Count)
+            {
+                case Enemy:
+                    DisableAllEnemyUI();
 
-            DisactiveEnemyPlace(_twoEnemyPlace.gameObject, _threeEnemiesPlace.gameObject, _bossEnemyPlace.gameObject);
+                    if (CheckOnTheBoss(_enemies[Enemy - 1]))
+                        break;
+                    
+                    ShowEnemyUI(_spawnPoints[Enemy - 1]);
+                    break;
+                case TwoEnemy:
+                    DisableAllEnemyUI();
+                    ShowEnemyUI(_spawnPoints[TwoEnemy - 1]);
+                    break;
+                case ThreeEnemy:
+                    DisableAllEnemyUI();
+                    ShowEnemyUI(_spawnPoints[ThreeEnemy - 1]);
+                    break;
+            }
+            
+            Fight fight = new Fight(this, _enemies, player);
+            
+            fight.Start();
         }
 
-        public void SetTwoEnemyPlace()
+        private bool CheckOnTheBoss(Enemy.Enemy enemy)
         {
-            _twoEnemyPlace.gameObject.SetActive(true);
-
-            DisactiveEnemyPlace(_oneEnemyPlace.gameObject, _threeEnemiesPlace.gameObject, _bossEnemyPlace.gameObject);
+            if (enemy.Boss)
+            {
+                ShowEnemyUI(_spawnPoints[Boss - 1]);
+                return true;
+            }
+            
+            return false;
         }
 
-        public void SetThreeEnemyPlace()
+        private void ShowEnemyUI(SpawnPoint spawnPoint) =>
+            spawnPoint.gameObject.SetActive(true);
+
+        private void DisableAllEnemyUI()
         {
-            _threeEnemiesPlace.gameObject.SetActive(true);
-
-            DisactiveEnemyPlace(_oneEnemyPlace.gameObject, _twoEnemyPlace.gameObject, _bossEnemyPlace.gameObject);
-        }
-
-        public void SetBossEnemyPlace()
-        {
-            _bossEnemyPlace.gameObject.SetActive(true);
-
-            DisactiveEnemyPlace(_oneEnemyPlace.gameObject, _twoEnemyPlace.gameObject, _threeEnemiesPlace.gameObject);
-        }
-
-        private void DisactiveEnemyPlace(params GameObject[] enemyPlaces)
-        {
-            foreach (GameObject enemyPlace in enemyPlaces)
-                enemyPlace.SetActive(false);
+            foreach (SpawnPoint spawnPoint in _spawnPoints)
+                spawnPoint.gameObject.SetActive(false);
         }
     }
 }

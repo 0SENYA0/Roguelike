@@ -1,4 +1,4 @@
-namespace DefaultNamespace.Config
+namespace Assets.Config
 {
     public static class LanguageConfig
     {

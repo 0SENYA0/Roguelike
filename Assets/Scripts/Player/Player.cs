@@ -1,7 +1,8 @@
-namespace Player
+using UnityEngine;
+
+namespace Assets.Player
 {
-    public class Player
+    public class Player : Person.Person
     {
-        
     }
 }

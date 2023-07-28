@@ -1,25 +1,11 @@
-using System;
-using Player;
+using Assets.Person;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace DefaultNamespace.Enemy
+namespace Assets.Enemy
 {
-    public class Enemy : MonoBehaviour
+    public class Enemy : Person.Person
     {
-        [SerializeField] private Image _selectableImage;
-        [SerializeField] private Slider _healthBarSlider;
-        [SerializeField] private Image _skin;
+        public bool Boss { get; private set; }
 
-        private void OnEnable() => 
-            PlayerSingleAttackObserver.Instance.Register(ShowSelectableImage);
-
-        private void OnDisable() => 
-            PlayerSingleAttackObserver.Instance.Unregister(ShowSelectableImage);
-
-        private void ShowSelectableImage()
-        {
-            _selectableImage.gameObject.SetActive(true);
-        }
     }
 }
