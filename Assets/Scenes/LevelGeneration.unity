@@ -1734,7 +1734,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1465547171
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 537224148, guid: 1f12ed934558f4e46b63b37d66c78518, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2425,7 +2425,7 @@ MonoBehaviour:
     _chanceSpawn: 0.6
   - _template: {fileID: 7563104451129171356, guid: 5d1fb88fa858cbf408f9eaebe78e8451, type: 3}
     _maxCount: 10
-    _chanceSpawn: 1
+    _chanceSpawn: 0.875
   - _template: {fileID: 1786792949691058985, guid: 6e49fe142809441458d66afd2faf5f07, type: 3}
     _maxCount: 5
     _chanceSpawn: 0.51
