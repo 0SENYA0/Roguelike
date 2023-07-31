@@ -28,10 +28,11 @@ namespace Assets.Scripts.InteractiveObjectSystem
             _buttonNo.onClick.RemoveListener(CallNegativeResponse);
         }
 
-        public void ShowPanel(InteractiveObject interactiveObject)
+        public void ShowPanel(IInteractiveObject interactiveObject)
         {
-            _lable.text = interactiveObject.Name;
-            _stats.text = interactiveObject.Stats;
+            var objectInformation = interactiveObject.GetData();
+            _lable.text = objectInformation.Name;
+            _stats.text = objectInformation.Data;
             _panel.SetActive(true);
         }
 

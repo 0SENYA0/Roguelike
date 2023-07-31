@@ -1,4 +1,4 @@
-namespace Assets.Scripts.EnemyScripts
+namespace Assets.Scripts.AnimationComponent
 {
     public enum AnimationState
     {

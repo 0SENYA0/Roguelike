@@ -10,7 +10,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
         [SerializeField] private InteractiveObjectHandler interactiveObjectHandler;
 
         private Vector3 _targetPosition;
-        private InteractiveObject _selectedObject;
+        private IInteractiveObject _selectedObject;
 
         private void Awake()
         {
@@ -22,7 +22,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
             _clickTracker.ObjectClick -= ShowPanel;
         }
 
-        private void ShowPanel(InteractiveObject selectedObject, Vector3 position)
+        private void ShowPanel(IInteractiveObject selectedObject, Vector3 position)
         {
             _infoPanel.ShowPanel(selectedObject);
             _targetPosition = position;

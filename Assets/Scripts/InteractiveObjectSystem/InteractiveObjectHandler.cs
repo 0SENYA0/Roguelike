@@ -13,7 +13,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
         [SerializeField] private float _minDistanceToStartBattle = 10.1f;
         [SerializeField] private Button _closeButton;
 
-        private InteractiveObject _targetObject;
+        private IInteractiveObject _targetObject;
         private float _distance;
 
         private void Awake()
@@ -26,7 +26,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
             _closeButton.onClick.RemoveListener(CloseBattle);
         }
 
-        public void ProduceInteraction(InteractiveObject enemy, Vector3 targetPosition)
+        public void ProduceInteraction(IInteractiveObject enemy, Vector3 targetPosition)
         {
             _targetObject = enemy;
             _clickTracker.enabled = false;
