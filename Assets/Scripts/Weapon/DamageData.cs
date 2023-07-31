@@ -1,4 +1,6 @@
-namespace Assets.Person
+using Assets.Fight.Element;
+
+namespace Assets.Weapon
 {
     public struct DamageData
     {

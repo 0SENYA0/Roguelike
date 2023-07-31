@@ -1,4 +1,4 @@
-namespace Assets.Person
+namespace Assets.Interface
 {
     public interface IPersonStateMachine
     {

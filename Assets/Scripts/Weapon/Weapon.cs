@@ -4,15 +4,10 @@ namespace Assets.Weapon
 {
     public class Weapon
     {
-        public AttackData AttackData;
+        public DamageData DamageData;
         
         public int ChanceToSplash { get; set; }
         public int MinValueToCriticalDamage { get; set; }
         public int ValueModifier { get; set; }
-    }
-
-    public class AttackData
-    {
-        public DamageData DamageData;
     }
 }

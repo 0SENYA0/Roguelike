@@ -7,7 +7,7 @@ namespace Assets.Fight
     public class FightPlace : MonoBehaviour, ICoroutineRunner
     {
         [SerializeField] private List<SpawnPoint> _spawnPoints;
-        [SerializeField] private StepAttackView _stepAttackView;
+        [SerializeField] private StepFightView _stepFightView;
 
         private const int Enemy = 1;
         private const int TwoEnemy = 2;
@@ -36,7 +36,7 @@ namespace Assets.Fight
                     break;
             }
             
-            Fight fight = new Fight(this, _enemies, player);
+            Fight fight = new Fight(this, _enemies, player, _stepFightView);
             
             fight.Start();
         }

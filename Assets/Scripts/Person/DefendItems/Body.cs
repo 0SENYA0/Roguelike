@@ -1,3 +1,5 @@
+using Assets.Fight.Element;
+
 namespace Assets.Person
 {
     public class Body

@@ -1,4 +1,4 @@
-namespace Assets.Person
+namespace Assets.Fight.Element
 {
     public static class ElementManager
     {

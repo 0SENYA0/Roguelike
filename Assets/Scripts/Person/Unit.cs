@@ -1,42 +1,43 @@
 using System;
+using Assets.Fight.Element;
+using Assets.Interface;
 using Assets.Person.PersonStates;
+using Assets.Weapon;
 using UnityEngine;
 
 namespace Assets.Person
 {
-    public abstract class Person : MonoBehaviour, IDamagable
+    public abstract class Unit : IDamagable
     {
-        [SerializeField] private Sprite _sprite;
-
-        [SerializeField] private PersonStateMachine _personStateMachine;
-
         private float _health;
-        public float Healh => _health;
-        public event Action Died;
-        public Sprite Sprite => _sprite;
-
+        private Sprite _sprite;
+        private PersonStateMachine _personStateMachine;
         private Weapon.Weapon _weapon;
-        public Weapon.Weapon Weapon => _weapon;
-
         private Armor _armor;
-
         private MagicItem _magicItem;
+
+        public Unit(Sprite sprite, int health = 100, Weapon.Weapon weapon = null, Armor armor = null, MagicItem magicItem = null) =>
+            _sprite = sprite;
+
+        public event Action<Unit> Died;
+
+        public float Healh => _health;
+        public Sprite Sprite => _sprite;
+        public Weapon.Weapon Weapon => _weapon;
+        public IPersonStateMachine PersonStateMachine => _personStateMachine;
+        public void TakeDamage(DamageData damage)
+        {
+            CalculateDamageMultiplier(damage);
+            ConditionForDead();
+        }
 
         protected virtual void ConditionForDead()
         {
             if (_health <= 0)
             {
-                Died?.Invoke();
+                Died?.Invoke(this);
                 _health = 0;
             }
-        }
-
-        public PersonStateMachine PersonStateMachine => _personStateMachine;
-
-        public void TakeDamage(DamageData damage)
-        {
-            CalculateDamageMultiplier(damage);
-            ConditionForDead();
         }
 
         protected virtual void CalculateDamageMultiplier(DamageData damage)

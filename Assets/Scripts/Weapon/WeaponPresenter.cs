@@ -20,7 +20,7 @@ namespace Assets.Weapon
         
         private void SetStartValues()
         {
-            _weaponView.DamageData = _weapon.AttackData.DamageData;
+            _weaponView.DamageData = _weapon.DamageData;
             _weaponView.ChanceToSplash = _weapon.ChanceToSplash;
             _weaponView.MinValueToCriticalDamage = _weapon.MinValueToCriticalDamage;
             _weaponView.ValueModifier = _weapon.ValueModifier;
