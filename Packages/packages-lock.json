@@ -6,7 +6,7 @@
       "source": "git",
       "dependencies": {},
       "hash": "05f749d55b624e0c2e46ddc256e309a20cc103ec"
-
+    },
     "com.agava.yandexgames": {
       "version": "https://github.com/forcepusher/com.agava.yandexgames.git",
       "depth": 0,
