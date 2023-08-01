@@ -1,6 +1,6 @@
-using Assets.Scripts.EnemyScripts;
+using Assets.Scripts.AnimationComponent;
 using UnityEngine;
-using AnimationState = Assets.Scripts.EnemyScripts.AnimationState;
+using AnimationState = Assets.Scripts.AnimationComponent.AnimationState;
 
 namespace Assets.Scripts.GenerationSystem.LevelMovement
 {
