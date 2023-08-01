@@ -1,13 +1,17 @@
-using Assets.Scripts.InteractiveObjectSystem;
+using Assets.Interface;
+using Assets.Person;
+using Assets.Person.DefendItems;
+using Assets.Person.PersonStates;
 using UnityEngine;
 
 namespace Assets.Enemy
 {
-    public class Enemy : Person.Person, IInteractiveObject
+    public class Enemy : Unit
     {
-        [SerializeField] private string _name;
-        [Multiline]
-        [SerializeField] private string _data;
+        public Enemy(int health, IWeapon weapon, Armor armor, MagicItem magicItem, IPersonStateMachine personStateMachine) 
+            : base(health, weapon, armor, magicItem, personStateMachine)
+        {
+        }
 
         public bool Boss { get; private set; }
         
@@ -24,9 +28,8 @@ namespace Assets.Enemy
             return new InteractiveObjectData(_name, _data);
         }
 
-        public GameObject GetObject()
-        {
-            return this.gameObject;
-        }
+        public void MakeBoss() =>
+            Boss = true;
+
     }
 }

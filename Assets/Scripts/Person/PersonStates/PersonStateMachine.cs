@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Assets.Interface;
 using UnityEngine;
 
 namespace Assets.Person.PersonStates

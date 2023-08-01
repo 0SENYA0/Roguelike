@@ -1,14 +1,19 @@
 using System.Collections.Generic;
 using Assets.Interface;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Fight
 {
     public class FightPlace : MonoBehaviour, ICoroutineRunner
     {
         [SerializeField] private List<SpawnPoint> _spawnPoints;
-        [SerializeField] private StepAttackView _stepAttackView;
+        [SerializeField] private StepFightView _stepFightView;
 
+        [SerializeField] private Button _button1;
+        [SerializeField] private Button _button2;
+        [SerializeField] private Button _button3;
+        
         private const int Enemy = 1;
         private const int TwoEnemy = 2;
         private const int ThreeEnemy = 3;
@@ -36,7 +41,7 @@ namespace Assets.Fight
                     break;
             }
             
-            Fight fight = new Fight(this, _enemies, player);
+            Fight fight = new Fight(this, _enemies, player, _stepFightView);
             
             fight.Start();
         }

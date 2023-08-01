@@ -1,4 +1,5 @@
 using System.Collections;
+using Assets.Fight;
 using Assets.Scripts.GenerationSystem.LevelMovement;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +10,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
     {
         [SerializeField] private MouseClickTracker _clickTracker;
         [SerializeField] private AgentMovement _agent;
-        [SerializeField] private GameObject _battlefild;
+        [SerializeField] private UIFight _battlefild;
         [SerializeField] private float _minDistanceToStartBattle = 10.1f;
         [SerializeField] private Button _closeButton;
 

@@ -1,17 +1,18 @@
+using Assets.Scripts.EnemyScripts;
 using UnityEngine;
 
 namespace Assets.Person.PersonStates
 {
     public abstract class PersonState : MonoBehaviour
     {
-        public void Enter()
+        [SerializeField] protected SpriteAnimation SpriteAnimation;
+
+        public virtual void Enter()
         {
-            
         }
-        
-        public void Exit()
+
+        public virtual void Exit()
         {
-            
         }
     }
 }
