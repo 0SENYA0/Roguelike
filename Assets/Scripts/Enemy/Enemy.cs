@@ -2,12 +2,16 @@ using Assets.Interface;
 using Assets.Person;
 using Assets.Person.DefendItems;
 using Assets.Person.PersonStates;
+using Assets.Scripts.InteractiveObjectSystem;
 using UnityEngine;
 
 namespace Assets.Enemy
 {
     public class Enemy : Unit
     {
+        private string _name;
+        private string _data;
+
         public Enemy(int health, IWeapon weapon, Armor armor, MagicItem magicItem, IPersonStateMachine personStateMachine) 
             : base(health, weapon, armor, magicItem, personStateMachine)
         {
@@ -20,7 +24,7 @@ namespace Assets.Enemy
         // Временный метод, чтобы удалять противников с поля
         public void DestroyObject()
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
 
         public InteractiveObjectData GetData()
