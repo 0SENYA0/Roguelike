@@ -1,3 +1,7 @@
+<<<<<<< Updated upstream
+=======
+using Assets.Scripts.AnimationComponent;
+>>>>>>> Stashed changes
 using UnityEngine;
 
 namespace Assets.Person.PersonStates
