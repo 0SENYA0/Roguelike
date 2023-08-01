@@ -4,7 +4,13 @@ namespace Assets.Weapon
 {
     public struct DamageData
     {
-        public float Value { get; set; }
-        public Element Element { get; set; }
+        public DamageData(float value, Element element)
+        {
+            Value = value;
+            Element = element;
+        }
+
+        public float Value { get; }
+        public Element Element { get; }
     }
 }

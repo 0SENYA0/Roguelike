@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Assets.Interface;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Fight
 {
@@ -9,6 +10,10 @@ namespace Assets.Fight
         [SerializeField] private List<SpawnPoint> _spawnPoints;
         [SerializeField] private StepFightView _stepFightView;
 
+        [SerializeField] private Button _button1;
+        [SerializeField] private Button _button2;
+        [SerializeField] private Button _button3;
+        
         private const int Enemy = 1;
         private const int TwoEnemy = 2;
         private const int ThreeEnemy = 3;

@@ -1,29 +1,31 @@
 using System;
 using Assets.Fight.Element;
 using Assets.Interface;
-using Assets.Person.PersonStates;
+using Assets.Person.DefendItems;
 using Assets.Weapon;
-using UnityEngine;
 
 namespace Assets.Person
 {
     public abstract class Unit : IDamagable
     {
         private float _health;
-        private Sprite _sprite;
-        private PersonStateMachine _personStateMachine;
-        private Weapon.Weapon _weapon;
+        private IPersonStateMachine _personStateMachine;
+        private IWeapon _weapon;
         private Armor _armor;
         private MagicItem _magicItem;
 
-        public Unit(Sprite sprite, int health = 100, Weapon.Weapon weapon = null, Armor armor = null, MagicItem magicItem = null) =>
-            _sprite = sprite;
+        public Unit(int health, IWeapon weapon, Armor armor, MagicItem magicItem, IPersonStateMachine personStateMachine)
+        {
+            _health = health;
+            _weapon = weapon;
+            _armor = armor;
+            _magicItem = magicItem;
+        }
 
         public event Action<Unit> Died;
 
         public float Healh => _health;
-        public Sprite Sprite => _sprite;
-        public Weapon.Weapon Weapon => _weapon;
+        public IWeapon Weapon => _weapon;
         public IPersonStateMachine PersonStateMachine => _personStateMachine;
         public void TakeDamage(DamageData damage)
         {
