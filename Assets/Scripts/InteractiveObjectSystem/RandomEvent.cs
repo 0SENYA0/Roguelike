@@ -1,19 +1,15 @@
-using Assets.Scripts.InteractiveObjectSystem;
 using UnityEngine;
 
-namespace Assets.Enemy
+namespace Assets.Scripts.InteractiveObjectSystem
 {
-    public class Enemy : Person.Person, IInteractiveObject
+    public class RandomEvent : MonoBehaviour, IInteractiveObject
     {
         [SerializeField] private string _name;
         [Multiline]
         [SerializeField] private string _data;
 
-        public bool Boss { get; private set; }
-        
-        public ObjectType ObjectType { get; }
-        
-        // Временный метод, чтобы удалять противников с поля
+        public ObjectType ObjectType { get; set; }
+
         public void DestroyObject()
         {
             Destroy(gameObject);
