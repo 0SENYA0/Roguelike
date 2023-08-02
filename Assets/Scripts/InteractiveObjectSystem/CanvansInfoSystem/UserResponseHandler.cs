@@ -1,18 +1,18 @@
 using Assets.Scripts.GenerationSystem.LevelMovement;
 using UnityEngine;
 
-namespace Assets.Scripts.InteractiveObjectSystem
+namespace Assets.Scripts.InteractiveObjectSystem.CanvasInfoSystem
 {
     public class UserResponseHandler : MonoBehaviour
     {
-        [SerializeField] private CanvasInfoPanel _infoPanel;
+        [SerializeField] private MessagePanel _infoPanel;
         [SerializeField] private MouseClickTracker _clickTracker;
         [SerializeField] private InteractiveObjectHandler interactiveObjectHandler;
 
         private Vector3 _targetPosition;
-        private IInteractiveObject _selectedObject;
+        private InteractiveObject _selectedObject;
 
-        private void Awake()
+        private void Start()
         {
             _clickTracker.ObjectClick += ShowPanel;
         }
@@ -20,21 +20,23 @@ namespace Assets.Scripts.InteractiveObjectSystem
         private void OnDestroy()
         {
             _clickTracker.ObjectClick -= ShowPanel;
+            _infoPanel.UserResponse -= MoveFixedAgent;
         }
 
-        private void ShowPanel(IInteractiveObject selectedObject, Vector3 position)
+        private void ShowPanel(InteractiveObject selectedObject, Vector3 position)
         {
-            _infoPanel.ShowPanel(selectedObject);
-            _targetPosition = position;
             _selectedObject = selectedObject;
+            _targetPosition = position;
+            
+            _infoPanel.ShowPanel(selectedObject.Type, selectedObject.GetData());
             _infoPanel.UserResponse += MoveFixedAgent;
         }
 
-        private void MoveFixedAgent(bool isMoveToTarget)
+        private void MoveFixedAgent(bool isPositiveResponse)
         {
             _infoPanel.UserResponse -= MoveFixedAgent;
             
-            if (isMoveToTarget)
+            if (isPositiveResponse)
                 interactiveObjectHandler.ProduceInteraction(_selectedObject, _targetPosition);           
         }
     }

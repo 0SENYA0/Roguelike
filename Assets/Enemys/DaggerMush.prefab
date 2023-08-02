@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4716308812156437210}
   - component: {fileID: 8981151776570709827}
   - component: {fileID: 3427713942287097414}
-  - component: {fileID: 4120506208672669197}
+  - component: {fileID: 4185863710945377437}
   m_Layer: 0
   m_Name: DaggerMush
   m_TagString: Untagged
@@ -192,7 +192,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7117448, y: 0.69182336}
   m_EdgeRadius: 0
---- !u!114 &4120506208672669197
+--- !u!114 &4185863710945377437
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -201,10 +201,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3550267196358860798}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27fac8c8ab5940cb8cf81fe695cda6e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 95ca6c86d78e41c1bc6dc1ba27ec6f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 0}
-  _personStateMachine: {fileID: 0}
-  _name: "\u0414\u0430\u0433\u0435\u0440"
-  _data: "\u0425\u041F - 20\n\u0414\u041C - 30\n\u041C\u041F - 40"
+  _type: 0
+  _name: Dagger
+  _data: "\u0422\u044F\u0436\u0435\u043B\u044B\u0439 \u043C\u043E\u0431\n\u0421\u0438\u043B\u0430
+    10\n\u0423\u0440\u043E\u043D 20\n\u0421\u043A\u0438\u043B 30\n"

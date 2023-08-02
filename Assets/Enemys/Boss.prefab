@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3688126335113188408}
   - component: {fileID: -1698944702914464765}
   m_Layer: 0
-  m_Name: Bot
+  m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,9 +76,9 @@ SpriteRenderer:
   m_SortingLayerID: 748548621
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2054315591, guid: 55cd93eaa03fc404d9ba81dac0f8d658, type: 3}
+  m_Sprite: {fileID: 1252765060, guid: 0b687fd74969a4542a94ba8cf7bcd3ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 3, y: 3}
@@ -101,54 +101,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _frameRate: 10
   _clips:
-  - _state: 0
-    _sprites:
-    - {fileID: -2054315591, guid: 55cd93eaa03fc404d9ba81dac0f8d658, type: 3}
-    - {fileID: -1223019945, guid: 82106ef637177d5458ba88a1dc29cf15, type: 3}
-    - {fileID: 2072562905, guid: 82106ef637177d5458ba88a1dc29cf15, type: 3}
-    - {fileID: 957458064, guid: 82106ef637177d5458ba88a1dc29cf15, type: 3}
-    - {fileID: -1737308744, guid: 82106ef637177d5458ba88a1dc29cf15, type: 3}
-    - {fileID: -954202678, guid: 82106ef637177d5458ba88a1dc29cf15, type: 3}
-    _isLoop: 0
-    _isAllowNextClip: 1
-    _nextState: 1
   - _state: 1
     _sprites:
-    - {fileID: -1737308744, guid: 82106ef637177d5458ba88a1dc29cf15, type: 3}
-    - {fileID: -954202678, guid: 82106ef637177d5458ba88a1dc29cf15, type: 3}
-    - {fileID: -954202678, guid: 82106ef637177d5458ba88a1dc29cf15, type: 3}
+    - {fileID: 1252765060, guid: 0b687fd74969a4542a94ba8cf7bcd3ec, type: 3}
+    - {fileID: -610973406, guid: 0b687fd74969a4542a94ba8cf7bcd3ec, type: 3}
+    - {fileID: -55757052, guid: 0b687fd74969a4542a94ba8cf7bcd3ec, type: 3}
+    - {fileID: -1098475710, guid: 0b687fd74969a4542a94ba8cf7bcd3ec, type: 3}
+    - {fileID: -1738623216, guid: 0b687fd74969a4542a94ba8cf7bcd3ec, type: 3}
+    - {fileID: -612577113, guid: 0b687fd74969a4542a94ba8cf7bcd3ec, type: 3}
     _isLoop: 1
-    _isAllowNextClip: 0
-    _nextState: 0
-  - _state: 2
-    _sprites:
-    - {fileID: -483634430, guid: 9ec0c4d3cbabc2a4680e0c153f8c43a3, type: 3}
-    - {fileID: 1783108955, guid: 9ec0c4d3cbabc2a4680e0c153f8c43a3, type: 3}
-    - {fileID: 153490004, guid: 9ec0c4d3cbabc2a4680e0c153f8c43a3, type: 3}
-    - {fileID: -2096561177, guid: 9ec0c4d3cbabc2a4680e0c153f8c43a3, type: 3}
-    - {fileID: 489491740, guid: a5520b2b2cca83c4ca384a1e4822fd58, type: 3}
-    - {fileID: 202029553, guid: a5520b2b2cca83c4ca384a1e4822fd58, type: 3}
-    - {fileID: -149045789, guid: a5520b2b2cca83c4ca384a1e4822fd58, type: 3}
-    - {fileID: -221599312, guid: a5520b2b2cca83c4ca384a1e4822fd58, type: 3}
-    _isLoop: 0
-    _isAllowNextClip: 1
-    _nextState: 1
-  - _state: 3
-    _sprites:
-    - {fileID: 741838678, guid: 109583ed816e6b541ad10d3954a1b849, type: 3}
-    - {fileID: -865633853, guid: 109583ed816e6b541ad10d3954a1b849, type: 3}
-    _isLoop: 0
-    _isAllowNextClip: 1
-    _nextState: 1
-  - _state: 4
-    _sprites:
-    - {fileID: 1220728920, guid: a3fb36e505d4bfd4d9250984be401f5d, type: 3}
-    - {fileID: -1996637885, guid: a3fb36e505d4bfd4d9250984be401f5d, type: 3}
-    - {fileID: -425597967, guid: a3fb36e505d4bfd4d9250984be401f5d, type: 3}
-    - {fileID: -1502010916, guid: a3fb36e505d4bfd4d9250984be401f5d, type: 3}
-    - {fileID: -384677912, guid: a3fb36e505d4bfd4d9250984be401f5d, type: 3}
-    - {fileID: -387406666, guid: a3fb36e505d4bfd4d9250984be401f5d, type: 3}
-    _isLoop: 0
     _isAllowNextClip: 0
     _nextState: 0
 --- !u!61 &3688126335113188408
@@ -183,18 +144,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.032224864, y: 0.25286514}
+  m_Offset: {x: -0.02822724, y: -0.17766598}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.43, y: 0.21}
-    oldSize: {x: 1.5, y: 1.5}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.5, y: 1}
     newSize: {x: 3, y: 3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.45709127, y: 0.586831}
+  m_Size: {x: 0.6531808, y: 0.64466804}
   m_EdgeRadius: 0
 --- !u!114 &-1698944702914464765
 MonoBehaviour:
@@ -208,7 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95ca6c86d78e41c1bc6dc1ba27ec6f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
-  _name: "\u0411\u043E\u0442"
-  _data: "\u041F\u0440\u043E\u0441\u0442\u043E \u0431\u043E\u0442\n\u0421\u0438\u043B\u0430
-    10\n\u0423\u0440\u043E\u043D 10\n\u0421\u043A\u0438\u043B 10"
+  _type: 3
+  _name: "\u041D\u0430\u0433\u0438\u0431\u0430\u0442\u043E\u0440"
+  _data: "\u041F\u0438\u0441\u0438\u0446 \u0442\u0435\u0431\u0435, \u043C\u0430\u043B\u044C\u0447\u0438\u043A!"

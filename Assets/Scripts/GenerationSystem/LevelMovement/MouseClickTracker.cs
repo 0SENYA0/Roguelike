@@ -10,7 +10,7 @@ namespace Assets.Scripts.GenerationSystem.LevelMovement
         private readonly int _mouseKey = 0;
         
         public UnityAction<Vector3> MoveClick;
-        public UnityAction<IInteractiveObject, Vector3> ObjectClick;
+        public UnityAction<InteractiveObject, Vector3> ObjectClick;
 
         private Vector3 _mousePosition;
         private bool _isPointerOverUi;
@@ -32,7 +32,7 @@ namespace Assets.Scripts.GenerationSystem.LevelMovement
                 
                 _mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
                 
-                if (TryGetInteractiveObject(out IInteractiveObject selectedObject))
+                if (TryGetInteractiveObject(out InteractiveObject selectedObject))
                 {
                     ObjectClick?.Invoke(selectedObject, _mousePosition);
                 }
@@ -43,14 +43,14 @@ namespace Assets.Scripts.GenerationSystem.LevelMovement
             }
         }
 
-        private bool TryGetInteractiveObject(out IInteractiveObject data)
+        private bool TryGetInteractiveObject(out InteractiveObject data)
         {
             data = null;
             
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
 
-            if (hit.collider != null && hit.collider.TryGetComponent(out IInteractiveObject selectedObject))
+            if (hit.collider != null && hit.collider.TryGetComponent(out InteractiveObject selectedObject))
             {
                 data = selectedObject;
                 return true;
