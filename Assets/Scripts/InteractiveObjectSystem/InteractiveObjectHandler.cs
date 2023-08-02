@@ -4,6 +4,7 @@ using Assets.Fight;
 using Assets.Loot;
 using Assets.Scripts.GenerationSystem.LevelMovement;
 using Assets.Scripts.InteractiveObjectSystem.RandomEventSystem;
+using Assets.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -42,7 +43,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
             switch (targetObject.Type)
             {
                 case ObjectType.Enemy:
-                    openPanel = () => { _battlefild.gameObject.SetActive(true);};
+                    openPanel = () => { Curtain.Instance.ShowAnimation(() => { _battlefild.gameObject.SetActive(true);});};
                     break;
                 case ObjectType.RandomEvent:
                     openPanel = CreateRandomEvent();
@@ -51,7 +52,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
                     openPanel = () => { _lootPanel.ShowPanel(this); };
                     break;
                 case ObjectType.Boos:
-                    openPanel = () => { _battlefild.gameObject.SetActive(true); };
+                    openPanel = () => { Curtain.Instance.ShowAnimation(() => { _battlefild.gameObject.SetActive(true);});};
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -69,7 +70,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
         // TODO временное решешие. Сам скрипт UIFight должен принимать InteractiveObjectHandler и вызывать метод ReturnToGlobalMap
         private void CloseBattlefild()
         {
-            _battlefild.gameObject.SetActive(false);
+            Curtain.Instance.ShowAnimation(() => {_battlefild.gameObject.SetActive(false);});
             ReturnToGlobalMap();
         }
 
@@ -81,7 +82,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
             switch (randomEvent)
             {
                 case RandomEventType.Enemy:
-                    return () => { _battlefild.gameObject.SetActive(true);};
+                    return () => { Curtain.Instance.ShowAnimation(() => { _battlefild.gameObject.SetActive(true);});};
                 case RandomEventType.Loot:
                     return () => { _lootPanel.ShowPanel(this); };
                 case RandomEventType.AD:
