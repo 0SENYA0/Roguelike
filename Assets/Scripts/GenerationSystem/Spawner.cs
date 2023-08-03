@@ -5,12 +5,14 @@ namespace Assets.Scripts.GenerationSystem
 {
     public class Spawner : MonoBehaviour
     {
-        [SerializeField] private List<SpawnerItem> _spawnerItems;
         [SerializeField] private int _maxCountOfSpawnItems = 20;
+        [SerializeField] private List<SpawnerItem> _spawnerItems;
+        [SerializeField] private GameObject _bossTemplate;
         [SerializeField] private Transform _conteiner;
 
         private GridSpace[,] _grid;
         private List<Vector2> _spawnPosition = new List<Vector2>();
+        private Vector2 _bossPosition;
         private List<GameObject> _items;
         
         public void Init(GridSpace[,] grid)
@@ -20,6 +22,7 @@ namespace Assets.Scripts.GenerationSystem
             CreateSpawnPosition(_grid);
             ShuffleItems(_spawnPosition);
             SpawnEnemys();
+            SpawnBoss(_bossPosition);
         }
 
         private void CreateSpawnPosition(GridSpace[,] grid)
@@ -34,6 +37,10 @@ namespace Assets.Scripts.GenerationSystem
                     if (grid[i, j] == GridSpace.Floor)
                     {
                         _spawnPosition.Add(new Vector2(i+gridOffset, j+gridOffset) - offset);
+                    }
+                    else if (grid[i, j] == GridSpace.Last)
+                    {
+                        _bossPosition = new Vector2(i + gridOffset, j + gridOffset) - offset;
                     }
                 }
             }
@@ -83,6 +90,11 @@ namespace Assets.Scripts.GenerationSystem
                     }
                 }
             }
+        }
+
+        private void SpawnBoss(Vector2 position)
+        {
+            Instantiate(_bossTemplate, position, Quaternion.identity, _conteiner);
         }
     }
 
