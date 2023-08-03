@@ -14,19 +14,6 @@ namespace Assets.Enemy
         }
 
         public bool Boss { get; private set; }
-        
-        public ObjectType ObjectType { get; }
-        
-        // Временный метод, чтобы удалять противников с поля
-        public void DestroyObject()
-        {
-            Destroy(gameObject);
-        }
-
-        public InteractiveObjectData GetData()
-        {
-            return new InteractiveObjectData(_name, _data);
-        }
 
         public void MakeBoss() =>
             Boss = true;

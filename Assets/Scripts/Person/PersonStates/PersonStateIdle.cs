@@ -1,4 +1,4 @@
-using Assets.Scripts.EnemyScripts;
+using Assets.Scripts.AnimationComponent;
 
 namespace Assets.Person.PersonStates
 {
