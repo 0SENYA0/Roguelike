@@ -48,30 +48,30 @@ namespace Assets.Scripts.AnimationComponent
 
             AnimationClip clip = _clips[_currentClip];
             
-            if (_currentFrame >= clip.Sprites.Length)
-            {
-                if (clip.IsLoop)
-                {
-                    _currentFrame = 0;
-                }
-                else if (clip.IsAllowNextClip)
-                {
-                    SetClip(clip.NextState);
-                }
-                else
-                {
-                    OnAnimationComplete?.Invoke();
-                    enabled = false;    
-                    _isPlaying = false;    
-                }
-            }
-            else
-            {
-                _renderer.sprite = clip.Sprites[_currentFrame];
-
-                _nextFrameTime += _secPerFrame;
-                _currentFrame++;
-            }
+             if (_currentFrame >= clip.Sprites.Length)
+             {
+                 if (clip.IsLoop)
+                 {
+                     _currentFrame = 0;
+                 }
+                 else if (clip.IsAllowNextClip)
+                 {
+                     SetClip(clip.NextState);
+                 }
+                 else
+                 {
+                     OnAnimationComplete?.Invoke();
+                     enabled = false;    
+                     _isPlaying = false;    
+                 }
+             }
+             else
+             {
+                 _renderer.sprite = clip.Sprites[_currentFrame];
+            
+                 _nextFrameTime += _secPerFrame;
+                 _currentFrame++;
+             }
         }
 
         public void SetClip(AnimationState state)

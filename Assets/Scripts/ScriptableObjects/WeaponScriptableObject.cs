@@ -10,6 +10,7 @@ namespace Assets.ScriptableObjects
         [SerializeField] private int chanceToSplash;
         [SerializeField] private int minValueToCriticalDamage;
         [SerializeField] private int valueModifier;
+        [SerializeField] private ParticleSystem _particleSystem;
         
         [Space(10)]
         [SerializeField] private DamageData damageData;

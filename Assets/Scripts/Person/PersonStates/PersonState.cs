@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Person.PersonStates
 {
-    public abstract class PersonState : MonoBehaviour
+    public abstract class PersonState : IUnitState
     {
         [SerializeField] protected SpriteAnimation SpriteAnimation;
 
