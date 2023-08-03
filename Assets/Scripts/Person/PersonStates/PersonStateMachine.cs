@@ -4,17 +4,16 @@ using UnityEngine;
 
 namespace Assets.Person.PersonStates
 {
-    public class PersonStateMachine : MonoBehaviour, IPersonStateMachine
+    public class PersonStateMachine : IPersonStateMachine
     {
-        [SerializeField] private List<PersonState> _personStates;
+        private IUnitState _currentState;
 
-        private PersonState _currentState;
-
-        public void SetState(PersonState newState)
+        public void SetState<T>(T newState) where T : IUnitState
         {
             _currentState?.Exit();
             _currentState = newState;
             _currentState.Enter();
         }
     }
+
 }

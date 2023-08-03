@@ -1,9 +1,7 @@
 using Assets.Interface;
 using Assets.Person;
 using Assets.Person.DefendItems;
-using Assets.Person.PersonStates;
 using Assets.Scripts.InteractiveObjectSystem;
-using UnityEngine;
 
 namespace Assets.Enemy
 {

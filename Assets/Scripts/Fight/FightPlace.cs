@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
+using Assets.Fight.Dice;
 using Assets.Interface;
+using Assets.ScriptableObjects;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Assets.Fight
 {
@@ -9,11 +11,14 @@ namespace Assets.Fight
     {
         [SerializeField] private List<SpawnPoint> _spawnPoints;
         [SerializeField] private StepFightView _stepFightView;
-
-        [SerializeField] private Button _button1;
-        [SerializeField] private Button _button2;
-        [SerializeField] private Button _button3;
         
+        [Space(25)]
+        [SerializeField] private DiceView _leftDice;
+        [SerializeField] private DiceView _centerDice;
+        [SerializeField] private DiceView _rightDice;
+
+        private Fight _fight;
+
         private const int Enemy = 1;
         private const int TwoEnemy = 2;
         private const int ThreeEnemy = 3;
@@ -41,10 +46,19 @@ namespace Assets.Fight
                     break;
             }
             
-            Fight fight = new Fight(this, _enemies, player, _stepFightView);
+            DiceSpriteScriptableObject scriptableObject = Resources.Load<DiceSpriteScriptableObject>("BlackDiceSpriteScriptableObject");
             
-            fight.Start();
+            DicePresenter leftDicePresenter = new DicePresenter(_leftDice, new DiceModel(scriptableObject.Sprites), this);
+            DicePresenter centerDicePresenter = new DicePresenter(_centerDice, new DiceModel(scriptableObject.Sprites), this);
+            DicePresenter rightDicePresenter = new DicePresenter(_rightDice, new DiceModel(scriptableObject.Sprites), this);
+
+            _fight = new Fight(this, _enemies, player, _stepFightView, new DicePresenterAdapter(leftDicePresenter, centerDicePresenter, rightDicePresenter));
+            
+            _fight.Start();
         }
+
+        private void OnDisable() =>
+            _fight.Dispose();
 
         private bool CheckOnTheBoss(Enemy.Enemy enemy)
         {
