@@ -210,3 +210,4 @@ MonoBehaviour:
   _health: 10
   _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
   _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
+  _sprite: {fileID: -1487488703, guid: 74bd4fe20ea720d4dbde1cc16fa99360, type: 3}

@@ -2,6 +2,7 @@ using Assets.DefendItems;
 using Assets.Interface;
 using Assets.Person;
 using Assets.Scripts.InteractiveObjectSystem;
+using UnityEngine;
 
 namespace Assets.Enemy
 {
@@ -9,7 +10,7 @@ namespace Assets.Enemy
     {
         private string _name;
         private string _data;
-
+        
         public Enemy(int health, IWeapon weapon, Armor armor, MagicItem magicItem, IPersonStateMachine personStateMachine) 
             : base(health, weapon, armor, magicItem, personStateMachine)
         {
@@ -24,6 +25,5 @@ namespace Assets.Enemy
 
         public void MakeBoss() =>
             IsBoss = true;
-
     }
 }

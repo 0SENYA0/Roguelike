@@ -4,6 +4,7 @@ using Assets.Fight.Element;
 using Assets.Interface;
 using Assets.Person.PersonStates;
 using Assets.Weapon;
+using UnityEngine;
 
 namespace Assets.Person
 {
@@ -37,7 +38,10 @@ namespace Assets.Person
         public float Healh => _health;
         public IWeapon Weapon => _weapon;
         public Armor Armor => _armor;
+        public bool IsDie { get; private set; } = false;
         public IPersonStateMachine PersonStateMachine => _personStateMachine;
+        public Sprite Sprite { get; set; }
+
         public void TakeDamage(IWeapon weapon)
         {
             CalculateDamageMultiplier(weapon);
@@ -48,9 +52,12 @@ namespace Assets.Person
         {
             if (_health <= 0)
             {
+                IsDie = true;
                 Died?.Invoke(this);
                 _health = 0;
             }
+            else
+                IsDie = false;
         }
 
         protected virtual void CalculateDamageMultiplier(IWeapon weapon)

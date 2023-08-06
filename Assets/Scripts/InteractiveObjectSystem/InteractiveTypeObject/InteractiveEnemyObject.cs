@@ -15,7 +15,8 @@ namespace Assets.Scripts.InteractiveObjectSystem
         [SerializeField] private int _health;
         [SerializeField] private WeaponScriptableObject _weapon;
         [SerializeField] private ArmorScriptableObject _armor;
-
+        [SerializeField] private Sprite _sprite;
+        
         #region Delete
 
         //private Enemy.Enemy _enemy;
@@ -44,6 +45,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
             for (int i = 0; i < _count; i++)
             {
                 Enemy.Enemy enemy = GetEnemy();
+                enemy.Sprite = _sprite;
                 
                 if (Type == ObjectType.Boos)
                     enemy.MakeBoss();
