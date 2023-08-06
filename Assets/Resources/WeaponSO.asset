@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26547efdcb114b2c81401d3d9f9e21f6, type: 3}
   m_Name: WeaponSO
   m_EditorClassIdentifier: 
-  chanceToSplash: 1
-  minValueToCriticalDamage: 1
-  valueModifier: 1
-  _particleSystem: {fileID: 0}
-  damageData:
-    _element: 0
-    _damage: 0
+  <ChanceToSplash>k__BackingField: 1
+  <MinValueToCriticalDamage>k__BackingField: 1
+  <ValueModifier>k__BackingField: 1
+  <ParticleSystem>k__BackingField: {fileID: 1351889237912816597, guid: 0931c0d473fe8e34fbdcf55a8ced7547, type: 3}
+  <Element>k__BackingField: 0
+  <Damage>k__BackingField: 5

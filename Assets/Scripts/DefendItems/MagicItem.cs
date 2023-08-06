@@ -1,4 +1,4 @@
-namespace Assets.Person.DefendItems
+namespace Assets.DefendItems
 {
     public class MagicItem
     {

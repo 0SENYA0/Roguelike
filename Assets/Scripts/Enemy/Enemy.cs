@@ -1,6 +1,6 @@
+using Assets.DefendItems;
 using Assets.Interface;
 using Assets.Person;
-using Assets.Person.DefendItems;
 using Assets.Scripts.InteractiveObjectSystem;
 
 namespace Assets.Enemy
@@ -15,10 +15,15 @@ namespace Assets.Enemy
         {
         }
 
-        public bool Boss { get; private set; }
+        public Enemy(int health, IWeapon weapon, Armor armor, MagicItem magicItem) 
+            : base(health, weapon, armor, magicItem)
+        {
+        }
+        
+        public bool IsBoss { get; private set; }
 
         public void MakeBoss() =>
-            Boss = true;
+            IsBoss = true;
 
     }
 }

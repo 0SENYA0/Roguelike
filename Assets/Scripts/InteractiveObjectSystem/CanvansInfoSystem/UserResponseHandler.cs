@@ -27,8 +27,10 @@ namespace Assets.Scripts.InteractiveObjectSystem.CanvasInfoSystem
         {
             _selectedObject = selectedObject;
             _targetPosition = position;
-            
-            _infoPanel.ShowPanel(selectedObject.Type, selectedObject.GetData());
+
+            // TODO selectedObject.GetData() исправить
+            // Первый вариант  _infoPanel.ShowPanel(selectedObject.Type, selectedObject.GetData());
+            _infoPanel.ShowPanel(_selectedObject);
             _infoPanel.UserResponse += MoveFixedAgent;
         }
 

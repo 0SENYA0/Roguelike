@@ -1,6 +1,6 @@
+using Assets.DefendItems;
 using Assets.Interface;
 using Assets.Person;
-using Assets.Person.DefendItems;
 using Assets.Person.PersonStates;
 using UnityEngine;
 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1674818522453983398}
   - component: {fileID: 5284154004156247428}
   - component: {fileID: 3688126335113188408}
-  - component: {fileID: -1698944702914464765}
+  - component: {fileID: 6953202189562965460}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -157,7 +157,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6531808, y: 0.64466804}
   m_EdgeRadius: 0
---- !u!114 &-1698944702914464765
+--- !u!114 &6953202189562965460
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,9 +166,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7563104451129171356}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95ca6c86d78e41c1bc6dc1ba27ec6f69, type: 3}
+  m_Script: {fileID: 11500000, guid: c653fe2e0bcf4071902489e9fc46694b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 3
-  _name: "\u041D\u0430\u0433\u0438\u0431\u0430\u0442\u043E\u0440"
-  _data: "\u041F\u0438\u0441\u0435\u0446 \u0442\u0435\u0431\u0435, \u043C\u0430\u043B\u044C\u0447\u0438\u043A!"
+  _name: "\u043F\u0438\u043F\u0435\u0446 \u0442\u0435\u0431\u0435 \u043F\u0430\u0446\u0430\u043D"
+  _data: 
+  _health: 100
+  _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
+  _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
