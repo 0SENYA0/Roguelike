@@ -1,25 +1,34 @@
 using System;
 using Assets.Fight.Element;
+using Assets.Weapon;
 using UnityEngine;
+using UnityEngine.ParticleSystemJobs;
 
 namespace Assets.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "WeaponSO", menuName = "ScriptableObject/Weapon", order = 0)]
-    public class WeaponScriptableObject : ScriptableObject
+    public class WeaponScriptableObject : ScriptableObject, IReadOnlyWeaponData
     {
-        [SerializeField] private int chanceToSplash;
-        [SerializeField] private int minValueToCriticalDamage;
-        [SerializeField] private int valueModifier;
-        [SerializeField] private ParticleSystem _particleSystem;
-        
-        [Space(10)]
-        [SerializeField] private DamageData damageData;
+        [field: SerializeField] public int ChanceToSplash { get; private set; }
+        [field: SerializeField] public int MinValueToCriticalDamage { get; private set; }
+        [field: SerializeField] public int ValueModifier { get; private set; }
+        [field: SerializeField] public ParticleSystem ParticleSystem { get; private set; }
 
-        [Serializable]
-        public class DamageData
-        {
-            [SerializeField] private Element _element;
-            [SerializeField] private float _damage;
-        }
+        [field: SerializeField] public Element Element { get; private set; }
+        [field: SerializeField] public int Damage { get; private set; }
+
+        public void SetNewElement(Element element) =>
+            Element = element;
+
+    }
+
+    public interface IReadOnlyWeaponData
+    {
+         public int ChanceToSplash { get;}
+         public int MinValueToCriticalDamage { get;}
+         public int ValueModifier { get;}
+         public ParticleSystem ParticleSystem { get;}
+         public Element Element { get;}
+         int Damage { get; }
     }
 }

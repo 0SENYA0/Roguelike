@@ -13,7 +13,6 @@ namespace Assets.Loot
         [SerializeField] private Image _elementImage;
         [SerializeField] private ElementsSpriteView _spriteView;
         [SerializeField] private Button _closeButton;
-
         private InteractiveObjectHandler _handler;
 
         private void OnEnable()
@@ -30,8 +29,8 @@ namespace Assets.Loot
         {
             _handler = handler;
             
-            var generator = new RandomLootGenerator();
-            var data = generator.GetRandomLoot();
+            RandomLootGenerator generator = new RandomLootGenerator();
+            InteractiveObjectData data = generator.GetRandomLoot();
 
             _lable.text = data.Name;
             _data.text = data.Data;

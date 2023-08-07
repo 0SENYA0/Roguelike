@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Fight.Dice;
 using Assets.Interface;
 using Assets.Person;
@@ -17,7 +18,7 @@ namespace Assets.Fight
         private readonly Player.Player _player;
         private readonly IStepFightView _stepFightView;
         private readonly DicePresenterAdapter _dicePresenterAdapter;
-        private readonly Queue<Unit> _persons;
+        private readonly Queue<Unit> _unitStackOfAttack;
         private int _countSteps = 10;
         private Coroutine _coroutine;
 
@@ -29,7 +30,7 @@ namespace Assets.Fight
             _player = player;
             _stepFightView = stepFightView;
             _dicePresenterAdapter = dicePresenterAdapter;
-            _persons = new Queue<Unit>();
+            _unitStackOfAttack = new Queue<Unit>();
 
             SubscribeOnDieEnemies();
 
@@ -52,12 +53,12 @@ namespace Assets.Fight
             WaitForSeconds waitForSeconds = new WaitForSeconds(3);
             WaitUntil waitUntil = new WaitUntil(_dicePresenterAdapter.CheckOnDicesShuffeled);
 
-            while (_enemies.Count > 0 || _player.Healh > 0)
+            while (_enemies.Any(x => x.IsDie == false) && _player.IsDie == false)
             {
-                if (_persons.Count <= 0)
+                if (_unitStackOfAttack.Count <= 0)
                     GenerateAttackingSteps(_enemies, _player);
 
-                Unit unit = _persons.Dequeue();
+                Unit unit = _unitStackOfAttack.Dequeue();
 
                 if (unit is Player.Player player)
                 {
@@ -81,6 +82,17 @@ namespace Assets.Fight
             }
         }
 
+        private bool AllEnemyIsDie()
+        {
+            foreach (var enemy in _enemies)
+            {
+                if (enemy.IsDie == false)
+                    return false;
+            }
+
+            return true;
+        }
+
         private void GenerateAttackingSteps(List<Enemy.Enemy> enemies, Player.Player player)
         {
             List<Unit> persons = new List<Unit>();
@@ -90,8 +102,8 @@ namespace Assets.Fight
             for (int i = 0; i < _countSteps; i++)
             {
                 Unit unit = persons[Random.Range(0, persons.Count)];
-                //_stepFightView.SetSprite(unit.Sprite, i);
-                _persons.Enqueue(unit);
+                _stepFightView.SetSprite(unit.Sprite, i);
+                _unitStackOfAttack.Enqueue(unit);
             }
         }
 
