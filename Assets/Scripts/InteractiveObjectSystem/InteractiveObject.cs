@@ -1,4 +1,3 @@
-using System;
 using Assets.Fight.Element;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -9,17 +8,17 @@ namespace Assets.Scripts.InteractiveObjectSystem
     public class InteractiveObject : MonoBehaviour
     {
         [SerializeField] private ObjectType _type;
-        [SerializeField] private string _name;
-        [Multiline]
-        [SerializeField] private string _data;
+        [SerializeField] protected string _name;
+        [Multiline] [SerializeField] protected string _data;
 
         public ObjectType Type => _type;
 
         private Element _element;
-
+        public string Data => _data;
         private void Start()
         {
             _element = GetRandomElement();
+            OnStart();
         }
 
         public void DestroyObject()
@@ -29,7 +28,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
 
         public InteractiveObjectData GetData()
         {
-            return new InteractiveObjectData(_name, _data, _element);
+            return null;
         }
 
         public GameObject GetObject()
@@ -37,9 +36,16 @@ namespace Assets.Scripts.InteractiveObjectSystem
             return this.gameObject;
         }
 
-        private Element GetRandomElement()
+        protected virtual void OnStart()
         {
-            return (Element) Random.Range(0, 5);
+        }
+
+        protected void AddInfoInData(string data) =>
+            _data = _data + " " + data;
+
+        protected Element GetRandomElement()
+        {
+            return (Element)Random.Range(0, 5);
         }
     }
 }

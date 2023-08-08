@@ -1,5 +1,6 @@
 using Assets.Observces;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Assets
@@ -15,8 +16,11 @@ namespace Assets
         private void OnEnable() =>
             _button.onClick.AddListener(NextScene);
 
-        private void NextScene() => 
-            MainMenuButtonPlayObserver.Instance.Notify();
+        private void NextScene()
+        {
+            SceneManager.LoadScene("LevelGeneration");
+            //MainMenuButtonPlayObserver.Instance.Notify();
+        }
 
         private void OnDisable() =>
             _button.onClick.RemoveListener(NextScene);

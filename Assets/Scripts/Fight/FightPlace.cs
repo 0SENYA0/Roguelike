@@ -62,7 +62,7 @@ namespace Assets.Fight
 
         private bool CheckOnTheBoss(Enemy.Enemy enemy)
         {
-            if (enemy.Boss)
+            if (enemy.IsBoss)
             {
                 ShowEnemyUI(_spawnPoints[Boss - 1]);
                 return true;

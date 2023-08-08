@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Assets.ScriptableObjects;
+using Assets.Scripts.InteractiveObjectSystem;
 using UnityEngine;
 
 namespace Assets.Fight
@@ -9,14 +10,10 @@ namespace Assets.Fight
     {
         [SerializeField] private FightPlace _fightPlace;
 
-        private void OnEnable()
+        public void SetActiveFightPlace(Player.Player player,params Enemy.Enemy[] _enemies)
         {
-            SetActiveFightPlace(new Player.Player(100, null, null, null, null),
-                new[] { new Enemy.Enemy(100, null, null, null, null) });
-        }
-
-        public void SetActiveFightPlace(Player.Player player, Enemy.Enemy[] _enemies) =>
+            gameObject.SetActive(true);
             _fightPlace.Set(player, _enemies.ToList());
+        }
     }
-
 }
