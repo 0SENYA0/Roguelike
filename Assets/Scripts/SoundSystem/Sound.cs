@@ -1,157 +1,56 @@
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
+using System;
+// TODO: загрузить фикс баг для агавы
+//using Agava.WebUtility;
 
 namespace Assets.Scripts.SoundSystem
 {
-    public class Sound : MonoBehaviour
+    public class Sound: ISound, IDisposable
     {
-        public static Sound Instance { get; private set; }
-
-        [SerializeField] private AudioSource _backgroundMusic;
-        [SerializeField] private AudioSource _backgroundSounds;
-        [SerializeField] private AudioSource _UISfx;
-        [SerializeField] private AudioSource _sfx;
-        [Space] [SerializeField] private List<AudioItem> _soundItems;
+        public bool IsMusicOn { get => _isMusicOn; }
+        public bool IsSfxOn { get => _isSfxOn; }
+        public bool IsHidden { get => _isHiddenOn; }
+        
+        public event Action<bool> OnMusicStateChanged; 
+        public event Action<bool> OnSfxStateChanged; 
+        public event Action<bool> OnHiddenStateChanged;
 
         private bool _isMusicOn;
-        private bool _isSFXOn;
-        private bool _isHidden;
-        private CollectionOfSounds _currentBackgroundMusic = CollectionOfSounds.Win;
+        private bool _isSfxOn;
+        private bool _isHiddenOn;
 
-        private void Awake()
+        public Sound()
         {
-            CheckingForDuplicates();
-            
-            if (Instance == null)
-                Instance = this;
-            
-            DontDestroyOnLoad(this);
+            _isMusicOn = true;
+            _isSfxOn = false;
+            _isHiddenOn = true;
 
-            _backgroundMusic.loop = true;
-            _backgroundSounds.loop = true;
-            _isHidden = false;
-            
-            //_isMusicOn = PlayerData.Instance.IsMusicOn;
-            //_isSFXOn = PlayerData.Instance.IsSFXOn;
-            
-            //PlayerData.Instance.MusicStatusChange += OnMusicStatusChange;
-            //PlayerData.Instance.SFXStatusChange += OnSFXStatusChange;
-        }
-
-        private void OnValidate()
-        {
-            var duplicates = _soundItems.GroupBy(sound => sound.Type).SelectMany(item => item.Skip(1)).ToArray();
-
-            if (duplicates.Length > 0)
-                throw new System.ArgumentException("Warning! There should be no duplicates in the list of sounds when specifying types!");
-        }
-
-        private void OnDestroy()
-        {
-            //PlayerData.Instance.MusicStatusChange -= OnMusicStatusChange;
-            //PlayerData.Instance.SFXStatusChange -= OnSFXStatusChange;
-        }
-
-        public void PlayBackgroundMusic(CollectionOfSounds type)
-        {
-            if (_currentBackgroundMusic != type)
-            {
-                _backgroundSounds.Stop();
-                _currentBackgroundMusic = type;
-                PlayBackground(_backgroundMusic, type, _isMusicOn);
-            }            
-        }
-        public void PlayBackgroundMusic(CollectionOfSounds typeFirst, CollectionOfSounds typeSecond)
-        {
-            if (_currentBackgroundMusic != typeFirst)
-            {
-                _currentBackgroundMusic = typeFirst;
-                PlayBackground(_backgroundMusic, typeFirst, _isMusicOn);
-                PlayBackground(_backgroundSounds, typeSecond, _isSFXOn);
-            }
-        }
-
-        public void PlayUISFX(CollectionOfSounds type)
-        {
-            if (_isSFXOn && _UISfx.isPlaying == false && _isHidden == false)
-                Play(_UISfx, type);
-        }
-
-        public void PlaySFX(CollectionOfSounds type)
-        {
-            if (_isSFXOn && _sfx.isPlaying == false && _isHidden == false)
-                Play(_sfx, type);
+            // TODO: заменить загрузку состояний звуков из PlayerData
+            // IsMusicOn = PlayerData.Instance.IsMusicOn;
+            // IsSfxOn = PlayerData.Instance.IsSFXOn;
+            // WebApplication.InBackgroundChangeEvent += ChangeBackgroundSounds;
         }
 
         public void Pause()
         {
-            _isHidden = true;
-            _backgroundMusic.Pause();
-            _backgroundSounds.Pause();
-            _UISfx.Pause();
-            _sfx.Pause();
+            OnMusicStateChanged?.Invoke(false);
+            OnSfxStateChanged?.Invoke(false);
         }
 
         public void UpPause()
         {
-            _isHidden = false;
-            _backgroundMusic.UnPause();
-            _backgroundSounds.UnPause();
-            _UISfx.UnPause();
-            _sfx.UnPause();
+            OnMusicStateChanged?.Invoke(true);
+            OnSfxStateChanged?.Invoke(true);
         }
 
-        private void CheckingForDuplicates()
+        public void Dispose()
         {
-            var sounds = FindObjectsOfType<Sound>();
-
-            foreach (var sound in sounds)
-            {
-                if (sound != this)
-                {
-                    Destroy(gameObject);
-                }
-            }
+            // WebApplication.InBackgroundChangeEvent -= ChangeBackgroundSounds;
         }
-
-        private void PlayBackground(AudioSource source, CollectionOfSounds type, bool isPlay)
+        
+        private void ChangeBackgroundSounds(bool hidden)
         {
-            var sound = _soundItems.FirstOrDefault(item => item.Type == type);
-            source.volume = sound.Volume;
-            source.clip = sound.Clip;
-            
-            if (isPlay)
-                source.Play();
-        }
-
-        private void Play(AudioSource source, CollectionOfSounds type)
-        {
-            var sound = _soundItems.FirstOrDefault(item => item.Type == type);
-            source.volume = sound.Volume;
-            source.clip = sound.Clip;
-            source.Play();
-        }
-
-        private void OnMusicStatusChange()
-        {
-            //_isMusicOn = PlayerData.Instance.IsMusicOn;
-            
-            if (_isMusicOn)
-                _backgroundMusic.Play();
-            else
-                _backgroundMusic.Stop();
-        }
-
-        private void OnSFXStatusChange()
-        {
-            //_isSFXOn = PlayerData.Instance.IsSFXOn;
-
-            if (_isSFXOn)
-                _backgroundSounds.Play();
-            else
-                _backgroundSounds.Stop();
+            _isHiddenOn = hidden;
+            OnHiddenStateChanged?.Invoke(_isHiddenOn);
         }
     }
 }
-
