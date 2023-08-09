@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.AnimationComponent
@@ -8,9 +9,7 @@ namespace Assets.Scripts.AnimationComponent
     {
         [SerializeField] [Range(1, 30)] private int _frameRate = 10;
         [SerializeField] private AnimationClip[] _clips;
-
-        public Action OnAnimationComplete;
-        
+        public event Action OnAnimationComplete;
         private SpriteRenderer _renderer;
         private float _secPerFrame;
         private float _nextFrameTime;
@@ -43,35 +42,35 @@ namespace Assets.Scripts.AnimationComponent
 
         private void Update()
         {
-            if (_nextFrameTime > Time.time) 
+            if (_nextFrameTime > Time.time)
                 return;
 
             AnimationClip clip = _clips[_currentClip];
-            
-             if (_currentFrame >= clip.Sprites.Length)
-             {
-                 if (clip.IsLoop)
-                 {
-                     _currentFrame = 0;
-                 }
-                 else if (clip.IsAllowNextClip)
-                 {
-                     SetClip(clip.NextState);
-                 }
-                 else
-                 {
-                     OnAnimationComplete?.Invoke();
-                     enabled = false;    
-                     _isPlaying = false;    
-                 }
-             }
-             else
-             {
-                 _renderer.sprite = clip.Sprites[_currentFrame];
-            
-                 _nextFrameTime += _secPerFrame;
-                 _currentFrame++;
-             }
+
+            if (_currentFrame >= clip.Sprites.Length)
+            {
+                if (clip.IsLoop)
+                {
+                    _currentFrame = 0;
+                }
+                else if (clip.IsAllowNextClip)
+                {
+                    SetClip(clip.NextState);
+                }
+                else
+                {
+                    OnAnimationComplete?.Invoke();
+                    enabled = false;
+                    _isPlaying = false;
+                }
+            }
+            else
+            {
+                _renderer.sprite = clip.Sprites[_currentFrame];
+
+                _nextFrameTime += _secPerFrame;
+                _currentFrame++;
+            }
         }
 
         public void SetClip(AnimationState state)
@@ -88,6 +87,16 @@ namespace Assets.Scripts.AnimationComponent
 
             enabled = false;
             _isPlaying = false;
+        }
+
+        public AnimationClip GetClip(AnimationState state)
+        {
+            AnimationClip clip = _clips.Where(x => x.State == state).FirstOrDefault();
+            
+            if (clip == null)
+                return null;
+            
+            return clip;
         }
 
         private void StartAnimation()

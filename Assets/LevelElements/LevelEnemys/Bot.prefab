@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5284154004156247428}
   - component: {fileID: 3688126335113188408}
   - component: {fileID: -4705361203539339613}
+  - component: {fileID: 6545132548245958147}
   m_Layer: 0
   m_Name: Bot
   m_TagString: Untagged
@@ -215,3 +216,25 @@ MonoBehaviour:
   _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
   _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
   _sprite: {fileID: -2054315591, guid: 55cd93eaa03fc404d9ba81dac0f8d658, type: 3}
+  _spriteAnimation: {fileID: 5284154004156247428}
+--- !u!95 &6545132548245958147
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7563104451129171356}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 99b1d0c85112a0644a28f626ae2567cf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

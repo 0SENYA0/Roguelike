@@ -5,8 +5,8 @@ using System.Linq;
 using Assets.Fight.Dice;
 using Assets.Interface;
 using Assets.Person;
-using Assets.Person.PersonStates;
 using UnityEngine;
+using AnimationState = Assets.Scripts.AnimationComponent.AnimationState;
 using Random = UnityEngine.Random;
 
 namespace Assets.Fight
@@ -21,6 +21,8 @@ namespace Assets.Fight
         private readonly Queue<Unit> _unitStackOfAttack;
         private int _countSteps = 10;
         private Coroutine _coroutine;
+        private Coroutine _animationCoroutine;
+        private bool _isCompleteAnimation;
 
         public Fight(ICoroutineRunner coroutineRunner, List<Enemy.Enemy> enemies, Player.Player player, IStepFightView stepFightView,
             DicePresenterAdapter dicePresenterAdapter)
@@ -53,7 +55,7 @@ namespace Assets.Fight
             WaitForSeconds waitForSeconds = new WaitForSeconds(3);
             WaitUntil waitUntil = new WaitUntil(_dicePresenterAdapter.CheckOnDicesShuffeled);
 
-            while (_enemies.Any(x => x.IsDie == false) && _player.IsDie == false)
+            while (_enemies.All(x => x.IsDie == false) && _player.IsDie == false)
             {
                 if (_unitStackOfAttack.Count <= 0)
                     GenerateAttackingSteps(_enemies, _player);
@@ -63,12 +65,25 @@ namespace Assets.Fight
                 if (unit is Player.Player player)
                 {
                     yield return waitUntil;
-                    foreach (Enemy.Enemy enemy in _enemies)
-                    {
-                        Debug.Log("Ходит игрок");
-                        enemy.PersonStateMachine.SetState(new PersonStateTakeDamage());
-                        // enemy.TakeDamage(player.Weapon.DamageData);
-                    }
+                    // Получить данные с первого кубика
+                    Debug.Log("данные с первого кубика " + _dicePresenterAdapter.LeftDiceValue);
+                    // Получить данные со второго кубика
+                    Debug.Log("данные с второго кубика " + _dicePresenterAdapter.CenterDiceValue);
+                    // Получить данные с третьего кубика
+                    Debug.Log("данные с третьего кубика " + _dicePresenterAdapter.RightDiceValue);
+
+                    // Проиграть анимацию атаки игрока
+
+                    yield return _coroutineRunner.StartCoroutine(StartAnimationCoroutine(AnimationState.Attack, player));
+
+                    yield return _coroutineRunner.StartCoroutine(StartAnimationCoroutine(AnimationState.Hit, _enemies.ToArray()));
+
+                    // Нанести урон одному врагу || Нанести урон нескольким врагам
+                    Debug.Log("Нанесли урон врагам");
+
+                    Debug.Log("Ходит игрок");
+
+                    // enemy.TakeDamage(player.Weapon.DamageData);
                 }
                 else if (unit is Enemy.Enemy enemy)
                 {
@@ -82,16 +97,26 @@ namespace Assets.Fight
             }
         }
 
-        private bool AllEnemyIsDie()
+        private IEnumerator StartAnimationCoroutine(AnimationState animationState, params Unit[] units)
         {
-            foreach (var enemy in _enemies)
+            bool isComplete = false;
+            
+            units.FirstOrDefault().SpriteAnimation.OnAnimationComplete += () => isComplete = true;
+
+            foreach (Unit unit in units)
             {
-                if (enemy.IsDie == false)
-                    return false;
+                unit.SpriteAnimation.SetClip(animationState);
             }
 
-            return true;
+            while (isComplete == false)
+                yield return null;
         }
+
+        private bool SpriteAnimationOAnimationComplete() =>
+            _isCompleteAnimation;
+
+        private void SwitchNextAnimation() =>
+            _isCompleteAnimation = true;
 
         private void GenerateAttackingSteps(List<Enemy.Enemy> enemies, Player.Player player)
         {
@@ -110,16 +135,10 @@ namespace Assets.Fight
         private void SubscribeOnDieEnemies()
         {
             foreach (Enemy.Enemy enemy in _enemies)
-            {
-                enemy.Died += RemoveFromList;
-            }
+                enemy.Died += ActionAfterDie;
         }
 
-        private void RemoveFromList(Unit unit)
-        {
-            if (unit is Enemy.Enemy enemy)
-                _enemies.Remove(enemy);
-        }
-
+        private void ActionAfterDie(Unit unit) =>
+            Debug.Log("Я вмЭр");
     }
 }

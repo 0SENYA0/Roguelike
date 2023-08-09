@@ -40,7 +40,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
 
             Action openPanel = () => { };
 
-            Player.Player player = FindObjectOfType<PlayerView>().Player;
+            Player.Player player = FindObjectOfType<PlayerPresenter>().Player;
             
             if (targetObject.TryGetComponent(out IEnemyObjectData enemyObject))
                 openPanel = () => { Curtain.Instance.ShowAnimation(() => { _battlefild.SetActiveFightPlace(player, enemyObject.Enemy.ToArray()); }); };
