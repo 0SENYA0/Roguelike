@@ -3,38 +3,32 @@ using Assets.DefendItems;
 using Assets.Fight.Element;
 using Assets.Interface;
 using Assets.Person.PersonStates;
-using Assets.Weapon;
+using Assets.Scripts.AnimationComponent;
 using UnityEngine;
 
 namespace Assets.Person
 {
-    public abstract class Unit : IDamagable
+    public  class Unit
     {
         private float _health;
         private IPersonStateMachine _personStateMachine;
         private IWeapon _weapon;
         private Armor _armor;
         private MagicItem _magicItem;
-
-        public Unit(int health, IWeapon weapon, Armor armor, MagicItem magicItem, IPersonStateMachine personStateMachine)
-        {
-            _health = health;
-            _weapon = weapon;
-            _armor = armor;
-            _magicItem = magicItem;
-        }
         
-        public Unit(int health, IWeapon weapon, Armor armor, MagicItem magicItem)
+        public Unit(int health, IWeapon weapon, Armor armor, MagicItem magicItem, SpriteAnimation spriteAnimation)
         {
             _health = health;
             _weapon = weapon;
             _armor = armor;
             _magicItem = magicItem;
+            SpriteAnimation = spriteAnimation;
             _personStateMachine = new PersonStateMachine();
         }
 
         public event Action<Unit> Died;
-
+        
+        public SpriteAnimation SpriteAnimation { get; }
         public float Healh => _health;
         public IWeapon Weapon => _weapon;
         public Armor Armor => _armor;
@@ -68,15 +62,5 @@ namespace Assets.Person
 
         private float CalculateDamageModifier(Element element) =>
             ElementManager.GetDamageModifier(element, _armor.Body.Element);
-    }
-
-    public interface IDamagable
-    {
-        //void TakeDamage(DamageData damage);
-    }
-
-    public interface IAttack
-    {
-        void Attack();
     }
 }

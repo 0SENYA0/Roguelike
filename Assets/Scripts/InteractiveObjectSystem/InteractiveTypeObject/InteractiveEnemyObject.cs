@@ -4,6 +4,7 @@ using Assets.Enemy;
 using Assets.Interface;
 using Assets.Person;
 using Assets.ScriptableObjects;
+using Assets.Scripts.AnimationComponent;
 using Assets.Weapon;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -16,7 +17,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
         [SerializeField] private WeaponScriptableObject _weapon;
         [SerializeField] private ArmorScriptableObject _armor;
         [SerializeField] private Sprite _sprite;
-        
+        [SerializeField] private SpriteAnimation _spriteAnimation;
         #region Delete
 
         //private Enemy.Enemy _enemy;
@@ -68,7 +69,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
 
             Armor armor = armorFactory.Create(body, head, _armor.ParticleSystem);
 
-            return factory.Create(weapon, armor);
+            return factory.Create(weapon, armor, _health, _spriteAnimation);
         }
 
         private int GenerateRandomCountEnemy() =>

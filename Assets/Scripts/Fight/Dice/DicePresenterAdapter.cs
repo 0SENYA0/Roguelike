@@ -15,6 +15,10 @@ namespace Assets.Fight.Dice
             _rightDice = rightDice;
         }
 
+        public int LeftDiceValue => _leftDice.CurrentNumberDice;
+        public int CenterDiceValue => _centerDice.CurrentNumberDice;
+        public int RightDiceValue => _rightDice.CurrentNumberDice;
+        
         public void SetDisactive()
         {
             
@@ -22,7 +26,9 @@ namespace Assets.Fight.Dice
 
         public void SetActive()
         {
-            
+            _leftDice.SetActive();
+            _centerDice.SetActive();
+            _rightDice.SetActive();
         }
 
         public void Dispose()

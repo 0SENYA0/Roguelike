@@ -21,8 +21,10 @@ namespace Assets.Fight.Dice
             _coroutineRunner = coroutineRunner;
             WasShuffeled = false;
             _diceView.Shuffled += StartAnimation;
+            CurrentNumberDice = 0;
         }
 
+        public int CurrentNumberDice { get; private set; }
         public bool WasShuffeled { get; set; }
 
         public void Dispose() =>
@@ -48,7 +50,8 @@ namespace Assets.Fight.Dice
                     _coroutineRunner.StopCoroutine(_coroutine);
                     _coroutine = null;
                 }
-                
+                string value = _diceView.CurrentDiceSide[_diceView.CurrentDiceSide.Length - 1].ToString();
+                CurrentNumberDice = int.Parse(value) + 1;
                 SetDisactive();
                 return;
             }
@@ -72,6 +75,7 @@ namespace Assets.Fight.Dice
                 // TODO Add Shuffle method for List
                 foreach (Sprite sprite in _diceModel.Sprites)
                 {
+
                     _diceView.SetSprite(sprite);
                     step--;
                     yield return null;

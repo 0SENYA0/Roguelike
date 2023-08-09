@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +13,7 @@ namespace Assets.Fight.Dice
         [SerializeField] private Image _diceImage;
 
         public event Action Shuffled;
-        
+        public string CurrentDiceSide => _diceImage.sprite.name;
         public TMP_Text Text => _text;
         
         private void OnEnable() =>
