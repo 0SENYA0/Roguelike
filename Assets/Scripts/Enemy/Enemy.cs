@@ -1,6 +1,7 @@
 using Assets.DefendItems;
 using Assets.Interface;
 using Assets.Person;
+using Assets.Scripts.AnimationComponent;
 using Assets.Scripts.InteractiveObjectSystem;
 using UnityEngine;
 
@@ -10,14 +11,9 @@ namespace Assets.Enemy
     {
         private string _name;
         private string _data;
-        
-        public Enemy(int health, IWeapon weapon, Armor armor, MagicItem magicItem, IPersonStateMachine personStateMachine) 
-            : base(health, weapon, armor, magicItem, personStateMachine)
-        {
-        }
 
-        public Enemy(int health, IWeapon weapon, Armor armor, MagicItem magicItem) 
-            : base(health, weapon, armor, magicItem)
+        public Enemy(int health, IWeapon weapon, Armor armor, MagicItem magicItem,  SpriteAnimation spriteAnimation) 
+            : base(health, weapon, armor, magicItem, spriteAnimation)
         {
         }
         
