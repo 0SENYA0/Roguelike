@@ -1,0 +1,234 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8817443144903235848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1486026831486518657}
+  - component: {fileID: 8272833149942874000}
+  - component: {fileID: 6675882888495108783}
+  - component: {fileID: 322121487735875546}
+  - component: {fileID: 8833287224823267519}
+  m_Layer: 0
+  m_Name: TheDemonIdol
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1486026831486518657
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8817443144903235848}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.23, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &8272833149942874000
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8817443144903235848}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 748548621
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 5475193215ddcb5428c5b24df6cffbff, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.9375, y: 1.03125}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &6675882888495108783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8817443144903235848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810f417044504442a3ebaa66dbba18f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _frameRate: 10
+  _clips:
+  - _state: 1
+    _sprites:
+    - {fileID: 21300000, guid: 5475193215ddcb5428c5b24df6cffbff, type: 3}
+    - {fileID: 21300000, guid: 6b34757ea28b7b24dbbc94d152431df7, type: 3}
+    - {fileID: 21300000, guid: 1cdcda7209eed9b44a7162fa31c3c769, type: 3}
+    - {fileID: 21300000, guid: 58c271d6347ab3949834f22be0597879, type: 3}
+    - {fileID: 21300000, guid: ac46227eeb674b645a5e5bc9be3e9283, type: 3}
+    - {fileID: 21300000, guid: 3d0e8d65fa7b4a94492b17304fdd637d, type: 3}
+    - {fileID: 21300000, guid: 8bbfe8ac17abdf244ad3bc1df01cc556, type: 3}
+    - {fileID: 21300000, guid: c9f8d55adbbde2e409232c321aa155f1, type: 3}
+    - {fileID: 21300000, guid: 7f0f7a5d0505fa840a90759b84931ea1, type: 3}
+    _isLoop: 1
+    _isAllowNextClip: 0
+    _nextState: 1
+  - _state: 2
+    _sprites:
+    - {fileID: 21300000, guid: 4a98e0462e9e329459be7366bf0a9f77, type: 3}
+    - {fileID: 21300000, guid: 74a5f3c952e63eb449b2d4115268015f, type: 3}
+    - {fileID: 21300000, guid: 41ac89ddd3750fb4ca5ce4f9b072147d, type: 3}
+    - {fileID: 21300000, guid: 5f35b9fc24633b542a43963e91ada107, type: 3}
+    - {fileID: 21300000, guid: 46933d1e958fbcf4c9aa56043365647a, type: 3}
+    - {fileID: 21300000, guid: 1920207f729110345aecbbf315e729be, type: 3}
+    - {fileID: 21300000, guid: 1bd0f47fcb885e347bad017c37d43873, type: 3}
+    - {fileID: 21300000, guid: abc269d153572d64bb967c2d865cff93, type: 3}
+    - {fileID: 21300000, guid: 1135ae8feac13e54aa254dd45d87dc40, type: 3}
+    - {fileID: 21300000, guid: ecbb006aa27ea3b439ce09405996b998, type: 3}
+    - {fileID: 21300000, guid: 170450b403be4fe478fd45f0a20fc6c8, type: 3}
+    - {fileID: 21300000, guid: b4f4b2e51cc41614b85d240b1789ea76, type: 3}
+    - {fileID: 21300000, guid: a7f802223e4a1f3499728292d81ba8ca, type: 3}
+    - {fileID: 21300000, guid: b9303762a70366041802e3ad6cbea0e2, type: 3}
+    - {fileID: 21300000, guid: d953c279becb29442836bfe5466d7172, type: 3}
+    - {fileID: 21300000, guid: 2658e0ae2d63c3744ad12a46c6254009, type: 3}
+    - {fileID: 21300000, guid: 2cd85812c1a1ef348b972c5f501aed4c, type: 3}
+    - {fileID: 21300000, guid: 55963d69fe71b0e4999a8f1227611cde, type: 3}
+    - {fileID: 21300000, guid: 792c62d3afafb5a42936bee67ca93b16, type: 3}
+    - {fileID: 21300000, guid: 0a499b8c31793bb41a08cf988c15332e, type: 3}
+    - {fileID: 21300000, guid: f20a70be9307e1a4b8d40fcf95f6da4b, type: 3}
+    - {fileID: 21300000, guid: 10e5396bf3946184ca970a1c8ee01719, type: 3}
+    _isLoop: 0
+    _isAllowNextClip: 1
+    _nextState: 1
+  - _state: 3
+    _sprites:
+    - {fileID: 21300000, guid: 66a22880aa3e490499498aa0293631e1, type: 3}
+    - {fileID: 21300000, guid: a4cc662b26a22de48a8adf507e6b9882, type: 3}
+    _isLoop: 0
+    _isAllowNextClip: 1
+    _nextState: 1
+  - _state: 4
+    _sprites:
+    - {fileID: 21300000, guid: 51a06b82fbb341a4ba8fed74f820b4cd, type: 3}
+    - {fileID: 21300000, guid: c80fa41d9a1b27841b670014890a6fcc, type: 3}
+    - {fileID: 21300000, guid: 495baeb75b751a0419b05beac6b2c342, type: 3}
+    - {fileID: 21300000, guid: 099ad61792a81ca4381e48b1a94fa10a, type: 3}
+    - {fileID: 21300000, guid: 17c308cc72404e345b36b6ef36f26094, type: 3}
+    - {fileID: 21300000, guid: f1378d3c939771a4399b51651579040b, type: 3}
+    - {fileID: 21300000, guid: 7a263130ba66bb44f9e86daeea869b87, type: 3}
+    - {fileID: 21300000, guid: 9297437c1878d364e9287f58bfef35a5, type: 3}
+    - {fileID: 21300000, guid: 108b758cfc062234b8595c7e6782ccad, type: 3}
+    - {fileID: 21300000, guid: b8efd690a10ba724ab7f93d01ba02f1e, type: 3}
+    - {fileID: 21300000, guid: 87345709c7548534b8d8e228865181c1, type: 3}
+    - {fileID: 21300000, guid: dfe029545a78dff4f9389d8baedaff58, type: 3}
+    - {fileID: 21300000, guid: 8436213ccbdf9514aa1230fd5acce146, type: 3}
+    _isLoop: 0
+    _isAllowNextClip: 0
+    _nextState: 0
+--- !u!61 &322121487735875546
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8817443144903235848}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0041023493, y: 0.3900264}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.1259505}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 1.9375, y: 1.03125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.565253, y: 0.81446755}
+  m_EdgeRadius: 0
+--- !u!114 &8833287224823267519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8817443144903235848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c653fe2e0bcf4071902489e9fc46694b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 0
+  _name: The demon Idol
+  _data: 
+  _health: 10
+  _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
+  _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
+  _sprite: {fileID: 21300000, guid: 5475193215ddcb5428c5b24df6cffbff, type: 3}
+  _spriteAnimation: {fileID: 6675882888495108783}

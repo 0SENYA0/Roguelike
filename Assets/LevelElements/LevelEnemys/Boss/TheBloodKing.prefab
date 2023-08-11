@@ -1,0 +1,230 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6513572164998079920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5613294570633659079}
+  - component: {fileID: 4478163912778340296}
+  - component: {fileID: 8796011390384580230}
+  - component: {fileID: 4978682387575980860}
+  - component: {fileID: 5631883084974141746}
+  m_Layer: 0
+  m_Name: TheBloodKing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5613294570633659079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6513572164998079920}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.46, y: 0.458, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &4478163912778340296
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6513572164998079920}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 748548621
+  m_SortingLayer: 1
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -975733225, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 1
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.6363635, y: 3.590909}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &8796011390384580230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6513572164998079920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810f417044504442a3ebaa66dbba18f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _frameRate: 10
+  _clips:
+  - _state: 1
+    _sprites:
+    - {fileID: -975733225, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: -1985017578, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: 1727735224, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: 1734688260, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: 807377300, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: -944891081, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: 1608160631, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: -552821570, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: -1503884417, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: -681993817, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: 1021035552, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: -1550696602, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    _isLoop: 1
+    _isAllowNextClip: 0
+    _nextState: 0
+  - _state: 2
+    _sprites:
+    - {fileID: 709423831, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: -345542432, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: 265282719, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: 1702303129, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: 1902631431, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: -1327616102, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: 1036291846, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: -309074425, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: -1953687055, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: 2044371212, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: -1610483970, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: 2100904362, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: 1683846682, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: 1045577410, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    _isLoop: 0
+    _isAllowNextClip: 1
+    _nextState: 1
+  - _state: 3
+    _sprites:
+    - {fileID: -869241084, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: 1497132105, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    _isLoop: 0
+    _isAllowNextClip: 1
+    _nextState: 1
+  - _state: 4
+    _sprites:
+    - {fileID: -869241084, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: 1497132105, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: -1879878214, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: 636193785, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: -1780846047, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: -527277741, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: -745209643, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: -1767529523, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: 189565908, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: -1915750407, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: -1159648232, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: -1639603665, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: -2032765240, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    - {fileID: -1534419885, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+    _isLoop: 0
+    _isAllowNextClip: 0
+    _nextState: 0
+--- !u!61 &4978682387575980860
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6513572164998079920}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00058329105, y: 0.45814115}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.323576, y: 0}
+    oldSize: {x: 7.6363635, y: 3.590909}
+    newSize: {x: 7.6363635, y: 3.590909}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7084687, y: 0.9625715}
+  m_EdgeRadius: 0
+--- !u!114 &5631883084974141746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6513572164998079920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c653fe2e0bcf4071902489e9fc46694b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 3
+  _name: The Blood King
+  _data: 
+  _health: 100
+  _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
+  _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
+  _sprite: {fileID: -975733225, guid: f5ce4ec9628aee149b6164e7cb3b6905, type: 3}
+  _spriteAnimation: {fileID: 8796011390384580230}

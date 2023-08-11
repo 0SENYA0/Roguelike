@@ -1,0 +1,210 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6219443713543551481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4139934848940108697}
+  - component: {fileID: 2216028969984841910}
+  - component: {fileID: 4201487442030937849}
+  - component: {fileID: 6043459598426569640}
+  - component: {fileID: 6264149354862592822}
+  m_Layer: 0
+  m_Name: MudGuard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4139934848940108697
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6219443713543551481}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.23, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &2216028969984841910
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6219443713543551481}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 748548621
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 946646806, guid: b7fd1132f21e0a845ae70b6d3dbed24e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 1
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.9375, y: 1.03125}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &4201487442030937849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6219443713543551481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810f417044504442a3ebaa66dbba18f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _frameRate: 10
+  _clips:
+  - _state: 1
+    _sprites:
+    - {fileID: 946646806, guid: b7fd1132f21e0a845ae70b6d3dbed24e, type: 3}
+    - {fileID: -623752028, guid: b7fd1132f21e0a845ae70b6d3dbed24e, type: 3}
+    - {fileID: -1577202528, guid: b7fd1132f21e0a845ae70b6d3dbed24e, type: 3}
+    - {fileID: 1770634176, guid: b7fd1132f21e0a845ae70b6d3dbed24e, type: 3}
+    - {fileID: 1574057534, guid: b7fd1132f21e0a845ae70b6d3dbed24e, type: 3}
+    _isLoop: 1
+    _isAllowNextClip: 0
+    _nextState: 1
+  - _state: 2
+    _sprites:
+    - {fileID: -1772445561, guid: 0933af03f1227334997686116054654b, type: 3}
+    - {fileID: 1409719540, guid: 0933af03f1227334997686116054654b, type: 3}
+    - {fileID: -616929399, guid: 0933af03f1227334997686116054654b, type: 3}
+    - {fileID: 233132121, guid: 0933af03f1227334997686116054654b, type: 3}
+    - {fileID: -765970744, guid: 0933af03f1227334997686116054654b, type: 3}
+    - {fileID: -1880668067, guid: 0933af03f1227334997686116054654b, type: 3}
+    - {fileID: -1110964813, guid: 0933af03f1227334997686116054654b, type: 3}
+    _isLoop: 0
+    _isAllowNextClip: 1
+    _nextState: 1
+  - _state: 3
+    _sprites:
+    - {fileID: -1655191597, guid: 325a3c30f2a0aa44fb0726bcba56ceca, type: 3}
+    - {fileID: 1198416702, guid: 325a3c30f2a0aa44fb0726bcba56ceca, type: 3}
+    _isLoop: 0
+    _isAllowNextClip: 1
+    _nextState: 1
+  - _state: 4
+    _sprites:
+    - {fileID: -1655191597, guid: 325a3c30f2a0aa44fb0726bcba56ceca, type: 3}
+    - {fileID: 1198416702, guid: 325a3c30f2a0aa44fb0726bcba56ceca, type: 3}
+    - {fileID: -2147151639, guid: 325a3c30f2a0aa44fb0726bcba56ceca, type: 3}
+    - {fileID: -1437976929, guid: 325a3c30f2a0aa44fb0726bcba56ceca, type: 3}
+    - {fileID: -1373981349, guid: 325a3c30f2a0aa44fb0726bcba56ceca, type: 3}
+    - {fileID: -16117722, guid: 325a3c30f2a0aa44fb0726bcba56ceca, type: 3}
+    - {fileID: -1345730122, guid: 325a3c30f2a0aa44fb0726bcba56ceca, type: 3}
+    - {fileID: -2115831798, guid: 325a3c30f2a0aa44fb0726bcba56ceca, type: 3}
+    _isLoop: 0
+    _isAllowNextClip: 0
+    _nextState: 0
+--- !u!61 &6043459598426569640
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6219443713543551481}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0041023493, y: 0.3900264}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.237726, y: 0.09333}
+    oldSize: {x: 3.1538463, y: 0.88461536}
+    newSize: {x: 1.9375, y: 1.03125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.565253, y: 0.81446755}
+  m_EdgeRadius: 0
+--- !u!114 &6264149354862592822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6219443713543551481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c653fe2e0bcf4071902489e9fc46694b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 0
+  _name: Mud Guard
+  _data: 
+  _health: 10
+  _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
+  _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
+  _sprite: {fileID: 946646806, guid: b7fd1132f21e0a845ae70b6d3dbed24e, type: 3}
+  _spriteAnimation: {fileID: 4201487442030937849}
