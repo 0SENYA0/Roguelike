@@ -1,6 +1,5 @@
 using System;
-// TODO: загрузить фикс баг для агавы
-//using Agava.WebUtility;
+using Agava.WebUtility;
 
 namespace Assets.Scripts.SoundSystem
 {
@@ -20,14 +19,11 @@ namespace Assets.Scripts.SoundSystem
 
         public Sound()
         {
-            _isMusicOn = true;
-            _isSfxOn = false;
+            _isMusicOn = GameRoot.Instance.UserData.IsSoundOn;
+            _isSfxOn = GameRoot.Instance.UserData.IsSfxOn;
             _isHiddenOn = true;
-
-            // TODO: заменить загрузку состояний звуков из PlayerData
-            // IsMusicOn = PlayerData.Instance.IsMusicOn;
-            // IsSfxOn = PlayerData.Instance.IsSFXOn;
-            // WebApplication.InBackgroundChangeEvent += ChangeBackgroundSounds;
+            
+            WebApplication.InBackgroundChangeEvent += ChangeBackgroundSounds;
         }
 
         public void Pause()
@@ -44,7 +40,7 @@ namespace Assets.Scripts.SoundSystem
 
         public void Dispose()
         {
-            // WebApplication.InBackgroundChangeEvent -= ChangeBackgroundSounds;
+            WebApplication.InBackgroundChangeEvent -= ChangeBackgroundSounds;
         }
         
         private void ChangeBackgroundSounds(bool hidden)
