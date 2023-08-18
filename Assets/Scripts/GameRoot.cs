@@ -42,8 +42,8 @@ namespace Assets.Scripts
         
         private void Initialization(Action callback)
         {
-            _sound = new Sound();
             _userData = new UserData();
+            _sound = new Sound();
             callback?.Invoke();
             
 #if UNITY_EDITOR
