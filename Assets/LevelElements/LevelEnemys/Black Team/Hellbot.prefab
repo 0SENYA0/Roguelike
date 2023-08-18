@@ -1,0 +1,213 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4941530108197982103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1278761793148117212}
+  - component: {fileID: 7896075449267654421}
+  - component: {fileID: 4881698709050121933}
+  - component: {fileID: 2449280096955844404}
+  - component: {fileID: 8411567957386133555}
+  m_Layer: 0
+  m_Name: Hellbot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1278761793148117212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4941530108197982103}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.23, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &7896075449267654421
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4941530108197982103}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 748548621
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -838105547, guid: 4ce437b0494a7a549b071034195734d9, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 1
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 3, y: 3}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &4881698709050121933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4941530108197982103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810f417044504442a3ebaa66dbba18f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _frameRate: 10
+  _clips:
+  - _state: 1
+    _sprites:
+    - {fileID: -838105547, guid: 4ce437b0494a7a549b071034195734d9, type: 3}
+    - {fileID: -876321404, guid: 4ce437b0494a7a549b071034195734d9, type: 3}
+    - {fileID: -1920685252, guid: 4ce437b0494a7a549b071034195734d9, type: 3}
+    - {fileID: -2076518828, guid: 4ce437b0494a7a549b071034195734d9, type: 3}
+    - {fileID: -1193401336, guid: 4ce437b0494a7a549b071034195734d9, type: 3}
+    - {fileID: -1373926748, guid: 4ce437b0494a7a549b071034195734d9, type: 3}
+    _isLoop: 1
+    _isAllowNextClip: 0
+    _nextState: 0
+  - _state: 2
+    _sprites:
+    - {fileID: 1898884841, guid: 102443bb26ce73d46b7a8876327c6634, type: 3}
+    - {fileID: -344951323, guid: 102443bb26ce73d46b7a8876327c6634, type: 3}
+    - {fileID: -2050132927, guid: 102443bb26ce73d46b7a8876327c6634, type: 3}
+    - {fileID: 1233470190, guid: 102443bb26ce73d46b7a8876327c6634, type: 3}
+    - {fileID: -1022332256, guid: 102443bb26ce73d46b7a8876327c6634, type: 3}
+    - {fileID: 364579788, guid: 102443bb26ce73d46b7a8876327c6634, type: 3}
+    _isLoop: 0
+    _isAllowNextClip: 1
+    _nextState: 1
+  - _state: 3
+    _sprites:
+    - {fileID: -1187982933, guid: 1c864205339efc94db625e21ea2c06cf, type: 3}
+    - {fileID: 1944317032, guid: 1c864205339efc94db625e21ea2c06cf, type: 3}
+    _isLoop: 0
+    _isAllowNextClip: 1
+    _nextState: 1
+  - _state: 4
+    _sprites:
+    - {fileID: 239887380, guid: 508e2db5ed0f0bc4aa110d553759d509, type: 3}
+    - {fileID: 1497963489, guid: 508e2db5ed0f0bc4aa110d553759d509, type: 3}
+    - {fileID: -1164838354, guid: 508e2db5ed0f0bc4aa110d553759d509, type: 3}
+    - {fileID: -1625641992, guid: 508e2db5ed0f0bc4aa110d553759d509, type: 3}
+    - {fileID: -183302023, guid: 508e2db5ed0f0bc4aa110d553759d509, type: 3}
+    - {fileID: 1973588067, guid: 508e2db5ed0f0bc4aa110d553759d509, type: 3}
+    - {fileID: -542652418, guid: 508e2db5ed0f0bc4aa110d553759d509, type: 3}
+    - {fileID: 602257040, guid: 508e2db5ed0f0bc4aa110d553759d509, type: 3}
+    - {fileID: -766792490, guid: 508e2db5ed0f0bc4aa110d553759d509, type: 3}
+    - {fileID: -1064634339, guid: 508e2db5ed0f0bc4aa110d553759d509, type: 3}
+    - {fileID: 973104216, guid: 508e2db5ed0f0bc4aa110d553759d509, type: 3}
+    _isLoop: 0
+    _isAllowNextClip: 0
+    _nextState: 0
+--- !u!61 &2449280096955844404
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4941530108197982103}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0041023493, y: 0.3900264}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.207, y: 0.03}
+    oldSize: {x: 2.875, y: 1.125}
+    newSize: {x: 3, y: 3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.565253, y: 0.81446755}
+  m_EdgeRadius: 0
+--- !u!114 &8411567957386133555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4941530108197982103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c653fe2e0bcf4071902489e9fc46694b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 0
+  _name: Hell bot
+  _data: 
+  _health: 10
+  _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
+  _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
+  _sprite: {fileID: -838105547, guid: 4ce437b0494a7a549b071034195734d9, type: 3}
+  _spriteAnimation: {fileID: 4881698709050121933}

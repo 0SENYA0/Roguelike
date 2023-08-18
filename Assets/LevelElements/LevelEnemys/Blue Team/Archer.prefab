@@ -1,0 +1,230 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1231029926132733704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8902939142530727095}
+  - component: {fileID: 4411250207426133100}
+  - component: {fileID: 9205509710203844998}
+  - component: {fileID: 3941961484545712091}
+  - component: {fileID: 2720200414494288912}
+  m_Layer: 0
+  m_Name: Archer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8902939142530727095
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231029926132733704}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.23, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &4411250207426133100
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231029926132733704}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 748548621
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -1339978964, guid: 0cdcd3827d1537341aeb453c6fb03a11, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 1
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 10.875, y: 1.5625}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &9205509710203844998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231029926132733704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810f417044504442a3ebaa66dbba18f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _frameRate: 10
+  _clips:
+  - _state: 1
+    _sprites:
+    - {fileID: -1339978964, guid: 0cdcd3827d1537341aeb453c6fb03a11, type: 3}
+    - {fileID: -1711698052, guid: 0cdcd3827d1537341aeb453c6fb03a11, type: 3}
+    - {fileID: 1591555099, guid: 0cdcd3827d1537341aeb453c6fb03a11, type: 3}
+    - {fileID: 759121919, guid: 0cdcd3827d1537341aeb453c6fb03a11, type: 3}
+    - {fileID: 1394151459, guid: 0cdcd3827d1537341aeb453c6fb03a11, type: 3}
+    - {fileID: -2117751735, guid: 0cdcd3827d1537341aeb453c6fb03a11, type: 3}
+    - {fileID: 1347072399, guid: 0cdcd3827d1537341aeb453c6fb03a11, type: 3}
+    - {fileID: -2011515312, guid: 0cdcd3827d1537341aeb453c6fb03a11, type: 3}
+    - {fileID: -1543445540, guid: 0cdcd3827d1537341aeb453c6fb03a11, type: 3}
+    - {fileID: -32481893, guid: 0cdcd3827d1537341aeb453c6fb03a11, type: 3}
+    - {fileID: 1281248785, guid: 0cdcd3827d1537341aeb453c6fb03a11, type: 3}
+    - {fileID: -26794457, guid: 0cdcd3827d1537341aeb453c6fb03a11, type: 3}
+    - {fileID: -1758614509, guid: 0cdcd3827d1537341aeb453c6fb03a11, type: 3}
+    - {fileID: -435098413, guid: 0cdcd3827d1537341aeb453c6fb03a11, type: 3}
+    - {fileID: -1945833152, guid: 0cdcd3827d1537341aeb453c6fb03a11, type: 3}
+    - {fileID: -213710210, guid: 0cdcd3827d1537341aeb453c6fb03a11, type: 3}
+    - {fileID: -4712471, guid: 0cdcd3827d1537341aeb453c6fb03a11, type: 3}
+    - {fileID: -2117266392, guid: 0cdcd3827d1537341aeb453c6fb03a11, type: 3}
+    - {fileID: -1117085564, guid: 0cdcd3827d1537341aeb453c6fb03a11, type: 3}
+    - {fileID: 124322388, guid: 0cdcd3827d1537341aeb453c6fb03a11, type: 3}
+    _isLoop: 1
+    _isAllowNextClip: 0
+    _nextState: 0
+  - _state: 2
+    _sprites:
+    - {fileID: 1943336749, guid: 6bd01e1e1480dec41957ac5083486ee8, type: 3}
+    - {fileID: -1408064200, guid: 6bd01e1e1480dec41957ac5083486ee8, type: 3}
+    - {fileID: -1113913794, guid: 6bd01e1e1480dec41957ac5083486ee8, type: 3}
+    - {fileID: 332645223, guid: 6bd01e1e1480dec41957ac5083486ee8, type: 3}
+    - {fileID: -1237404819, guid: 6bd01e1e1480dec41957ac5083486ee8, type: 3}
+    - {fileID: -661942902, guid: 6bd01e1e1480dec41957ac5083486ee8, type: 3}
+    - {fileID: 848893748, guid: 6bd01e1e1480dec41957ac5083486ee8, type: 3}
+    - {fileID: -1037306916, guid: 6bd01e1e1480dec41957ac5083486ee8, type: 3}
+    - {fileID: -636361442, guid: 6bd01e1e1480dec41957ac5083486ee8, type: 3}
+    - {fileID: 1022477988, guid: 6bd01e1e1480dec41957ac5083486ee8, type: 3}
+    - {fileID: 321638334, guid: 6bd01e1e1480dec41957ac5083486ee8, type: 3}
+    - {fileID: -2001126770, guid: 6bd01e1e1480dec41957ac5083486ee8, type: 3}
+    - {fileID: -1171608781, guid: 6bd01e1e1480dec41957ac5083486ee8, type: 3}
+    - {fileID: -342124941, guid: 6bd01e1e1480dec41957ac5083486ee8, type: 3}
+    _isLoop: 0
+    _isAllowNextClip: 1
+    _nextState: 1
+  - _state: 3
+    _sprites:
+    - {fileID: 1774960556, guid: 2e4584d785549ec48bd8521b458dc110, type: 3}
+    - {fileID: 1418120715, guid: 2e4584d785549ec48bd8521b458dc110, type: 3}
+    _isLoop: 0
+    _isAllowNextClip: 1
+    _nextState: 1
+  - _state: 4
+    _sprites:
+    - {fileID: 1176308478, guid: 0c20f300521761f4f948f1a2b0450bd9, type: 3}
+    - {fileID: 2126682692, guid: 0c20f300521761f4f948f1a2b0450bd9, type: 3}
+    - {fileID: 1059874742, guid: 0c20f300521761f4f948f1a2b0450bd9, type: 3}
+    - {fileID: 209038721, guid: 0c20f300521761f4f948f1a2b0450bd9, type: 3}
+    - {fileID: 1966814100, guid: 0c20f300521761f4f948f1a2b0450bd9, type: 3}
+    - {fileID: 683453414, guid: 0c20f300521761f4f948f1a2b0450bd9, type: 3}
+    _isLoop: 0
+    _isAllowNextClip: 0
+    _nextState: 0
+--- !u!61 &3941961484545712091
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231029926132733704}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0041023493, y: 0.3900264}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.45, y: 0}
+    oldSize: {x: 6.214286, y: 0.89285713}
+    newSize: {x: 10.875, y: 1.5625}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.565253, y: 0.81446755}
+  m_EdgeRadius: 0
+--- !u!114 &2720200414494288912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231029926132733704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c653fe2e0bcf4071902489e9fc46694b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 0
+  _name: Archer
+  _data: 
+  _health: 10
+  _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
+  _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
+  _sprite: {fileID: -1339978964, guid: 0cdcd3827d1537341aeb453c6fb03a11, type: 3}
+  _spriteAnimation: {fileID: 9205509710203844998}

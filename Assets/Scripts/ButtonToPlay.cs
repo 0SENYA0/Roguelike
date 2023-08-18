@@ -1,4 +1,4 @@
-using Assets.Observces;
+using Assets.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -18,7 +18,7 @@ namespace Assets
 
         private void NextScene()
         {
-            SceneManager.LoadScene("LevelGeneration");
+            Curtain.Instance.ShowAnimation(() => { SceneManager.LoadScene("LevelGeneration");});
             //MainMenuButtonPlayObserver.Instance.Notify();
         }
 

@@ -1,5 +1,9 @@
+using System;
+using System.Collections;
+using Assets.Infrastructure.DataStorageSystem;
 using Assets.Scripts.SoundSystem;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts
 {
@@ -8,8 +12,10 @@ namespace Assets.Scripts
         public static GameRoot Instance { get; private set; }
 
         public ISound Sound => _sound;
-        
+        public UserData UserData => _userData;
+
         private Sound _sound;
+        private UserData _userData;
 
         private void Awake()
         {
@@ -17,7 +23,7 @@ namespace Assets.Scripts
             {
                 Instance = this;
                 DontDestroyOnLoad(this);
-                Initialization();
+                Initialization(LoadMainMenu);
                 return;
             }
             
@@ -28,10 +34,28 @@ namespace Assets.Scripts
         {
             _sound.Dispose();
         }
-        
-        private void Initialization()
+
+        private void LoadMainMenu()
         {
-            _sound = new Sound();
+            SceneManager.LoadScene("Menu");
         }
+        
+        private void Initialization(Action callback)
+        {
+            _userData = new UserData();
+            _sound = new Sound();
+            callback?.Invoke();
+            
+#if UNITY_EDITOR
+            StartCoroutine(ArtificialDelay());
+#endif
+        }
+
+#if UNITY_EDITOR
+        private IEnumerator ArtificialDelay()
+        {
+            yield return new WaitForSeconds(2f);
+        }
+#endif        
     }
 }

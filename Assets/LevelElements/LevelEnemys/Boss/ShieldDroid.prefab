@@ -1,0 +1,212 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5355334694282723081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7745694441114034383}
+  - component: {fileID: 7135449737066415573}
+  - component: {fileID: 222739041443138482}
+  - component: {fileID: 1312725937630343607}
+  - component: {fileID: 3241258236652369581}
+  m_Layer: 0
+  m_Name: ShieldDroid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7745694441114034383
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5355334694282723081}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.46, y: 0.458, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &7135449737066415573
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5355334694282723081}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 748548621
+  m_SortingLayer: 1
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 767517886, guid: 36b2f7ab229641740bf4edd2018b6334, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 1
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.6363635, y: 3.590909}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &222739041443138482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5355334694282723081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810f417044504442a3ebaa66dbba18f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _frameRate: 10
+  _clips:
+  - _state: 1
+    _sprites:
+    - {fileID: 767517886, guid: 36b2f7ab229641740bf4edd2018b6334, type: 3}
+    _isLoop: 1
+    _isAllowNextClip: 0
+    _nextState: 1
+  - _state: 2
+    _sprites:
+    - {fileID: -1153260010, guid: 059f7ce15e80d264f8921151a7f0861a, type: 3}
+    - {fileID: -2133820538, guid: 059f7ce15e80d264f8921151a7f0861a, type: 3}
+    - {fileID: 438775448, guid: 059f7ce15e80d264f8921151a7f0861a, type: 3}
+    - {fileID: -1086056511, guid: 059f7ce15e80d264f8921151a7f0861a, type: 3}
+    - {fileID: 588882995, guid: 059f7ce15e80d264f8921151a7f0861a, type: 3}
+    - {fileID: 537887035, guid: 059f7ce15e80d264f8921151a7f0861a, type: 3}
+    - {fileID: -913415335, guid: 059f7ce15e80d264f8921151a7f0861a, type: 3}
+    - {fileID: -181806371, guid: 059f7ce15e80d264f8921151a7f0861a, type: 3}
+    - {fileID: 1036430789, guid: 059f7ce15e80d264f8921151a7f0861a, type: 3}
+    - {fileID: -1790817294, guid: 059f7ce15e80d264f8921151a7f0861a, type: 3}
+    - {fileID: 1719307153, guid: 059f7ce15e80d264f8921151a7f0861a, type: 3}
+    - {fileID: -1984827841, guid: 059f7ce15e80d264f8921151a7f0861a, type: 3}
+    - {fileID: 698978295, guid: 059f7ce15e80d264f8921151a7f0861a, type: 3}
+    - {fileID: 1305748137, guid: 059f7ce15e80d264f8921151a7f0861a, type: 3}
+    _isLoop: 0
+    _isAllowNextClip: 1
+    _nextState: 1
+  - _state: 3
+    _sprites:
+    - {fileID: 254441120, guid: 728afa82ff00a504fb8740df05ae2ec4, type: 3}
+    - {fileID: -1331769306, guid: 728afa82ff00a504fb8740df05ae2ec4, type: 3}
+    _isLoop: 0
+    _isAllowNextClip: 1
+    _nextState: 1
+  - _state: 4
+    _sprites:
+    - {fileID: 254441120, guid: 728afa82ff00a504fb8740df05ae2ec4, type: 3}
+    - {fileID: -1331769306, guid: 728afa82ff00a504fb8740df05ae2ec4, type: 3}
+    - {fileID: 1871797598, guid: 728afa82ff00a504fb8740df05ae2ec4, type: 3}
+    - {fileID: -1865629770, guid: 728afa82ff00a504fb8740df05ae2ec4, type: 3}
+    - {fileID: 1998920212, guid: 728afa82ff00a504fb8740df05ae2ec4, type: 3}
+    - {fileID: -598946296, guid: 728afa82ff00a504fb8740df05ae2ec4, type: 3}
+    - {fileID: -1163234768, guid: 728afa82ff00a504fb8740df05ae2ec4, type: 3}
+    _isLoop: 0
+    _isAllowNextClip: 0
+    _nextState: 0
+--- !u!61 &1312725937630343607
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5355334694282723081}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00058329105, y: 0.45814115}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 4.5, y: 1.55}
+    newSize: {x: 7.6363635, y: 3.590909}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7084687, y: 0.9625715}
+  m_EdgeRadius: 0
+--- !u!114 &3241258236652369581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5355334694282723081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c653fe2e0bcf4071902489e9fc46694b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 3
+  _name: Shield Droid
+  _data: 
+  _health: 100
+  _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
+  _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
+  _sprite: {fileID: 767517886, guid: 36b2f7ab229641740bf4edd2018b6334, type: 3}
+  _spriteAnimation: {fileID: 222739041443138482}
