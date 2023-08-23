@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CurtainCanvans
       objectReference: {fileID: 0}
+    - target: {fileID: 1480801952725020059, guid: 7fea4e20e742dde4a8136e2841c7c3f7, type: 3}
+      propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1898437856010471123, guid: 7fea4e20e742dde4a8136e2841c7c3f7, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -227,6 +231,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2067044356}
+    - target: {fileID: 4075096106207911254, guid: 7fea4e20e742dde4a8136e2841c7c3f7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6770046848496510489, guid: 7fea4e20e742dde4a8136e2841c7c3f7, type: 3}
       propertyPath: m_IsActive
       value: 1

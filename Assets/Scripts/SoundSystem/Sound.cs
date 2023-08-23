@@ -1,30 +1,45 @@
 using System;
 using Agava.WebUtility;
-using Assets.Infrastructure;
+using Assets.Infrastructure.DataStorageSystem;
 
 namespace Assets.Scripts.SoundSystem
 {
     public class Sound: ISound, IDisposable
     {
+        private readonly IPlayerData _playerData;
+        
         public bool IsMusicOn { get => _isMusicOn; }
         public bool IsSfxOn { get => _isSfxOn; }
-        public bool IsHidden { get => _isHiddenOn; }
-        
-        public event Action<bool> OnMusicStateChanged; 
-        public event Action<bool> OnSfxStateChanged; 
-        public event Action<bool> OnHiddenStateChanged;
+
+        public event Action<bool> OnMusicStateChanged;
+        public event Action<bool> OnSfxStateChanged;
 
         private bool _isMusicOn;
         private bool _isSfxOn;
-        private bool _isHiddenOn;
 
-        public Sound()
+
+        public Sound(IPlayerData playerData)
         {
-            _isMusicOn = GameRoot.Instance.PlayerData.IsSoundOn;
-            _isSfxOn = GameRoot.Instance.PlayerData.IsSfxOn;
-            _isHiddenOn = true;
+            _playerData = playerData;
             
+            _isMusicOn = playerData.IsMusicOn;
+            _isSfxOn = playerData.IsSfxOn;
+
             WebApplication.InBackgroundChangeEvent += ChangeBackgroundSounds;
+        }
+
+        public void UpdateSoundSettings(SoundType type)
+        {
+            if (type == SoundType.Music)
+            {
+                _isMusicOn = _playerData.IsMusicOn;
+                OnMusicStateChanged?.Invoke(_isMusicOn);
+            }
+            else
+            {
+                _isSfxOn = _playerData.IsSfxOn;
+                OnSfxStateChanged?.Invoke(_isSfxOn);
+            }
         }
 
         public void Pause()
@@ -46,8 +61,10 @@ namespace Assets.Scripts.SoundSystem
         
         private void ChangeBackgroundSounds(bool hidden)
         {
-            _isHiddenOn = hidden;
-            OnHiddenStateChanged?.Invoke(_isHiddenOn);
+            if (hidden)
+                Pause();
+            else
+                UpPause();
         }
     }
 }

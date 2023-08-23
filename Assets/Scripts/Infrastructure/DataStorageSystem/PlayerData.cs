@@ -1,11 +1,12 @@
 using System;
+using UnityEngine;
 
 namespace Assets.Infrastructure.DataStorageSystem
 {
-    public class PlayerData
+    public class PlayerData: IPlayerData
     {
         private int _money;
-        private bool _isSoundOn;
+        private bool _isMusicOn;
         private bool _isSfxOn;
         
         public PlayerData()
@@ -25,15 +26,15 @@ namespace Assets.Infrastructure.DataStorageSystem
             }
         }
 
-        public bool IsSoundOn
+        public bool IsMusicOn
         {
-            get => _isSoundOn;
+            get => _isMusicOn;
             set
             {
-                if (value == _isSoundOn)
+                if (value == _isMusicOn)
                     throw new AggregateException("Attempt to change the state to the same");
                 
-                _isSoundOn = value;
+                _isMusicOn = value;
             }
         }
 
@@ -52,7 +53,7 @@ namespace Assets.Infrastructure.DataStorageSystem
         public void SaveData()
         {
             var data = new Data(_money,
-                Convert.ToInt32(_isSoundOn),
+                Convert.ToInt32(_isMusicOn),
                 Convert.ToInt32(_isSfxOn));
             
             DataLoader.SaveData(data);
@@ -62,7 +63,7 @@ namespace Assets.Infrastructure.DataStorageSystem
         {
             var data = DataLoader.GetData();
             _money = data.Money;
-            _isSoundOn = Convert.ToBoolean(data.Sound);
+            _isMusicOn = Convert.ToBoolean(data.Music);
             _isSfxOn = Convert.ToBoolean(data.Sfx);
         }
     }

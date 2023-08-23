@@ -1,4 +1,5 @@
 using System;
+using Assets.Infrastructure;
 using Assets.Scripts;
 using UnityEditor;
 using UnityEngine;
@@ -8,13 +9,14 @@ namespace DefaultNamespace
 {
     public class Test : MonoBehaviour
     {
-        [SerializeField] private SoundComponent _sound;
-
-        private SoundComponent _component;
-        
-        private void Start()
+        private void OnEnable()
         {
-            
+            GameRoot.Instance.Sound.Pause();
+        }
+
+        private void OnDisable()
+        {
+            GameRoot.Instance.Sound.UpPause();
         }
     }
 

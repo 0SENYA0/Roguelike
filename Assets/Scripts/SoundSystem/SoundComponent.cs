@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using Assets.Infrastructure;
 using UnityEngine;
@@ -14,17 +13,19 @@ namespace Assets.Scripts.SoundSystem
         [SerializeField] [Range(0, 1)] private float _volume; // громкость
         [Tooltip("If zero is specified, then the sound will be played completely")]
         [SerializeField] [Min(0f)] private float _duration; // продолжительность
-        [Space(10f)] [SerializeField] private bool _isLoop; // нужно ли зацикливать
-
-        [SerializeField]
-        private bool _isRestartIfCalledAgain; // при повторном вызове продолжать играть или рестартанусть
-
-        [Space(10f)] [SerializeField] private bool _smoothFade; // нужно ли планое затухание
+        [Space(10f)] 
+        [SerializeField] private bool _isLoop; // нужно ли зацикливать
+        [SerializeField] private bool _isRestartIfCalledAgain; // при повторном вызове продолжать играть или рестартанусть
+        [Space(10f)] 
+        [SerializeField] private bool _smoothFade; // нужно ли планое затухание
         [SerializeField] private float _timeToFade; // время плавного затузхани
 
         private AudioSource _source;
         private Coroutine _coroutine;
         private bool _isStopped;
+
+        private bool _isMusicOn;
+        private bool _isSfxOn;
 
         private void Awake()
         {
@@ -32,6 +33,38 @@ namespace Assets.Scripts.SoundSystem
             _source.clip = _clip;
             _source.loop = false;
             _source.playOnAwake = false;
+            _isMusicOn = GameRoot.Instance.Sound.IsMusicOn;
+            _isSfxOn = GameRoot.Instance.Sound.IsSfxOn;
+        }
+
+        private void OnEnable()
+        {
+            GameRoot.Instance.Sound.OnMusicStateChanged += ChangeMusic;
+            GameRoot.Instance.Sound.OnSfxStateChanged += ChangeSfx;
+        }
+
+        private void OnDisable()
+        {
+            GameRoot.Instance.Sound.OnMusicStateChanged -= ChangeMusic;
+            GameRoot.Instance.Sound.OnSfxStateChanged -= ChangeSfx;
+        }
+
+        private void ChangeMusic(bool value)
+        {
+            if (_soundType == SoundType.Music)
+            {
+                _isMusicOn = value;
+                _source.volume = _isMusicOn ? _volume : 0;
+            }
+        }
+
+        private void ChangeSfx(bool value)
+        {
+            if (_soundType == SoundType.SFX)
+            {
+                _isSfxOn = value;
+                _source.volume = _isSfxOn ? _volume : 0;
+            }
         }
 
         private void Start()
@@ -52,11 +85,7 @@ namespace Assets.Scripts.SoundSystem
                 return;
 
             _isStopped = false;
-            
-            if (_soundType == SoundType.Music && GameRoot.Instance.Sound.IsMusicOn)
-                PlaySound();
-            else if (_soundType == SoundType.SFX && GameRoot.Instance.Sound.IsSfxOn)
-                PlaySound();
+            PlaySound();
         }
 
         public void Stop()
@@ -75,7 +104,11 @@ namespace Assets.Scripts.SoundSystem
 
         private void PlaySound()
         {
-            _source.volume = _volume;
+            if (_soundType == SoundType.Music)
+                _source.volume = _isMusicOn ? _volume : 0;
+            else
+                _source.volume = _isSfxOn ? _volume : 0;
+
             _source.Play();
 
             if (_duration == 0)

@@ -9,8 +9,6 @@ namespace Assets.Infrastructure
 {
     public class GameRoot : MonoBehaviour
     {
-        [SerializeField] private bool _loadMainMenu = false;
-        
         public static GameRoot Instance { get; private set; }
 
         public ISound Sound => _sound;
@@ -39,9 +37,6 @@ namespace Assets.Infrastructure
 
         private void LoadMainMenu()
         {
-            if (_loadMainMenu == false)
-                return;
-
             if (Application.isEditor)
             {
                 StartCoroutine(ArtificialDelay());
@@ -55,16 +50,33 @@ namespace Assets.Infrastructure
         private void Initialization(Action callback)
         {
             _playerData = new PlayerData();
-            _sound = new Sound();
+            _sound = new Sound(_playerData);
             callback?.Invoke();
         }
 
 #if UNITY_EDITOR
         private IEnumerator ArtificialDelay()
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             SceneManager.LoadScene("Menu");
         }
-#endif        
+#endif
+
+        public void ChangeSoundSettings(SoundType type)
+        {
+            if (type == SoundType.Music)
+                _playerData.IsMusicOn = !_playerData.IsMusicOn;
+            else
+                _playerData.IsSfxOn = !_playerData.IsSfxOn;
+            
+            _playerData.SaveData();
+            _sound.UpdateSoundSettings(type);
+        }
+
+        [ContextMenu("[!] TestChangeBackgroundSounds")]
+        private void Test()
+        {
+            _sound.TestChangeBackgroundSounds();
+        }
     }
 }
