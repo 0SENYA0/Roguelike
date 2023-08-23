@@ -20,8 +20,8 @@ namespace Assets.Scripts.SoundSystem
 
         public Sound()
         {
-            _isMusicOn = GameRoot.Instance.UserData.IsSoundOn;
-            _isSfxOn = GameRoot.Instance.UserData.IsSfxOn;
+            _isMusicOn = GameRoot.Instance.PlayerData.IsSoundOn;
+            _isSfxOn = GameRoot.Instance.PlayerData.IsSfxOn;
             _isHiddenOn = true;
             
             WebApplication.InBackgroundChangeEvent += ChangeBackgroundSounds;

@@ -9,13 +9,15 @@ namespace Assets.Infrastructure
 {
     public class GameRoot : MonoBehaviour
     {
+        [SerializeField] private bool _loadMainMenu = false;
+        
         public static GameRoot Instance { get; private set; }
 
         public ISound Sound => _sound;
-        public UserData UserData => _userData;
+        public PlayerData PlayerData => _playerData;
 
         private Sound _sound;
-        private UserData _userData;
+        private PlayerData _playerData;
 
         private void Awake()
         {
@@ -37,25 +39,31 @@ namespace Assets.Infrastructure
 
         private void LoadMainMenu()
         {
-            Debug.Log("GAME ROOT load");
-            SceneManager.LoadScene("Menu");
+            if (_loadMainMenu == false)
+                return;
+
+            if (Application.isEditor)
+            {
+                StartCoroutine(ArtificialDelay());
+            }
+            else
+            {
+                SceneManager.LoadScene("Menu");
+            }
         }
         
         private void Initialization(Action callback)
         {
-            _userData = new UserData();
+            _playerData = new PlayerData();
             _sound = new Sound();
             callback?.Invoke();
-            
-#if UNITY_EDITOR
-            StartCoroutine(ArtificialDelay());
-#endif
         }
 
 #if UNITY_EDITOR
         private IEnumerator ArtificialDelay()
         {
             yield return new WaitForSeconds(2f);
+            SceneManager.LoadScene("Menu");
         }
 #endif        
     }

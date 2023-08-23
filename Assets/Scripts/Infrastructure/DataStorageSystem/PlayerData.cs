@@ -2,13 +2,13 @@ using System;
 
 namespace Assets.Infrastructure.DataStorageSystem
 {
-    public class UserData
+    public class PlayerData
     {
         private int _money;
         private bool _isSoundOn;
         private bool _isSfxOn;
         
-        public UserData()
+        public PlayerData()
         {
             LoadData();
         }
