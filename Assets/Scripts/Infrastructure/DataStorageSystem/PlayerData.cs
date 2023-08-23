@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 namespace Assets.Infrastructure.DataStorageSystem
 {
@@ -56,12 +55,12 @@ namespace Assets.Infrastructure.DataStorageSystem
                 Convert.ToInt32(_isMusicOn),
                 Convert.ToInt32(_isSfxOn));
             
-            DataLoader.SaveData(data);
+            DataManager.SaveData(data);
         }
 
         private void LoadData()
         {
-            var data = DataLoader.GetData();
+            var data = DataManager.GetData();
             _money = data.Money;
             _isMusicOn = Convert.ToBoolean(data.Music);
             _isSfxOn = Convert.ToBoolean(data.Sfx);

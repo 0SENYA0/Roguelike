@@ -7,23 +7,26 @@ namespace Assets.Scripts.SoundSystem
     [RequireComponent(typeof(AudioSource))]
     public class SoundComponent : MonoBehaviour
     {
-        [SerializeField] private SoundType _soundType; // Нужен для отслеживания настроек, что у нас включено
-        [SerializeField] private AudioClip _clip; // сам клип
+        [SerializeField] private SoundType _soundType;
+        [SerializeField] private AudioClip _clip;
         [SerializeField] private bool _playOnAwake;
-        [SerializeField] [Range(0, 1)] private float _volume; // громкость
+        [SerializeField] [Range(0, 1)] private float _volume;
         [Tooltip("If zero is specified, then the sound will be played completely")]
-        [SerializeField] [Min(0f)] private float _duration; // продолжительность
+        [SerializeField] [Min(0f)] private float _duration;
+        
         [Space(10f)] 
-        [SerializeField] private bool _isLoop; // нужно ли зацикливать
-        [SerializeField] private bool _isRestartIfCalledAgain; // при повторном вызове продолжать играть или рестартанусть
+        [SerializeField] private bool _isLoop;
+        [SerializeField] private bool _isRestartIfCalledAgain;
+        
         [Space(10f)] 
-        [SerializeField] private bool _smoothFade; // нужно ли планое затухание
-        [SerializeField] private float _timeToFade; // время плавного затузхани
+        [SerializeField] private bool _smoothFade;
+        [SerializeField] private float _timeToFade;
 
         private AudioSource _source;
         private Coroutine _coroutine;
+        private SoundState _state;
+        
         private bool _isStopped;
-
         private bool _isMusicOn;
         private bool _isSfxOn;
 
@@ -33,38 +36,24 @@ namespace Assets.Scripts.SoundSystem
             _source.clip = _clip;
             _source.loop = false;
             _source.playOnAwake = false;
+
+            _state = SoundState.Stop;
             _isMusicOn = GameRoot.Instance.Sound.IsMusicOn;
             _isSfxOn = GameRoot.Instance.Sound.IsSfxOn;
         }
 
         private void OnEnable()
         {
-            GameRoot.Instance.Sound.OnMusicStateChanged += ChangeMusic;
-            GameRoot.Instance.Sound.OnSfxStateChanged += ChangeSfx;
+            GameRoot.Instance.Sound.OnMusicStateChanged += ChangeMusicState;
+            GameRoot.Instance.Sound.OnSfxStateChanged += ChangeSfxState;
+            GameRoot.Instance.Sound.OnPauseStateChanged += ChangePauseState;
         }
 
         private void OnDisable()
         {
-            GameRoot.Instance.Sound.OnMusicStateChanged -= ChangeMusic;
-            GameRoot.Instance.Sound.OnSfxStateChanged -= ChangeSfx;
-        }
-
-        private void ChangeMusic(bool value)
-        {
-            if (_soundType == SoundType.Music)
-            {
-                _isMusicOn = value;
-                _source.volume = _isMusicOn ? _volume : 0;
-            }
-        }
-
-        private void ChangeSfx(bool value)
-        {
-            if (_soundType == SoundType.SFX)
-            {
-                _isSfxOn = value;
-                _source.volume = _isSfxOn ? _volume : 0;
-            }
+            GameRoot.Instance.Sound.OnMusicStateChanged -= ChangeMusicState;
+            GameRoot.Instance.Sound.OnSfxStateChanged -= ChangeSfxState;
+            GameRoot.Instance.Sound.OnPauseStateChanged -= ChangePauseState;
         }
 
         private void Start()
@@ -94,6 +83,60 @@ namespace Assets.Scripts.SoundSystem
             StartState(FadeSound());
         }
 
+        private void ChangeMusicState(bool value)
+        {
+            if (_soundType == SoundType.Music)
+            {
+                _isMusicOn = value;
+                _source.volume = _isMusicOn ? _volume : 0;
+            }
+        }
+
+        private void ChangeSfxState(bool value)
+        {
+            if (_soundType == SoundType.SFX)
+            {
+                _isSfxOn = value;
+                _source.volume = _isSfxOn ? _volume : 0;
+            }
+        }
+
+        private void ChangePauseState(bool value)
+        {
+            if (value)
+                ApplyPause();
+            else
+                ApplyUpPause();
+        }
+
+        private void ApplyPause()
+        {
+            if (_state == SoundState.Stop) 
+                return;
+            
+            _source.Pause();
+                    
+            if (_state == SoundState.Fade && _coroutine != null)
+                StopCoroutine(_coroutine);
+        }
+
+        private void ApplyUpPause()
+        {
+            if (_state == SoundState.Play)
+            {
+                _source.Play();
+            }
+            else if (_state == SoundState.Fade)
+            {
+                if (_coroutine != null)
+                {
+                    StopCoroutine(_coroutine);
+                }
+
+                StopAndTryRestartSound();
+            }
+        }
+
         private void StartState(IEnumerator coroutine)
         {
             if (_coroutine != null)
@@ -104,17 +147,22 @@ namespace Assets.Scripts.SoundSystem
 
         private void PlaySound()
         {
-            if (_soundType == SoundType.Music)
-                _source.volume = _isMusicOn ? _volume : 0;
-            else
-                _source.volume = _isSfxOn ? _volume : 0;
-
+            SetCorrectVolume();
+            _state = SoundState.Play;
             _source.Play();
-
+            
             if (_duration == 0)
                 StartState(WaitPlaySound(_source.clip.length));
             else
                 StartState(WaitPlaySound(_duration));
+        }
+
+        private void SetCorrectVolume()
+        {
+            if (_soundType == SoundType.Music)
+                _source.volume = _isMusicOn ? _volume : 0;
+            else
+                _source.volume = _isSfxOn ? _volume : 0;
         }
 
         private IEnumerator WaitPlaySound(float timeToStop)
@@ -129,12 +177,14 @@ namespace Assets.Scripts.SoundSystem
 
         private IEnumerator FadeSound()
         {
+            _state = SoundState.Fade;
+            
             if (_smoothFade == false)
             {
-                RestartPlaySound();
+                StopAndTryRestartSound();
                 yield break;
             }
-
+            
             float timeElapsed = 0;
 
             while (timeElapsed < _timeToFade)
@@ -144,11 +194,12 @@ namespace Assets.Scripts.SoundSystem
                 yield return null;
             }
 
-            RestartPlaySound();
+            StopAndTryRestartSound();
         }
 
-        private void RestartPlaySound()
+        private void StopAndTryRestartSound()
         {
+            _state = SoundState.Stop;
             _source.Stop();
 
             if (_isLoop && _isStopped == false)

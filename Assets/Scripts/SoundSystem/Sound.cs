@@ -13,6 +13,7 @@ namespace Assets.Scripts.SoundSystem
 
         public event Action<bool> OnMusicStateChanged;
         public event Action<bool> OnSfxStateChanged;
+        public event Action<bool> OnPauseStateChanged;
 
         private bool _isMusicOn;
         private bool _isSfxOn;
@@ -44,14 +45,12 @@ namespace Assets.Scripts.SoundSystem
 
         public void Pause()
         {
-            OnMusicStateChanged?.Invoke(false);
-            OnSfxStateChanged?.Invoke(false);
+            OnPauseStateChanged?.Invoke(true);
         }
 
         public void UpPause()
         {
-            OnMusicStateChanged?.Invoke(true);
-            OnSfxStateChanged?.Invoke(true);
+            OnPauseStateChanged?.Invoke(false);
         }
 
         public void Dispose()

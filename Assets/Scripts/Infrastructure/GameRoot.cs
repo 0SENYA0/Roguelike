@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Assets.Infrastructure.DataStorageSystem;
 using Assets.Scripts.SoundSystem;
+using Assets.UI.SettingsWindow.Localization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,7 +13,8 @@ namespace Assets.Infrastructure
         public static GameRoot Instance { get; private set; }
 
         public ISound Sound => _sound;
-        public PlayerData PlayerData => _playerData;
+        public IPlayerData PlayerData => _playerData;
+        public String CurrentLocalization => Language.ENG;
 
         private Sound _sound;
         private PlayerData _playerData;
@@ -33,6 +35,23 @@ namespace Assets.Infrastructure
         private void OnDestroy()
         {
             _sound.Dispose();
+            _playerData.SaveData();
+        }
+
+        public void ChangeSoundSettings(SoundType type)
+        {
+            if (type == SoundType.Music)
+                _playerData.IsMusicOn = !_playerData.IsMusicOn;
+            else
+                _playerData.IsSfxOn = !_playerData.IsSfxOn;
+            
+            _playerData.SaveData();
+            _sound.UpdateSoundSettings(type);
+        }
+
+        public void ChangeLocalization(string lang)
+        {
+            Debug.Log($"Язык изменился: {lang}");
         }
 
         private void LoadMainMenu()
@@ -46,7 +65,7 @@ namespace Assets.Infrastructure
                 SceneManager.LoadScene("Menu");
             }
         }
-        
+
         private void Initialization(Action callback)
         {
             _playerData = new PlayerData();
@@ -55,28 +74,12 @@ namespace Assets.Infrastructure
         }
 
 #if UNITY_EDITOR
+
         private IEnumerator ArtificialDelay()
         {
             yield return new WaitForSeconds(1f);
             SceneManager.LoadScene("Menu");
         }
 #endif
-
-        public void ChangeSoundSettings(SoundType type)
-        {
-            if (type == SoundType.Music)
-                _playerData.IsMusicOn = !_playerData.IsMusicOn;
-            else
-                _playerData.IsSfxOn = !_playerData.IsSfxOn;
-            
-            _playerData.SaveData();
-            _sound.UpdateSoundSettings(type);
-        }
-
-        [ContextMenu("[!] TestChangeBackgroundSounds")]
-        private void Test()
-        {
-            _sound.TestChangeBackgroundSounds();
-        }
     }
 }

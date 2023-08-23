@@ -9,6 +9,7 @@ namespace Assets.Scripts.SoundSystem
 
         event Action<bool> OnMusicStateChanged; 
         event Action<bool> OnSfxStateChanged;
+        event Action<bool> OnPauseStateChanged;
 
         void Pause();
         void UpPause();

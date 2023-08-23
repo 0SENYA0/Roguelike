@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Assets.Infrastructure.DataStorageSystem
 {
-    public static class DataLoader
+    public static class DataManager
     {
         private const string MoneyKey = "money";
         private const string MusicKey = "music";
