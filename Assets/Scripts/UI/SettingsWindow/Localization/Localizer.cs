@@ -1,30 +1,29 @@
-//using Assets.Scripts.Data;
-//using Lean.Localization;
+using Assets.Infrastructure;
+using Lean.Localization;
 using UnityEngine;
 
 namespace Assets.UI.SettingsWindow.Localization
 {
-    //[RequireComponent(typeof(LeanLocalization))]
+    [RequireComponent(typeof(LeanLocalization))]
     public class Localizer : MonoBehaviour
     {
-        //private LeanLocalization _localization;
+        private LeanLocalization _localization;
+
+        private void Awake()
+        {
+            _localization = GetComponent<LeanLocalization>();
+            _localization.SetCurrentLanguage(GameRoot.Instance.CurrentLocalization);
+            GameRoot.Instance.OnLanguageChange += ChangeLanguage;
+        }
 
         private void OnDestroy()
         {
-            //PlayerData.Instance.LanguageChange -= ChangeLanguage;
-        }
-
-        public void Init()
-        {
-            //_localization = GetComponent<LeanLocalization>();
-            //_localization.SetCurrentLanguage(PlayerData.Instance.CurrentLocalization);
-
-            //PlayerData.Instance.LanguageChange += ChangeLanguage;
+            GameRoot.Instance.OnLanguageChange -= ChangeLanguage;
         }
 
         private void ChangeLanguage(string language)
         {
-            //_localization.SetCurrentLanguage(language);
+            _localization.SetCurrentLanguage(language);
         }
     }
 }

@@ -19,6 +19,8 @@ namespace Assets.Infrastructure
         private Sound _sound;
         private PlayerData _playerData;
 
+        public event Action<string> OnLanguageChange;
+
         private void Awake()
         {
             if (Instance == null)
@@ -51,14 +53,16 @@ namespace Assets.Infrastructure
 
         public void ChangeLocalization(string lang)
         {
-            Debug.Log($"Язык изменился: {lang}");
+            OnLanguageChange?.Invoke(lang);
         }
 
         private void LoadMainMenu()
         {
             if (Application.isEditor)
             {
+#if UNITY_EDITOR
                 StartCoroutine(ArtificialDelay());
+#endif
             }
             else
             {

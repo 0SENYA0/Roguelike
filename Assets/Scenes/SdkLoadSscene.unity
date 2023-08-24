@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CurtainCanvans
       objectReference: {fileID: 0}
+    - target: {fileID: 1193809213591046372, guid: 7fea4e20e742dde4a8136e2841c7c3f7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1480801952725020059, guid: 7fea4e20e742dde4a8136e2841c7c3f7, type: 3}
       propertyPath: m_Alpha
       value: 1

@@ -25,7 +25,8 @@ namespace Assets.UI
 
         public void HideCurtain()
         {
-            _animator.SetBool(_isHideKey, false);
+            _animator.SetTrigger("Show");
+            //_animator.SetBool(_isHideKey, false);
         }
         
         public void ShowAnimation(Action nextAction = null)

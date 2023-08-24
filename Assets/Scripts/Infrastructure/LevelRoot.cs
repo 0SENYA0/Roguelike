@@ -11,6 +11,11 @@ namespace Assets.Infrastructure
         private void Start()
         {
             _generation.GenerateLevel();
+            Invoke(nameof(HideCurtain), 1f);
+        }
+
+        private void HideCurtain()
+        {
             Curtain.Instance.HideCurtain();
         }
     }
