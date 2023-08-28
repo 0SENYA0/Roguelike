@@ -1,5 +1,7 @@
 using Assets.Scripts.GenerationSystem;
+using Assets.TimerSystem;
 using Assets.UI;
+using Assets.UI.SettingsWindow.Localization;
 using UnityEngine;
 
 namespace Assets.Infrastructure
@@ -7,6 +9,7 @@ namespace Assets.Infrastructure
     public class LevelRoot : MonoBehaviour
     {
         [SerializeField] private ProceduralGeneration _generation;
+        [SerializeField] private Timer _gameTimer;
 
         private void Start()
         {
@@ -17,6 +20,7 @@ namespace Assets.Infrastructure
         private void HideCurtain()
         {
             Curtain.Instance.HideCurtain();
+            _gameTimer.StartTimer();
         }
     }
 }
