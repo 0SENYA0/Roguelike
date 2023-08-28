@@ -438,7 +438,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: -1820168102, guid: a1e666a6666c501489df8a176d7d4fde, type: 3}
+  m_Sprite: {fileID: -197175457, guid: 254fa13f1a9571d409b1c17ce5ea2db8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2387,6 +2387,10 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 0
     m_Data:
@@ -2444,25 +2448,25 @@ Tilemap:
       e33: 0
   - m_RefCount: 0
     m_Data:
-      e00: 0
+      e00: 8.8e-44
       e01: 0
-      e02: -1.6263301e-19
-      e03: -1.6263301e-19
+      e02: 3.0013542
+      e03: 3.0013542
       e10: 0
       e11: 0
-      e12: 4.57e-43
-      e13: 4.57e-43
-      e20: -3.5084006e-35
-      e21: 4.2828255e-38
-      e22: 8.5451826e-29
-      e23: 4.8277116e-10
-      e30: 4.5904e-41
-      e31: 4.61e-43
-      e32: 4.58e-43
-      e33: 4.61e-43
+      e12: 8.02e-43
+      e13: 8.02e-43
+      e20: 3.3980855e-36
+      e21: -2.355119e-21
+      e22: -3.294315e-19
+      e23: -9.75256e+9
+      e30: 4.5905e-41
+      e31: 8.04e-43
+      e32: 8.02e-43
+      e33: 8.04e-43
   m_TileColorArray:
   - m_RefCount: 0
-    m_Data: {r: 3.7373e-41, g: 3.7373e-41, b: 3.7373e-41, a: 3.7373e-41}
+    m_Data: {r: 4.8003e-41, g: 4.8003e-41, b: 4.8003e-41, a: 4.8003e-41}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4588,25 +4592,25 @@ Tilemap:
       e33: 0
   - m_RefCount: 0
     m_Data:
-      e00: 0
+      e00: 8.8e-44
       e01: 0
-      e02: 1.6263425e-19
-      e03: 1.6263425e-19
+      e02: 3.0013313
+      e03: 3.0013313
       e10: 0
       e11: 0
-      e12: 6.96e-43
-      e13: 6.96e-43
+      e12: 8.02e-43
+      e13: 8.02e-43
       e20: 3.3980855e-36
-      e21: -1.0501877e+37
-      e22: -4.2069269e-19
-      e23: -2.5544624
+      e21: -2.3509345e-21
+      e22: -3.2791032e-19
+      e23: -1.0722247e+10
       e30: 4.5905e-41
-      e31: 6.99e-43
-      e32: 6.96e-43
-      e33: 6.99e-43
+      e31: 8.04e-43
+      e32: 8.02e-43
+      e33: 8.04e-43
   m_TileColorArray:
   - m_RefCount: 0
-    m_Data: {r: 3.953e-41, g: 3.953e-41, b: 3.953e-41, a: 3.953e-41}
+    m_Data: {r: 4.812e-41, g: 4.812e-41, b: 4.812e-41, a: 4.812e-41}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5146,8 +5150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tilemapFloor: {fileID: 1769179015}
   _tilemapWall: {fileID: 910596781}
-  _ruleTileFloor: {fileID: 11400000, guid: 9bc8a51d52ca5f64089af81c8fcb2645, type: 2}
-  _ruleTileWall: {fileID: 11400000, guid: 412012a1fe6333f4b8cb69098efb8146, type: 2}
+  _ruleTileFloor: {fileID: 11400000, guid: 0aaad8d070c35dd4c8cf39e78ff0b510, type: 2}
+  _ruleTileWall: {fileID: 11400000, guid: 61644dd82eed1d54f963ba751b78d323, type: 2}
   _firstPoint: {fileID: 11400000, guid: ba6279cdcc48efc4d9b7bc666c6e6b47, type: 2}
   _lastPoint: {fileID: 11400000, guid: 7b7c3b999f9a1b94b98316e3586c3bf8, type: 2}
   _surfaces:
