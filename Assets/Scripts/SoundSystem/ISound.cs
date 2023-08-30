@@ -6,10 +6,12 @@ namespace Assets.Scripts.SoundSystem
     {
         bool IsMusicOn { get; }
         bool IsSfxOn { get; }
-        bool IsHidden { get;}
-        
+
         event Action<bool> OnMusicStateChanged; 
-        event Action<bool> OnSfxStateChanged; 
-        event Action<bool> OnHiddenStateChanged;
+        event Action<bool> OnSfxStateChanged;
+        event Action<bool> OnPauseStateChanged;
+
+        void Pause();
+        void UpPause();
     }
 }

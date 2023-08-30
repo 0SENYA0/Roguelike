@@ -9,7 +9,7 @@ namespace Assets.UI
 
         private void Start()
         {
-            _text.text = $"version: {Application.version}";
+            _text.text = $": {Application.version}";
         }
     }
 }

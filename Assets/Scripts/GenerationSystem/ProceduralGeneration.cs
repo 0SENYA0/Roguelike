@@ -13,7 +13,7 @@ namespace Assets.Scripts.GenerationSystem
         
         private GridSpace[,] _grid;
 
-        private void Start()
+        public void GenerateLevel()
         {
             _levelGenerator = GetComponent<LevelGenerator>();
             _levelView = GetComponent<LevelView>();

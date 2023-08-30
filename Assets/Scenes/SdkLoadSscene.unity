@@ -135,6 +135,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CurtainCanvans
       objectReference: {fileID: 0}
+    - target: {fileID: 1193809213591046372, guid: 7fea4e20e742dde4a8136e2841c7c3f7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480801952725020059, guid: 7fea4e20e742dde4a8136e2841c7c3f7, type: 3}
+      propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1898437856010471123, guid: 7fea4e20e742dde4a8136e2841c7c3f7, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -227,9 +235,13 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2067044356}
+    - target: {fileID: 4075096106207911254, guid: 7fea4e20e742dde4a8136e2841c7c3f7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6770046848496510489, guid: 7fea4e20e742dde4a8136e2841c7c3f7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -244,6 +256,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4600677027421321718, guid: 52ab751e603e96648a87ab67d9aff00d, type: 3}
+      propertyPath: _loadMainMenu
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6231983099962476422, guid: 52ab751e603e96648a87ab67d9aff00d, type: 3}
       propertyPath: m_RootOrder
       value: 2

@@ -21,15 +21,21 @@ namespace Assets.UI
                 Instance = this;
 
             _animator = GetComponent<Animator>();
-            _animator.SetBool(_isHideKey, false);
+        }
+
+        public void HideCurtain()
+        {
+            _animator.SetTrigger("Show");
+            //_animator.SetBool(_isHideKey, false);
         }
         
-        public void ShowAnimation(Action nextAction)
+        public void ShowAnimation(Action nextAction = null)
         {
             _nextAction = nextAction;
             _animator.SetBool(_isHideKey, true);
         }
 
+        // Called on animation
         private void ShowNextAction()
         {
             _nextAction?.Invoke();

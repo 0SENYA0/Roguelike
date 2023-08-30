@@ -13,6 +13,8 @@ namespace Assets.Scripts.GenerationSystem.LevelMovement
         private MouseClickTracker _mouseClickTracker;
         private NavMeshAgent _agent;
 
+        public bool IsMovement => _agent.velocity.magnitude > 0;
+
         private void Awake()
         {
             _mouseClickTracker = GetComponent<MouseClickTracker>();
