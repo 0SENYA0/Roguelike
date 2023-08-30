@@ -1,15 +1,20 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using Assets.Scripts.AnimationComponent;
 using UnityEngine;
+using UnityEngine.UI;
+using AnimationState = Assets.Scripts.AnimationComponent.AnimationState;
 
-namespace Assets.Scripts.AnimationComponent
+namespace Assets.Person
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    public class SpriteAnimation : MonoBehaviour
+    public class UnitFightView : MonoBehaviour
     {
+        [SerializeField] private Image _health;
+
         [SerializeField] [Range(1, 30)] private int _frameRate = 10;
-        [SerializeField] private AnimationClip[] _clips;
+        private List<Clip> _clips = new List<Clip>();
+
         public event Action OnAnimationComplete;
         private SpriteRenderer _renderer;
         private float _secPerFrame;
@@ -18,18 +23,14 @@ namespace Assets.Scripts.AnimationComponent
         private int _currentClip;
         private bool _isPlaying = true;
 
-        public IReadOnlyList<IReadOnlyAnimationClip> Clips => _clips;
-
-        private void Awake()
+        private void OnEnable()
         {
             _renderer = GetComponent<SpriteRenderer>();
+
             _secPerFrame = 1f / _frameRate;
 
             StartAnimation();
-        }
 
-        private void OnEnable()
-        {
             _nextFrameTime = Time.time + _secPerFrame;
         }
 
@@ -48,7 +49,7 @@ namespace Assets.Scripts.AnimationComponent
             if (_nextFrameTime > Time.time)
                 return;
 
-            AnimationClip clip = _clips[_currentClip];
+            Clip clip = _clips[_currentClip];
 
             if (_currentFrame >= clip.Sprites.Length)
             {
@@ -71,7 +72,6 @@ namespace Assets.Scripts.AnimationComponent
             {
                 Sprite rendererSprite = clip.Sprites[_currentFrame];
                 _renderer.sprite = rendererSprite;
-//                CurrentSprite = rendererSprite;
                 _nextFrameTime += _secPerFrame;
                 _currentFrame++;
             }
@@ -79,8 +79,7 @@ namespace Assets.Scripts.AnimationComponent
 
         public void SetClip(AnimationState state)
         {
-
-            for (var i = 0; i < _clips.Length; i++)
+            for (var i = 0; i < _clips.Count; i++)
             {
                 if (_clips[i].State == state)
                 {
@@ -94,14 +93,19 @@ namespace Assets.Scripts.AnimationComponent
             _isPlaying = false;
         }
 
-        public AnimationClip GetClip(AnimationState state)
+        public void FillClips(IReadOnlyList<IReadOnlyAnimationClip> clips)
         {
-            AnimationClip clip = _clips.Where(x => x.State == state).FirstOrDefault();
-
-            if (clip == null)
-                return null;
-
-            return clip;
+            for (int i = 0; i < clips.Count; i++)
+            {
+                _clips.Add(new Clip
+                {
+                    Sprites = clips[i].Sprites,
+                    State = clips[i].State,
+                    IsLoop = clips[i].IsLoop,
+                    NextState = clips[i].NextState,
+                    IsAllowNextClip = clips[i].IsAllowNextClip
+                });
+            }
         }
 
         private void StartAnimation()
@@ -113,34 +117,12 @@ namespace Assets.Scripts.AnimationComponent
         }
     }
 
-    public interface IReadOnlySpriteAnimation : IReadOnlyAnimationClip
+    public class Clip
     {
-        int FrameRate { get; }
-    }
-
-    public interface IReadOnlyAnimationClip
-    {
-        public AnimationState State { get; }
-        public Sprite[] Sprites { get; }
-
-        public bool IsLoop { get; }
-        public bool IsAllowNextClip { get; }
-        public AnimationState NextState { get; }
-    }
-
-    [Serializable]
-    public class AnimationClip : IReadOnlyAnimationClip
-    {
-        [SerializeField] private AnimationState _state;
-        [SerializeField] private Sprite[] _sprites;
-        [SerializeField] private bool _isLoop;
-        [SerializeField] private bool _isAllowNextClip;
-        [SerializeField] private AnimationState _nextState;
-
-        public AnimationState State => _state;
-        public Sprite[] Sprites => _sprites;
-        public bool IsLoop => _isLoop;
-        public bool IsAllowNextClip => _isAllowNextClip;
-        public AnimationState NextState => _nextState;
+        public Sprite[] Sprites { get; set; }
+        public AnimationState State { get; set; }
+        public bool IsLoop { get; set; }
+        public AnimationState NextState { get; set; }
+        public bool IsAllowNextClip { get; set; }
     }
 }

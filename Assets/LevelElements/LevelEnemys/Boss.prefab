@@ -172,8 +172,8 @@ MonoBehaviour:
   _type: 3
   _name: "\u043F\u0438\u043F\u0435\u0446 \u0442\u0435\u0431\u0435 \u043F\u0430\u0446\u0430\u043D"
   _data: 
-  _health: 100
-  _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
-  _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
-  _sprite: {fileID: 1252765060, guid: 0b687fd74969a4542a94ba8cf7bcd3ec, type: 3}
-  _spriteAnimation: {fileID: 5284154004156247428}
+  <Health>k__BackingField: 100
+  <Weapon>k__BackingField: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
+  <Armor>k__BackingField: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
+  <Sprite>k__BackingField: {fileID: 1252765060, guid: 0b687fd74969a4542a94ba8cf7bcd3ec, type: 3}
+  <SpriteAnimation>k__BackingField: {fileID: 5284154004156247428}

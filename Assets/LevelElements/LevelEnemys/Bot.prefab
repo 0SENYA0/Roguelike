@@ -212,11 +212,11 @@ MonoBehaviour:
   _type: 0
   _name: "\u0411\u043E\u0442"
   _data: 
-  _health: 100
-  _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
-  _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
-  _sprite: {fileID: -2054315591, guid: 55cd93eaa03fc404d9ba81dac0f8d658, type: 3}
-  _spriteAnimation: {fileID: 5284154004156247428}
+  <Health>k__BackingField: 100
+  <Weapon>k__BackingField: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
+  <Armor>k__BackingField: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
+  <Sprite>k__BackingField: {fileID: -2054315591, guid: 55cd93eaa03fc404d9ba81dac0f8d658, type: 3}
+  <SpriteAnimation>k__BackingField: {fileID: 5284154004156247428}
 --- !u!95 &6545132548245958147
 Animator:
   serializedVersion: 5

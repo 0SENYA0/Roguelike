@@ -7,6 +7,7 @@ using Assets.Scripts.GenerationSystem.LevelMovement;
 using Assets.Scripts.InteractiveObjectSystem.RandomEventSystem;
 using Assets.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.InteractiveObjectSystem
@@ -40,10 +41,16 @@ namespace Assets.Scripts.InteractiveObjectSystem
 
             Action openPanel = () => { };
 
-            Player.Player player = FindObjectOfType<PlayerPresenter>().Player;
-            
+            PlayerPresenter playerPresenter = FindObjectOfType<PlayerView>().PlayerPresenter;
+
             if (targetObject.TryGetComponent(out IEnemyObjectData enemyObject))
-                openPanel = () => { Curtain.Instance.ShowAnimation(() => { _battlefild.SetActiveFightPlace(player, enemyObject.Enemy.ToArray()); }); };
+                openPanel = () => { Curtain.Instance.ShowAnimation(
+                    () =>
+                    { 
+                        _battlefild.SetActiveFightPlace(playerPresenter, enemyObject.EnemyPresenter);
+                    }); 
+                    
+                };
             else if (targetObject.TryGetComponent(out InteractiveLootObject lootObject))
                 openPanel = () => { _lootPanel.ShowPanel(this); };
             else if (targetObject.TryGetComponent(out InteractiveRandomEventObject randomEventObject))

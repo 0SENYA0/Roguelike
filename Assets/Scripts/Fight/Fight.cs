@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Enemy;
 using Assets.Fight.Dice;
 using Assets.Interface;
 using Assets.Person;
+using Assets.Player;
 using UnityEngine;
 using AnimationState = Assets.Scripts.AnimationComponent.AnimationState;
 using Random = UnityEngine.Random;
@@ -14,8 +16,8 @@ namespace Assets.Fight
     public class Fight : IDisposable
     {
         private readonly ICoroutineRunner _coroutineRunner;
-        private readonly List<Enemy.Enemy> _enemies;
-        private readonly Player.Player _player;
+        private readonly IReadOnlyList<EnemyFightPresenter> _enemyPresenters;
+        private readonly PlayerFightPresenter _playerPresenter;
         private readonly IStepFightView _stepFightView;
         private readonly DicePresenterAdapter _dicePresenterAdapter;
         private readonly Queue<Unit> _unitStackOfAttack;
@@ -24,19 +26,19 @@ namespace Assets.Fight
         private Coroutine _animationCoroutine;
         private bool _isCompleteAnimation;
 
-        public Fight(ICoroutineRunner coroutineRunner, List<Enemy.Enemy> enemies, Player.Player player, IStepFightView stepFightView,
+        public Fight(ICoroutineRunner coroutineRunner, IReadOnlyList<EnemyFightPresenter> enemyPresenters, PlayerFightPresenter playerPresenter, IStepFightView stepFightView,
             DicePresenterAdapter dicePresenterAdapter)
         {
             _coroutineRunner = coroutineRunner;
-            _enemies = enemies;
-            _player = player;
+            _enemyPresenters = enemyPresenters;
+            _playerPresenter = playerPresenter;
             _stepFightView = stepFightView;
             _dicePresenterAdapter = dicePresenterAdapter;
             _unitStackOfAttack = new Queue<Unit>();
 
             SubscribeOnDieEnemies();
 
-            GenerateAttackingSteps(enemies, player);
+            GenerateAttackingSteps(enemyPresenters, playerPresenter.Player);
         }
 
         public void Dispose() =>
@@ -47,6 +49,14 @@ namespace Assets.Fight
             if (_coroutine != null)
                 _coroutineRunner.StopCoroutine(_coroutine);
 
+            UnitFightViewAdapter PlayerFightViewAdapter = new UnitFightViewAdapter(_playerPresenter.PlayerView, 
+                _playerPresenter.Player.SpriteAnimation);
+            
+            foreach (EnemyFightPresenter enemyPresenter in _enemyPresenters)
+            {
+                UnitFightViewAdapter enemyFightViewAdapter = new UnitFightViewAdapter(enemyPresenter.UnitFightView, 
+                    enemyPresenter.Enemy.SpriteAnimation);
+            }            
             _coroutine = _coroutineRunner.StartCoroutine(AnimateAttackCoroutine());
         }
 
@@ -54,11 +64,16 @@ namespace Assets.Fight
         {
             WaitForSeconds waitForSeconds = new WaitForSeconds(3);
             WaitUntil waitUntil = new WaitUntil(_dicePresenterAdapter.CheckOnDicesShuffeled);
+            
+            foreach (EnemyFightPresenter enemyPresenter in _enemyPresenters)
+                enemyPresenter.UnitFightView.SetClip(AnimationState.Idle);
 
-            while (_enemies.All(x => x.IsDie == false) && _player.IsDie == false)
+            _playerPresenter.PlayerView.SetClip(AnimationState.Idle);
+            
+            while (_enemyPresenters.All(x => x.Enemy.IsDie == false) && _playerPresenter.Player.IsDie == false)
             {
                 if (_unitStackOfAttack.Count <= 0)
-                    GenerateAttackingSteps(_enemies, _player);
+                    GenerateAttackingSteps(_enemyPresenters, _playerPresenter.Player);
 
                 Unit unit = _unitStackOfAttack.Dequeue();
 
@@ -74,9 +89,9 @@ namespace Assets.Fight
 
                     // Проиграть анимацию атаки игрока
 
-                    yield return _coroutineRunner.StartCoroutine(StartAnimationCoroutine(AnimationState.Attack, player));
+                    // yield return _coroutineRunner.StartCoroutine(StartAnimationCoroutine(AnimationState.Attack, _playerPresenter));
 
-                    yield return _coroutineRunner.StartCoroutine(StartAnimationCoroutine(AnimationState.Hit, _enemies.ToArray()));
+                    // yield return _coroutineRunner.StartCoroutine(StartAnimationCoroutine(AnimationState.Hit, _enemyPresenters.ToArray()));
 
                     // Нанести урон одному врагу || Нанести урон нескольким врагам
                     Debug.Log("Нанесли урон врагам");
@@ -97,19 +112,15 @@ namespace Assets.Fight
             }
         }
 
-        private IEnumerator StartAnimationCoroutine(AnimationState animationState, params Unit[] units)
+        private IEnumerator StartAnimationCoroutine(AnimationState animationState,  PlayerFightPresenter presenters)
         {
-            bool isComplete = false;
-            
-            units.FirstOrDefault().SpriteAnimation.OnAnimationComplete += () => isComplete = true;
+            presenters.PlayerView.SetClip(animationState);
+            presenters.PlayerView.OnAnimationComplete += SwitchNextAnimation;
 
-            foreach (Unit unit in units)
+            while (SpriteAnimationOAnimationComplete())
             {
-                unit.SpriteAnimation.SetClip(animationState);
-            }
-
-            while (isComplete == false)
                 yield return null;
+            }   
         }
 
         private bool SpriteAnimationOAnimationComplete() =>
@@ -118,10 +129,10 @@ namespace Assets.Fight
         private void SwitchNextAnimation() =>
             _isCompleteAnimation = true;
 
-        private void GenerateAttackingSteps(List<Enemy.Enemy> enemies, Player.Player player)
+        private void GenerateAttackingSteps(IReadOnlyList<EnemyFightPresenter> enemiesPresenters, Player.Player player)
         {
             List<Unit> persons = new List<Unit>();
-            persons.AddRange(enemies);
+            persons.AddRange(enemiesPresenters.Select(x => x.Enemy));
             persons.Add(player);
 
             for (int i = 0; i < _countSteps; i++)
@@ -134,8 +145,8 @@ namespace Assets.Fight
 
         private void SubscribeOnDieEnemies()
         {
-            foreach (Enemy.Enemy enemy in _enemies)
-                enemy.Died += ActionAfterDie;
+            foreach (EnemyFightPresenter enemyFightPresenter in _enemyPresenters)
+                enemyFightPresenter.Enemy.Died += ActionAfterDie;
         }
 
         private void ActionAfterDie(Unit unit) =>

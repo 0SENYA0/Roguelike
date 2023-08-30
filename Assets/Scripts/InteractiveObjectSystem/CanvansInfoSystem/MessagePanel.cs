@@ -72,22 +72,26 @@ namespace Assets.Scripts.InteractiveObjectSystem.CanvasInfoSystem
 
         private void ShowEnemyPanel(IEnemyObjectData enemyObject)
         {
-            if (enemyObject.Enemy.Select(x => x.IsBoss).FirstOrDefault())
+            _lable.text = string.Empty;
+            
+            if (enemyObject.EnemyPresenter.Enemies.Select(x => x.IsBoss).FirstOrDefault())
                 _lable.text = "BOSS: ";
 
             _lable.text += enemyObject.Name;
-            _damageInfo.text = DamageInfo + enemyObject.Enemy.Select(x => x.Weapon).FirstOrDefault().Damage;
+            _damageInfo.text = DamageInfo + enemyObject.EnemyPresenter.Enemies.Select(x => x.Weapon).FirstOrDefault().Damage;
             
-            int armorValue = (int)enemyObject.Enemy.Select(x => x.Armor).FirstOrDefault().Body.Value + (int)enemyObject.Enemy.Select(x => x.Armor).FirstOrDefault().Body.Value; 
+            int armorValue = (int)enemyObject.EnemyPresenter.Enemies.Select(x => x.Armor)
+                .FirstOrDefault().Body.Value + (int)enemyObject.EnemyPresenter.Enemies.Select(x => x.Armor)
+                .FirstOrDefault().Body.Value; 
 
             _armorInfo.text = ArmorInfo + armorValue;
-            _countInfo.text = CountInfo + enemyObject.Enemy.Count;
+            _countInfo.text = CountInfo + enemyObject.EnemyPresenter.Enemies.Count;
             
             _attactElementImage.gameObject.SetActive(true);
             _defendElementImage.gameObject.SetActive(true);
 
-            _attactElementImage.sprite = _elementsSprite.GetElementSprite(enemyObject.Enemy.Select(x => x.Weapon.Element).FirstOrDefault());
-            _defendElementImage.sprite = _elementsSprite.GetElementSprite(enemyObject.Enemy.Select(x => x.Armor.Body.Element).FirstOrDefault());
+            _attactElementImage.sprite = _elementsSprite.GetElementSprite(enemyObject.EnemyPresenter.Enemies.Select(x => x.Weapon.Element).FirstOrDefault());
+            _defendElementImage.sprite = _elementsSprite.GetElementSprite(enemyObject.EnemyPresenter.Enemies.Select(x => x.Armor.Body.Element).FirstOrDefault());
         }
 
         #region ShowPanel

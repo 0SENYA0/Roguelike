@@ -1,39 +1,40 @@
 using Assets.DefendItems;
 using Assets.Interface;
-using Assets.ScriptableObjects;
-using Assets.Scripts.AnimationComponent;
 using Assets.Weapon;
-using UnityEngine;
 
 namespace Assets.Player
 {
-    public class PlayerPresenter : MonoBehaviour
+    public class PlayerPresenter
     {
-        [SerializeField] private int _health;
-        [SerializeField] private ArmorScriptableObject _armorScriptableObject;
-        [SerializeField] private WeaponScriptableObject _weaponScriptableObject;
-        [SerializeField] private SpriteAnimation _spriteAnimation;
-        [SerializeField] private Sprite _sprite;
-
         private Player _player;
+        private readonly PlayerView _playerView;
+
+        public PlayerPresenter(PlayerView playerView)
+        {
+            _playerView = playerView;
+            CreatePlayer();
+        }
 
         public Player Player => _player;
-
-        private void Start()
+        public PlayerView PlayerView => _playerView;
+        
+        private void CreatePlayer()
         {
-            // Если это первый раз или игрок потерял все жизни создаём стартовый билд
+            if (_player != null)
+                return;
 
+            // TODO Сделать: Если это первый раз или игрок потерял все жизни создаём стартовый билд
             ArmorFactory armorFactory = new ArmorFactory();
-            Armor armor = armorFactory.Create(new Body(_armorScriptableObject.BodyPart.Value, _armorScriptableObject.BodyPart.Element),
-                new Head(_armorScriptableObject.HeadPart.Value), _armorScriptableObject.ParticleSystem);
+            Armor armor = armorFactory.Create(new Body(_playerView.ArmorScriptableObject.BodyPart.Value, _playerView.ArmorScriptableObject.BodyPart.Element),
+                new Head(_playerView.ArmorScriptableObject.HeadPart.Value), _playerView.ArmorScriptableObject.ParticleSystem);
 
             WeaponFactory weaponFactory = new WeaponFactory();
-            IWeapon weapon = weaponFactory.Create(_weaponScriptableObject.Damage, _weaponScriptableObject.Element,
-                _weaponScriptableObject.ChanceToSplash, _weaponScriptableObject.MinValueToCriticalDamage,
-                _weaponScriptableObject.ValueModifier, _weaponScriptableObject.ParticleSystem);
-
-            _player = new Player(_health, weapon, armor, new MagicItem(), _spriteAnimation);
-            _player.Sprite = _sprite;
+            IWeapon weapon = weaponFactory.Create(_playerView.WeaponScriptableObject.Damage, _playerView.WeaponScriptableObject.Element,
+                _playerView.WeaponScriptableObject.ChanceToSplash, _playerView.WeaponScriptableObject.MinValueToCriticalDamage,
+                _playerView.WeaponScriptableObject.ValueModifier, _playerView.WeaponScriptableObject.ParticleSystem);
+            
+            _player = new Player(_playerView.Health, weapon, armor, new MagicItem(), _playerView.SpriteAnimation);
+            _player.Sprite = _playerView.Sprite;
         }
     }
 }
