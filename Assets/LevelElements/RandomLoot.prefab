@@ -147,3 +147,5 @@ MonoBehaviour:
   _name: "\u0420\u0430\u043D\u0434\u043E\u043C\u043D\u044B\u0439 \u043F\u0440\u0435\u0434\u043C\u0435\u0442"
   _data: "\u041C\u043E\u0436\u0435\u0442 \u0438 \u043C\u0435\u0434\u044C, \u0430
     \u043C\u043E\u0436\u0435\u0442 \u0438 \u0437\u043E\u043B\u043E\u0442\u043E!"
+  _weaponScriptableObject: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
+  _armorScriptableObject: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
