@@ -571,7 +571,7 @@ GameObject:
   - component: {fileID: 1969923236190752038}
   - component: {fileID: 7081777185237605056}
   - component: {fileID: -4710185794818010718}
-  - component: {fileID: 8370162019005133353}
+  - component: {fileID: 1827009682955558983}
   m_Layer: 5
   m_Name: ButtonRedRound
   m_TagString: Untagged
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8370162019005133353}
+      - m_Target: {fileID: 1827009682955558983}
         m_TargetAssemblyTypeName: Assets.Scripts.SoundSystem.SoundComponent, Assembly-CSharp
         m_MethodName: Play
         m_Mode: 1
@@ -765,7 +765,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8370162019005133353
+--- !u!114 &1827009682955558983
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -774,7 +774,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6912297088125156756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32e38bec89af45888ea02ea50ece7b0a, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ead5cd8855587048a546c407377e2b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _soundType: 1

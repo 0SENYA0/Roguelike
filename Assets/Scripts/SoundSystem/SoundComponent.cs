@@ -38,22 +38,22 @@ namespace Assets.Scripts.SoundSystem
             _source.playOnAwake = false;
 
             _state = SoundState.Stop;
-            _isMusicOn = GameRoot.Instance.Sound.IsMusicOn;
-            _isSfxOn = GameRoot.Instance.Sound.IsSfxOn;
+            _isMusicOn = Game.GameSettings.Sound.IsMusicOn;
+            _isSfxOn = Game.GameSettings.Sound.IsSfxOn;
         }
 
         private void OnEnable()
         {
-            GameRoot.Instance.Sound.OnMusicStateChanged += ChangeMusicState;
-            GameRoot.Instance.Sound.OnSfxStateChanged += ChangeSfxState;
-            GameRoot.Instance.Sound.OnPauseStateChanged += ChangePauseState;
+            Game.GameSettings.Sound.OnMusicStateChanged += ChangeMusicState;
+            Game.GameSettings.Sound.OnSfxStateChanged += ChangeSfxState;
+            Game.GameSettings.Sound.OnPauseStateChanged += ChangePauseState;
         }
 
         private void OnDisable()
         {
-            GameRoot.Instance.Sound.OnMusicStateChanged -= ChangeMusicState;
-            GameRoot.Instance.Sound.OnSfxStateChanged -= ChangeSfxState;
-            GameRoot.Instance.Sound.OnPauseStateChanged -= ChangePauseState;
+            Game.GameSettings.Sound.OnMusicStateChanged -= ChangeMusicState;
+            Game.GameSettings.Sound.OnSfxStateChanged -= ChangeSfxState;
+            Game.GameSettings.Sound.OnPauseStateChanged -= ChangePauseState;
         }
 
         private void Start()

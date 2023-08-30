@@ -616,7 +616,7 @@ GameObject:
   - component: {fileID: 1969923236190752038}
   - component: {fileID: 7081777185237605056}
   - component: {fileID: -7472702577318173805}
-  - component: {fileID: -2165677945900862552}
+  - component: {fileID: 2666712898426820049}
   m_Layer: 5
   m_Name: ButtonViolet
   m_TagString: Untagged
@@ -699,7 +699,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -2165677945900862552}
+      - m_Target: {fileID: 4239145775901037023, guid: fa03ef9e3f594ed40a587acb51017178, type: 3}
         m_TargetAssemblyTypeName: Assets.Scripts.SoundSystem.SoundComponent, Assembly-CSharp
         m_MethodName: Play
         m_Mode: 1
@@ -810,7 +810,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-2165677945900862552
+--- !u!114 &2666712898426820049
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -819,7 +819,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6912297088125156756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32e38bec89af45888ea02ea50ece7b0a, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ead5cd8855587048a546c407377e2b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _soundType: 1

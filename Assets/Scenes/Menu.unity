@@ -3037,18 +3037,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 900148492}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32e38bec89af45888ea02ea50ece7b0a, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ead5cd8855587048a546c407377e2b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _soundType: 0
   _clip: {fileID: 8300000, guid: 7291e22c783bff346acf065ec4b02969, type: 3}
-  _playOnAwake: 0
-  _volume: 0.21
+  _playOnAwake: 1
+  _volume: 0.5
   _duration: 0
   _isLoop: 1
   _isRestartIfCalledAgain: 0
   _smoothFade: 1
-  _timeToFade: 0.9
+  _timeToFade: 1
 --- !u!82 &900148494
 AudioSource:
   m_ObjectHideFlags: 0

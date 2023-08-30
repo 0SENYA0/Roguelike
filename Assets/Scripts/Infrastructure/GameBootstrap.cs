@@ -10,9 +10,9 @@ namespace Assets.Infrastructure
 
         private void Awake()
         {
-            //_game = new Game(this);
-            //_game.GameStateMachine.Enter<BootstrapState>();
-            //DontDestroyOnLoad(this);
+            _game = new Game(this);
+            _game.GameStateMachine.Enter<BootstrapState>();
+            DontDestroyOnLoad(this);
         }
     }
 }
