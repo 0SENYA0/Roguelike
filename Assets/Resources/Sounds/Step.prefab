@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2438786935005860041
 MonoBehaviour:
@@ -42,13 +42,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5208171148568438722}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32e38bec89af45888ea02ea50ece7b0a, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ead5cd8855587048a546c407377e2b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _soundType: 0
-  _clip: {fileID: 8300000, guid: eadc3d2b73535c9499d7d490baef8862, type: 3}
+  _soundType: 1
+  _clip: {fileID: 0}
   _playOnAwake: 0
-  _volume: 0.4
+  _volume: 0
   _duration: 0
   _isLoop: 0
   _isRestartIfCalledAgain: 0
@@ -64,7 +64,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 282f2e6fd1d7d854d8e2258943dbdcb1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
