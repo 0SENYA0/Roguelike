@@ -12,22 +12,21 @@ namespace Assets.Fight
     public class UIFight : MonoBehaviour
     {
         [SerializeField] private Transform _globalMap;
-        [SerializeField] private Transform _fightMap;
-
-
+        [SerializeField] private Transform _battlefieldMap;
         [SerializeField] private FightPlace _fightPlace;
-        
-        private PlayerPresenter _player;
-        private EnemyPresenter _enemies;
 
-        public void SetActiveFightPlace(PlayerPresenter player, EnemyPresenter enemies)
+        private IPlayerPresenter _playerPresenter;
+        private IEnemyPresenter _enemyPresenter;
+
+        public void SetActiveFightPlace(IPlayerPresenter playerPresenter, IEnemyPresenter enemyPresenter)
         {
-            _enemies = enemies;
-            _player = player;
+            _enemyPresenter = enemyPresenter;
+            _playerPresenter = playerPresenter;
             
+            _battlefieldMap.gameObject.SetActive(true);
             _globalMap.gameObject.SetActive(false);
-            _fightMap.gameObject.SetActive(true);
-            _fightPlace.Set(_player, _enemies);
+
+            _fightPlace.Set(_playerPresenter, _enemyPresenter);
         }
     }
 }

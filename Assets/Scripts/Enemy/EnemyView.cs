@@ -1,87 +1,40 @@
-using System;
-using Assets.Enemy;
+using Assets.Interface;
 using Assets.ScriptableObjects;
 using Assets.Scripts.AnimationComponent;
+using Assets.Scripts.InteractiveObjectSystem;
+using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Assets.Scripts.InteractiveObjectSystem
+namespace Assets.Enemy
 {
-    public class EnemyView : InteractiveObject, IEnemyObjectData
+    public class EnemyView : InteractiveObject, IEnemyViewReadOnly
     {
-        [field: SerializeField] public int Health { get; private set;}
-        [field: SerializeField] public WeaponScriptableObject Weapon { get; private set;}
-        [field: SerializeField] public ArmorScriptableObject Armor { get; private set;}
-        [field: SerializeField] public Sprite Sprite { get; private set; }
-        [field: SerializeField] public SpriteAnimation SpriteAnimation { get;private set; }
-
-
-        // private int _count;
-        // private string data = "количество врагов = ";
-        // private MagicItem _magicItem;
-        //
-        // public List<Enemy.Enemy> Enemy { get; private set; }
+        [SerializeField] private int _health;
+        [SerializeField] private WeaponScriptableObject _weapon;
+        [SerializeField] private ArmorScriptableObject _armor;
+        [SerializeField] private Sprite _sprite;
+        [SerializeField] private SpriteAnimation _spriteAnimation;
 
         private EnemyPresenter _enemyPresenter;
+
+        public IEnemyPresenter EnemyPresenter => _enemyPresenter;
+
+        public int Health => _health;
+
+        public WeaponScriptableObject Weapon => _weapon;
+
+        public ArmorScriptableObject Armor => _armor;
+
+        public Sprite Sprite => _sprite;
+
+        public SpriteAnimation SpriteAnimation => _spriteAnimation;
+
         public string Name => _name;
-        public EnemyPresenter EnemyPresenter => _enemyPresenter;
+
         protected override void OnStart()
         {
             _enemyPresenter = new EnemyPresenter(this);
-
-            #region MyRegion
-
-            //
-            //
-            //
-            // Enemy = new List<Enemy.Enemy>();
-            // _count = GenerateRandomCountEnemy();
-            // AddInfoInData(data + _count);
-            // _weapon.SetNewElement(GetRandomElement());
-            // Armor.BodyPart.SetNewElement(GetRandomElement());
-            //
-            // for (int i = 0; i < _count; i++)
-            // {
-            //     Enemy.Enemy enemy = GetEnemy();
-            //     enemy.Sprite = Sprite;
-            //
-            //     if (Type == ObjectType.Boos)
-            //         enemy.MakeBoss();
-            //
-            //     Enemy.Add(enemy);
-            // }
-
-            #endregion
+            base.OnStart();
         }
-
-        // private Enemy.Enemy GetEnemy()
-        // {
-        //     EnemyFactory factory = new EnemyFactory();
-        //     WeaponFactory weaponFactory = new WeaponFactory();
-        //     ArmorFactory armorFactory = new ArmorFactory();
-        //
-        //     IWeapon weapon = weaponFactory.Create(_weapon.Damage, _weapon.Element, _weapon.ChanceToSplash, _weapon.MinValueToCriticalDamage,
-        //         _weapon.ValueModifier, _weapon.ParticleSystem);
-        //
-        //     Body body = new Body(Armor.BodyPart.Value, Armor.BodyPart.Element);
-        //     Head head = new Head(Armor.HeadPart.Value);
-        //
-        //     Armor armor = armorFactory.Create(body, head, Armor.ParticleSystem);
-        //
-        //     return factory.Create(weapon, armor, _health, SpriteAnimation);
-        // }
-
-        // private int GenerateRandomCountEnemy() =>
-        //     Random.Range(1, 4);
-    }
-
-    public interface IEnemyObjectData : IInteractiveObjectData
-    {
-        public EnemyPresenter EnemyPresenter { get; }
-    }
-
-    public interface IInteractiveObjectData
-    {
-        public string Name { get; }
-        public string Data { get; }
     }
 }

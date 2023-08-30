@@ -33,7 +33,7 @@ namespace Assets.UI
         private void ShowNextAction()
         {
             _nextAction?.Invoke();
-                    StartCoroutine(ExpectDelay());
+            StartCoroutine(ExpectDelay());
         }
 
         private IEnumerator ExpectDelay()

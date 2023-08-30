@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Person;
 using UnityEngine;
 
 namespace Assets.Scripts.AnimationComponent
@@ -18,8 +19,8 @@ namespace Assets.Scripts.AnimationComponent
         private int _currentClip;
         private bool _isPlaying = true;
 
-        public IReadOnlyList<IReadOnlyAnimationClip> Clips => _clips;
-
+        public int FrameRate => _frameRate;
+        public IReadOnlyList<AnimationClip> AnimationClips => _clips;
         private void Awake()
         {
             _renderer = GetComponent<SpriteRenderer>();
@@ -27,7 +28,7 @@ namespace Assets.Scripts.AnimationComponent
 
             StartAnimation();
         }
-
+        
         private void OnEnable()
         {
             _nextFrameTime = Time.time + _secPerFrame;
@@ -69,9 +70,8 @@ namespace Assets.Scripts.AnimationComponent
             }
             else
             {
-                Sprite rendererSprite = clip.Sprites[_currentFrame];
-                _renderer.sprite = rendererSprite;
-//                CurrentSprite = rendererSprite;
+                _renderer.sprite = clip.Sprites[_currentFrame];
+
                 _nextFrameTime += _secPerFrame;
                 _currentFrame++;
             }
@@ -79,7 +79,6 @@ namespace Assets.Scripts.AnimationComponent
 
         public void SetClip(AnimationState state)
         {
-
             for (var i = 0; i < _clips.Length; i++)
             {
                 if (_clips[i].State == state)
@@ -97,10 +96,10 @@ namespace Assets.Scripts.AnimationComponent
         public AnimationClip GetClip(AnimationState state)
         {
             AnimationClip clip = _clips.Where(x => x.State == state).FirstOrDefault();
-
+            
             if (clip == null)
                 return null;
-
+            
             return clip;
         }
 
@@ -113,23 +112,8 @@ namespace Assets.Scripts.AnimationComponent
         }
     }
 
-    public interface IReadOnlySpriteAnimation : IReadOnlyAnimationClip
-    {
-        int FrameRate { get; }
-    }
-
-    public interface IReadOnlyAnimationClip
-    {
-        public AnimationState State { get; }
-        public Sprite[] Sprites { get; }
-
-        public bool IsLoop { get; }
-        public bool IsAllowNextClip { get; }
-        public AnimationState NextState { get; }
-    }
-
     [Serializable]
-    public class AnimationClip : IReadOnlyAnimationClip
+    public class AnimationClip
     {
         [SerializeField] private AnimationState _state;
         [SerializeField] private Sprite[] _sprites;
