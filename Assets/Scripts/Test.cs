@@ -9,15 +9,7 @@ namespace DefaultNamespace
 {
     public class Test : MonoBehaviour
     {
-        private void OnEnable()
-        {
-            GameRoot.Instance.Sound.Pause();
-        }
 
-        private void OnDisable()
-        {
-            GameRoot.Instance.Sound.UpPause();
-        }
     }
 
 }
