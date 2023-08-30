@@ -14,8 +14,8 @@ namespace Assets.UI.SettingsWindow
 
         private void OnEnable()
         {
-            _musicButton.Icon.sprite = GameRoot.Instance.Sound.IsMusicOn ? _soundImageOn : _soundImageOff;
-            _sfxButton.Icon.sprite = GameRoot.Instance.Sound.IsSfxOn ? _soundImageOn : _soundImageOff;
+            _musicButton.Icon.sprite = Game.GameSettings.Sound.IsMusicOn ? _soundImageOn : _soundImageOff;
+            _sfxButton.Icon.sprite = Game.GameSettings.Sound.IsSfxOn ? _soundImageOn : _soundImageOff;
             
             _musicButton.Button.onClick.AddListener(OnMusicClickChange);
             _sfxButton.Button.onClick.AddListener(OnSfxClickChange);
@@ -29,14 +29,14 @@ namespace Assets.UI.SettingsWindow
 
         private void OnMusicClickChange()
         {
-            GameRoot.Instance.ChangeSoundSettings(SoundType.Music);
-            _musicButton.Icon.sprite = GameRoot.Instance.Sound.IsMusicOn ? _soundImageOn : _soundImageOff;
+            Game.GameSettings.ChangeSoundSettings(SoundType.Music);
+            _musicButton.Icon.sprite = Game.GameSettings.Sound.IsMusicOn ? _soundImageOn : _soundImageOff;
         }
 
         private void OnSfxClickChange()
         {
-            GameRoot.Instance.ChangeSoundSettings(SoundType.SFX);
-            _sfxButton.Icon.sprite = GameRoot.Instance.Sound.IsSfxOn ? _soundImageOn : _soundImageOff;
+            Game.GameSettings.ChangeSoundSettings(SoundType.SFX);
+            _sfxButton.Icon.sprite = Game.GameSettings.Sound.IsSfxOn ? _soundImageOn : _soundImageOff;
         }
     }
 

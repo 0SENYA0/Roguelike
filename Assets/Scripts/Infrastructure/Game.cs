@@ -5,9 +5,15 @@ namespace Assets.Infrastructure
     public class Game
     {
         private GameStateMachine _gameStateMachine;
-        
-        public Game(ICoroutineRunner coroutineRunner) => 
+        private static GameSettings _gameSettings;
+
+        public Game(ICoroutineRunner coroutineRunner)
+        { 
             _gameStateMachine = new GameStateMachine(new SceneLoader(coroutineRunner), new SdkLoader(coroutineRunner));
+            _gameSettings = new GameSettings();
+        }
+
+        public static GameSettings GameSettings => _gameSettings;
 
         public GameStateMachine GameStateMachine => _gameStateMachine;
     }

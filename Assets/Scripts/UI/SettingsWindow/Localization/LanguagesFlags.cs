@@ -21,7 +21,7 @@ namespace Assets.UI.SettingsWindow.Localization
         {
             foreach (var flag in _flags)
             {
-                if (flag.Language == GameRoot.Instance.CurrentLocalization)
+                if (flag.Language == Game.GameSettings.CurrentLocalization)
                 {
                     flag.SetIconActive(true);
                     break;
@@ -46,7 +46,7 @@ namespace Assets.UI.SettingsWindow.Localization
             }
             
             clickedFlag.SetIconActive(true);
-            GameRoot.Instance.ChangeLocalization(selectedLanguage);
+            Game.GameSettings.ChangeLocalization(selectedLanguage);
         }
     }
 }

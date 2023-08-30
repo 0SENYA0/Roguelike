@@ -12,13 +12,13 @@ namespace Assets.UI.SettingsWindow.Localization
         private void Awake()
         {
             _localization = GetComponent<LeanLocalization>();
-            _localization.SetCurrentLanguage(GameRoot.Instance.CurrentLocalization);
-            GameRoot.Instance.OnLanguageChange += ChangeLanguage;
+            _localization.SetCurrentLanguage(Game.GameSettings.CurrentLocalization);
+            Game.GameSettings.OnLanguageChange += ChangeLanguage;
         }
 
         private void OnDestroy()
         {
-            GameRoot.Instance.OnLanguageChange -= ChangeLanguage;
+            Game.GameSettings.OnLanguageChange -= ChangeLanguage;
         }
 
         private void ChangeLanguage(string language)
