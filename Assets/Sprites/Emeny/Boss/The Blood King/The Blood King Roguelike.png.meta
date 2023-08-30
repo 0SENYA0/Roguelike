@@ -1,0 +1,1020 @@
+fileFormatVersion: 2
+guid: f5ce4ec9628aee149b6164e7cb3b6905
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 22
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: idle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 237
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 620e97622271bbc408b2a303b35b770a
+      internalID: -975733225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idle_1
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 237
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66cb0cca26882264cb6d5aab6f037d8a
+      internalID: -1985017578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idle_2
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 237
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a1b0b6742a64804fabd67dd1b7d3597
+      internalID: 1727735224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idle_3
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 237
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cfd5eb9ca1b63c48924965d095bd011
+      internalID: 1734688260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idle_4
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 237
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 703999aa813e924409bcaa1ff9f93901
+      internalID: 807377300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idle_5
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 237
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 363ed7ae5fda3584f8cae675637c3409
+      internalID: -944891081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idle_6
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 237
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 856bbddfcd097874d83c45362f67551f
+      internalID: 1608160631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idle_7
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 237
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb87e096ce92dab49a06075db8b6a08a
+      internalID: -552821570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idle_8
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 237
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d58b2d0a6ac3d5f45ac3d91b1caa2c2d
+      internalID: -1503884417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idle_9
+      rect:
+        serializedVersion: 2
+        x: 1512
+        y: 237
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f674d8146eb4c89449b4fbf9637fe8b4
+      internalID: -681993817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idle_10
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 237
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5f5e6ba59829e143a09e6cbe2869462
+      internalID: 1021035552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idle_11
+      rect:
+        serializedVersion: 2
+        x: 1848
+        y: 237
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee9cbc50ea683364a9e622bacbcd18f1
+      internalID: -1550696602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Blood King Roguelike_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 158
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce84aecb7ad123045ad6ede15aa2facd
+      internalID: 709423831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Blood King Roguelike_13
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 158
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58d6852c98b40d146bd28cbf6e847526
+      internalID: -345542432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Blood King Roguelike_14
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 158
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cb077fcb65552f429205795218da3fd
+      internalID: 265282719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Blood King Roguelike_15
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 158
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67eff94659fa756459bbd9dfbad80546
+      internalID: 1702303129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Blood King Roguelike_16
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 158
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ce19aba5efed15469e994ebc0063f99
+      internalID: 1902631431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Blood King Roguelike_17
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 158
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1db840f5a239d73408025e5e554c4c9f
+      internalID: -1327616102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Blood King Roguelike_18
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 158
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66d7b413ba7b2b44a852861e9c6eb8db
+      internalID: 1036291846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Blood King Roguelike_19
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 158
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbcfc393576c0bc4f8db6e8d5af4d053
+      internalID: -309074425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Blood King Roguelike_20
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 158
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1187de2438746dd42a721b8656e6df15
+      internalID: -1953687055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Blood King Roguelike_21
+      rect:
+        serializedVersion: 2
+        x: 1512
+        y: 158
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b92fe50250d54f54aab272154def0f91
+      internalID: 2044371212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Blood King Roguelike_22
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 158
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6c1de59e585af5438e1c82781871319
+      internalID: -1610483970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Blood King Roguelike_23
+      rect:
+        serializedVersion: 2
+        x: 1848
+        y: 158
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d224288fa8a47be4f9fb939a2b4de790
+      internalID: 2100904362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Blood King Roguelike_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 79
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c771d69e5a88024c9186e6a8c6b1efc
+      internalID: 1683846682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: The Blood King Roguelike_25
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 79
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2161f00b2f6c3794e9ef60cfca1105f0
+      internalID: 1045577410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hit_0
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 79
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 420908112d02341449eb687761ba6401
+      internalID: -869241084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hit_1
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 79
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e80b24b9e59d174a972bc4d34fd48b0
+      internalID: 1497132105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: die_0
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 79
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 903674c637dd86a43bbc395c361999a8
+      internalID: -1879878214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: die_1
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 79
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3902ceaeaacff664fbde52dc73eed973
+      internalID: 636193785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: die_2
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 79
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ea9bf8c12be7e647a10d905534beb75
+      internalID: -1780846047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: die_3
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 79
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23cccb7f266f6c24ab63458f99dadca8
+      internalID: -527277741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: die_4
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 79
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e2ab4ee5c5a50941b5459f54b58ac32
+      internalID: -745209643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: die_5
+      rect:
+        serializedVersion: 2
+        x: 1512
+        y: 78
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 435e83a63dc422e4c9935407668cba04
+      internalID: -1767529523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: die_6
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 79
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 839cda111e1788a4e8058878bb5f90bf
+      internalID: 189565908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: die_7
+      rect:
+        serializedVersion: 2
+        x: 1848
+        y: 79
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92bfa16b89d82c546bb20062a6140dc4
+      internalID: -1915750407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: die_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47d5b45b5a6cf304ba2cce9e63e3232b
+      internalID: -1159648232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: die_9
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 0
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38bb44760a1d88f49bc38492558d738f
+      internalID: -1639603665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: die_10
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 0
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7900849d0442e524098947eab3d9bd2a
+      internalID: -2032765240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: die_11
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 0
+        width: 168
+        height: 79
+      alignment: 9
+      pivot: {x: 0.323576, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc488c9f704a94d4aacefae1fd56e377
+      internalID: -1534419885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      The Blood King Roguelike_12: 709423831
+      The Blood King Roguelike_13: -345542432
+      The Blood King Roguelike_14: 265282719
+      The Blood King Roguelike_15: 1702303129
+      The Blood King Roguelike_16: 1902631431
+      The Blood King Roguelike_17: -1327616102
+      The Blood King Roguelike_18: 1036291846
+      The Blood King Roguelike_19: -309074425
+      The Blood King Roguelike_20: -1953687055
+      The Blood King Roguelike_21: 2044371212
+      The Blood King Roguelike_22: -1610483970
+      The Blood King Roguelike_23: 2100904362
+      The Blood King Roguelike_24: 1683846682
+      The Blood King Roguelike_25: 1045577410
+      die_0: -1879878214
+      die_1: 636193785
+      die_10: -2032765240
+      die_11: -1534419885
+      die_2: -1780846047
+      die_3: -527277741
+      die_4: -745209643
+      die_5: -1767529523
+      die_6: 189565908
+      die_7: -1915750407
+      die_8: -1159648232
+      die_9: -1639603665
+      hit_0: -869241084
+      hit_1: 1497132105
+      idle_0: -975733225
+      idle_1: -1985017578
+      idle_10: 1021035552
+      idle_11: -1550696602
+      idle_2: 1727735224
+      idle_3: 1734688260
+      idle_4: 807377300
+      idle_5: -944891081
+      idle_6: 1608160631
+      idle_7: -552821570
+      idle_8: -1503884417
+      idle_9: -681993817
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

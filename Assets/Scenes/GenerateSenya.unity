@@ -8271,12 +8271,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttonYes: {fileID: 1211044591}
   _buttonNo: {fileID: 1223910762}
+  _attackElement: {fileID: 0}
   _attackImage: {fileID: 1471614770}
+  _defendElement: {fileID: 0}
   _defendImage: {fileID: 1098760271}
   _name: {fileID: 121166430}
   _data: {fileID: 428046174}
-  _element: {fileID: 1108828117}
-  _elementsSpriteView: {fileID: 11400000, guid: 0f3920720628acb4086ff5f7d5d87e21, type: 2}
 --- !u!1001 &778072391
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12946,17 +12946,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5705280671670380958, guid: 4ab397cca2c0a1740847d2aca27d00aa, type: 3}
   m_PrefabInstance: {fileID: 1303923668}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1303923670 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7081777185237605056, guid: 4ab397cca2c0a1740847d2aca27d00aa, type: 3}
-  m_PrefabInstance: {fileID: 1303923668}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73b58c5739da4cacacd332dbedb6c5f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1318814667
 GameObject:
   m_ObjectHideFlags: 0
@@ -15815,8 +15804,7 @@ MonoBehaviour:
   _minDistanceToStartBattle: 10.1
   _closeButton: {fileID: 941672110}
   _battlefild: {fileID: 2660743191219674293}
-  _eventPanel: {fileID: 755832634}
-  _lootInfoView: {fileID: 775113460}
+  eventPanel: {fileID: 0}
 --- !u!114 &1633761166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21684,25 +21672,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed605cb9cc464717a51dbadb42e21ef1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxCountOfSpawnItems: 20
-  _spawnerItems:
-  - _template: {fileID: 1786792949691058985, guid: 1e36a5b13eeac024ea1825504f68b560, type: 3}
-    _maxCount: 5
-    _chanceSpawn: 0.3
-  - _template: {fileID: 3550267196358860798, guid: 72e1711c436f52943bc638960d321a10, type: 3}
-    _maxCount: 10
-    _chanceSpawn: 0.6
-  - _template: {fileID: 7563104451129171356, guid: 5d1fb88fa858cbf408f9eaebe78e8451, type: 3}
-    _maxCount: 10
-    _chanceSpawn: 0.875
-  - _template: {fileID: 1786792949691058985, guid: 6e49fe142809441458d66afd2faf5f07, type: 3}
-    _maxCount: 5
-    _chanceSpawn: 0.51
-  - _template: {fileID: 1786792949691058985, guid: a74eb1813914268408e03d26a3ae3757, type: 3}
-    _maxCount: 1
-    _chanceSpawn: 0.1
-  _bossTemplate: {fileID: 7563104451129171356, guid: 54a5d81bea8ad9141afea455a12e523d, type: 3}
   _conteiner: {fileID: 285017035}
+  _maxCountOfSpawnItems: 20
+  _bossTemplate: {fileID: 7563104451129171356, guid: 54a5d81bea8ad9141afea455a12e523d, type: 3}
+  _randomEvent:
+    _template: []
+    _maxCount: 0
+    _chanceSpawn: 0.05
+  _randomLoot:
+    _template: []
+    _maxCount: 0
+    _chanceSpawn: 0.05
+  _enemy:
+    _template: []
+    _maxCount: 0
+    _chanceSpawn: 0.05
 --- !u!1001 &2123407582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24145,8 +24129,6 @@ MonoBehaviour:
   - {fileID: 994714449}
   - {fileID: 444565688}
   - {fileID: 1496657810}
-  _popupReady: {fileID: 1935166244}
-  _customButtonReady: {fileID: 1303923670}
 --- !u!224 &3486788104931647730
 RectTransform:
   m_ObjectHideFlags: 0
