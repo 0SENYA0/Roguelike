@@ -53,14 +53,8 @@ namespace Assets.Utils
                 _attackView = unitAttackView;
                 _elementsDamagePanel.ShowPanel();
             }
-            
-            if (_haveClick)
-            {
-                _haveClick = false;
-                return true;
-            }
-            
-            return false;
+
+            return _haveClick;
         }
 
         private void HidePanel() =>
@@ -85,7 +79,6 @@ namespace Assets.Utils
 
                 if (hit.collider != null && hit.collider.TryGetComponent(out UnitAttackView selectedObject))
                 {
-                    Debug.Log(hit.collider.gameObject.name);
                     data = selectedObject;
                     return true;
                 }

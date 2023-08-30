@@ -4,7 +4,6 @@ using Assets.Enemy;
 using Assets.Player;
 using Assets.ScriptableObjects;
 using Assets.Scripts.InteractiveObjectSystem;
-using Assets.Scripts.UI.Widgets;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -26,6 +25,7 @@ namespace Assets.Fight
             
             _battlefieldMap.gameObject.SetActive(true);
             _globalMap.gameObject.SetActive(false);
+
             _fightPlace.Set(_playerPresenter, _enemyPresenter);
         }
     }

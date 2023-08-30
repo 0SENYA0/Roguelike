@@ -11,9 +11,6 @@ namespace Assets.Scripts.InteractiveObjectSystem
         [SerializeField] private List<EnemyView> _enemyView;
         
         private EnemyPresenter _enemyPresenter;
-
-        public EnemyPresenter EnemyPresenter => _enemyPresenter;
-
         public InteractiveLootObject InteractiveLootObject => _interactiveLootObject;
         public IEnemyPresenter GetRandomEnemyPresenter() => 
             _enemyPresenter = new EnemyPresenter(_enemyView[Random.Range(0, _enemyView.Count)]);

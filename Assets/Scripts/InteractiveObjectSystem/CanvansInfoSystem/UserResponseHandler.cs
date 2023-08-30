@@ -38,7 +38,7 @@ namespace Assets.Scripts.InteractiveObjectSystem.CanvasInfoSystem
         private void MoveFixedAgent(bool isPositiveResponse)
         {
             _infoPanel.UserResponse -= MoveFixedAgent;
-
+            
             if (isPositiveResponse)
                 interactiveObjectHandler.ProduceInteraction(_selectedObject, _targetPosition);           
         }

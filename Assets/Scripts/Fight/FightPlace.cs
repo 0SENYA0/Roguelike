@@ -6,7 +6,6 @@ using Assets.Interface;
 using Assets.Person;
 using Assets.Player;
 using Assets.ScriptableObjects;
-using Assets.Scripts.UI.Widgets;
 using UnityEngine;
 
 namespace Assets.Fight
@@ -27,8 +26,6 @@ namespace Assets.Fight
         [SerializeField] private UnitAttackView _playerAttackView;
 
         [SerializeField] private List<UnitAttackView> _enemyAttackViews;
-        [SerializeField] private GameObject _popupReady;
-        [SerializeField] private CustomButton _customButtonReady;
 
         private Fight _fight;
         private EnemyPoint _spawnPoint;
@@ -96,7 +93,7 @@ namespace Assets.Fight
                 enemyAttackPresenters.Add(new UnitAttackPresenter(enemyPresenter.Enemy[i], _enemyAttackViews[i]));
 
             _fight = new Fight(this, enemyAttackPresenters, playerAttackPresenter, _stepFightView,
-                GetDicePresenterAdapter(), _IelementsDamagePanel, _popupReady, _customButtonReady);
+                GetDicePresenterAdapter(), _IelementsDamagePanel);
 
             _fight.Start();
 
