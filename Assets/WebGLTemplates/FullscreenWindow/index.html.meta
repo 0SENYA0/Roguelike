@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/GenerateSenya.unity.meta
+guid: aa2167b6b6a82a044968dae736b58f80
+========
 guid: 6401519738555b1419117829eec3832f
+>>>>>>>> Tested:Assets/WebGLTemplates/FullscreenWindow/index.html.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
