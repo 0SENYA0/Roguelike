@@ -144,14 +144,14 @@ MonoBehaviour:
     - {fileID: -1171608781, guid: 6bd01e1e1480dec41957ac5083486ee8, type: 3}
     - {fileID: -342124941, guid: 6bd01e1e1480dec41957ac5083486ee8, type: 3}
     _isLoop: 0
-    _isAllowNextClip: 1
+    _isAllowNextClip: 0
     _nextState: 1
   - _state: 3
     _sprites:
     - {fileID: 1774960556, guid: 2e4584d785549ec48bd8521b458dc110, type: 3}
     - {fileID: 1418120715, guid: 2e4584d785549ec48bd8521b458dc110, type: 3}
     _isLoop: 0
-    _isAllowNextClip: 1
+    _isAllowNextClip: 0
     _nextState: 1
   - _state: 4
     _sprites:
@@ -218,16 +218,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1231029926132733704}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c653fe2e0bcf4071902489e9fc46694b, type: 3}
+  m_Script: {fileID: 11500000, guid: 525bcf98ae9342ad9ea6e1ab678415ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
-  _name: Archer
+  _name: 
   _data: 
   _health: 10
   _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
   _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
-  _sprite: {fileID: -1339978964, guid: 0cdcd3827d1537341aeb453c6fb03a11, type: 3}
+  _sprite: {fileID: 1056433643, guid: 804fa6bfaa5a8c144a57dab471403d7c, type: 3}
   _spriteAnimation: {fileID: 9205509710203844998}
 --- !u!1001 &6984447927159722338
 PrefabInstance:

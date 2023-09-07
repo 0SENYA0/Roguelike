@@ -133,14 +133,14 @@ MonoBehaviour:
     - {fileID: 1515721325, guid: 5efd0aa7558d7f84a92d22926af70e5b, type: 3}
     - {fileID: -838261336, guid: 5efd0aa7558d7f84a92d22926af70e5b, type: 3}
     _isLoop: 0
-    _isAllowNextClip: 1
+    _isAllowNextClip: 0
     _nextState: 1
   - _state: 3
     _sprites:
     - {fileID: -312883437, guid: 5efd0aa7558d7f84a92d22926af70e5b, type: 3}
     - {fileID: 1585855701, guid: 5efd0aa7558d7f84a92d22926af70e5b, type: 3}
     _isLoop: 0
-    _isAllowNextClip: 1
+    _isAllowNextClip: 0
     _nextState: 1
   - _state: 4
     _sprites:
@@ -211,16 +211,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 6780320952983710720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c653fe2e0bcf4071902489e9fc46694b, type: 3}
+  m_Script: {fileID: 11500000, guid: 525bcf98ae9342ad9ea6e1ab678415ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
-  _name: Baby Boxer
+  _name: 
   _data: 
-  _health: 10
+  _health: 12
   _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
   _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
-  _sprite: {fileID: 737798139, guid: 5efd0aa7558d7f84a92d22926af70e5b, type: 3}
+  _sprite: {fileID: -1739650348, guid: 804fa6bfaa5a8c144a57dab471403d7c, type: 3}
   _spriteAnimation: {fileID: 1308296690363077240}
 --- !u!1001 &5897580836380392198
 PrefabInstance:

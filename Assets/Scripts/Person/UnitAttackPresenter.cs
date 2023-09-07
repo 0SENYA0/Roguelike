@@ -22,10 +22,18 @@ namespace Assets.Person
 
         private void SetElementsSpriteForUI()
         {
-            _unitAttackView.ArmorElement.sprite =
-                _unitAttackView.ElementsSpriteView.GetElementSprite(_unit.Armor.Body.Element);
-            _unitAttackView.WeaponElement.sprite =
-                _unitAttackView.ElementsSpriteView.GetElementSprite(_unit.Weapon.Element);
+            if (_unit is not Player.Player player)
+            {
+                _unitAttackView.ArmorElement.sprite =
+                    _unitAttackView.ElementsSpriteView.GetElementSprite(_unit.Armor.Body.Element);
+                _unitAttackView.WeaponElement.sprite =
+                    _unitAttackView.ElementsSpriteView.GetElementSprite(_unit.Weapon.Element);
+            }
+
+            if (_unit is Player.Player player2)
+            {
+                Debug.Log($"count weapons in UnitAttackPresenter {player2.PlayerInventary.Weapon.Length}");
+            }
         }
 
         public Unit Unit => _unit;

@@ -126,7 +126,7 @@ MonoBehaviour:
     - {fileID: -743003528, guid: c09fe973c532ec84cb94bbefb05f1308, type: 3}
     - {fileID: 147033600, guid: c09fe973c532ec84cb94bbefb05f1308, type: 3}
     _isLoop: 0
-    _isAllowNextClip: 1
+    _isAllowNextClip: 0
     _nextState: 1
   - _state: 3
     _sprites:
@@ -134,7 +134,7 @@ MonoBehaviour:
     - {fileID: 809722755, guid: 476677ca98a9e164faa300475e7f65b4, type: 3}
     - {fileID: 1286469196, guid: 476677ca98a9e164faa300475e7f65b4, type: 3}
     _isLoop: 0
-    _isAllowNextClip: 1
+    _isAllowNextClip: 0
     _nextState: 1
   - _state: 4
     _sprites:
@@ -202,16 +202,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 650005916079682763}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c653fe2e0bcf4071902489e9fc46694b, type: 3}
+  m_Script: {fileID: 11500000, guid: 525bcf98ae9342ad9ea6e1ab678415ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
-  _name: Orb Mage
+  _name: 
   _data: 
-  _health: 10
+  _health: 0
   _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
   _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
-  _sprite: {fileID: 343736472, guid: 201b1cb6a34beff4f918eb487f7772f7, type: 3}
+  _sprite: {fileID: -1092259985, guid: 804fa6bfaa5a8c144a57dab471403d7c, type: 3}
   _spriteAnimation: {fileID: 2916529675048236175}
 --- !u!1001 &2800589808258746356
 PrefabInstance:

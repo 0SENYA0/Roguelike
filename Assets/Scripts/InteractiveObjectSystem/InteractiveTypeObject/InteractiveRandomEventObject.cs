@@ -12,6 +12,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
         
         private EnemyPresenter _enemyPresenter;
         public InteractiveLootObject InteractiveLootObject => _interactiveLootObject;
+        public EnemyPresenter EnemyPresenter => _enemyPresenter;
         public IEnemyPresenter GetRandomEnemyPresenter() => 
             _enemyPresenter = new EnemyPresenter(_enemyView[Random.Range(0, _enemyView.Count)]);
     }

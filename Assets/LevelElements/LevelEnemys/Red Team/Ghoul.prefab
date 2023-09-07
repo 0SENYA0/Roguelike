@@ -121,7 +121,7 @@ MonoBehaviour:
     - {fileID: -2060146382, guid: 92a05741fb2755746bd5785b72cc3af6, type: 3}
     - {fileID: -664275203, guid: 92a05741fb2755746bd5785b72cc3af6, type: 3}
     _isLoop: 0
-    _isAllowNextClip: 1
+    _isAllowNextClip: 0
     _nextState: 1
   - _state: 3
     _sprites:
@@ -130,7 +130,7 @@ MonoBehaviour:
     - {fileID: 1510444372, guid: 92a05741fb2755746bd5785b72cc3af6, type: 3}
     - {fileID: 1782646647, guid: 92a05741fb2755746bd5785b72cc3af6, type: 3}
     _isLoop: 0
-    _isAllowNextClip: 1
+    _isAllowNextClip: 0
     _nextState: 1
   - _state: 4
     _sprites:
@@ -200,16 +200,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 8303623860672087052}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c653fe2e0bcf4071902489e9fc46694b, type: 3}
+  m_Script: {fileID: 11500000, guid: 525bcf98ae9342ad9ea6e1ab678415ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
-  _name: Ghoul
+  _name: 
   _data: 
-  _health: 10
+  _health: 12
   _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
   _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
-  _sprite: {fileID: -587702106, guid: 92a05741fb2755746bd5785b72cc3af6, type: 3}
+  _sprite: {fileID: -881708772, guid: 804fa6bfaa5a8c144a57dab471403d7c, type: 3}
   _spriteAnimation: {fileID: 3914485625993381693}
 --- !u!1001 &8283123137947846983
 PrefabInstance:

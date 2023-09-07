@@ -1,8 +1,6 @@
-using Assets.DefendItems;
 using Assets.Enemy;
-using Assets.Interface;
 using Assets.Person;
-using Assets.Weapon;
+using UnityEngine;
 
 namespace Assets.Player
 {
@@ -23,24 +21,16 @@ namespace Assets.Player
 
         private Player GetNewPlayer()
         {
-            // Если это первый раз или игрок потерял все жизни создаём стартовый билд
-
-            ArmorFactory armorFactory = new ArmorFactory();
-            Armor armor = armorFactory.Create(
-                new Body(_playerView.ArmorScriptableObject.BodyPart.Value,
-                    _playerView.ArmorScriptableObject.BodyPart.Element),
-                new Head(_playerView.ArmorScriptableObject.HeadPart.Value),
-                _playerView.ArmorScriptableObject.ParticleSystem);
-
-            WeaponFactory weaponFactory = new WeaponFactory();
-            IWeapon weapon = weaponFactory.Create(
-                _playerView.WeaponScriptableObject.Damage, _playerView.WeaponScriptableObject.Element,
-                _playerView.WeaponScriptableObject.ChanceToSplash,
-                _playerView.WeaponScriptableObject.MinValueToCriticalDamage,
-                _playerView.WeaponScriptableObject.ValueModifier, _playerView.WeaponScriptableObject.ParticleSystem);
-
-            Player player = new Player(_playerView.Health, weapon, armor, new MagicItem(), _playerView.SpriteAnimation);
+            Player player = new Player(
+                _playerView.Health,
+                new PlayerInventary(_playerView.PlayerInventory.GetWeapons(), _playerView.PlayerInventory.GetArmors(), _playerView.PlayerInventory.MagicItems),
+                _playerView.SpriteAnimation);
+            
+            Debug.Log($"{_playerView.PlayerInventory.GetArmors().Length}");
+            Debug.Log($"{player.PlayerInventary.Armor.Length}");
+            
             player.Sprite = _playerView.Sprite;
+
             return player;
         }
     }

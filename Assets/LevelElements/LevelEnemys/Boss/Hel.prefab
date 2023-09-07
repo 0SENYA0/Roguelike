@@ -143,7 +143,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 3be02c3eb476e75499a0f469acf23f95, type: 3}
     - {fileID: 21300000, guid: d3d19a7cf25181042bcee64e037b4c12, type: 3}
     _isLoop: 0
-    _isAllowNextClip: 1
+    _isAllowNextClip: 0
     _nextState: 1
   - _state: 3
     _sprites:
@@ -156,7 +156,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: e3c9c309d10d26140a5da9e74f35f3e7, type: 3}
     - {fileID: 21300000, guid: c06316afeaef1c9418bb24aa7b60a9d0, type: 3}
     _isLoop: 0
-    _isAllowNextClip: 1
+    _isAllowNextClip: 0
     _nextState: 1
   - _state: 4
     _sprites:
@@ -255,16 +255,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 4640937218298356165}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c653fe2e0bcf4071902489e9fc46694b, type: 3}
+  m_Script: {fileID: 11500000, guid: 525bcf98ae9342ad9ea6e1ab678415ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 3
-  _name: Hel
+  _name: 
   _data: 
-  _health: 100
+  _health: 12
   _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
   _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
-  _sprite: {fileID: 21300000, guid: 9bba9ccc5b5223f4db10f785677ebe0b, type: 3}
+  _sprite: {fileID: -1430145205, guid: caf2fb99b8873204aa1edbba6fac5ecf, type: 3}
   _spriteAnimation: {fileID: 5845240165573494407}
 --- !u!1001 &7657140629853296632
 PrefabInstance:

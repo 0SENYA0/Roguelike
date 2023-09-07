@@ -132,7 +132,6 @@ namespace Assets.Person
             }
         }
 
-
         private class Clip
         {
             public Clip(Sprite[] sprites, Assets.Scripts.AnimationComponent.AnimationState state, bool isLoop,
@@ -169,7 +168,8 @@ namespace Assets.Person
 
         private void GetActiveHealth()
         {
-            _activeHealth = _health.Where(x => x.gameObject.activeSelf).ToList();
+            //_activeHealth = _health.Where(healthBarView => healthBarView.gameObject.activeSelf).ToList();
+            _activeHealth = _health.Where(healthBarView => healthBarView.gameObject.activeSelf).ToList();
             _currentHealthImage = _activeHealth[_activeHealth.Count - 1];
         }
     }

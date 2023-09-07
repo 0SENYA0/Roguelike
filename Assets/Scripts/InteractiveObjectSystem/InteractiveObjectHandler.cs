@@ -20,19 +20,20 @@ namespace Assets.Scripts.InteractiveObjectSystem
         [SerializeField] private float _minDistanceToStartBattle = 10.1f;
         [SerializeField] private Button _closeButton;
         [Space] [SerializeField] private UIFight _battlefild;
-        [SerializeField] private RandomEventView eventPanel;
-
+        [SerializeField] private RandomEventView _eventPanel;
+        [SerializeField] private LootInfoView _lootInfoView;
+        
         private InteractiveObject _targetObject;
         private float _distance;
 
         private void Awake()
         {
-            _closeButton.onClick.AddListener(CloseBattlefild);
+            //_closeButton.onClick.AddListener(CloseBattlefild);
         }
 
         private void OnDestroy()
         {
-            _closeButton.onClick.RemoveListener(CloseBattlefild);
+            //_closeButton.onClick.RemoveListener(CloseBattlefild);
         }
 
         public void ProduceInteraction(InteractiveObject targetObject, Vector3 targetPosition)
@@ -43,14 +44,16 @@ namespace Assets.Scripts.InteractiveObjectSystem
             Action openPanel = () => { };
 
             IPlayerPresenter playerPresenter = FindObjectOfType<PlayerView>().PlayerPresenter;
-            
+            Debug.Log($"count weapons in InteractiveObjectHandler {playerPresenter.Player.PlayerInventary is null}");
+            Debug.Log($"count weapons in InteractiveObjectHandler {playerPresenter.Player.PlayerInventary.Weapon.Length}");
+
             if (targetObject.TryGetComponent(out EnemyView enemyView))
                 openPanel = () => { Curtain.Instance.ShowAnimation(() => 
                     { _battlefild.SetActiveFightPlace(playerPresenter, enemyView.EnemyPresenter); }); };
-            else if (targetObject.TryGetComponent(out InteractiveLootObject lootObject))
-                openPanel = () => { eventPanel.ShowPanel(this); };
+             else if (targetObject.TryGetComponent(out InteractiveLootObject lootObject))
+                openPanel = () => { _lootInfoView.Show(lootObject); };
             else if (targetObject.TryGetComponent(out InteractiveRandomEventObject randomEventObject))
-                openPanel = CreateRandomEvent();
+                openPanel = CreateRandomEvent(randomEventObject);
 
             StartCoroutine(GoToTarget(targetPosition, openPanel));
         }
@@ -68,21 +71,25 @@ namespace Assets.Scripts.InteractiveObjectSystem
             ReturnToGlobalMap();
         }
 
-        private Action CreateRandomEvent()
-        {
-            var levelRandomEvent = new LevelRandomEvent();
-            var randomEvent = levelRandomEvent.GetRandomEvent();
+        private Action CreateRandomEvent(InteractiveRandomEventObject randomEventObject)
+        {            
+            IPlayerPresenter playerPresenter = FindObjectOfType<PlayerView>().PlayerPresenter;
+
+            LevelRandomEvent levelRandomEvent = new LevelRandomEvent();
+            RandomEventType randomEvent = levelRandomEvent.GetRandomEvent();
 
             switch (randomEvent)
             {
                 case RandomEventType.Enemy:
-                    return () => { Curtain.Instance.ShowAnimation(() => { _battlefild.gameObject.SetActive(true); }); };
-                // case RandomEventType.Loot:
-                //     return () => { eventPanel.ShowPanel(this); };
-                // case RandomEventType.AD:
-                //     return () => { eventPanel.ShowPanel(this); };
-                default:
-                    return () => { _battlefild.gameObject.SetActive(true); };
+                    return () => { Curtain.Instance.ShowAnimation(
+                        () => { _battlefild.SetActiveFightPlace(playerPresenter, randomEventObject.EnemyPresenter); }); };                // case RandomEventType.Loot:
+                case RandomEventType.Loot:
+                    return () => { _lootInfoView.Show(randomEventObject.InteractiveLootObject); };
+                case RandomEventType.AD:
+                    return () => { _eventPanel.ShowPanel(this); };
+                   default:
+                       return () => { Curtain.Instance.ShowAnimation(
+                        () => { _battlefild.SetActiveFightPlace(playerPresenter, randomEventObject.EnemyPresenter); }); };
             }
         }
 

@@ -122,14 +122,14 @@ MonoBehaviour:
     - {fileID: -1880668067, guid: 0933af03f1227334997686116054654b, type: 3}
     - {fileID: -1110964813, guid: 0933af03f1227334997686116054654b, type: 3}
     _isLoop: 0
-    _isAllowNextClip: 1
+    _isAllowNextClip: 0
     _nextState: 1
   - _state: 3
     _sprites:
     - {fileID: -1655191597, guid: 325a3c30f2a0aa44fb0726bcba56ceca, type: 3}
     - {fileID: 1198416702, guid: 325a3c30f2a0aa44fb0726bcba56ceca, type: 3}
     _isLoop: 0
-    _isAllowNextClip: 1
+    _isAllowNextClip: 0
     _nextState: 1
   - _state: 4
     _sprites:
@@ -198,16 +198,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 6219443713543551481}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c653fe2e0bcf4071902489e9fc46694b, type: 3}
+  m_Script: {fileID: 11500000, guid: 525bcf98ae9342ad9ea6e1ab678415ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
-  _name: Mud Guard
+  _name: 
   _data: 
-  _health: 10
+  _health: 12
   _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
   _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
-  _sprite: {fileID: 946646806, guid: b7fd1132f21e0a845ae70b6d3dbed24e, type: 3}
+  _sprite: {fileID: -881708772, guid: 804fa6bfaa5a8c144a57dab471403d7c, type: 3}
   _spriteAnimation: {fileID: 4201487442030937849}
 --- !u!1001 &923768978139541941
 PrefabInstance:

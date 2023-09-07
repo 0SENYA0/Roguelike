@@ -7,50 +7,40 @@ namespace Assets.Fight
 {
     public class ElementInfoLine : MonoBehaviour, IElementInfoLine
     {
-        [SerializeField] private Element.Element _element;
+        [field: SerializeField] public Element.Element Element { get; set; }
 
         [SerializeField] private LineInfo _lineInfo;
 
-        public Element.Element Element => _element;
         public ILineInfo InfoInLine => _lineInfo;
 
         [Serializable]
         class LineInfo : ILineInfo
         {
-            [SerializeField] private TMP_Text _damage;
-            [SerializeField] private TMP_Text _chanceToSplash;
-            [SerializeField] private TMP_Text _chanceCriticalDamage;
-            [SerializeField] private TMP_Text _valueModifier;
+            [field: SerializeField] public TMP_Text Damage { get; set; }
+            [field: SerializeField] public TMP_Text ChanceToSplash { get; set; }
+            [field: SerializeField] public TMP_Text ChanceCriticalDamage { get; set; }
+            [field: SerializeField] public TMP_Text ValueModifier { get; set; }
             [SerializeField] private Button _buttonAttack;
-
-            public TMP_Text Damage => _damage;
-
-            public TMP_Text ChanceToSplash => _chanceToSplash;
-
-            public TMP_Text ChanceCriticalDamage => _chanceCriticalDamage;
-
-            public TMP_Text ValueModifier => _valueModifier;
 
             public Button ButtonAttack => _buttonAttack;
         }
-
     }
 
     public interface ILineInfo
     {
-        public TMP_Text Damage { get; }
+        public TMP_Text Damage { get; set; }
 
-        public TMP_Text ChanceToSplash { get; }
+        public TMP_Text ChanceToSplash { get; set; }
 
-        public TMP_Text ChanceCriticalDamage { get; }
+        public TMP_Text ChanceCriticalDamage { get; set; }
 
-        public TMP_Text ValueModifier { get; }
+        public TMP_Text ValueModifier { get; set; }
         public Button ButtonAttack { get; }
     }
 
     public interface IElementInfoLine
     {
-        public Element.Element Element { get; }
+        public Element.Element Element { get; set; }
 
         public ILineInfo InfoInLine { get; }
     }

@@ -131,14 +131,14 @@ MonoBehaviour:
     - {fileID: 1526145132, guid: fdd4ca95d9095e74aa3e025b3c6a5249, type: 3}
     - {fileID: -1748003593, guid: fdd4ca95d9095e74aa3e025b3c6a5249, type: 3}
     _isLoop: 0
-    _isAllowNextClip: 1
+    _isAllowNextClip: 0
     _nextState: 1
   - _state: 3
     _sprites:
     - {fileID: 2120903018, guid: 05faaa82be2de544cbdf34ad8a234c37, type: 3}
     - {fileID: 1123927966, guid: 05faaa82be2de544cbdf34ad8a234c37, type: 3}
     _isLoop: 0
-    _isAllowNextClip: 1
+    _isAllowNextClip: 0
     _nextState: 1
   - _state: 4
     _sprites:
@@ -207,16 +207,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1310402763792640986}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c653fe2e0bcf4071902489e9fc46694b, type: 3}
+  m_Script: {fileID: 11500000, guid: 525bcf98ae9342ad9ea6e1ab678415ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
-  _name: Droid Zapper
+  _name: 
   _data: 
-  _health: 10
+  _health: 123
   _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
   _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
-  _sprite: {fileID: 436700369, guid: bd0faf4c3664eac479e0ee26ef7b3b67, type: 3}
+  _sprite: {fileID: -881708772, guid: 804fa6bfaa5a8c144a57dab471403d7c, type: 3}
   _spriteAnimation: {fileID: 7175715463153988616}
 --- !u!1001 &8957970385746386925
 PrefabInstance:

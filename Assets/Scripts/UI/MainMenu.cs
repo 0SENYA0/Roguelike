@@ -7,7 +7,7 @@ namespace Assets.UI
 {
     public class MainMenu : MonoBehaviour
     {
-        [SerializeField] private SoundComponent _sound;
+        //[SerializeField] private SoundComponent _sound;
         [SerializeField] private Button _startGame;
         [SerializeField] private MenuButtonItem _settings;
         [SerializeField] private MenuButtonItem _training;
@@ -15,7 +15,7 @@ namespace Assets.UI
         
         private void Start()
         {
-            _sound.Play();
+            //_sound.Play();
             Curtain.Instance.HideCurtain();
         }
 
@@ -37,7 +37,7 @@ namespace Assets.UI
 
         private void StartGame()
         {
-            _sound.Stop();
+            //_sound.Stop();
             Curtain.Instance.ShowAnimation(() => { SceneManager.LoadScene("LevelGeneration");});
         }
     }

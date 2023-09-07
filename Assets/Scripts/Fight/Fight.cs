@@ -5,6 +5,7 @@ using System.Linq;
 using Assets.Fight.Dice;
 using Assets.Interface;
 using Assets.Person;
+using Assets.Scripts.UI.Widgets;
 using Assets.Utils;
 using UnityEngine;
 using AnimationState = Assets.Scripts.AnimationComponent.AnimationState;
@@ -20,14 +21,17 @@ namespace Assets.Fight
         private readonly IStepFightView _stepFightView;
         private readonly DicePresenterAdapter _dicePresenterAdapter;
         private readonly IElementsDamagePanel _elementsDamagePanel;
+        private readonly GameObject _popupReady;
+        private readonly CustomButton _customButtonReady;
         private readonly Queue<UnitAttackPresenter> _unitsOfQueue;
         
         private int _countSteps = 10;
         private Coroutine _coroutine;
+        private bool _userIsReady;
 
         public Fight(ICoroutineRunner coroutineRunner, List<UnitAttackPresenter> enemyAttackPresenters,
             UnitAttackPresenter playerAttackPresenter, IStepFightView stepFightView,
-            DicePresenterAdapter dicePresenterAdapter, IElementsDamagePanel elementsDamagePanel)
+            DicePresenterAdapter dicePresenterAdapter, IElementsDamagePanel elementsDamagePanel, GameObject popupReady, CustomButton customButtonReady)
         {
             _coroutineRunner = coroutineRunner;
             _enemyAttackPresenters = enemyAttackPresenters;
@@ -35,19 +39,26 @@ namespace Assets.Fight
             _stepFightView = stepFightView;
             _dicePresenterAdapter = dicePresenterAdapter;
             _elementsDamagePanel = elementsDamagePanel;
-
+            _popupReady = popupReady;
+            _customButtonReady = customButtonReady;
+            _customButtonReady.onClick.AddListener(GetUserAnswer);
             _unitsOfQueue = new Queue<UnitAttackPresenter>();
 
             SubscribeOnDieEnemies();
-
+            _playerAttackPresenter.Unit.Died += ActionAfterDie;
+            
             GenerateAttackingSteps(enemyAttackPresenters, playerAttackPresenter);
         }
 
-        public void Dispose() =>
+        public void Dispose()
+        {
+            _customButtonReady.onClick.RemoveListener(GetUserAnswer);
             _dicePresenterAdapter.Dispose();
+        }
 
         public void Start()
         {
+            
             if (_coroutine != null)
                 _coroutineRunner.StopCoroutine(_coroutine);
 
@@ -56,28 +67,31 @@ namespace Assets.Fight
 
         private IEnumerator AnimateAttackCoroutine()
         {
-            EnemyViewChooser enemyChooser = new EnemyViewChooser(_elementsDamagePanel);
+            EnemyViewChooser enemyChooser = new EnemyViewChooser(_elementsDamagePanel, _playerAttackPresenter.Unit as Player.Player);
             WaitUntil waitUntil = new WaitUntil(_dicePresenterAdapter.CheckOnDicesShuffeled);
             WaitUntil untilChooseEnemy = new WaitUntil(enemyChooser.TryChooseEnemy);
-            
+            WaitUntil getUserAnswer = new WaitUntil(() => _userIsReady);
             _playerAttackPresenter.ShowAnimation(AnimationState.Idle);
 
             foreach (UnitAttackPresenter enemyAttackPresenter in _enemyAttackPresenters)
                 enemyAttackPresenter.ShowAnimation(AnimationState.Idle);
-
-            while (_enemyAttackPresenters.All(x => x.Unit.IsDie == false) && _playerAttackPresenter.Unit.IsDie == false)
+            
+            _dicePresenterAdapter.SetDisactive();
+            yield return getUserAnswer;
+            
+            while (_enemyAttackPresenters.Count > 0 && _playerAttackPresenter.Unit.IsDie == false)
             {
                 if (_unitsOfQueue.Count <= 0)
                     GenerateAttackingSteps(_enemyAttackPresenters, _playerAttackPresenter);
 
                 UnitAttackPresenter unitAttackPresenter = _unitsOfQueue.Dequeue();
 
+                _dicePresenterAdapter.SetDisactive();
+
                 if (unitAttackPresenter.Unit is Player.Player player)
                 {
-                    _dicePresenterAdapter.SetDisactive();
-
                     yield return untilChooseEnemy;
-
+                    
                     _dicePresenterAdapter.SetActive();
                     yield return waitUntil;
 
@@ -92,7 +106,7 @@ namespace Assets.Fight
 
                     #endregion
 
-                    bool isSplashAttack = _dicePresenterAdapter.LeftDiceValue == player.Weapon.ChanceToSplash;
+                    bool isSplashAttack = _dicePresenterAdapter.LeftDiceValue == enemyChooser.Weapon.ChanceToSplash;
 
                     yield return _coroutineRunner.StartCoroutine(
                         StartSingleAnimationCoroutine(AnimationState.Attack, _playerAttackPresenter));
@@ -108,7 +122,7 @@ namespace Assets.Fight
 
                         foreach (UnitAttackPresenter enemy in allLiveEnemy)
                         {
-                            enemy.Unit.TakeDamage(player.Weapon);
+                            enemy.Unit.TakeDamage(enemyChooser.Weapon);
 
                             if (enemy.Unit.IsDie)
                                 enemy.ShowAnimation(AnimationState.Dei);
@@ -118,18 +132,23 @@ namespace Assets.Fight
                     }
                     else
                     {
-                        UnitAttackPresenter randomEnemy =
-                            _enemyAttackPresenters[Random.Range(0, allLiveEnemy.Count - 1)];
+//                        UnitAttackPresenter randomEnemy =
+//                            _enemyAttackPresenters[Random.Range(0, allLiveEnemy.Count - 1)];
 
+                        UnitAttackPresenter enemy = _enemyAttackPresenters.FirstOrDefault(x => x.UnitAttackView == enemyChooser.AttackView);
+                        
+                        if (enemy is null)
+                            throw new NullReferenceException("выбранный враг is null");
+                        
                         yield return _coroutineRunner.StartCoroutine(
-                            StartSingleAnimationCoroutine(AnimationState.Hit, randomEnemy));
+                            StartSingleAnimationCoroutine(AnimationState.Hit, enemy));
 
-                        randomEnemy.Unit.TakeDamage(player.Weapon);
+                        enemy.Unit.TakeDamage(enemyChooser.Weapon);
 
-                        if (randomEnemy.Unit.IsDie)
-                            randomEnemy.ShowAnimation(AnimationState.Dei);
+                        if (enemy.Unit.IsDie)
+                            enemy.ShowAnimation(AnimationState.Dei);
                         else
-                            randomEnemy.ShowAnimation(AnimationState.Idle);
+                            enemy.ShowAnimation(AnimationState.Idle);
                     }
                     
                     Debug.Log("Игрок походил жизни врагов = ");
@@ -140,7 +159,6 @@ namespace Assets.Fight
                 else if (unitAttackPresenter.Unit is Enemy.Enemy enemy)
                 {
                     Debug.Log($"Ходит враг жизни игрока = {_playerAttackPresenter.Unit.Healh}");
-                    _dicePresenterAdapter.SetDisactive();
 
                     yield return _coroutineRunner.StartCoroutine(
                         StartSingleAnimationCoroutine(AnimationState.Attack, unitAttackPresenter));
@@ -158,9 +176,14 @@ namespace Assets.Fight
 
                     Debug.Log($"Враг походил жизни игрока = {_playerAttackPresenter.Unit.Healh}");
                 }
-
-                yield return new WaitForSeconds(2);
             }
+            Debug.Log("Конец боя");
+        }
+
+        private void GetUserAnswer()
+        {
+            _popupReady.gameObject.SetActive(false);
+            _userIsReady = true;
         }
 
         private IEnumerator StartSingleAnimationCoroutine(AnimationState animationState,
@@ -191,6 +214,7 @@ namespace Assets.Fight
         private void GenerateAttackingSteps(List<UnitAttackPresenter> enemyAttackPresenters,
             UnitAttackPresenter playerAttackPresenter)
         {
+            _unitsOfQueue.Clear();
             List<UnitAttackPresenter> persons = new List<UnitAttackPresenter>();
 
             foreach (UnitAttackPresenter enemyAttackPresenter in enemyAttackPresenters)
@@ -212,7 +236,22 @@ namespace Assets.Fight
                 unitAttackPresenter.Unit.Died += ActionAfterDie;
         }
 
-        private void ActionAfterDie(Unit unit) =>
-            Debug.Log("Я вмЭр");
+        private void ActionAfterDie(Unit unit)
+        {
+            if (_playerAttackPresenter.Unit == unit)
+            {
+                Debug.Log("Я вмЭр");
+                StartSingleAnimationCoroutine(AnimationState.Dei, _playerAttackPresenter);
+            }
+            else
+            {
+                Debug.Log("враг вмЭр");
+                UnitAttackPresenter enemyPresenter = _enemyAttackPresenters.FirstOrDefault(x => x.Unit == unit);
+                _enemyAttackPresenters.Remove(enemyPresenter);
+
+                GenerateAttackingSteps(_enemyAttackPresenters, _playerAttackPresenter);
+                StartSingleAnimationCoroutine(AnimationState.Dei, enemyPresenter);
+            }
+        }
     }
 }

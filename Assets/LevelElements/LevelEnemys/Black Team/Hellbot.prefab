@@ -122,14 +122,14 @@ MonoBehaviour:
     - {fileID: -1022332256, guid: 102443bb26ce73d46b7a8876327c6634, type: 3}
     - {fileID: 364579788, guid: 102443bb26ce73d46b7a8876327c6634, type: 3}
     _isLoop: 0
-    _isAllowNextClip: 1
+    _isAllowNextClip: 0
     _nextState: 1
   - _state: 3
     _sprites:
     - {fileID: -1187982933, guid: 1c864205339efc94db625e21ea2c06cf, type: 3}
     - {fileID: 1944317032, guid: 1c864205339efc94db625e21ea2c06cf, type: 3}
     _isLoop: 0
-    _isAllowNextClip: 1
+    _isAllowNextClip: 0
     _nextState: 1
   - _state: 4
     _sprites:
@@ -201,16 +201,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 4941530108197982103}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c653fe2e0bcf4071902489e9fc46694b, type: 3}
+  m_Script: {fileID: 11500000, guid: 525bcf98ae9342ad9ea6e1ab678415ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
-  _name: Hell bot
+  _name: 
   _data: 
-  _health: 10
+  _health: 20
   _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
   _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
-  _sprite: {fileID: -838105547, guid: 4ce437b0494a7a549b071034195734d9, type: 3}
+  _sprite: {fileID: -1308653317, guid: 804fa6bfaa5a8c144a57dab471403d7c, type: 3}
   _spriteAnimation: {fileID: 4881698709050121933}
 --- !u!1001 &5659645083361776975
 PrefabInstance:
