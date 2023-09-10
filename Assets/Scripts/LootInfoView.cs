@@ -27,7 +27,7 @@ namespace Assets
         {
             gameObject.SetActive(true);
 
-            if (lootObject.Weapon is not null)
+            if (lootObject.Weapon != null)
             {
                 _defendImage.gameObject.SetActive(false);
                 _attackImage.gameObject.SetActive(true);
