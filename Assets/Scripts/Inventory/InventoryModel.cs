@@ -6,14 +6,21 @@ namespace Assets.Inventory
 {
     public class InventoryModel
     {
-        private Armor[] _armors;
-        private IWeapon[] _weapons;
-        private MagicItem[] _magicItems;
-        public InventoryModel()
+        private readonly IWeapon[] _weapon;
+        private readonly Armor[] _armor;
+        private readonly MagicItem[] _magicItem;
+
+        public InventoryModel(IWeapon[] weapon, Armor[] armor, MagicItem[] magicItem)
         {
-            _armors = new Armor[5];
-            _weapons = new IWeapon[5];
-            _magicItems = new MagicItem[5];
+            _weapon = weapon;
+            _armor = armor;
+            _magicItem = magicItem;
         }
+
+        public IWeapon[] Weapon => _weapon;
+
+        public Armor[] Armor => _armor;
+
+        public MagicItem[] MagicItem => _magicItem;
     }
 }

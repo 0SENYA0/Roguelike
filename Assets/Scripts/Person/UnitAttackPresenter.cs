@@ -29,11 +29,6 @@ namespace Assets.Person
                 _unitAttackView.WeaponElement.sprite =
                     _unitAttackView.ElementsSpriteView.GetElementSprite(_unit.Weapon.Element);
             }
-
-            if (_unit is Player.Player player2)
-            {
-                Debug.Log($"count weapons in UnitAttackPresenter {player2.PlayerInventary.Weapon.Length}");
-            }
         }
 
         public Unit Unit => _unit;

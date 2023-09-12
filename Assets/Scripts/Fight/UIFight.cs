@@ -14,7 +14,7 @@ namespace Assets.Fight
         [SerializeField] private Transform _globalMap;
         [SerializeField] private Transform _battlefieldMap;
         [SerializeField] private FightPlace _fightPlace;
-
+        [SerializeField] private ElementsSpriteView _elementsSpriteView;
         private IPlayerPresenter _playerPresenter;
         private IEnemyPresenter _enemyPresenter;
 
@@ -26,7 +26,7 @@ namespace Assets.Fight
             _battlefieldMap.gameObject.SetActive(true);
             _globalMap.gameObject.SetActive(false);
 
-            _fightPlace.Set(_playerPresenter, _enemyPresenter);
+            _fightPlace.Set(_playerPresenter, _enemyPresenter, _elementsSpriteView);
         }
     }
 }

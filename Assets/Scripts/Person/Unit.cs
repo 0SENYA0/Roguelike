@@ -42,6 +42,7 @@ namespace Assets.Person
         {
             CalculateDamageMultiplier(weapon);
             ConditionForDead();
+            HealthChanged?.Invoke(_health);
         }
 
         protected virtual void ConditionForDead()
@@ -63,11 +64,9 @@ namespace Assets.Person
             
             float damageMultiplier = weapon.Damage / (CalculateDamageModifier(weapon.Element) * weapon.Damage + (_armor.Body.Value + _armor.Head.Value));
             _health -= damageMultiplier * weapon.Damage;
-            
-            HealthChanged?.Invoke(_health);
         }
 
-        private float CalculateDamageModifier(Element element) =>
+        protected virtual float CalculateDamageModifier(Element element) =>
             ElementManager.GetDamageModifier(element, _armor.Body.Element);
     }
 }

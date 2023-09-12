@@ -6,6 +6,7 @@ using Assets.Interface;
 using Assets.Person;
 using Assets.Player;
 using Assets.ScriptableObjects;
+using Assets.Scripts.InteractiveObjectSystem;
 using Assets.Scripts.UI.Widgets;
 using UnityEngine;
 
@@ -49,16 +50,16 @@ namespace Assets.Fight
 
             #region Add subscrib event on click panel InfoInLine
 
-            _IelementsDamagePanel.FireElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(_IelementsDamagePanel
-                .HidePanel);
-            _IelementsDamagePanel.MetalElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(_IelementsDamagePanel
-                .HidePanel);
-            _IelementsDamagePanel.StoneElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(_IelementsDamagePanel
-                .HidePanel);
-            _IelementsDamagePanel.TreeElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(_IelementsDamagePanel
-                .HidePanel);
-            _IelementsDamagePanel.WaterElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(_IelementsDamagePanel
-                .HidePanel);
+            // _IelementsDamagePanel.FireElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(_IelementsDamagePanel
+            //     .HidePanel);
+            // _IelementsDamagePanel.MetalElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(_IelementsDamagePanel
+            //     .HidePanel);
+            // _IelementsDamagePanel.StoneElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(_IelementsDamagePanel
+            //     .HidePanel);
+            // _IelementsDamagePanel.TreeElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(_IelementsDamagePanel
+            //     .HidePanel);
+            // _IelementsDamagePanel.WaterElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(_IelementsDamagePanel
+            //     .HidePanel);
 
             #endregion
         }
@@ -69,16 +70,16 @@ namespace Assets.Fight
 
             #region Remove subscrib event on click panel InfoInLine
 
-            _IelementsDamagePanel.FireElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(
-                _IelementsDamagePanel.HidePanel);
-            _IelementsDamagePanel.MetalElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(
-                _IelementsDamagePanel.HidePanel);
-            _IelementsDamagePanel.StoneElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(
-                _IelementsDamagePanel.HidePanel);
-            _IelementsDamagePanel.TreeElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(
-                _IelementsDamagePanel.HidePanel);
-            _IelementsDamagePanel.WaterElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(
-                _IelementsDamagePanel.HidePanel);
+            // _IelementsDamagePanel.FireElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(
+            //     _IelementsDamagePanel.HidePanel);
+            // _IelementsDamagePanel.MetalElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(
+            //     _IelementsDamagePanel.HidePanel);
+            // _IelementsDamagePanel.StoneElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(
+            //     _IelementsDamagePanel.HidePanel);
+            // _IelementsDamagePanel.TreeElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(
+            //     _IelementsDamagePanel.HidePanel);
+            // _IelementsDamagePanel.WaterElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(
+            //     _IelementsDamagePanel.HidePanel);
 
             #endregion
         }
@@ -92,11 +93,8 @@ namespace Assets.Fight
         }
 
 
-        public void Set(IPlayerPresenter playerPresenter, IEnemyPresenter enemyPresenter)
+        public void Set(IPlayerPresenter playerPresenter, IEnemyPresenter enemyPresenter, ElementsSpriteView elementsSpriteView)
         {
-            //FillElementsDamagePanel(playerPresenter);
-            Debug.Log($"count weapons in FightPlace {playerPresenter.Player.PlayerInventary.Weapon.Length}");
-
             foreach (UnitAttackView unitAttackView in _enemyAttackViews)
                 unitAttackView.gameObject.SetActive(false);
 
@@ -112,7 +110,7 @@ namespace Assets.Fight
                 enemyAttackPresenters.Add(new UnitAttackPresenter(enemyPresenter.Enemy[i], _enemyAttackViews[i]));
 
             _fight = new Fight(this, enemyAttackPresenters, playerAttackPresenter, _stepFightView,
-                GetDicePresenterAdapter(), _IelementsDamagePanel, _popupReady, _customButtonReady);
+                GetDicePresenterAdapter(), _IelementsDamagePanel, _popupReady, _customButtonReady, elementsSpriteView);
 
             _fight.Start();
 
