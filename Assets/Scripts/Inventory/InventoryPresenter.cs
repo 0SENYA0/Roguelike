@@ -73,7 +73,7 @@ namespace Assets.Inventory
         {
             foreach (DefendItemLineView defendItemLineView in _inventoryView.DefendItemLineView)
             {
-                defendItemLineView.gameObject.SetActive(true);
+                defendItemLineView.CustomButton.gameObject.SetActive(true);
             }
         }
     }
