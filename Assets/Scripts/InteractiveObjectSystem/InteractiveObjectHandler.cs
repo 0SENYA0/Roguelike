@@ -44,8 +44,6 @@ namespace Assets.Scripts.InteractiveObjectSystem
             Action openPanel = () => { };
 
             IPlayerPresenter playerPresenter = FindObjectOfType<PlayerView>().PlayerPresenter;
-            Debug.Log($"count weapons in InteractiveObjectHandler {playerPresenter.Player.PlayerInventary is null}");
-            Debug.Log($"count weapons in InteractiveObjectHandler {playerPresenter.Player.PlayerInventary.Weapon.Length}");
 
             if (targetObject.TryGetComponent(out EnemyView enemyView))
                 openPanel = () => { Curtain.Instance.ShowAnimation(() => 

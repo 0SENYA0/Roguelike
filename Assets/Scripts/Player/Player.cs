@@ -1,62 +1,50 @@
 using System;
 using Assets.DefendItems;
+using Assets.Fight.Element;
 using Assets.Interface;
+using Assets.Inventory;
 using Assets.Person;
-using Assets.Person.PersonStates;
 using Assets.Scripts.AnimationComponent;
-using UnityEngine;
 
 namespace Assets.Player
 {
     public class Player : Unit
     {
-        private int _health;
+        private float _health;
+        private readonly InventoryPresenter _inventoryPresenter;
+
+        public InventoryPresenter InventoryPresenter => _inventoryPresenter;
+
         private readonly IWeapon _weapon;
         private readonly Armor _armor;
         private readonly MagicItem _magicItem;
-        private readonly PlayerInventary _playerInventary;
 
-        public Player(int health, IWeapon weapon, Armor armor, MagicItem magicItem, SpriteAnimation spriteAnimation)
-            : base(health, weapon, armor, magicItem, spriteAnimation)
-        {
-            _health = health;
-            _weapon = weapon;
-            _armor = armor;
-            _magicItem = magicItem;
-        }
-
-        public Player(int health, PlayerInventary playerInventary, SpriteAnimation spriteAnimation)
+        public Player(float health,
+            InventoryPresenter inventoryPresenter,
+            SpriteAnimation spriteAnimation)
             : base(health, null, null, null, spriteAnimation)
         {
-            _playerInventary = playerInventary;
             _health = health;
+            _inventoryPresenter = inventoryPresenter;
         }
 
         protected override void CalculateDamageMultiplier(IWeapon weapon)
         {
             _health -= Convert.ToInt32(weapon.Damage);
+
+            if (IsDie)
+                return;
+
+            float damageMultiplier = weapon.Damage /
+                                     (this.CalculateDamageModifier(weapon.Element)
+                                      * weapon.Damage
+                                      + (_inventoryPresenter.ActiveArmor.Body.Value +
+                                         _inventoryPresenter.ActiveArmor.Head.Value)
+                                     );
+            _health -= damageMultiplier * weapon.Damage;
         }
-
-        public PlayerInventary PlayerInventary => _playerInventary;
-    }
-
-    public class PlayerInventary
-    {
-        private readonly IWeapon[] _weapon;
-        private readonly Armor[] _armor;
-        private readonly MagicItem[] _magicItem;
-
-        public PlayerInventary(IWeapon[] weapon, Armor[] armor, MagicItem[] magicItem)
-        {
-            _weapon = weapon;
-            _armor = armor;
-            _magicItem = magicItem;
-        }
-
-        public IWeapon[] Weapon => _weapon;
-
-        public Armor[] Armor => _armor;
-
-        public MagicItem[] MagicItem => _magicItem;
+        
+        protected override float CalculateDamageModifier(Element element) =>
+            ElementManager.GetDamageModifier(element, _inventoryPresenter.ActiveArmor.Body.Element);
     }
 }

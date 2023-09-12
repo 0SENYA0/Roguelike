@@ -7,7 +7,7 @@ namespace Assets.Fight
 {
     public class ElementInfoLine : MonoBehaviour, IElementInfoLine
     {
-        [field: SerializeField] public Element.Element Element { get; set; }
+        [field: SerializeField] public Image Element { get; set; }
 
         [SerializeField] private LineInfo _lineInfo;
 
@@ -40,7 +40,7 @@ namespace Assets.Fight
 
     public interface IElementInfoLine
     {
-        public Element.Element Element { get; set; }
+        public Image Element { get; set; }
 
         public ILineInfo InfoInLine { get; }
     }

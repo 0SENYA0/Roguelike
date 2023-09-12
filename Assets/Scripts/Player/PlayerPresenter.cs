@@ -1,4 +1,5 @@
 using Assets.Enemy;
+using Assets.Inventory;
 using Assets.Person;
 using UnityEngine;
 
@@ -7,12 +8,14 @@ namespace Assets.Player
     public class PlayerPresenter : IPlayerPresenter
     {
         private readonly PlayerView _playerView;
+        private readonly InventoryPresenter _inventoryPresenter;
 
         private readonly Player _player;
 
-        public PlayerPresenter(PlayerView playerView)
+        public PlayerPresenter(PlayerView playerView, InventoryPresenter inventoryPresenter)
         {
             _playerView = playerView;
+            _inventoryPresenter = inventoryPresenter;
             _player = GetNewPlayer();
         }
 
@@ -23,11 +26,8 @@ namespace Assets.Player
         {
             Player player = new Player(
                 _playerView.Health,
-                new PlayerInventary(_playerView.PlayerInventory.GetWeapons(), _playerView.PlayerInventory.GetArmors(), _playerView.PlayerInventory.MagicItems),
+                _inventoryPresenter,
                 _playerView.SpriteAnimation);
-            
-            Debug.Log($"{_playerView.PlayerInventory.GetArmors().Length}");
-            Debug.Log($"{player.PlayerInventary.Armor.Length}");
             
             player.Sprite = _playerView.Sprite;
 

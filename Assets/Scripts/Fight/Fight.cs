@@ -5,6 +5,7 @@ using System.Linq;
 using Assets.Fight.Dice;
 using Assets.Interface;
 using Assets.Person;
+using Assets.Scripts.InteractiveObjectSystem;
 using Assets.Scripts.UI.Widgets;
 using Assets.Utils;
 using UnityEngine;
@@ -23,6 +24,7 @@ namespace Assets.Fight
         private readonly IElementsDamagePanel _elementsDamagePanel;
         private readonly GameObject _popupReady;
         private readonly CustomButton _customButtonReady;
+        private readonly ElementsSpriteView _elementsSpriteView;
         private readonly Queue<UnitAttackPresenter> _unitsOfQueue;
         
         private int _countSteps = 10;
@@ -31,7 +33,8 @@ namespace Assets.Fight
 
         public Fight(ICoroutineRunner coroutineRunner, List<UnitAttackPresenter> enemyAttackPresenters,
             UnitAttackPresenter playerAttackPresenter, IStepFightView stepFightView,
-            DicePresenterAdapter dicePresenterAdapter, IElementsDamagePanel elementsDamagePanel, GameObject popupReady, CustomButton customButtonReady)
+            DicePresenterAdapter dicePresenterAdapter, IElementsDamagePanel elementsDamagePanel, GameObject popupReady,
+            CustomButton customButtonReady, ElementsSpriteView elementsSpriteView)
         {
             _coroutineRunner = coroutineRunner;
             _enemyAttackPresenters = enemyAttackPresenters;
@@ -41,6 +44,8 @@ namespace Assets.Fight
             _elementsDamagePanel = elementsDamagePanel;
             _popupReady = popupReady;
             _customButtonReady = customButtonReady;
+            _elementsSpriteView = elementsSpriteView;
+
             _customButtonReady.onClick.AddListener(GetUserAnswer);
             _unitsOfQueue = new Queue<UnitAttackPresenter>();
 
@@ -58,7 +63,6 @@ namespace Assets.Fight
 
         public void Start()
         {
-            
             if (_coroutine != null)
                 _coroutineRunner.StopCoroutine(_coroutine);
 
@@ -67,7 +71,7 @@ namespace Assets.Fight
 
         private IEnumerator AnimateAttackCoroutine()
         {
-            EnemyViewChooser enemyChooser = new EnemyViewChooser(_elementsDamagePanel, _playerAttackPresenter.Unit as Player.Player);
+            EnemyViewChooser enemyChooser = new EnemyViewChooser(_elementsDamagePanel, _playerAttackPresenter.Unit as Player.Player, _elementsSpriteView);
             WaitUntil waitUntil = new WaitUntil(_dicePresenterAdapter.CheckOnDicesShuffeled);
             WaitUntil untilChooseEnemy = new WaitUntil(enemyChooser.TryChooseEnemy);
             WaitUntil getUserAnswer = new WaitUntil(() => _userIsReady);
