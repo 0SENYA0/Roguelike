@@ -7,10 +7,6 @@ namespace Assets.Infrastructure
 {
     public class GameSettings: IDisposable
     {
-        public ISound Sound => _sound;
-        public PlayerData PlayerData => _playerData;
-        public String CurrentLocalization => Language.ENG;
-
         private Sound _sound;
         private PlayerData _playerData;
 
@@ -20,7 +16,11 @@ namespace Assets.Infrastructure
         {
             Initialization();
         }
-        
+
+        public ISound Sound => _sound;
+        public PlayerData PlayerData => _playerData;
+        public string CurrentLocalization => _playerData.Localization;
+
         public void Dispose()
         {
             _sound.Dispose();
@@ -46,6 +46,8 @@ namespace Assets.Infrastructure
 
         public void ChangeLocalization(string lang)
         {
+            _playerData.Localization = lang;
+            _playerData.SaveData();
             OnLanguageChange?.Invoke(lang);
         }
     }
