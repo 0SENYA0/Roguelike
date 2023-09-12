@@ -206,9 +206,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
-  _name: 
+  _translationName: E_OrbMage
   _data: 
-  _health: 0
+  _health: 20
   _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
   _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
   _sprite: {fileID: -1092259985, guid: 804fa6bfaa5a8c144a57dab471403d7c, type: 3}

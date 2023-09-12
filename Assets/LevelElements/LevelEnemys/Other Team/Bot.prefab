@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
-  _name: "\u0431\u043E\u0442"
+  _translationName: E_Bot
   _data: "\u0443\u043C\u043D\u044B\u0439 \u0431\u043E\u0442"
   _health: 500
   _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}

@@ -1,6 +1,7 @@
 using System.Linq;
 using Assets.Enemy;
 using Assets.Scripts.InteractiveObjectSystem;
+using Lean.Localization;
 using TMPro;
 using UnityEngine;
 
@@ -32,7 +33,7 @@ namespace Assets
             _lable.text = null;
 
             if (enemyPresenter.Enemy.Select(x => x.IsBoss).FirstOrDefault()) 
-                _lable.text = "BOSS: ";
+                _lable.text = $"{LeanLocalization.GetTranslation("Boss").Data}: ";
 
             _lable.text += enemyPresenter.EnemyView.Name;
             _damageInfo.text = DamageInfo + enemyPresenter.Enemy.Select(x => x.Weapon).FirstOrDefault().Damage;

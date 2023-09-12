@@ -2,7 +2,7 @@ using Assets.Interface;
 using Assets.ScriptableObjects;
 using Assets.Scripts.AnimationComponent;
 using Assets.Scripts.InteractiveObjectSystem;
-using Unity.VisualScripting;
+using Lean.Localization;
 using UnityEngine;
 
 namespace Assets.Enemy
@@ -29,7 +29,7 @@ namespace Assets.Enemy
 
         public SpriteAnimation SpriteAnimation => _spriteAnimation;
 
-        public string Name => _name;
+        public string Name => LeanLocalization.GetTranslation(_translationName).Data.ToString();
 
         protected override void OnStart()
         {
