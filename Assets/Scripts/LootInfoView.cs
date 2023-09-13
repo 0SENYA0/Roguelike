@@ -21,32 +21,49 @@ namespace Assets
         private TMP_Text _data;
 
         [SerializeField] private Image _element;
-        [SerializeField] private ElementsSpriteView _elementsSpriteView;        
+        [SerializeField] private ElementsSpriteView _elementsSpriteView;
+
+        private const string WeaponKey = "Weapon";
+        private const string DamageKey = "Damage";
+        private const string ArmorKey = "Armor";
+        private const string BodyKey = "Body";
+        private const string HeadKey = "Head";
+        private const string DmgModifierKey = "DmgModifier";
+        private const string SplashChanceKey = "SplashChance";
+        private const string CriticalChanceKey = "CriticalChance";
       
         public void Show(InteractiveLootObject lootObject)
         {
             gameObject.SetActive(true);
-
+            
             if (lootObject.Weapon != null)
-            {
-                _defendImage.gameObject.SetActive(false);
-                _attackImage.gameObject.SetActive(true);
-                _element.sprite = _elementsSpriteView.GetElementSprite(lootObject.Weapon.Element);
-                _name.text = "Weapon";
-                _data.text = $"damage = {lootObject.Weapon.Damage}" +
-                             $"\nValueModifier = {lootObject.Weapon.ValueModifier}" +
-                             $"\nChanceToSplash = {lootObject.Weapon.ChanceToSplash}" +
-                             $"\nChanceToCriticalDamage {lootObject.Weapon.MinValueToCriticalDamage}";
-            }
+                ShowWeaponLootInfo(lootObject);
             else
-            {
-                _attackImage.gameObject.SetActive(false);
-                _defendImage.gameObject.SetActive(true);
-                _element.sprite = _elementsSpriteView.GetElementSprite(lootObject.Armor.Body.Element);
-                _name.text = "Armor";
-                _data.text = $"body = {lootObject.Armor.Body.Value}," +
-                             $"\nhead = {lootObject.Armor.Head.Value}";
-            }
+                ShowArmorLootInfo(lootObject);
+        }
+
+        private void ShowWeaponLootInfo(InteractiveLootObject lootObject)
+        {
+            _defendImage.gameObject.SetActive(false);
+            _attackImage.gameObject.SetActive(true);
+            _element.sprite = _elementsSpriteView.GetElementSprite(lootObject.Weapon.Element);
+            
+            _name.text = GetLocalizedText(WeaponKey);
+            _data.text = $"{GetLocalizedText(DamageKey)} = {lootObject.Weapon.Damage}\n" +
+                         $"{GetLocalizedText(DmgModifierKey)} = {lootObject.Weapon.ValueModifier}\n" +
+                         $"{GetLocalizedText(SplashChanceKey)} = {lootObject.Weapon.ChanceToSplash}\n" +
+                         $"{GetLocalizedText(CriticalChanceKey)} = {lootObject.Weapon.MinValueToCriticalDamage}";
+        }
+
+        private void ShowArmorLootInfo(InteractiveLootObject lootObject)
+        {
+            _attackImage.gameObject.SetActive(false);
+            _defendImage.gameObject.SetActive(true);
+            _element.sprite = _elementsSpriteView.GetElementSprite(lootObject.Armor.Body.Element);
+            
+            _name.text = GetLocalizedText(ArmorKey);
+            _data.text = $"{GetLocalizedText(BodyKey)} = {lootObject.Armor.Body.Value}\n" +
+                         $"{GetLocalizedText(HeadKey)} = {lootObject.Armor.Head.Value}";
         }
     }
 }

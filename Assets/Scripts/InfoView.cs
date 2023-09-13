@@ -1,4 +1,5 @@
 using System;
+using Lean.Localization;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,6 +34,11 @@ namespace Assets
         {
             UserResponse?.Invoke(false);
             gameObject.SetActive(false);
+        }
+        
+        protected string GetLocalizedText(string key)
+        {
+            return LeanLocalization.GetTranslation(key).Data.ToString();
         }
         
         [Serializable]

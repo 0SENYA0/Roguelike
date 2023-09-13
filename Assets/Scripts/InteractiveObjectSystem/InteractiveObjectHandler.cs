@@ -24,6 +24,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
         [SerializeField] private LootInfoView _lootInfoView;
         
         private InteractiveObject _targetObject;
+        private IPlayerPresenter _playerPresenter;
         private float _distance;
 
         private void Awake()
@@ -43,11 +44,11 @@ namespace Assets.Scripts.InteractiveObjectSystem
 
             Action openPanel = () => { };
 
-            IPlayerPresenter playerPresenter = FindObjectOfType<PlayerView>().PlayerPresenter;
+            _playerPresenter ??= FindObjectOfType<PlayerView>().PlayerPresenter;
 
             if (targetObject.TryGetComponent(out EnemyView enemyView))
                 openPanel = () => { Curtain.Instance.ShowAnimation(() => 
-                    { _battlefild.SetActiveFightPlace(playerPresenter, enemyView.EnemyPresenter); }); };
+                    { _battlefild.SetActiveFightPlace(_playerPresenter, enemyView.EnemyPresenter); }); };
              else if (targetObject.TryGetComponent(out InteractiveLootObject lootObject))
                 openPanel = () => { _lootInfoView.Show(lootObject); };
             else if (targetObject.TryGetComponent(out InteractiveRandomEventObject randomEventObject))

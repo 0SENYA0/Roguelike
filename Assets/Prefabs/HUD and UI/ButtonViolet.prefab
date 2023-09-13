@@ -699,7 +699,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4239145775901037023, guid: fa03ef9e3f594ed40a587acb51017178, type: 3}
+      - m_Target: {fileID: 2666712898426820049}
         m_TargetAssemblyTypeName: Assets.Scripts.SoundSystem.SoundComponent, Assembly-CSharp
         m_MethodName: Play
         m_Mode: 1
