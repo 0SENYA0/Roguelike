@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Assets.Enemy;
-using Assets.ScriptableObjects;
 using UnityEngine;
 
 namespace Assets.Scripts.InteractiveObjectSystem
@@ -10,10 +9,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
         [SerializeField] private InteractiveLootObject _interactiveLootObject;
         [SerializeField] private List<EnemyView> _enemyView;
         
-        private EnemyPresenter _enemyPresenter;
-        public InteractiveLootObject InteractiveLootObject => _interactiveLootObject;
-        public EnemyPresenter EnemyPresenter => _enemyPresenter;
-        public IEnemyPresenter GetRandomEnemyPresenter() => 
-            _enemyPresenter = new EnemyPresenter(_enemyView[Random.Range(0, _enemyView.Count)]);
+        public InteractiveLootObject RandomLoot => _interactiveLootObject;
+        public IEnemyPresenter GetRandomEnemy() => new EnemyPresenter(_enemyView[Random.Range(0, _enemyView.Count)]);
     }
 }

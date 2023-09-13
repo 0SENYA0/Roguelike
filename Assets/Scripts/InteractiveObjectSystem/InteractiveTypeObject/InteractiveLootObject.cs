@@ -26,7 +26,6 @@ namespace Assets.Scripts.InteractiveObjectSystem
             
             if (Random.Range(0, 2) == 0)
             {
-                Debug.Log("Я создал армор");
                 ArmorFactory armorFactory = new ArmorFactory();
                 _armor = armorFactory.Create(
                     new Body(_armorScriptableObject.BodyPart.Value,
@@ -36,7 +35,6 @@ namespace Assets.Scripts.InteractiveObjectSystem
             }
             else
             {
-                Debug.Log("Я создал оружие");
                 WeaponFactory weaponFactory = new WeaponFactory();
                 _weapon = weaponFactory.Create(
                     _weaponScriptableObject.Damage, _weaponScriptableObject.Element,
