@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Enemy;
 using Assets.Fight.Dice;
 using Assets.Interface;
 using Assets.Person;
@@ -26,11 +27,13 @@ namespace Assets.Fight
         private readonly CustomButton _customButtonReady;
         private readonly ElementsSpriteView _elementsSpriteView;
         private readonly Queue<UnitAttackPresenter> _unitsOfQueue;
-        
+
         private int _countSteps = 10;
         private Coroutine _coroutine;
         private bool _userIsReady;
-
+        
+        public Action FightEnded;
+        
         public Fight(ICoroutineRunner coroutineRunner, List<UnitAttackPresenter> enemyAttackPresenters,
             UnitAttackPresenter playerAttackPresenter, IStepFightView stepFightView,
             DicePresenterAdapter dicePresenterAdapter, IElementsDamagePanel elementsDamagePanel, GameObject popupReady,
@@ -51,7 +54,7 @@ namespace Assets.Fight
 
             SubscribeOnDieEnemies();
             _playerAttackPresenter.Unit.Died += ActionAfterDie;
-            
+
             GenerateAttackingSteps(enemyAttackPresenters, playerAttackPresenter);
         }
 
@@ -71,18 +74,16 @@ namespace Assets.Fight
 
         private IEnumerator AnimateAttackCoroutine()
         {
-            EnemyViewChooser enemyChooser = new EnemyViewChooser(_elementsDamagePanel, _playerAttackPresenter.Unit as Player.Player, _elementsSpriteView);
             WaitUntil waitUntil = new WaitUntil(_dicePresenterAdapter.CheckOnDicesShuffeled);
-            WaitUntil untilChooseEnemy = new WaitUntil(enemyChooser.TryChooseEnemy);
             WaitUntil getUserAnswer = new WaitUntil(() => _userIsReady);
             _playerAttackPresenter.ShowAnimation(AnimationState.Idle);
 
             foreach (UnitAttackPresenter enemyAttackPresenter in _enemyAttackPresenters)
                 enemyAttackPresenter.ShowAnimation(AnimationState.Idle);
-            
+
             _dicePresenterAdapter.SetDisactive();
             yield return getUserAnswer;
-            
+
             while (_enemyAttackPresenters.Count > 0 && _playerAttackPresenter.Unit.IsDie == false)
             {
                 if (_unitsOfQueue.Count <= 0)
@@ -94,8 +95,13 @@ namespace Assets.Fight
 
                 if (unitAttackPresenter.Unit is Player.Player player)
                 {
-                    yield return untilChooseEnemy;
+                    EnemyViewChooser enemyChooser = new EnemyViewChooser(_elementsDamagePanel,
+                        _playerAttackPresenter.Unit as Player.Player, 
+                        _enemyAttackPresenters.Select(x => x.UnitAttackView as EnemyAttackView).ToList(), 
+                        _elementsSpriteView);
                     
+                    yield return new WaitUntil(enemyChooser.TryChooseEnemy);
+
                     _dicePresenterAdapter.SetActive();
                     yield return waitUntil;
 
@@ -103,12 +109,12 @@ namespace Assets.Fight
 
                     #region Show enemy info in console
 
-                    Debug.Log("Ходит игрок жизни врагов = ");
-                    int i = 1;
-                    foreach (UnitAttackPresenter unit in _enemyAttackPresenters)
-                        Debug.Log($"{i} = {unit.Unit.Healh}");
-
-                    #endregion
+                    // Debug.Log("Ходит игрок жизни врагов = ");
+                    // int i = 1;
+                    // foreach (UnitAttackPresenter unit in _enemyAttackPresenters)
+                    //     Debug.Log($"{i} = {unit.Unit.Healh}");
+                    //
+                     #endregion
 
                     bool isSplashAttack = _dicePresenterAdapter.LeftDiceValue == enemyChooser.Weapon.ChanceToSplash;
 
@@ -136,14 +142,12 @@ namespace Assets.Fight
                     }
                     else
                     {
-//                        UnitAttackPresenter randomEnemy =
-//                            _enemyAttackPresenters[Random.Range(0, allLiveEnemy.Count - 1)];
+                        UnitAttackPresenter enemy =
+                            _enemyAttackPresenters.FirstOrDefault(x => x.UnitAttackView == enemyChooser.AttackView);
 
-                        UnitAttackPresenter enemy = _enemyAttackPresenters.FirstOrDefault(x => x.UnitAttackView == enemyChooser.AttackView);
-                        
                         if (enemy is null)
                             throw new NullReferenceException("выбранный враг is null");
-                        
+
                         yield return _coroutineRunner.StartCoroutine(
                             StartSingleAnimationCoroutine(AnimationState.Hit, enemy));
 
@@ -154,15 +158,15 @@ namespace Assets.Fight
                         else
                             enemy.ShowAnimation(AnimationState.Idle);
                     }
-                    
-                    Debug.Log("Игрок походил жизни врагов = ");
-                    int j = 1;
-                    foreach (UnitAttackPresenter unit in _enemyAttackPresenters)
-                        Debug.Log($"{j} = {unit.Unit.Healh}");
+
+                    // Debug.Log("Игрок походил жизни врагов = ");
+                    // int j = 1;
+                    // foreach (UnitAttackPresenter unit in _enemyAttackPresenters)
+                    //     Debug.Log($"{j} = {unit.Unit.Healh}");
                 }
                 else if (unitAttackPresenter.Unit is Enemy.Enemy enemy)
                 {
-                    Debug.Log($"Ходит враг жизни игрока = {_playerAttackPresenter.Unit.Healh}");
+                    // Debug.Log($"Ходит враг жизни игрока = {_playerAttackPresenter.Unit.Healh}");
 
                     yield return _coroutineRunner.StartCoroutine(
                         StartSingleAnimationCoroutine(AnimationState.Attack, unitAttackPresenter));
@@ -178,10 +182,11 @@ namespace Assets.Fight
                     else
                         _playerAttackPresenter.ShowAnimation(AnimationState.Idle);
 
-                    Debug.Log($"Враг походил жизни игрока = {_playerAttackPresenter.Unit.Healh}");
+                    //Debug.Log($"Враг походил жизни игрока = {_playerAttackPresenter.Unit.Healh}");
                 }
             }
-            Debug.Log("Конец боя");
+            
+            FightEnded?.Invoke();
         }
 
         private void GetUserAnswer()

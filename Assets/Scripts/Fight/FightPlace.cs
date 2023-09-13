@@ -29,7 +29,6 @@ namespace Assets.Fight
 
         [SerializeField] private List<UnitAttackView> _enemyAttackViews;
 
-
         [SerializeField] private GameObject _popupReady;
         [SerializeField] private CustomButton _customButtonReady;
         private Fight _fight;
@@ -43,45 +42,17 @@ namespace Assets.Fight
         private IElementsDamagePanel _IelementsDamagePanel;
         private RectTransform _playerRectTransform;
 
+        public Action FightEnded;
+
         private void OnEnable()
         {
             _IelementsDamagePanel = _elementsDamagePanel;
             _playerRectTransform = _playerPosition.GetComponent<RectTransform>();
-
-            #region Add subscrib event on click panel InfoInLine
-
-            // _IelementsDamagePanel.FireElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(_IelementsDamagePanel
-            //     .HidePanel);
-            // _IelementsDamagePanel.MetalElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(_IelementsDamagePanel
-            //     .HidePanel);
-            // _IelementsDamagePanel.StoneElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(_IelementsDamagePanel
-            //     .HidePanel);
-            // _IelementsDamagePanel.TreeElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(_IelementsDamagePanel
-            //     .HidePanel);
-            // _IelementsDamagePanel.WaterElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(_IelementsDamagePanel
-            //     .HidePanel);
-
-            #endregion
         }
 
         private void OnDisable()
         {
             _fight.Dispose();
-
-            #region Remove subscrib event on click panel InfoInLine
-
-            // _IelementsDamagePanel.FireElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(
-            //     _IelementsDamagePanel.HidePanel);
-            // _IelementsDamagePanel.MetalElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(
-            //     _IelementsDamagePanel.HidePanel);
-            // _IelementsDamagePanel.StoneElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(
-            //     _IelementsDamagePanel.HidePanel);
-            // _IelementsDamagePanel.TreeElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(
-            //     _IelementsDamagePanel.HidePanel);
-            // _IelementsDamagePanel.WaterElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(
-            //     _IelementsDamagePanel.HidePanel);
-
-            #endregion
         }
 
         private void Update()
@@ -93,7 +64,8 @@ namespace Assets.Fight
         }
 
 
-        public void Set(IPlayerPresenter playerPresenter, IEnemyPresenter enemyPresenter, ElementsSpriteView elementsSpriteView)
+        public void Set(IPlayerPresenter playerPresenter, IEnemyPresenter enemyPresenter,
+            ElementsSpriteView elementsSpriteView)
         {
             foreach (UnitAttackView unitAttackView in _enemyAttackViews)
                 unitAttackView.gameObject.SetActive(false);
@@ -112,42 +84,12 @@ namespace Assets.Fight
             _fight = new Fight(this, enemyAttackPresenters, playerAttackPresenter, _stepFightView,
                 GetDicePresenterAdapter(), _IelementsDamagePanel, _popupReady, _customButtonReady, elementsSpriteView);
 
+            _fight.FightEnded += () => FightEnded?.Invoke();
+
             _fight.Start();
 
             #endregion
         }
-
-        // private void FillElementsDamagePanel(IPlayerPresenter playerPresenter)
-        // {
-        //     IWeapon weapon = playerPresenter.Player.Weapon;
-        //
-        //     IElementsDamagePanel panel = _IelementsDamagePanel;
-        //     
-        //     panel.FireElementInfoLine.InfoInLine.Damage.text = weapon.Damage.ToString();
-        //     panel.FireElementInfoLine.InfoInLine.ChanceCriticalDamage.text = weapon.MinValueToCriticalDamage.ToString();
-        //     panel.FireElementInfoLine.InfoInLine.ChanceToSplash.text = weapon.ChanceToSplash.ToString();
-        //     panel.FireElementInfoLine.InfoInLine.ValueModifier.text = weapon.ValueModifier.ToString();
-        //     
-        //     panel.MetalElementInfoLine.InfoInLine.Damage.text = weapon.Damage.ToString();
-        //     panel.MetalElementInfoLine.InfoInLine.ChanceCriticalDamage.text = weapon.MinValueToCriticalDamage.ToString();
-        //     panel.MetalElementInfoLine.InfoInLine.ChanceToSplash.text = weapon.ChanceToSplash.ToString();
-        //     panel.MetalElementInfoLine.InfoInLine.ValueModifier.text = weapon.ValueModifier.ToString();
-        //
-        //     panel.StoneElementInfoLine.InfoInLine.Damage.text = weapon.Damage.ToString();
-        //     panel.StoneElementInfoLine.InfoInLine.ChanceCriticalDamage.text = weapon.MinValueToCriticalDamage.ToString();
-        //     panel.StoneElementInfoLine.InfoInLine.ChanceToSplash.text = weapon.ChanceToSplash.ToString();
-        //     panel.StoneElementInfoLine.InfoInLine.ValueModifier.text = weapon.ValueModifier.ToString();
-        //
-        //     panel.TreeElementInfoLine.InfoInLine.Damage.text = weapon.Damage.ToString();
-        //     panel.TreeElementInfoLine.InfoInLine.ChanceCriticalDamage.text = weapon.MinValueToCriticalDamage.ToString();
-        //     panel.TreeElementInfoLine.InfoInLine.ChanceToSplash.text = weapon.ChanceToSplash.ToString();
-        //     panel.TreeElementInfoLine.InfoInLine.ValueModifier.text = weapon.ValueModifier.ToString();
-        //
-        //     panel.WaterElementInfoLine.InfoInLine.Damage.text = weapon.Damage.ToString();
-        //     panel.WaterElementInfoLine.InfoInLine.ChanceCriticalDamage.text = weapon.MinValueToCriticalDamage.ToString();
-        //     panel.WaterElementInfoLine.InfoInLine.ChanceToSplash.text = weapon.ChanceToSplash.ToString();
-        //     panel.WaterElementInfoLine.InfoInLine.ValueModifier.text = weapon.ValueModifier.ToString();
-        // }
 
         private DicePresenterAdapter GetDicePresenterAdapter()
         {
@@ -190,7 +132,6 @@ namespace Assets.Fight
             }
         }
 
-
         private bool CheckOnTheBoss(Enemy.Enemy enemy)
         {
             if (enemy.IsBoss)
@@ -202,7 +143,6 @@ namespace Assets.Fight
 
             return false;
         }
-
 
         private void ShowEnemyUI(EnemyPoint spawnPoint)
         {

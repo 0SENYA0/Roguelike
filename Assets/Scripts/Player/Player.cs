@@ -10,7 +10,6 @@ namespace Assets.Player
 {
     public class Player : Unit
     {
-        private float _health;
         private readonly InventoryPresenter _inventoryPresenter;
 
         public InventoryPresenter InventoryPresenter => _inventoryPresenter;
