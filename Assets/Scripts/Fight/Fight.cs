@@ -55,7 +55,8 @@ namespace Assets.Fight
             SubscribeOnDieEnemies();
             _playerAttackPresenter.Unit.Died += ActionAfterDie;
 
-            GenerateAttackingSteps(enemyAttackPresenters, playerAttackPresenter);
+            GenerateAttackingSteps(_enemyAttackPresenters, playerAttackPresenter);
+            ActivateEnemyView();
         }
 
         public void Dispose()
@@ -256,10 +257,19 @@ namespace Assets.Fight
             {
                 Debug.Log("враг вмЭр");
                 UnitAttackPresenter enemyPresenter = _enemyAttackPresenters.FirstOrDefault(x => x.Unit == unit);
+                enemyPresenter.UnitAttackView.gameObject.SetActive(false);
                 _enemyAttackPresenters.Remove(enemyPresenter);
 
                 GenerateAttackingSteps(_enemyAttackPresenters, _playerAttackPresenter);
                 StartSingleAnimationCoroutine(AnimationState.Dei, enemyPresenter);
+            }
+        }
+        
+        private void ActivateEnemyView()
+        {
+            foreach (UnitAttackPresenter unitAttackPresenter in _enemyAttackPresenters)
+            {
+                unitAttackPresenter.UnitAttackView.gameObject.SetActive(true);
             }
         }
     }
