@@ -10,7 +10,7 @@ namespace Assets.Person
 {
     public  class Unit
     {
-        private float _health;
+        protected float _health;
         private IPersonStateMachine _personStateMachine;
         private IWeapon _weapon;
         private Armor _armor;
@@ -43,6 +43,7 @@ namespace Assets.Person
             CalculateDamageMultiplier(weapon);
             ConditionForDead();
             HealthChanged?.Invoke(_health);
+            Debug.Log("здоровье = "+ _health); 
         }
 
         protected virtual void ConditionForDead()

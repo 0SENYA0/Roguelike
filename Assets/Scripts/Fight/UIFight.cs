@@ -1,11 +1,8 @@
-using System;
-using System.Linq;
 using Assets.Enemy;
 using Assets.Player;
-using Assets.ScriptableObjects;
+using Assets.Scripts.GenerationSystem.LevelMovement;
 using Assets.Scripts.InteractiveObjectSystem;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Assets.Fight
 {
@@ -17,12 +14,36 @@ namespace Assets.Fight
         [SerializeField] private ElementsSpriteView _elementsSpriteView;
         private IPlayerPresenter _playerPresenter;
         private IEnemyPresenter _enemyPresenter;
+        private MouseClickTracker _mouseClickTracker;
 
+        private void OnEnable()
+        {
+            _fightPlace.FightEnded += ShowGlobalMap;
+            _fightPlace.FightEnded += HideFightMap;
+        }
+
+        private void OnDisable()
+        {
+            _fightPlace.FightEnded -= ShowGlobalMap;
+            _fightPlace.FightEnded -= HideFightMap;
+        }
+
+        private void HideFightMap()
+        {
+            _battlefieldMap.gameObject.SetActive(false);
+        }
+
+        private void ShowGlobalMap()
+        {
+            _mouseClickTracker.enabled = true;
+            _globalMap.gameObject.SetActive(true);
+        }
+        
         public void SetActiveFightPlace(IPlayerPresenter playerPresenter, IEnemyPresenter enemyPresenter)
         {
             _enemyPresenter = enemyPresenter;
             _playerPresenter = playerPresenter;
-            
+            _mouseClickTracker = _playerPresenter.PlayerView.gameObject.GetComponent<MouseClickTracker>();
             _battlefieldMap.gameObject.SetActive(true);
             _globalMap.gameObject.SetActive(false);
 

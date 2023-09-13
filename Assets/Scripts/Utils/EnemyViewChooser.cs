@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Assets.Enemy;
 using Assets.Fight;
 using Assets.Interface;
 using Assets.Person;
@@ -11,42 +13,50 @@ namespace Assets.Utils
     {
         private readonly IElementsDamagePanel _elementsDamagePanel;
         private readonly Player.Player _player;
+        private readonly IReadOnlyList<EnemyAttackView> _enemyAttackViews;
         private readonly ElementsSpriteView _elementsSpriteView;
         private UnitAttackView _attackView;
         private bool _haveClick;
         private IWeapon _weapon;
 
-        public EnemyViewChooser(IElementsDamagePanel elementsDamagePanel, Player.Player player, ElementsSpriteView elementsSpriteView)
+        public EnemyViewChooser(IElementsDamagePanel elementsDamagePanel, Player.Player player,
+            List<EnemyAttackView> enemyAttackViews, ElementsSpriteView elementsSpriteView)
         {
             _elementsDamagePanel = elementsDamagePanel;
             _player = player;
+            _enemyAttackViews = enemyAttackViews;
             _elementsSpriteView = elementsSpriteView;
 
             _elementsDamagePanel.Exit.onClick.AddListener(HidePanel);
-            FillInfoElementInfoLine(player.InventoryPresenter.InventoryModel.Weapon[0], _elementsDamagePanel.FireElementInfoLine);
+            FillInfoElementInfoLine(player.InventoryPresenter.InventoryModel.Weapon[0],
+                _elementsDamagePanel.FireElementInfoLine);
             _elementsDamagePanel.FireElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(() =>
                 GetTrue(player.InventoryPresenter.InventoryModel.Weapon[0]));
-            
-            FillInfoElementInfoLine(player.InventoryPresenter.InventoryModel.Weapon[1], _elementsDamagePanel.MetalElementInfoLine);
+
+            FillInfoElementInfoLine(player.InventoryPresenter.InventoryModel.Weapon[1],
+                _elementsDamagePanel.MetalElementInfoLine);
             _elementsDamagePanel.MetalElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(() =>
                 GetTrue(player.InventoryPresenter.InventoryModel.Weapon[1]));
-            
-            FillInfoElementInfoLine(player.InventoryPresenter.InventoryModel.Weapon[2], _elementsDamagePanel.StoneElementInfoLine);
+
+            FillInfoElementInfoLine(player.InventoryPresenter.InventoryModel.Weapon[2],
+                _elementsDamagePanel.StoneElementInfoLine);
             _elementsDamagePanel.StoneElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(() =>
                 GetTrue(player.InventoryPresenter.InventoryModel.Weapon[2]));
-            
-            FillInfoElementInfoLine(player.InventoryPresenter.InventoryModel.Weapon[3], _elementsDamagePanel.TreeElementInfoLine);
+
+            FillInfoElementInfoLine(player.InventoryPresenter.InventoryModel.Weapon[3],
+                _elementsDamagePanel.TreeElementInfoLine);
             _elementsDamagePanel.TreeElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(() =>
                 GetTrue(player.InventoryPresenter.InventoryModel.Weapon[3]));
-            
-            FillInfoElementInfoLine(player.InventoryPresenter.InventoryModel.Weapon[4], _elementsDamagePanel.WaterElementInfoLine);
+
+            FillInfoElementInfoLine(player.InventoryPresenter.InventoryModel.Weapon[4],
+                _elementsDamagePanel.WaterElementInfoLine);
             _elementsDamagePanel.WaterElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(() =>
                 GetTrue(player.InventoryPresenter.InventoryModel.Weapon[4]));
         }
-        
+
         public IWeapon Weapon => _weapon;
         public UnitAttackView AttackView => _attackView;
-        
+
         public void Dispose()
         {
             _elementsDamagePanel.FireElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(() =>
@@ -63,6 +73,11 @@ namespace Assets.Utils
 
         public bool TryChooseEnemy()
         {
+            // foreach (EnemyAttackView enemyAttackView in _enemyAttackViews)
+            // {
+            //     enemyAttackView.ShowSelecterArea();
+            // }
+            //
             if (TryGetEnemyView(out UnitAttackView unitAttackView))
             {
                 _attackView = unitAttackView;
@@ -72,6 +87,12 @@ namespace Assets.Utils
             if (_haveClick)
             {
                 _haveClick = false;
+                
+                // foreach (EnemyAttackView enemyAttackView in _enemyAttackViews)
+                // {
+                //     enemyAttackView.HideSelecterArea();
+                // }
+                
                 return true;
             }
 
