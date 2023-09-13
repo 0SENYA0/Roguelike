@@ -1,4 +1,5 @@
 using Assets.Scripts.GenerationSystem;
+using Assets.Scripts.SoundSystem;
 using Assets.TimerSystem;
 using Assets.UI;
 using Assets.UI.SettingsWindow.Localization;
@@ -10,6 +11,7 @@ namespace Assets.Infrastructure
     {
         [SerializeField] private ProceduralGeneration _generation;
         [SerializeField] private Timer _gameTimer;
+        [SerializeField] private SoundComponent _levelSound;
 
         private void Start()
         {
@@ -21,6 +23,7 @@ namespace Assets.Infrastructure
         {
             Curtain.Instance.HideCurtain();
             _gameTimer.StartTimer();
+            _levelSound.Play();
         }
     }
 }

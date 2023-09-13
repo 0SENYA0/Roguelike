@@ -8,8 +8,8 @@ using Assets.Player;
 using Assets.Scripts.GenerationSystem.LevelMovement;
 using Assets.Scripts.InteractiveObjectSystem.RandomEventSystem;
 using Assets.UI;
+using DefaultNamespace.Tools;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Assets.Scripts.InteractiveObjectSystem
 {
@@ -18,23 +18,14 @@ namespace Assets.Scripts.InteractiveObjectSystem
         [SerializeField] private MouseClickTracker _clickTracker;
         [SerializeField] private AgentMovement _agent;
         [SerializeField] private float _minDistanceToStartBattle = 10.1f;
-        [SerializeField] private Button _closeButton;
-        [Space] [SerializeField] private UIFight _battlefild;
+        [Space] 
+        [SerializeField] private UIFight _battlefild;
         [SerializeField] private RandomEventView _eventPanel;
         [SerializeField] private LootInfoView _lootInfoView;
-        
+
         private InteractiveObject _targetObject;
+        private IPlayerPresenter _playerPresenter;
         private float _distance;
-
-        private void Awake()
-        {
-            //_closeButton.onClick.AddListener(CloseBattlefild);
-        }
-
-        private void OnDestroy()
-        {
-            //_closeButton.onClick.RemoveListener(CloseBattlefild);
-        }
 
         public void ProduceInteraction(InteractiveObject targetObject, Vector3 targetPosition)
         {
@@ -43,51 +34,75 @@ namespace Assets.Scripts.InteractiveObjectSystem
 
             Action openPanel = () => { };
 
-            IPlayerPresenter playerPresenter = FindObjectOfType<PlayerView>().PlayerPresenter;
+            _playerPresenter ??= FindObjectOfType<PlayerView>().PlayerPresenter;
 
             if (targetObject.TryGetComponent(out EnemyView enemyView))
-                openPanel = () => { Curtain.Instance.ShowAnimation(() => 
-                    { _battlefild.SetActiveFightPlace(playerPresenter, enemyView.EnemyPresenter); }); };
-             else if (targetObject.TryGetComponent(out InteractiveLootObject lootObject))
-                openPanel = () => { _lootInfoView.Show(lootObject); };
+            {
+                openPanel = () =>
+                {
+                    Curtain.Instance.ShowAnimation(() =>
+                    {
+                        _battlefild.SetActiveFightPlace(_playerPresenter, enemyView.EnemyPresenter);
+                    });
+                };
+            }
+            else if (targetObject.TryGetComponent(out InteractiveLootObject lootObject))
+            {
+                openPanel = () =>
+                {
+                    _clickTracker.enabled = true;
+                    _targetObject.DestroyObject();
+                    ConsoleTools.LogSuccess("Типа получен предмет");
+                };
+            }
             else if (targetObject.TryGetComponent(out InteractiveRandomEventObject randomEventObject))
-                openPanel = CreateRandomEvent(randomEventObject);
+            {
+                openPanel = CreateRandomEvent(_playerPresenter, randomEventObject);
+            }
 
             StartCoroutine(GoToTarget(targetPosition, openPanel));
         }
 
         public void ReturnToGlobalMap()
         {
+            Curtain.Instance.ShowAnimation(() => { _battlefild.gameObject.SetActive(false); });
             _clickTracker.enabled = true;
             _targetObject.DestroyObject();
         }
 
-        // TODO временное решешие. Сам скрипт UIFight должен принимать InteractiveObjectHandler и вызывать метод ReturnToGlobalMap
-        private void CloseBattlefild()
+        private Action CreateRandomEvent(IPlayerPresenter player, InteractiveRandomEventObject randomEventObject)
         {
-            Curtain.Instance.ShowAnimation(() => { _battlefild.gameObject.SetActive(false); });
-            ReturnToGlobalMap();
-        }
-
-        private Action CreateRandomEvent(InteractiveRandomEventObject randomEventObject)
-        {            
-            IPlayerPresenter playerPresenter = FindObjectOfType<PlayerView>().PlayerPresenter;
-
             LevelRandomEvent levelRandomEvent = new LevelRandomEvent();
             RandomEventType randomEvent = levelRandomEvent.GetRandomEvent();
-
+            Debug.Log($"{randomEvent}");
+            
             switch (randomEvent)
             {
                 case RandomEventType.Enemy:
-                    return () => { Curtain.Instance.ShowAnimation(
-                        () => { _battlefild.SetActiveFightPlace(playerPresenter, randomEventObject.EnemyPresenter); }); };                // case RandomEventType.Loot:
+                    return () =>
+                    {
+                        Curtain.Instance.ShowAnimation(
+                            () =>
+                            {
+                                _battlefild.SetActiveFightPlace(player, randomEventObject.GetRandomEnemy());
+                            });
+                    };
                 case RandomEventType.Loot:
-                    return () => { _lootInfoView.Show(randomEventObject.InteractiveLootObject); };
+                    return () =>
+                    {
+                        _clickTracker.enabled = true;
+                        _targetObject.DestroyObject();
+                        ConsoleTools.LogSuccess("Типа получен предмет");
+                    };
                 case RandomEventType.AD:
-                    return () => { _eventPanel.ShowPanel(this); };
-                   default:
-                       return () => { Curtain.Instance.ShowAnimation(
-                        () => { _battlefild.SetActiveFightPlace(playerPresenter, randomEventObject.EnemyPresenter); }); };
+                    return () =>
+                    {
+                        ConsoleTools.LogSuccess("Идет показ рекламы");
+                        _clickTracker.enabled = true;
+                        _targetObject.DestroyObject();
+                    };
+                default:
+                    throw new Exception("Рандом сломался :(");
             }
         }
 

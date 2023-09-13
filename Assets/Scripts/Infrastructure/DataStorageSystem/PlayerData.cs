@@ -7,6 +7,7 @@ namespace Assets.Infrastructure.DataStorageSystem
         private int _money;
         private bool _isMusicOn;
         private bool _isSfxOn;
+        private string _localization;
         
         public PlayerData()
         {
@@ -49,11 +50,19 @@ namespace Assets.Infrastructure.DataStorageSystem
             }
         }
 
+        public string Localization
+        {
+            get => _localization;
+            set => _localization = value;
+        }
+
         public void SaveData()
         {
-            var data = new Data(_money,
+            var data = new Data(
+                _money,
                 Convert.ToInt32(_isMusicOn),
-                Convert.ToInt32(_isSfxOn));
+                Convert.ToInt32(_isSfxOn),
+                _localization);
             
             DataManager.SaveData(data);
         }
@@ -64,6 +73,7 @@ namespace Assets.Infrastructure.DataStorageSystem
             _money = data.Money;
             _isMusicOn = Convert.ToBoolean(data.Music);
             _isSfxOn = Convert.ToBoolean(data.Sfx);
+            _localization = data.Localization;
         }
     }
 }

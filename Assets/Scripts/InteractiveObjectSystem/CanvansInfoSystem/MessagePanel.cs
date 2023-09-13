@@ -12,38 +12,35 @@ namespace Assets.Scripts.InteractiveObjectSystem.CanvasInfoSystem
         [SerializeField] private LootInfoView _randomLootPanel;
         
         public event Action<bool> UserResponse;
-        public event Action<InfoView> UserResponse2;
-        
+
         private void OnEnable()
         {
             _enemyInfoPanel.UserResponse += CallResponse;
-            _randomEventPanel.Test += RandomEventPanelOnTest;
+            _randomEventPanel.UserResponse += CallResponse;
+            _randomLootPanel.UserResponse += CallResponse;
         }
-
-        private void RandomEventPanelOnTest(InfoView obj) => 
-            UserResponse2?.Invoke(obj);
 
         private void OnDisable()
         {
             _enemyInfoPanel.UserResponse -= CallResponse;
+            _randomEventPanel.UserResponse -= CallResponse;
+            _randomLootPanel.UserResponse -= CallResponse;
         }
 
         public void ShowPanel(InteractiveObject interactiveObject)
         {
             gameObject.SetActive(true);
-
             if (interactiveObject.TryGetComponent(out EnemyView enemyView))
                 _enemyInfoPanel.Show(enemyView.EnemyPresenter);
             else if (interactiveObject.TryGetComponent(out InteractiveLootObject lootObject))
                 _randomLootPanel.Show(lootObject);
             else if (interactiveObject.TryGetComponent(out InteractiveRandomEventObject randomEventObject))
-                _randomEventPanel.Show(randomEventObject,
-                    (interactiveLootObject) => _randomLootPanel.Show(randomEventObject.InteractiveLootObject),
-                    (enemyPresenter) => _enemyInfoPanel.Show(randomEventObject.GetRandomEnemyPresenter())
-                );
+                _randomEventPanel.Show();
         }
 
-        private void CallResponse(bool answer) =>
-            UserResponse.Invoke(answer);
+        private void CallResponse(bool answer)
+        {
+            UserResponse?.Invoke(answer);
+        }
     }
 }

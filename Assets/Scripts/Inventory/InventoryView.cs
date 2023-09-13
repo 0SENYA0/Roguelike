@@ -23,10 +23,6 @@ namespace Assets.Inventory
         public List<MagickItemLineView> MagickItemLineView => _magickItemLineView;
 
         public PlayerInventoryScriptableObject PlayerInventory => _playerInventory;
-
-        public void kek()
-        {
-        }
     }
 
     public class MagickItemLineView : MonoBehaviour
