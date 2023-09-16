@@ -8,15 +8,30 @@ namespace Assets.Inventory
     {
         private readonly InventoryModel _inventoryModel;
         private Armor _activeArmor;
-        private IWeapon _activeWeapon;
+        private Weapon.Weapon _activeWeapon;
         
         public InventoryPresenter(int inventorySize)
         {
             _inventoryModel = new InventoryModel(inventorySize);
             GenerateDefaultInventory();
-            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomWeapon());
-            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomWeapon());
-            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomWeapon());
+            
+            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomArmor());
+            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomArmor());
+            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomArmor());
+        }
+
+        public void SelectActiveArmor(Armor armor)
+        {
+            _activeArmor.UnSelect();
+            _activeArmor = armor;
+            _activeArmor.Select();
+        }
+
+        public void SelectActiveWeapon(Weapon.Weapon weapon)
+        {
+            _activeWeapon.UnSelect();
+            _activeWeapon = weapon;
+            _activeWeapon.Select();
         }
 
         private void GenerateDefaultInventory()
@@ -26,7 +41,10 @@ namespace Assets.Inventory
             _inventoryModel.AddItem(defaultInventory.Weapon);
 
             _activeArmor = defaultInventory.Armor;
+            _activeArmor.Select();
+            
             _activeWeapon = defaultInventory.Weapon;
+            _activeWeapon.Select();
         }
 
         public InventoryModel InventoryModel => _inventoryModel;

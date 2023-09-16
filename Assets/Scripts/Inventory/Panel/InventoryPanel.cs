@@ -1,7 +1,6 @@
-using System;
+using Assets.DefendItems;
 using Assets.Person;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Assets.Inventory.Panel
@@ -9,42 +8,73 @@ namespace Assets.Inventory.Panel
     public class InventoryPanel : MonoBehaviour
     {
         [SerializeField] private PlayerView _player;
-        [SerializeField] private Button _open;
-        [SerializeField] private Button _close;
-        [SerializeField] private GameObject _panel;
+        [Space]
+        [SerializeField] private Button _openWeapon;
+        [SerializeField] private Button _closeWeapon;
+        [SerializeField] private GameObject _panelWeapon;
         [SerializeField] private WeaponPanelView _weapon;
+        [Space]
+        [SerializeField] private Button _openArmor;
+        [SerializeField] private Button _closeArmor;
+        [SerializeField] private GameObject _panelArmor;
+        [SerializeField] private ArmorPanelView _armor;
 
         private void Awake()
         {
-            _open.onClick.AddListener(OpenPanel);
-            _close.onClick.AddListener(ClosePanel);
+            _openWeapon.onClick.AddListener(OpenWeaponPanel);
+            _closeWeapon.onClick.AddListener(CloseWeaponPanel);
+            
+            _openArmor.onClick.AddListener(OpenArmorPanel);
+            _closeArmor.onClick.AddListener(CloseArmorPanel);
         }
 
         private void OnDestroy()
         {
-            _open.onClick.RemoveListener(OpenPanel);
-            _close.onClick.RemoveListener(ClosePanel);
+            _openWeapon.onClick.RemoveListener(OpenWeaponPanel);
+            _closeWeapon.onClick.RemoveListener(CloseWeaponPanel);
+            
+            _openArmor.onClick.RemoveListener(OpenArmorPanel);
+            _closeArmor.onClick.RemoveListener(CloseArmorPanel);
         }
 
-        private void OpenPanel()
+        private void OpenWeaponPanel()
         {
-            _panel.SetActive(true);
+            _panelWeapon.SetActive(true);
             _weapon.Show(_player.InventoryPresenter.InventoryModel.GetWeapon());
-            _weapon.ChangeItem += OnListener;
+            _weapon.RemoveItem += RemoveItem;
         }
 
-        private void OnListener(IInventoryItem obj)
+        private void CloseWeaponPanel()
         {
-            Debug.Log($"Тык по предмету: {obj}");
+            _weapon.Hide();
+            _weapon.RemoveItem -= RemoveItem;
+            _panelWeapon.SetActive(false);
+        }
+
+        private void OpenArmorPanel()
+        {
+            _panelArmor.SetActive(true);
+            _armor.Show(_player.InventoryPresenter.InventoryModel.GetArmor());
+            _armor.RemoveItem += RemoveItem;
+            _armor.SelectItem += SelectItem;
+        }
+
+        private void CloseArmorPanel()
+        {
+            _armor.Hide();
+            _armor.RemoveItem -= RemoveItem;
+            _armor.SelectItem -= SelectItem;
+            _panelArmor.SetActive(false);
+        }
+
+        private void RemoveItem(IInventoryItem obj)
+        {
             _player.InventoryPresenter.InventoryModel.RemoveItem(obj);
         }
 
-        private void ClosePanel()
+        private void SelectItem(IInventoryItem obj)
         {
-            _weapon.Hide();
-            _weapon.ChangeItem -= OnListener;
-            _panel.SetActive(false);
+            _player.InventoryPresenter.SelectActiveArmor(obj as Armor);
         }
     }
-
 }

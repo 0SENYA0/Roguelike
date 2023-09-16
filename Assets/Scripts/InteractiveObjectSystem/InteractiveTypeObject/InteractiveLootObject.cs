@@ -9,7 +9,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
 {
     public class InteractiveLootObject : InteractiveObject
     {
-        private IWeapon _weapon;
+        private Weapon.Weapon _weapon;
         private Armor _armor;
 
         protected override void OnStart()
@@ -22,7 +22,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
                 _armor = ItemGenerator.Instance.GetRandomArmor();
         }
 
-        public IWeapon Weapon => _weapon;
+        public Weapon.Weapon Weapon => _weapon;
         public Armor Armor => _armor;
     }
 }

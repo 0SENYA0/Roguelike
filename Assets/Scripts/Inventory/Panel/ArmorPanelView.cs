@@ -1,26 +1,28 @@
 using System;
 using System.Collections.Generic;
-using Assets.Interface;
+using Assets.DefendItems;
 using UnityEngine;
 
 namespace Assets.Inventory.Panel
 {
-    public class WeaponPanelView : MonoBehaviour
+    public class ArmorPanelView : MonoBehaviour
     {
-        [SerializeField] private WeaponPanelItem _template;
+        [SerializeField] private ArmorPanelItem _template;
         [SerializeField] private Transform _container;
         
         public Action<IInventoryItem> RemoveItem;
+        public Action<IInventoryItem> SelectItem; 
+        
+        private List<ArmorPanelItem> _items = new();
 
-        private List<WeaponPanelItem> _items = new();
-
-        public void Show(IEnumerable<IWeapon> weapons)
+        public void Show(IEnumerable<Armor> armors)
         {
-            foreach (var weapon in weapons)
+            foreach (var armor in armors)
             {
-                var newItem = Instantiate(_template, _container).GetComponent<WeaponPanelItem>();
-                newItem.Init(weapon);
+                var newItem = Instantiate(_template, _container).GetComponent<ArmorPanelItem>();
+                newItem.Init(armor);
                 newItem.OnItemRemove += OnItemRemove;
+                newItem.OnItemUse += OnItemUse;
                 _items.Add(newItem);
             }
         }
@@ -33,6 +35,7 @@ namespace Assets.Inventory.Panel
                     continue;
                 
                 item.OnItemRemove -= OnItemRemove;
+                item.OnItemUse -= OnItemUse;
                 item.OnDispose();
             }
 
@@ -42,6 +45,16 @@ namespace Assets.Inventory.Panel
         private void OnItemRemove(IInventoryItem obj)
         {
             RemoveItem?.Invoke(obj);
+        }
+
+        private void OnItemUse(IInventoryItem obj)
+        {
+            SelectItem?.Invoke(obj);
+
+            foreach (var item in _items)
+            {
+                item.CheckSelect();
+            }
         }
     }
 }

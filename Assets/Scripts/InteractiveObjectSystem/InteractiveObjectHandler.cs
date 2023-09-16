@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Assets.Enemy;
 using Assets.Fight;
+using Assets.Inventory;
 using Assets.Loot;
 using Assets.Person;
 using Assets.Player;
@@ -50,9 +51,11 @@ namespace Assets.Scripts.InteractiveObjectSystem
             {
                 openPanel = () =>
                 {
+                    IInventoryItem newItem = lootObject.Weapon != null ? lootObject.Weapon : lootObject.Armor;
+                    _playerPresenter.PlayerView.InventoryPresenter.InventoryModel.AddItem(newItem);
+                    
                     _clickTracker.enabled = true;
                     _targetObject.DestroyObject();
-                    ConsoleTools.LogSuccess("Типа получен предмет");
                 };
             }
             else if (targetObject.TryGetComponent(out InteractiveRandomEventObject randomEventObject))
