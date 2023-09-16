@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets.DefendItems;
-using Assets.Interface;
 
 namespace Assets.Inventory
 {
@@ -19,7 +18,7 @@ namespace Assets.Inventory
         public int TotalSize => _items.Count;
 
         public IReadOnlyList<Armor> GetArmor() => _items.OfType<Armor>().ToList();
-        public IReadOnlyList<IWeapon> GetWeapon() => _items.OfType<IWeapon>().ToList();
+        public IReadOnlyList<Weapon.Weapon> GetWeapon() => _items.OfType<Weapon.Weapon>().ToList();
         public IReadOnlyList<MagicItem> GetMagicItem() => _items.OfType<MagicItem>().ToList();
 
         public void AddItem(IInventoryItem item)
