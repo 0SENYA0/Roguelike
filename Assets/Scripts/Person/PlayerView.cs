@@ -11,14 +11,14 @@ namespace Assets.Person
         [SerializeField] private int _health;
         [SerializeField] private SpriteAnimation _spriteAnimation;
         [SerializeField] private Sprite _sprite;
-        [SerializeField] private InventoryView _inventoryView;
+        [SerializeField] private int _inventorySize = 10;
         
         private PlayerPresenter _playerPresenter;
         private InventoryPresenter _inventoryPresenter;
 
         private void Start()
         {
-            _inventoryPresenter =  new InventoryPresenter(_inventoryView);
+            _inventoryPresenter =  new InventoryPresenter(_inventorySize);
             _playerPresenter = new PlayerPresenter(this, _inventoryPresenter);
         }
 

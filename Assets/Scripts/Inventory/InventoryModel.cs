@@ -1,4 +1,5 @@
-using System;
+using System.Collections.Generic;
+using System.Linq;
 using Assets.DefendItems;
 using Assets.Interface;
 
@@ -6,21 +7,35 @@ namespace Assets.Inventory
 {
     public class InventoryModel
     {
-        private readonly IWeapon[] _weapon;
-        private readonly Armor[] _armor;
-        private readonly MagicItem[] _magicItem;
+        private readonly List<IInventoryItem> _items;
+        private readonly int _maxSize;
 
-        public InventoryModel(IWeapon[] weapon, Armor[] armor, MagicItem[] magicItem)
+        public InventoryModel(int maxSize)
         {
-            _weapon = weapon;
-            _armor = armor;
-            _magicItem = magicItem;
+            _maxSize = maxSize;
+            _items = new List<IInventoryItem>();
         }
 
-        public IWeapon[] Weapon => _weapon;
+        public int TotalSize => _items.Count;
 
-        public Armor[] Armor => _armor;
+        public IReadOnlyList<Armor> GetArmor() => _items.OfType<Armor>().ToList();
+        public IReadOnlyList<IWeapon> GetWeapon() => _items.OfType<IWeapon>().ToList();
+        public IReadOnlyList<MagicItem> GetMagicItem() => _items.OfType<MagicItem>().ToList();
 
-        public MagicItem[] MagicItem => _magicItem;
+        public void AddItem(IInventoryItem item)
+        {
+            if (TotalSize < _maxSize)
+                _items.Add(item);
+            else
+                throw new System.AggregateException("Inventory is full");
+        }
+
+        public void RemoveItem(IInventoryItem item)
+        {
+            if (_items.Contains(item))
+                _items.Remove(item);
+            else
+                throw new System.AggregateException("This item is not in the inventory");
+        }
     }
 }

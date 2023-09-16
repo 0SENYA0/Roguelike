@@ -1,9 +1,10 @@
+using Assets.Inventory;
 using Assets.Person;
 using UnityEngine;
 
 namespace Assets.DefendItems
 {
-    public class Armor
+    public class Armor: IInventoryItem
     {
         public Armor(Body body, Head head, ParticleSystem particleSystem)
         {

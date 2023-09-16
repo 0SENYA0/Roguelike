@@ -1,10 +1,11 @@
 using Assets.Fight.Element;
 using Assets.Interface;
+using Assets.Inventory;
 using UnityEngine;
 
 namespace Assets.Weapon
 {
-    public class Weapon : IWeapon
+    public class Weapon : IWeapon, IInventoryItem
     {
         public Weapon(float damage, Element element, int chanceToSplash, int minValueToCriticalDamage, int valueModifier, ParticleSystem particleSystem)
         {

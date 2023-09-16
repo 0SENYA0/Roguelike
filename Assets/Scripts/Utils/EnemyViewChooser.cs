@@ -28,30 +28,30 @@ namespace Assets.Utils
             _elementsSpriteView = elementsSpriteView;
 
             _elementsDamagePanel.Exit.onClick.AddListener(HidePanel);
-            FillInfoElementInfoLine(player.InventoryPresenter.InventoryModel.Weapon[0],
-                _elementsDamagePanel.FireElementInfoLine);
-            _elementsDamagePanel.FireElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(() =>
-                GetTrue(player.InventoryPresenter.InventoryModel.Weapon[0]));
-
-            FillInfoElementInfoLine(player.InventoryPresenter.InventoryModel.Weapon[1],
-                _elementsDamagePanel.MetalElementInfoLine);
-            _elementsDamagePanel.MetalElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(() =>
-                GetTrue(player.InventoryPresenter.InventoryModel.Weapon[1]));
-
-            FillInfoElementInfoLine(player.InventoryPresenter.InventoryModel.Weapon[2],
-                _elementsDamagePanel.StoneElementInfoLine);
-            _elementsDamagePanel.StoneElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(() =>
-                GetTrue(player.InventoryPresenter.InventoryModel.Weapon[2]));
-
-            FillInfoElementInfoLine(player.InventoryPresenter.InventoryModel.Weapon[3],
-                _elementsDamagePanel.TreeElementInfoLine);
-            _elementsDamagePanel.TreeElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(() =>
-                GetTrue(player.InventoryPresenter.InventoryModel.Weapon[3]));
-
-            FillInfoElementInfoLine(player.InventoryPresenter.InventoryModel.Weapon[4],
-                _elementsDamagePanel.WaterElementInfoLine);
-            _elementsDamagePanel.WaterElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(() =>
-                GetTrue(player.InventoryPresenter.InventoryModel.Weapon[4]));
+            // FillInfoElementInfoLine(player.InventoryPresenter.InventoryModel.Weapon[0],
+            //     _elementsDamagePanel.FireElementInfoLine);
+            // _elementsDamagePanel.FireElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(() =>
+            //     GetTrue(player.InventoryPresenter.InventoryModel.Weapon[0]));
+            //
+            // FillInfoElementInfoLine(player.InventoryPresenter.InventoryModel.Weapon[1],
+            //     _elementsDamagePanel.MetalElementInfoLine);
+            // _elementsDamagePanel.MetalElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(() =>
+            //     GetTrue(player.InventoryPresenter.InventoryModel.Weapon[1]));
+            //
+            // FillInfoElementInfoLine(player.InventoryPresenter.InventoryModel.Weapon[2],
+            //     _elementsDamagePanel.StoneElementInfoLine);
+            // _elementsDamagePanel.StoneElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(() =>
+            //     GetTrue(player.InventoryPresenter.InventoryModel.Weapon[2]));
+            //
+            // FillInfoElementInfoLine(player.InventoryPresenter.InventoryModel.Weapon[3],
+            //     _elementsDamagePanel.TreeElementInfoLine);
+            // _elementsDamagePanel.TreeElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(() =>
+            //     GetTrue(player.InventoryPresenter.InventoryModel.Weapon[3]));
+            //
+            // FillInfoElementInfoLine(player.InventoryPresenter.InventoryModel.Weapon[4],
+            //     _elementsDamagePanel.WaterElementInfoLine);
+            // _elementsDamagePanel.WaterElementInfoLine.InfoInLine.ButtonAttack.onClick.AddListener(() =>
+            //     GetTrue(player.InventoryPresenter.InventoryModel.Weapon[4]));
         }
 
         public IWeapon Weapon => _weapon;
@@ -59,16 +59,16 @@ namespace Assets.Utils
 
         public void Dispose()
         {
-            _elementsDamagePanel.FireElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(() =>
-                GetTrue(_player.InventoryPresenter.InventoryModel.Weapon[0]));
-            _elementsDamagePanel.MetalElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(() =>
-                GetTrue(_player.InventoryPresenter.InventoryModel.Weapon[1]));
-            _elementsDamagePanel.StoneElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(() =>
-                GetTrue(_player.InventoryPresenter.InventoryModel.Weapon[2]));
-            _elementsDamagePanel.TreeElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(() =>
-                GetTrue(_player.InventoryPresenter.InventoryModel.Weapon[3]));
-            _elementsDamagePanel.WaterElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(() =>
-                GetTrue(_player.InventoryPresenter.InventoryModel.Weapon[4]));
+            // _elementsDamagePanel.FireElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(() =>
+            //     GetTrue(_player.InventoryPresenter.InventoryModel.Weapon[0]));
+            // _elementsDamagePanel.MetalElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(() =>
+            //     GetTrue(_player.InventoryPresenter.InventoryModel.Weapon[1]));
+            // _elementsDamagePanel.StoneElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(() =>
+            //     GetTrue(_player.InventoryPresenter.InventoryModel.Weapon[2]));
+            // _elementsDamagePanel.TreeElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(() =>
+            //     GetTrue(_player.InventoryPresenter.InventoryModel.Weapon[3]));
+            // _elementsDamagePanel.WaterElementInfoLine.InfoInLine.ButtonAttack.onClick.RemoveListener(() =>
+            //     GetTrue(_player.InventoryPresenter.InventoryModel.Weapon[4]));
         }
 
         public bool TryChooseEnemy()
