@@ -93,9 +93,11 @@ namespace Assets.Scripts.InteractiveObjectSystem
                 case RandomEventType.Loot:
                     return () =>
                     {
+                        IInventoryItem newItem = randomEventObject.GetRandomLoot();
+                        _playerPresenter.PlayerView.InventoryPresenter.InventoryModel.AddItem(newItem);
+                    
                         _clickTracker.enabled = true;
                         _targetObject.DestroyObject();
-                        ConsoleTools.LogSuccess("Типа получен предмет");
                     };
                 case RandomEventType.AD:
                     return () =>
