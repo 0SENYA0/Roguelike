@@ -15,12 +15,14 @@ namespace Assets.Scripts.InteractiveObjectSystem
         [FormerlySerializedAs("phraseName")]
         [FormerlySerializedAs("translationTitle")]
         protected string _translationName;
+        [SerializeField] private int _numberOfAwards = 1;
         [Multiline] [SerializeField] protected string _data;
 
         public ObjectType Type => _type;
 
         private Element _element;
         public string Data => _data;
+        public int NumberOfAwards => _numberOfAwards;
         
         private void Start()
         {

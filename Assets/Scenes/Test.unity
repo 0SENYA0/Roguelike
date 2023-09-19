@@ -309,7 +309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 204c74a6952543f4acd247a22924edad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _translationName: E_OrbMage
 --- !u!4 &2001458962
 Transform:
   m_ObjectHideFlags: 0

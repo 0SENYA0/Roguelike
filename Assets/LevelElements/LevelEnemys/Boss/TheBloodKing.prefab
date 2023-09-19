@@ -223,6 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 3
   _translationName: B_BloodKing
+  _numberOfAwards: 2
   _data: 
   _health: 123
   _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}

@@ -605,6 +605,61 @@ MonoBehaviour:
   - Language: English
     Text: Assassin
     Object: {fileID: 0}
+--- !u!1 &1860263423446954029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3231547198750394169}
+  - component: {fileID: 6232463626689367583}
+  m_Layer: 0
+  m_Name: W_DropItem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3231547198750394169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860263423446954029}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8364329214162644207}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6232463626689367583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860263423446954029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Turkish
+    Text: "Uyar\u0131"
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u041F\u0440\u0435\u0434\u0443\u043F\u0440\u0435\u0436\u0434\u0435\u043D\u0438\u0435"
+    Object: {fileID: 0}
+  - Language: English
+    Text: Warning
+    Object: {fileID: 0}
 --- !u!1 &2190979053452441858
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,6 +989,68 @@ MonoBehaviour:
     Object: {fileID: 0}
   - Language: English
     Text: Baby Boxer
+    Object: {fileID: 0}
+--- !u!1 &3095843941455637249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3251038128677592702}
+  - component: {fileID: 1499744136256934624}
+  m_Layer: 0
+  m_Name: W_DropItemMessage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3251038128677592702
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3095843941455637249}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8364329214162644207}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1499744136256934624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3095843941455637249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Turkish
+    Text: "Bu \xF6d\xFCl i\xE7in envanteriniz a\u015F\u0131r\u0131 y\xFCklendi. Yeni
+      bir \xF6d\xFCl almak i\xE7in e\u015Fyalar\u0131 at\u0131n (at\u0131n: "
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u0412\u0430\u0448 \u0438\u043D\u0432\u0435\u043D\u0442\u0430\u0440\u044C
+      \u043F\u0435\u0440\u0435\u0433\u0440\u0443\u0436\u0435\u043D \u0434\u043B\u044F
+      \u044D\u0442\u043E\u0439 \u043D\u0430\u0433\u0440\u0430\u0434\u044B. \u0412\u044B\u043A\u0438\u043D\u044C\u0442\u0435
+      \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u044B, \u0447\u0442\u043E\u0431\u044B
+      \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C \u043D\u043E\u0432\u0443\u044E
+      \u043D\u0430\u0433\u0440\u0430\u0434\u0443 (\u0432\u044B\u043A\u0438\u043D\u0443\u0442\u044C: "
+    Object: {fileID: 0}
+  - Language: English
+    Text: 'Your inventory is overloaded for this reward. Throw out items to get a
+      new reward (throw out: '
     Object: {fileID: 0}
 --- !u!1 &3314068050514211314
 GameObject:
@@ -2285,6 +2402,8 @@ Transform:
   - {fileID: 3385186578792333892}
   - {fileID: 168831721855498235}
   - {fileID: 6511797670174497204}
+  - {fileID: 3231547198750394169}
+  - {fileID: 3251038128677592702}
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

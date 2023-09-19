@@ -18,6 +18,9 @@ namespace Assets.Inventory
             _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomArmor());
             _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomArmor());
             _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomArmor());
+            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomArmor());
+            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomArmor());
+            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomArmor());
         }
 
         public void SelectActiveArmor(Armor armor)
