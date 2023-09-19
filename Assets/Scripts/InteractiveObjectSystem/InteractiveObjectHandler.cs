@@ -68,7 +68,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
 
         public void ReturnToGlobalMap()
         {
-            Curtain.Instance.ShowAnimation(() => { _battlefild.gameObject.SetActive(false); });
+            Curtain.Instance.ShowAnimation();
             _clickTracker.enabled = true;
             _targetObject.DestroyObject();
         }

@@ -15,12 +15,11 @@ namespace Assets.Inventory
             _inventoryModel = new InventoryModel(inventorySize);
             GenerateDefaultInventory();
             
-            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomArmor());
-            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomArmor());
-            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomArmor());
-            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomArmor());
-            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomArmor());
-            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomArmor());
+            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomWeapon());
+            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomWeapon());
+            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomWeapon());
+            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomWeapon());
+            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomWeapon());
         }
 
         public void SelectActiveArmor(Armor armor)

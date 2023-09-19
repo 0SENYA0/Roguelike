@@ -176,7 +176,7 @@ namespace Assets.Fight
             }
             
             _stepFightView.Hide();
-            //FightEnded?.Invoke();
+            FightEnded?.Invoke();
         }
 
         private void GetUserAnswer()

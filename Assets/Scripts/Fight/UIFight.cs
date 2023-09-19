@@ -12,6 +12,7 @@ namespace Assets.Fight
         [SerializeField] private Transform _battlefieldMap;
         [SerializeField] private FightPlace _fightPlace;
         [SerializeField] private ElementsSpriteView _elementsSpriteView;
+        [SerializeField] private InteractiveObjectHandler _interactiveObjectHandler;
         private IPlayerPresenter _playerPresenter;
         private IEnemyPresenter _enemyPresenter;
         private MouseClickTracker _mouseClickTracker;
@@ -35,8 +36,9 @@ namespace Assets.Fight
 
         private void ShowGlobalMap()
         {
-            _mouseClickTracker.enabled = true;
             _globalMap.gameObject.SetActive(true);
+            _battlefieldMap.gameObject.SetActive(false);
+            _interactiveObjectHandler.ReturnToGlobalMap();
         }
         
         public void SetActiveFightPlace(IPlayerPresenter playerPresenter, IEnemyPresenter enemyPresenter)
