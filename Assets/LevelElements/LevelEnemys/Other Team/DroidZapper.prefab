@@ -216,7 +216,7 @@ MonoBehaviour:
   _health: 123
   _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
   _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
-  _sprite: {fileID: -881708772, guid: 804fa6bfaa5a8c144a57dab471403d7c, type: 3}
+  _sprite: {fileID: 436700369, guid: bd0faf4c3664eac479e0ee26ef7b3b67, type: 3}
   _spriteAnimation: {fileID: 7175715463153988616}
 --- !u!1001 &8957970385746386925
 PrefabInstance:

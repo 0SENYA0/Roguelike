@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Armor
   m_EditorClassIdentifier: 
   <HeadPart>k__BackingField:
-    <Value>k__BackingField: 1
+    <Value>k__BackingField: 5
   <BodyPart>k__BackingField:
-    <Value>k__BackingField: 1
-  <Element>k__BackingField: 2
+    <Value>k__BackingField: 5
+    <Element>k__BackingField: 0
   <ParticleSystem>k__BackingField: {fileID: 1351889237912816597, guid: 0931c0d473fe8e34fbdcf55a8ced7547, type: 3}

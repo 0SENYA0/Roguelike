@@ -25,9 +25,9 @@ namespace Assets.Fight
         [Space(25)] [SerializeField] private ElementsDamagePanel _elementsDamagePanel;
 
         // Места для игрока и врагов на карте битвы
-        [SerializeField] private UnitAttackView _playerAttackView;
+        [SerializeField] private PlayerAttackView _playerAttackView;
 
-        [SerializeField] private List<UnitAttackView> _enemyAttackViews;
+        [SerializeField] private List<EnemyAttackView> _enemyAttackViews;
 
         [SerializeField] private GameObject _popupReady;
         [SerializeField] private CustomButton _customButtonReady;
@@ -67,19 +67,20 @@ namespace Assets.Fight
         public void Set(IPlayerPresenter playerPresenter, IEnemyPresenter enemyPresenter,
             ElementsSpriteView elementsSpriteView)
         {
-            foreach (UnitAttackView unitAttackView in _enemyAttackViews)
+            foreach (EnemyAttackView unitAttackView in _enemyAttackViews)
                 unitAttackView.gameObject.SetActive(false);
 
             #region MyRegion
 
             SelectEnemyUIPosition(enemyPresenter);
 
-            UnitAttackPresenter playerAttackPresenter =
-                new UnitAttackPresenter(playerPresenter.Player, _playerAttackView);
-            List<UnitAttackPresenter> enemyAttackPresenters = new List<UnitAttackPresenter>();
+            PlayerAttackPresenter playerAttackPresenter =
+                new PlayerAttackPresenter(playerPresenter.Player, _playerAttackView);
+            
+            List<EnemyAttackPresenter> enemyAttackPresenters = new List<EnemyAttackPresenter>();
 
             for (int i = 0; i < enemyPresenter.Enemy.Count; i++)
-                enemyAttackPresenters.Add(new UnitAttackPresenter(enemyPresenter.Enemy[i], _enemyAttackViews[i]));
+                enemyAttackPresenters.Add(new EnemyAttackPresenter(enemyPresenter.Enemy[i], _enemyAttackViews[i]));
 
             _fight = new Fight(this, enemyAttackPresenters, playerAttackPresenter, _stepFightView,
                 GetDicePresenterAdapter(), _IelementsDamagePanel, _popupReady, _customButtonReady, elementsSpriteView);

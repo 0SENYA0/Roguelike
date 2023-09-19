@@ -1,13 +1,12 @@
 using System;
-using UnityEngine;
 using AnimationState = Assets.Scripts.AnimationComponent.AnimationState;
 
 namespace Assets.Person
 {
-    public class UnitAttackPresenter : IDisposable
+    public abstract class UnitAttackPresenter : IDisposable
     {
-        private readonly Unit _unit;
-        private readonly UnitAttackView _unitAttackView;
+        private  readonly Unit _unit;
+        private  readonly UnitAttackView _unitAttackView;
         private readonly float _baseHealth;
 
         public UnitAttackPresenter(Unit unit, UnitAttackView unitAttackView)
@@ -15,26 +14,12 @@ namespace Assets.Person
             _unit = unit;
             _unitAttackView = unitAttackView;
             FillDataForClips();
-            SetElementsSpriteForUI();
             _baseHealth = unit.Healh;
             _unit.HealthChanged += ChangeUIHealthValue;
         }
 
-        private void SetElementsSpriteForUI()
-        {
-            if (_unit is not Player.Player player)
-            {
-                _unitAttackView.ArmorElement.sprite =
-                    _unitAttackView.ElementsSpriteView.GetElementSprite(_unit.Armor.Body.Element);
-                _unitAttackView.WeaponElement.sprite =
-                    _unitAttackView.ElementsSpriteView.GetElementSprite(_unit.Weapon.Element);
-            }
-        }
-
         public Unit Unit => _unit;
-
-        public UnitAttackView UnitAttackView => _unitAttackView;
-
+        
         private void FillDataForClips() =>
             _unitAttackView.FillDataForClips(_unit.SpriteAnimation.AnimationClips);
 
@@ -44,12 +29,10 @@ namespace Assets.Person
         public void Dispose() => 
             _unit.HealthChanged -= ChangeUIHealthValue;
         
-        private void ChangeUIHealthValue(float value)
+        private void ChangeUIHealthValue(float health)
         {
-            float result = 1 - (value / _baseHealth);
-            Debug.Log(result);
+            float result = health / _baseHealth;
             _unitAttackView.ChangeUIHealthValue(result);
         }
-
     }
 }
