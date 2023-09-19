@@ -30,10 +30,10 @@ namespace Assets.Player
         protected override void CalculateDamageMultiplier(IWeapon weapon)
         {
             _health -= Convert.ToInt32(weapon.Damage);
-
+            
             if (IsDie)
                 return;
-
+            
             float damageMultiplier = weapon.Damage /
                                      (this.CalculateDamageModifier(weapon.Element)
                                       * weapon.Damage
