@@ -21,8 +21,6 @@ namespace Assets.Scripts.InteractiveObjectSystem
         [SerializeField] private float _minDistanceToStartBattle = 10.1f;
         [Space] 
         [SerializeField] private UIFight _battlefild;
-        [SerializeField] private RandomEventView _eventPanel;
-        [SerializeField] private LootInfoView _lootInfoView;
 
         private InteractiveObject _targetObject;
         private IPlayerPresenter _playerPresenter;
@@ -68,7 +66,6 @@ namespace Assets.Scripts.InteractiveObjectSystem
 
         public void ReturnToGlobalMap()
         {
-            Curtain.Instance.ShowAnimation();
             _clickTracker.enabled = true;
             _targetObject.DestroyObject();
         }

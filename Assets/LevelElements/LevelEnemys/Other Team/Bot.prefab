@@ -200,8 +200,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 0
   _translationName: E_Bot
+  _numberOfAwards: 1
   _data: "\u0443\u043C\u043D\u044B\u0439 \u0431\u043E\u0442"
-  _health: 500
+  _health: 3
   _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
   _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
   _sprite: {fileID: -954202678, guid: 82106ef637177d5458ba88a1dc29cf15, type: 3}

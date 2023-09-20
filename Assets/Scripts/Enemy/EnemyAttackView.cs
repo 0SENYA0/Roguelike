@@ -1,4 +1,3 @@
-using System.Collections;
 using Assets.Person;
 using Assets.Scripts.InteractiveObjectSystem;
 using Assets.UI;

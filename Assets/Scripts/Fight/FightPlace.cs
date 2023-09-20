@@ -5,7 +5,6 @@ using Assets.Fight.Dice;
 using Assets.Interface;
 using Assets.Player;
 using Assets.ScriptableObjects;
-using Assets.Scripts.InteractiveObjectSystem;
 using Assets.Scripts.UI.Widgets;
 using Assets.Utils;
 using UnityEngine;
@@ -51,12 +50,6 @@ namespace Assets.Fight
         {
             _IelementsDamagePanel = _elementsDamagePanel;
             _playerRectTransform = _playerPosition.GetComponent<RectTransform>();
-        }
-
-        private void OnDisable()
-        {
-            _fight.FightEnded -= EndFight;
-            _fight.Dispose();
         }
 
         private void Update()

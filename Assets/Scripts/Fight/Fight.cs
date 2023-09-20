@@ -17,15 +17,15 @@ namespace Assets.Fight
 {
     public class Fight : IDisposable
     {
-        private readonly ICoroutineRunner _coroutineRunner;                 // основная карутина
-        private readonly List<EnemyAttackPresenter> _enemyAttackPresenters; //  
-        private readonly PlayerAttackPresenter _playerAttackPresenter;      // сам игрок
-        private readonly IStepFightView _stepFightView;                     // верхняя плашка ходов
-        private readonly DicePresenterAdapter _dicePresenterAdapter;        // кубики
-        private readonly PlayerWeaponPanel _elementsDamagePanel;            // инвентарь
-        private readonly GameObject _popupReady;                            // окошка "готов?"
-        private readonly CustomButton _customButtonReady;                   // кнопка в окошке "готов?"
-        private readonly Queue<UnitAttackPresenter> _unitsOfQueue;          // очередь атак
+        private readonly ICoroutineRunner _coroutineRunner;                 
+        private readonly List<EnemyAttackPresenter> _enemyAttackPresenters; 
+        private readonly PlayerAttackPresenter _playerAttackPresenter;      
+        private readonly IStepFightView _stepFightView;                     
+        private readonly DicePresenterAdapter _dicePresenterAdapter;        
+        private readonly PlayerWeaponPanel _elementsDamagePanel;            
+        private readonly GameObject _popupReady;                            
+        private readonly CustomButton _customButtonReady;                   
+        private readonly Queue<UnitAttackPresenter> _unitsOfQueue;          
 
         private readonly int _countSteps = 10;
         private Coroutine _coroutine;
