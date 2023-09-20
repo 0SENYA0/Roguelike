@@ -23,7 +23,6 @@ namespace Assets.Inventory
 
         public IReadOnlyList<Armor> GetArmor() => _items.OfType<Armor>().ToList();
         public IReadOnlyList<Weapon.Weapon> GetWeapon() => _items.OfType<Weapon.Weapon>().ToList();
-        public IReadOnlyList<MagicItem> GetMagicItem() => _items.OfType<MagicItem>().ToList();
 
         public void AddItem(IInventoryItem item)
         {
@@ -42,6 +41,9 @@ namespace Assets.Inventory
         {
             if (_items.Contains(item))
             {
+                if (item is Armor armor)
+                    armor.UnSelect();
+                
                 _items.Remove(item);
                 CountItemsChangeEvent?.Invoke(MaxSize, TotalSize);
             }

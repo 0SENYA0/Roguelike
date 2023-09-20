@@ -30,20 +30,34 @@ namespace Assets.Player
         protected override void CalculateDamageMultiplier(IWeapon weapon)
         {
             _health -= Convert.ToInt32(weapon.Damage);
-            
+ 
             if (IsDie)
+            {
                 return;
-            
-            float damageMultiplier = weapon.Damage /
-                                     (this.CalculateDamageModifier(weapon.Element)
-                                      * weapon.Damage
-                                      + (_inventoryPresenter.ActiveArmor.Body.Value +
-                                         _inventoryPresenter.ActiveArmor.Head.Value)
-                                     );
+            }
+
+            if (_inventoryPresenter.ActiveArmor == null)
+            {
+                _health -= weapon.Damage * 2;
+                return;
+            }
+
+            float damageMultiplier = CalculateNewDamage(weapon);
             _health -= damageMultiplier * weapon.Damage;
         }
         
         protected override float CalculateDamageModifier(Element element) =>
             ElementManager.GetDamageModifier(element, _inventoryPresenter.ActiveArmor.Body.Element);
+
+        private float CalculateNewDamage(IWeapon weapon)
+        {
+            float damage = weapon.Damage;
+            float element = CalculateDamageModifier(weapon.Element);
+            float body = _inventoryPresenter.ActiveArmor.Body.Value;
+            float head = _inventoryPresenter.ActiveArmor.Head.Value;
+            float armor = body + head;
+            
+            return damage / (element * damage + armor);
+        }
     }
 }

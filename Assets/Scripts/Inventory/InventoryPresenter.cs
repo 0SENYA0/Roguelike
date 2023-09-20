@@ -1,5 +1,5 @@
+using System.Linq;
 using Assets.DefendItems;
-using Assets.Interface;
 using Assets.Inventory.ItemGeneratorSystem;
 
 namespace Assets.Inventory
@@ -7,9 +7,7 @@ namespace Assets.Inventory
     public class InventoryPresenter
     {
         private readonly InventoryModel _inventoryModel;
-        private Armor _activeArmor;
-        private Weapon.Weapon _activeWeapon;
-        
+
         public InventoryPresenter(int inventorySize)
         {
             _inventoryModel = new InventoryModel(inventorySize);
@@ -24,16 +22,10 @@ namespace Assets.Inventory
 
         public void SelectActiveArmor(Armor armor)
         {
-            _activeArmor.UnSelect();
-            _activeArmor = armor;
-            _activeArmor.Select();
-        }
+            var selectedArmor = _inventoryModel.GetArmor().FirstOrDefault(x => x.IsSelect);
+            selectedArmor?.UnSelect();
 
-        public void SelectActiveWeapon(Weapon.Weapon weapon)
-        {
-            _activeWeapon.UnSelect();
-            _activeWeapon = weapon;
-            _activeWeapon.Select();
+            armor.Select();
         }
 
         private void GenerateDefaultInventory()
@@ -42,15 +34,10 @@ namespace Assets.Inventory
             _inventoryModel.AddItem(defaultInventory.Armor);
             _inventoryModel.AddItem(defaultInventory.Weapon);
 
-            _activeArmor = defaultInventory.Armor;
-            _activeArmor.Select();
-            
-            _activeWeapon = defaultInventory.Weapon;
-            _activeWeapon.Select();
+            defaultInventory.Armor.Select();
         }
 
         public InventoryModel InventoryModel => _inventoryModel;
-        public Armor ActiveArmor => _activeArmor;
-        public IWeapon ActiveWeapon => _activeWeapon;
+        public Armor ActiveArmor => _inventoryModel.GetArmor().FirstOrDefault(x => x.IsSelect);
     }
 }
