@@ -55,6 +55,7 @@ namespace Assets.Fight
 
         private void OnDisable()
         {
+            _fight.FightEnded -= EndFight;
             _fight.Dispose();
         }
 
@@ -69,20 +70,31 @@ namespace Assets.Fight
         public void Set(IPlayerPresenter playerPresenter, IEnemyPresenter enemyPresenter)
         {
             foreach (EnemyAttackView unitAttackView in _enemyAttackViews)
+            {
+                unitAttackView.Reset();
                 unitAttackView.gameObject.SetActive(false);
+            }
 
             SelectEnemyUIPosition(enemyPresenter);
-
+            
             PlayerAttackPresenter playerAttackPresenter = new PlayerAttackPresenter(playerPresenter.Player, _playerAttackView);
             
             List<EnemyAttackPresenter> enemyAttackPresenters = new List<EnemyAttackPresenter>();
-
+            
             for (int i = 0; i < enemyPresenter.Enemy.Count; i++)
-                enemyAttackPresenters.Add(new EnemyAttackPresenter(enemyPresenter.Enemy[i], _enemyAttackViews[i]));
-
+                 enemyAttackPresenters.Add(new EnemyAttackPresenter(enemyPresenter.Enemy[i], _enemyAttackViews[i]));
+            
             _fight = new Fight(this, enemyAttackPresenters, playerAttackPresenter, _stepFightView, GetDicePresenterAdapter(), _IelementsDamagePanel, _popupReady, _customButtonReady);
-            _fight.FightEnded += () => FightEnded?.Invoke();
+            _fight.FightEnded += EndFight;
             _fight.Start();
+        }
+
+        private void EndFight()
+        {
+            FightEnded?.Invoke();
+            _fight.FightEnded -= EndFight;
+            _fight.Dispose();
+            _fight = null;
         }
 
         public Rect GetScreenCoordinates(RectTransform uiElement)

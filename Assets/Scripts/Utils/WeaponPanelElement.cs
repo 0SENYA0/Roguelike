@@ -41,6 +41,12 @@ namespace Assets.Utils
             _useButton.onClick.RemoveListener(OnClickItem);
         }
 
+        public void Destroy()
+        {
+            _useButton.onClick.RemoveListener(OnClickItem);
+            Destroy(gameObject);
+        }
+
         private void OnClickItem()
         {
             OnItemClicked?.Invoke(_item);

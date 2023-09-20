@@ -13,13 +13,10 @@ namespace Assets.Enemy
         [SerializeField] private Image _weaponElement;
         [SerializeField] private Image _armorElement;
         [SerializeField] private ElementsSpriteView _elementsSpriteView;
-
         [SerializeField] private HealthBarView _health;
 
         public ElementsSpriteView ElementsSpriteView => _elementsSpriteView;
-
         public Image WeaponElement => _weaponElement;
-
         public Image ArmorElement => _armorElement;
 
         private BoxCollider2D _boxCollider;
@@ -44,9 +41,14 @@ namespace Assets.Enemy
             _particle.Play();
         }
 
-        public void StopParticleEffect() => 
-            _particle.gameObject.SetActive(false);
-        
+        public void StopParticleEffect() => _particle.gameObject.SetActive(false);
+
+        public void Reset()
+        {
+            StopParticleEffect();
+            _health.HealthBar.fillAmount = 1;
+        }
+
         protected override void OnPastAwake()
         {
             base.OnPastAwake();

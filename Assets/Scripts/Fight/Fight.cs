@@ -86,12 +86,15 @@ namespace Assets.Fight
             WaitUntil getUserAnswer = new WaitUntil(() => _userIsReady);
             
             # region Влючаем у всех Idle
+            
             _playerAttackPresenter.ShowAnimation(AnimationState.Idle);
+            
             foreach (UnitAttackPresenter enemyAttackPresenter in _enemyAttackPresenters)
                 enemyAttackPresenter.ShowAnimation(AnimationState.Idle);
             # endregion
-
+            
             _dicePresenterAdapter.SetDisactive();
+            _popupReady.gameObject.SetActive(true);
             yield return getUserAnswer;
 
             _stepFightView.Show();
@@ -99,7 +102,6 @@ namespace Assets.Fight
             
             while (_enemyAttackPresenters.Count > 0 && _playerAttackPresenter.Unit.IsDie == false)
             {
-                // Если кончилась очередь, генерируем новую
                 if (_unitsOfQueue.Count <= 0)
                     _generatorAttackSteps.GenerateAttackingSteps(_enemyAttackPresenters, _playerAttackPresenter, _unitsOfQueue, _countSteps, _stepFightView);
 
@@ -186,7 +188,9 @@ namespace Assets.Fight
                         _playerAttackPresenter.ShowAnimation(AnimationState.Idle);
                 }
             }
-            
+
+            _coroutineRunner.StopCoroutine(_coroutine);
+            _coroutine = null;
             _elementsDamagePanel.Dispose();
             _stepFightView.Hide();
             FightEnded?.Invoke();

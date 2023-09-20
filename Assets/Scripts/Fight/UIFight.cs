@@ -13,9 +13,6 @@ namespace Assets.Fight
         [SerializeField] private Transform _battlefieldMap;
         [SerializeField] private FightPlace _fightPlace;
         [SerializeField] private InteractiveObjectHandler _interactiveObjectHandler;
-        
-        private IPlayerPresenter _playerPresenter;
-        private IEnemyPresenter _enemyPresenter;
 
         private void OnEnable()
         {
@@ -29,6 +26,14 @@ namespace Assets.Fight
             _fightPlace.FightEnded -= HideFightMap;
         }
 
+        public void SetActiveFightPlace(IPlayerPresenter playerPresenter, IEnemyPresenter enemyPresenter)
+        {
+            _battlefieldMap.gameObject.SetActive(true);
+            _globalMap.gameObject.SetActive(false);
+
+            _fightPlace.Set(playerPresenter, enemyPresenter);
+        }
+
         private void HideFightMap()
         {
             _battlefieldMap.gameObject.SetActive(false);
@@ -40,16 +45,6 @@ namespace Assets.Fight
             _battlefieldMap.gameObject.SetActive(false);
             _interactiveObjectHandler.ReturnToGlobalMap();
             ConsoleTools.LogSuccess("ДОЛЖНА ВЫПАСТЬ НАГРАДА ИГРОКУ!!!");
-        }
-        
-        public void SetActiveFightPlace(IPlayerPresenter playerPresenter, IEnemyPresenter enemyPresenter)
-        {
-            _enemyPresenter = enemyPresenter;
-            _playerPresenter = playerPresenter;
-            _battlefieldMap.gameObject.SetActive(true);
-            _globalMap.gameObject.SetActive(false);
-
-            _fightPlace.Set(_playerPresenter, _enemyPresenter);
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DefaultNamespace.Tools;
 using UnityEngine;
 using AnimationClip = Assets.Scripts.AnimationComponent.AnimationClip;
 
@@ -90,6 +91,9 @@ namespace Assets.Person
 
         public void FillDataForClips(IReadOnlyList<AnimationClip> spriteAnimationAnimationClips)
         {
+            _clips.Clear();
+            _clips = new List<Clip>();
+            
             foreach (AnimationClip clip in spriteAnimationAnimationClips)
             {
                 _clips.Add(new Clip(
