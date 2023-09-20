@@ -175,8 +175,8 @@ BoxCollider2D:
   m_Offset: {x: -0.0041023493, y: 0.3900264}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.3141662, y: 0}
-    oldSize: {x: 4, y: 1.3636364}
+    pivot: {x: 0.8378948, y: 0.003986819}
+    oldSize: {x: 1.5, y: 0.72727275}
     newSize: {x: 3, y: 3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -199,11 +199,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 0
   _translationName: E_ShockSweeper
+  _numberOfAwards: 1
   _data: 
   _health: 29
   _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
   _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
-  _sprite: {fileID: 1774673592, guid: 25030e7673d774441b399273cb3249cf, type: 3}
+  _sprite: {fileID: -1001591125, guid: 83f95a2f654c02d4fb9f63be38c3c445, type: 3}
   _spriteAnimation: {fileID: 951529659506622623}
 --- !u!1001 &7234418493588571926
 PrefabInstance:

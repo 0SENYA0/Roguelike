@@ -207,11 +207,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 0
   _translationName: E_OrbMage
+  _numberOfAwards: 1
   _data: 
   _health: 20
   _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
   _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
-  _sprite: {fileID: 343736472, guid: 201b1cb6a34beff4f918eb487f7772f7, type: 3}
+  _sprite: {fileID: -297625503, guid: 83f95a2f654c02d4fb9f63be38c3c445, type: 3}
   _spriteAnimation: {fileID: 2916529675048236175}
 --- !u!1001 &2800589808258746356
 PrefabInstance:

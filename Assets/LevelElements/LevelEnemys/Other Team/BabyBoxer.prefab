@@ -216,11 +216,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 0
   _translationName: E_BabyBoxer
+  _numberOfAwards: 1
   _data: 
   _health: 12
   _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
   _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
-  _sprite: {fileID: 737798139, guid: 5efd0aa7558d7f84a92d22926af70e5b, type: 3}
+  _sprite: {fileID: -606755708, guid: 83f95a2f654c02d4fb9f63be38c3c445, type: 3}
   _spriteAnimation: {fileID: 1308296690363077240}
 --- !u!1001 &5897580836380392198
 PrefabInstance:
