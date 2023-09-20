@@ -19,6 +19,9 @@ namespace Assets.UI.SettingsWindow.Localization
 
         private void OnEnable()
         {
+            if (Game.GameSettings == null) 
+                return;
+            
             foreach (var flag in _flags)
             {
                 if (flag.Language == Game.GameSettings.CurrentLocalization)
@@ -46,6 +49,10 @@ namespace Assets.UI.SettingsWindow.Localization
             }
             
             clickedFlag.SetIconActive(true);
+            
+            if (Game.GameSettings == null) 
+                return;
+            
             Game.GameSettings.ChangeLocalization(selectedLanguage);
         }
     }

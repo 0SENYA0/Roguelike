@@ -42,9 +42,10 @@ namespace Assets.Fight
         private const int Boss = 4;
 
         private PlayerWeaponPanel _IelementsDamagePanel;
+        private IPlayerPresenter _playerPresenter;
         private RectTransform _playerRectTransform;
 
-        public Action FightEnded;
+        public event Action<FightResult> FightEnded;
 
         private void OnEnable()
         {
@@ -62,6 +63,8 @@ namespace Assets.Fight
         
         public void Set(IPlayerPresenter playerPresenter, IEnemyPresenter enemyPresenter)
         {
+            _playerPresenter = playerPresenter;
+            
             foreach (EnemyAttackView unitAttackView in _enemyAttackViews)
             {
                 unitAttackView.Reset();
@@ -82,9 +85,19 @@ namespace Assets.Fight
             _fight.Start();
         }
 
+        // Calling on button
+        public void OnLeaveFight()
+        {
+            FightEnded?.Invoke(FightResult.Leave);
+            _fight.FightEnded -= EndFight;
+            _fight.Dispose();
+            _fight = null;
+        }
+
         private void EndFight()
         {
-            FightEnded?.Invoke();
+            FightEnded?.Invoke(_playerPresenter.Player.Healh > 0 ? FightResult.Win : FightResult.Lose);
+            
             _fight.FightEnded -= EndFight;
             _fight.Dispose();
             _fight = null;

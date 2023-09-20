@@ -1,3 +1,4 @@
+using System;
 using Assets.Enemy;
 using Assets.Inventory;
 using Assets.Inventory.ItemGeneratorSystem;
@@ -34,21 +35,27 @@ namespace Assets.Fight
             _fightPlace.Set(playerPresenter, enemyPresenter);
         }
 
-        private void ShowRewardPanel()
+        private void ShowRewardPanel(FightResult fightResult)
         {
             _fightPlace.FightEnded -= ShowRewardPanel;
-            
-            if (_playerPresenter.Player.Healh <= 0)
+
+            switch (fightResult)
             {
-                _losePanel.Show("Вы проиграли (((");
-                _losePanel.OnButtonClickEvent += OnLosePanelClick;
-            }
-            else
-            {
-                var randomLoot = GetRandomLoot();
-                _rewardPanel.Show(randomLoot);
-                _rewardPanel.OnButtonClickEvent += ShowGlobalMap;
-                _playerPresenter.Player.InventoryPresenter.InventoryModel.AddItem(randomLoot);
+                case FightResult.Win:
+                    var randomLoot = GetRandomLoot();
+                    _rewardPanel.Show(randomLoot);
+                    _rewardPanel.OnButtonClickEvent += ShowGlobalMap;
+                    _playerPresenter.Player.InventoryPresenter.InventoryModel.AddItem(randomLoot);
+                    break;
+                case FightResult.Lose:
+                    _losePanel.Show("Вы проиграли (((");
+                    _losePanel.OnButtonClickEvent += OnLosePanelClick;
+                    break;
+                case FightResult.Leave:
+                    ShowGlobalMap();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(fightResult), fightResult, null);
             }
         }
 
