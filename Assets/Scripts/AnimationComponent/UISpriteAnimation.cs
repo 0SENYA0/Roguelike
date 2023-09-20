@@ -31,7 +31,7 @@ namespace Assets.Scripts.AnimationComponent
                 _currentFrame = 0;
             
             _image.sprite = _sprites[_currentFrame];
-            _nextFrameTime += _secPerFrame;
+            _nextFrameTime = Time.time + _secPerFrame;
             _currentFrame++;
         }
     }

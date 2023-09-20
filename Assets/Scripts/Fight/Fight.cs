@@ -30,6 +30,7 @@ namespace Assets.Fight
         private readonly int _countSteps = 10;
         private Coroutine _coroutine;
         private bool _userIsReady;
+        private int _currentQueueStep;
 
         public Action FightEnded;
         private readonly GeneratorAttackSteps _generatorAttackSteps;
@@ -57,9 +58,8 @@ namespace Assets.Fight
 
             SubscribeOnDieEnemies();
             _playerAttackPresenter.Unit.Died += ActionAfterDie;
-
-            _generatorAttackSteps = new GeneratorAttackSteps();
             
+            _generatorAttackSteps = new GeneratorAttackSteps();
             _generatorAttackSteps.GenerateAttackingSteps(_enemyAttackPresenters, _playerAttackPresenter, _unitsOfQueue, _countSteps, _stepFightView);
         }
 
@@ -84,6 +84,7 @@ namespace Assets.Fight
         {
             WaitUntil waitDiceChooseUntil = new WaitUntil(_dicePresenterAdapter.CheckOnDicesShuffeled);
             WaitUntil getUserAnswer = new WaitUntil(() => _userIsReady);
+            _currentQueueStep = 0;
             
             # region Влючаем у всех Idle
             
@@ -96,7 +97,8 @@ namespace Assets.Fight
             _dicePresenterAdapter.SetDisactive();
             _popupReady.gameObject.SetActive(true);
             _stepFightView.Show();
-            
+            _stepFightView.ActiveFrame(_currentQueueStep);
+
             yield return getUserAnswer;
 
             _elementsDamagePanel.Init(_playerAttackPresenter.Inventory.InventoryModel.GetWeapon());
@@ -104,7 +106,11 @@ namespace Assets.Fight
             while (_enemyAttackPresenters.Count > 0 && _playerAttackPresenter.Unit.IsDie == false)
             {
                 if (_unitsOfQueue.Count <= 0)
+                {
                     _generatorAttackSteps.GenerateAttackingSteps(_enemyAttackPresenters, _playerAttackPresenter, _unitsOfQueue, _countSteps, _stepFightView);
+                    _currentQueueStep = 0;
+                    _stepFightView.ActiveFrame(_currentQueueStep);
+                }
 
                 UnitAttackPresenter unitAttackPresenter = _unitsOfQueue.Dequeue();
 
@@ -188,6 +194,9 @@ namespace Assets.Fight
                     else
                         _playerAttackPresenter.ShowAnimation(AnimationState.Idle);
                 }
+
+                _currentQueueStep++;
+                _stepFightView.ActiveFrame(_currentQueueStep);
             }
 
             _coroutineRunner.StopCoroutine(_coroutine);
@@ -248,6 +257,7 @@ namespace Assets.Fight
                 _enemyAttackPresenters.Remove(enemyPresenter);
 
                 _generatorAttackSteps.GenerateAttackingSteps(_enemyAttackPresenters, _playerAttackPresenter, _unitsOfQueue, _countSteps, _stepFightView);
+                _currentQueueStep = -1;
                 _coroutineRunner.StartCoroutine(StartSingleAnimationCoroutine(AnimationState.Dei, enemyPresenter));
                 enemyPresenter.EnemyAttackView.HideViewObject();
             }

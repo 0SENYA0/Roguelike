@@ -4,10 +4,10 @@ namespace Assets.Interface
 {
     public interface IStepFightView
     {
-        public void SetSprite(Sprite sprite, int index);
-
-        public void Hide();
-        public void Show();
+        void SetSprite(Sprite sprite, int index);
+        void ActiveFrame(int index);
+        void Hide();
+        void Show();
 
     }
 }
