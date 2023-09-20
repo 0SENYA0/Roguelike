@@ -10,7 +10,7 @@ namespace Assets.Inventory.Panel
 
         protected IInventoryItem _item;
 
-        public Action<IInventoryItem> OnItemRemove;
+        public Action<IInventoryItem> OnItemClicked;
 
         public void OnDispose()
         {
@@ -20,7 +20,7 @@ namespace Assets.Inventory.Panel
 
         protected void OnClickRemove()
         {
-            OnItemRemove?.Invoke(_item);
+            OnItemClicked?.Invoke(_item);
             Destroy(gameObject);
         }
     }

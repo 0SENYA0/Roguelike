@@ -61,13 +61,5 @@ namespace Assets.Enemy
             _armorElement.gameObject.SetActive(true);
             _health.gameObject.SetActive(true);
         }
-
-        private IEnumerator ChangeUIHealthValueCoroutine(float health)
-        {
-            
-            //
-
-            yield return null;
-        }
     }
 }

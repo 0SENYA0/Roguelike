@@ -21,7 +21,7 @@ namespace Assets.Inventory.Panel
             {
                 var newItem = Instantiate(_template, _container).GetComponent<ArmorPanelItem>();
                 newItem.Init(armor);
-                newItem.OnItemRemove += OnItemRemove;
+                newItem.OnItemClicked += OnItemRemove;
                 newItem.OnItemUse += OnItemUse;
                 _items.Add(newItem);
             }
@@ -34,7 +34,7 @@ namespace Assets.Inventory.Panel
                 if (item == null)
                     continue;
                 
-                item.OnItemRemove -= OnItemRemove;
+                item.OnItemClicked -= OnItemRemove;
                 item.OnItemUse -= OnItemUse;
                 item.OnDispose();
             }

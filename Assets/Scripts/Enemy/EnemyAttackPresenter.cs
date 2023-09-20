@@ -18,10 +18,8 @@ namespace Assets.Enemy
         
         private void SetElementsSpriteForUI()
         {
-            EnemyAttackView.ArmorElement.sprite =
-                EnemyAttackView.ElementsSpriteView.GetElementSprite(_enemy.Armor.Body.Element);
-            EnemyAttackView.WeaponElement.sprite =
-                EnemyAttackView.ElementsSpriteView.GetElementSprite(_enemy.Weapon.Element);
+            _enemyAttackView.ArmorElement.sprite = EnemyAttackView.ElementsSpriteView.GetElementSprite(_enemy.Armor.Body.Element);
+            _enemyAttackView.WeaponElement.sprite = EnemyAttackView.ElementsSpriteView.GetElementSprite(_enemy.Weapon.Element);
         }
     }
 }

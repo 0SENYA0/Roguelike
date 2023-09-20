@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 namespace Assets.Fight
 {
-    public class GeneraterAttackSteps
+    public class GeneratorAttackSteps
     {
         public void GenerateAttackingSteps
         (

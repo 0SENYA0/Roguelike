@@ -2,6 +2,7 @@ using Assets.Enemy;
 using Assets.Player;
 using Assets.Scripts.GenerationSystem.LevelMovement;
 using Assets.Scripts.InteractiveObjectSystem;
+using DefaultNamespace.Tools;
 using UnityEngine;
 
 namespace Assets.Fight
@@ -11,11 +12,10 @@ namespace Assets.Fight
         [SerializeField] private Transform _globalMap;
         [SerializeField] private Transform _battlefieldMap;
         [SerializeField] private FightPlace _fightPlace;
-        [SerializeField] private ElementsSpriteView _elementsSpriteView;
         [SerializeField] private InteractiveObjectHandler _interactiveObjectHandler;
+        
         private IPlayerPresenter _playerPresenter;
         private IEnemyPresenter _enemyPresenter;
-        private MouseClickTracker _mouseClickTracker;
 
         private void OnEnable()
         {
@@ -39,17 +39,17 @@ namespace Assets.Fight
             _globalMap.gameObject.SetActive(true);
             _battlefieldMap.gameObject.SetActive(false);
             _interactiveObjectHandler.ReturnToGlobalMap();
+            ConsoleTools.LogSuccess("ДОЛЖНА ВЫПАСТЬ НАГРАДА ИГРОКУ!!!");
         }
         
         public void SetActiveFightPlace(IPlayerPresenter playerPresenter, IEnemyPresenter enemyPresenter)
         {
             _enemyPresenter = enemyPresenter;
             _playerPresenter = playerPresenter;
-            _mouseClickTracker = _playerPresenter.PlayerView.gameObject.GetComponent<MouseClickTracker>();
             _battlefieldMap.gameObject.SetActive(true);
             _globalMap.gameObject.SetActive(false);
 
-            _fightPlace.Set(_playerPresenter, _enemyPresenter, _elementsSpriteView);
+            _fightPlace.Set(_playerPresenter, _enemyPresenter);
         }
     }
 }

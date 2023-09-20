@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using Assets.Enemy;
 using Assets.Fight.Dice;
 using Assets.Interface;
-using Assets.Person;
 using Assets.Player;
 using Assets.ScriptableObjects;
 using Assets.Scripts.InteractiveObjectSystem;
 using Assets.Scripts.UI.Widgets;
+using Assets.Utils;
 using UnityEngine;
 
 namespace Assets.Fight
@@ -18,11 +18,13 @@ namespace Assets.Fight
         [SerializeField] private List<EnemyPoint> _spawnPoints;
         [SerializeField] private StepFightView _stepFightView;
 
-        [Space(25)] [SerializeField] private DiceView _leftDice;
+        [Space(25)] 
+        [SerializeField] private DiceView _leftDice;
         [SerializeField] private DiceView _centerDice;
         [SerializeField] private DiceView _rightDice;
 
-        [Space(25)] [SerializeField] private ElementsDamagePanel _elementsDamagePanel;
+        [Space(25)] 
+        [SerializeField] private PlayerWeaponPanel _elementsDamagePanel;
 
         // Места для игрока и врагов на карте битвы
         [SerializeField] private PlayerAttackView _playerAttackView;
@@ -31,6 +33,7 @@ namespace Assets.Fight
 
         [SerializeField] private GameObject _popupReady;
         [SerializeField] private CustomButton _customButtonReady;
+        
         private Fight _fight;
         private EnemyPoint _spawnPoint;
 
@@ -39,7 +42,7 @@ namespace Assets.Fight
         private const int ThreeEnemy = 3;
         private const int Boss = 4;
 
-        private IElementsDamagePanel _IelementsDamagePanel;
+        private PlayerWeaponPanel _IelementsDamagePanel;
         private RectTransform _playerRectTransform;
 
         public Action FightEnded;
@@ -62,34 +65,36 @@ namespace Assets.Fight
 
             _playerAttackView.transform.position = GetScreenCoordinates(_playerRectTransform).center;
         }
-
-
-        public void Set(IPlayerPresenter playerPresenter, IEnemyPresenter enemyPresenter,
-            ElementsSpriteView elementsSpriteView)
+        
+        public void Set(IPlayerPresenter playerPresenter, IEnemyPresenter enemyPresenter)
         {
             foreach (EnemyAttackView unitAttackView in _enemyAttackViews)
                 unitAttackView.gameObject.SetActive(false);
 
-            #region MyRegion
-
             SelectEnemyUIPosition(enemyPresenter);
 
-            PlayerAttackPresenter playerAttackPresenter =
-                new PlayerAttackPresenter(playerPresenter.Player, _playerAttackView);
+            PlayerAttackPresenter playerAttackPresenter = new PlayerAttackPresenter(playerPresenter.Player, _playerAttackView);
             
             List<EnemyAttackPresenter> enemyAttackPresenters = new List<EnemyAttackPresenter>();
 
             for (int i = 0; i < enemyPresenter.Enemy.Count; i++)
                 enemyAttackPresenters.Add(new EnemyAttackPresenter(enemyPresenter.Enemy[i], _enemyAttackViews[i]));
 
-            _fight = new Fight(this, enemyAttackPresenters, playerAttackPresenter, _stepFightView,
-                GetDicePresenterAdapter(), _IelementsDamagePanel, _popupReady, _customButtonReady, elementsSpriteView);
-
+            _fight = new Fight(this, enemyAttackPresenters, playerAttackPresenter, _stepFightView, GetDicePresenterAdapter(), _IelementsDamagePanel, _popupReady, _customButtonReady);
             _fight.FightEnded += () => FightEnded?.Invoke();
-
             _fight.Start();
+        }
 
-            #endregion
+        public Rect GetScreenCoordinates(RectTransform uiElement)
+        {
+            Vector3[] worldCorners = new Vector3[4];
+            uiElement.GetWorldCorners(worldCorners);
+            Rect result = new Rect(
+                worldCorners[0].x,
+                worldCorners[0].y,
+                worldCorners[2].x - worldCorners[0].x,
+                worldCorners[2].y - worldCorners[0].y);
+            return result;
         }
 
         private DicePresenterAdapter GetDicePresenterAdapter()
@@ -156,18 +161,6 @@ namespace Assets.Fight
             }
 
             spawnPoint.gameObject.SetActive(true);
-        }
-
-        public Rect GetScreenCoordinates(RectTransform uiElement)
-        {
-            Vector3[] worldCorners = new Vector3[4];
-            uiElement.GetWorldCorners(worldCorners);
-            Rect result = new Rect(
-                worldCorners[0].x,
-                worldCorners[0].y,
-                worldCorners[2].x - worldCorners[0].x,
-                worldCorners[2].y - worldCorners[0].y);
-            return result;
         }
 
         private void DisableAllEnemyUI()
