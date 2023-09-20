@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Assets.Inventory;
-using Assets.Inventory.Panel;
 using UnityEngine;
 using UnityEngine.UI;
 

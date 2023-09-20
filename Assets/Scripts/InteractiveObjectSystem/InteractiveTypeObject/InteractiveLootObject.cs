@@ -1,8 +1,5 @@
 using Assets.DefendItems;
-using Assets.Interface;
 using Assets.Inventory.ItemGeneratorSystem;
-using Assets.ScriptableObjects;
-using Assets.Weapon;
 using UnityEngine;
 
 namespace Assets.Scripts.InteractiveObjectSystem

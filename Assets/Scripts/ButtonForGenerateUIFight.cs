@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Assets.Fight;
-using Assets.Person;
 using UnityEngine;
 using UnityEngine.UI;
 

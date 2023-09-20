@@ -1,8 +1,5 @@
-using System;
 using Assets.Fight.Element;
-using Assets.Weapon;
 using UnityEngine;
-using UnityEngine.ParticleSystemJobs;
 
 namespace Assets.ScriptableObjects
 {

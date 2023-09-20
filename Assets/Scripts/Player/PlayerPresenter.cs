@@ -1,7 +1,6 @@
 using Assets.Enemy;
 using Assets.Inventory;
 using Assets.Person;
-using UnityEngine;
 
 namespace Assets.Player
 {

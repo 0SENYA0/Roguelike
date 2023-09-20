@@ -3,7 +3,6 @@ using System.Collections;
 using Assets.Enemy;
 using Assets.Fight;
 using Assets.Inventory;
-using Assets.Loot;
 using Assets.Person;
 using Assets.Player;
 using Assets.Scripts.GenerationSystem.LevelMovement;

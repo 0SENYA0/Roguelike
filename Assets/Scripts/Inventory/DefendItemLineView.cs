@@ -1,4 +1,3 @@
-using System;
 using Assets.Scripts.UI.Widgets;
 using TMPro;
 using UnityEngine;

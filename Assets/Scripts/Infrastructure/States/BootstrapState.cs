@@ -1,7 +1,6 @@
 using Agava.YandexGames;
 using Assets.Interface;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Assets.Infrastructure.States
 {

@@ -24,7 +24,6 @@ namespace Assets.Person
             _magicItem = magicItem;
             SpriteAnimation = spriteAnimation;
             _personStateMachine = new PersonStateMachine();
-            
         }
 
         public event Action<Unit> Died;

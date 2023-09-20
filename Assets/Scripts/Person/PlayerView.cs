@@ -1,6 +1,5 @@
 using Assets.Inventory;
 using Assets.Player;
-using Assets.ScriptableObjects;
 using Assets.Scripts.AnimationComponent;
 using UnityEngine;
 

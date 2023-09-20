@@ -2,8 +2,6 @@ using Assets.DefendItems;
 using Assets.Interface;
 using Assets.Person;
 using Assets.Scripts.AnimationComponent;
-using Assets.Scripts.InteractiveObjectSystem;
-using UnityEngine;
 
 namespace Assets.Enemy
 {

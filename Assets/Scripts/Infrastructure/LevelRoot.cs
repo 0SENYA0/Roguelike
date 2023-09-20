@@ -2,7 +2,6 @@ using Assets.Scripts.GenerationSystem;
 using Assets.Scripts.SoundSystem;
 using Assets.TimerSystem;
 using Assets.UI;
-using Assets.UI.SettingsWindow.Localization;
 using UnityEngine;
 
 namespace Assets.Infrastructure

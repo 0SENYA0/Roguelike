@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using Agava.YandexGames;
 using Assets.Interface;
-using Cysharp.Threading.Tasks;
 
 namespace Assets.Infrastructure
 {

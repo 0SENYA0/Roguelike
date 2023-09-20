@@ -1,6 +1,4 @@
-using System;
 using Assets.DefendItems;
-using Assets.Interface;
 using UnityEngine;
 
 namespace Assets.ScriptableObjects

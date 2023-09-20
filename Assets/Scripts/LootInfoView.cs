@@ -1,4 +1,3 @@
-using System;
 using Assets.Scripts.InteractiveObjectSystem;
 using TMPro;
 using UnityEngine;

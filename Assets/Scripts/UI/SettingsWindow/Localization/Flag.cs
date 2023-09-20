@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-
 namespace Assets.UI.SettingsWindow.Localization
 {
     [RequireComponent(typeof(Button))]

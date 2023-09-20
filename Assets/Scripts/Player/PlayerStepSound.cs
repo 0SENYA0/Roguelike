@@ -1,5 +1,4 @@
 using Assets.Scripts.GenerationSystem.LevelMovement;
-using Assets.Scripts.SoundSystem;
 using UnityEngine;
 
 namespace Assets.Player

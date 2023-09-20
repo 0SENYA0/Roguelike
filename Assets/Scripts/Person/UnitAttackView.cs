@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using DefaultNamespace.Tools;
 using UnityEngine;
 using AnimationClip = Assets.Scripts.AnimationComponent.AnimationClip;
 

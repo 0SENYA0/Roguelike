@@ -1,5 +1,4 @@
 using Assets.Fight.Element;
-using Assets.Weapon;
 using UnityEngine;
 
 namespace Assets.Interface

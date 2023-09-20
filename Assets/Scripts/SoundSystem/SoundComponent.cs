@@ -1,6 +1,5 @@
 using System.Collections;
 using Assets.Infrastructure;
-using DefaultNamespace.Tools;
 using UnityEngine;
 
 namespace Assets.Scripts.SoundSystem

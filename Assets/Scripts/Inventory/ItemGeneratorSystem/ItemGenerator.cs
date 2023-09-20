@@ -4,7 +4,6 @@ using Assets.DefendItems;
 using Assets.Fight.Element;
 using Assets.ScriptableObjects;
 using UnityEngine;
-using Random = System.Random;
 
 namespace Assets.Inventory.ItemGeneratorSystem
 {

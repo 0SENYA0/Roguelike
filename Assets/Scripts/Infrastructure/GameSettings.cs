@@ -1,7 +1,6 @@
 using System;
 using Assets.Infrastructure.DataStorageSystem;
 using Assets.Scripts.SoundSystem;
-using Assets.UI.SettingsWindow.Localization;
 
 namespace Assets.Infrastructure
 {

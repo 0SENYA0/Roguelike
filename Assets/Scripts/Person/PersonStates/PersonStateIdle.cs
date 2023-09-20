@@ -1,5 +1,3 @@
-using Assets.Scripts.AnimationComponent;
-
 namespace Assets.Person.PersonStates
 {
     public class PersonStateIdle : PersonState

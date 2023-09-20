@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Person;
 using UnityEngine;
 
 namespace Assets.Scripts.AnimationComponent
