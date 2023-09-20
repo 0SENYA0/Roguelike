@@ -2,40 +2,33 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets.Person;
 using Assets.UI;
+using DefaultNamespace.Tools;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Assets.Player
 {
     public class PlayerAttackView : UnitAttackView
     {
-        [SerializeField] private List<HealthBarView> _health;
+        [SerializeField] private List<Image> _heart;
+        [SerializeField] private PlayerView _player;
 
-        private List<HealthBarView> _activeHealth;
         protected override void OnPastEnable()
         {
             base.OnPastEnable();
-            GetActiveHealth();
+            ChangeUIHealthValue(0);
         }
 
         public override void ChangeUIHealthValue(float value)
         {
-            float valuePerHeart = 1f / _health.Count;
+            int currentHeartsCount = ((int)_player.PlayerPresenter.Player.Healh) / 100 + 1;
 
-            for (int i = 0; i < _health.Count; i++)
+            foreach (var heart in _heart)
             {
-                float temp = -value + valuePerHeart * (i + 1);
-                
-                if (0 < temp)
-                    _health[i].HealthBar.fillAmount = 1;
-                else
-                    _health[i].HealthBar.fillAmount = temp;
+                heart.gameObject.SetActive(currentHeartsCount > 0);
+                currentHeartsCount--;
             }
-        }
-        
-        private void GetActiveHealth()
-        {
-            _activeHealth = _health.Where(healthBarView => healthBarView.gameObject.activeSelf).ToList();
-            //_currentHealthImage = _activeHealth[_activeHealth.Count - 1];
         }
     }
 }

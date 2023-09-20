@@ -9064,6 +9064,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1306573190809038671}
+  - component: {fileID: 4232756254972353120}
   m_Layer: 5
   m_Name: Group_Player_Info
   m_TagString: Untagged
@@ -9092,6 +9093,28 @@ RectTransform:
   m_AnchoredPosition: {x: 387.3634, y: -94.30078}
   m_SizeDelta: {x: 715.2268, y: 188.61694}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4232756254972353120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7404074550879747610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b90e0a482d4add84b6dc5522773c08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _heart:
+  - {fileID: 2209993828158131574}
+  - {fileID: 8200463830576935486}
+  - {fileID: 7055730405034320181}
+  - {fileID: 8775937839400218165}
+  - {fileID: 8226478015042619967}
+  - {fileID: 4015848371717594842}
+  - {fileID: 6366044451013994219}
+  - {fileID: 8722511017153435226}
+  _player: {fileID: 4815860675977482509}
 --- !u!1 &7414510286844537912
 GameObject:
   m_ObjectHideFlags: 0
@@ -11305,7 +11328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 948889363996898963, guid: 7fcde7131874fcc47ad556c206a6f569, type: 3}
       propertyPath: _health
-      value: 250
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 948889363996898963, guid: 7fcde7131874fcc47ad556c206a6f569, type: 3}
       propertyPath: _sprite

@@ -2,6 +2,7 @@ using System;
 using Assets.DefendItems;
 using Assets.Inventory;
 using Assets.Scripts.InteractiveObjectSystem;
+using Assets.Scripts.SoundSystem;
 using Lean.Localization;
 using TMPro;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace Assets.UI.HUD
     public class RewardPanel : MonoBehaviour
     {
         [SerializeField] private Button _button;
+        [SerializeField] private SoundComponent _winSound;
         [Space]
         [Header("Блоки элементов")] 
         [SerializeField] private Image _attackImage;
@@ -35,6 +37,7 @@ namespace Assets.UI.HUD
         public void Show(IInventoryItem loot)
         {
             gameObject.SetActive(true);
+            _winSound.Play();
             _button.onClick.AddListener(OnButtonClicked);
             
             if (loot is Armor armor)

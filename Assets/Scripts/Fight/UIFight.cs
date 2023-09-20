@@ -3,9 +3,9 @@ using Assets.Inventory;
 using Assets.Inventory.ItemGeneratorSystem;
 using Assets.Player;
 using Assets.Scripts.InteractiveObjectSystem;
+using Assets.Scripts.SoundSystem;
 using Assets.UI;
 using Assets.UI.HUD;
-using DefaultNamespace.Tools;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,14 +19,15 @@ namespace Assets.Fight
         [SerializeField] private InteractiveObjectHandler _interactiveObjectHandler;
         [SerializeField] private RewardPanel _rewardPanel;
         [SerializeField] private LosePanel _losePanel;
+        [SerializeField] private SoundComponent _fightSound;
 
         private IPlayerPresenter _playerPresenter;
 
         public void SetActiveFightPlace(IPlayerPresenter playerPresenter, IEnemyPresenter enemyPresenter)
         {
-            
             _playerPresenter = playerPresenter;
             _battlefieldMap.SetActive(true);
+            _fightSound.Play();
             _globalMap.SetActive(false);
             
             _fightPlace.FightEnded += ShowRewardPanel;
@@ -36,13 +37,11 @@ namespace Assets.Fight
         private void ShowRewardPanel()
         {
             _fightPlace.FightEnded -= ShowRewardPanel;
-            ConsoleTools.LogSuccess($"{_playerPresenter.Player.Healh}");
             
             if (_playerPresenter.Player.Healh <= 0)
             {
                 _losePanel.Show("Вы проиграли (((");
                 _losePanel.OnButtonClickEvent += OnLosePanelClick;
-                
             }
             else
             {
@@ -55,22 +54,18 @@ namespace Assets.Fight
 
         private void OnLosePanelClick()
         {
+            _fightSound.Stop();
+            _losePanel.OnButtonClickEvent -= OnLosePanelClick;
+            
             Curtain.Instance.ShowAnimation(() =>
             {
                 SceneManager.LoadScene("Menu");
             });
         }
 
-        private IInventoryItem GetRandomLoot()
-        {
-            if (UnityEngine.Random.Range(0, 2) == 0)
-                return ItemGenerator.Instance.GetRandomArmor();
-            
-            return ItemGenerator.Instance.GetRandomWeapon();
-        }
-
         private void ShowGlobalMap()
         {
+            _fightSound.Stop();
             _rewardPanel.OnButtonClickEvent -= ShowGlobalMap;
             _rewardPanel.Hide();
             
@@ -80,6 +75,14 @@ namespace Assets.Fight
                 _battlefieldMap.SetActive(false);
                 _interactiveObjectHandler.ReturnToGlobalMap();
             });
+        }
+
+        private IInventoryItem GetRandomLoot()
+        {
+            if (UnityEngine.Random.Range(0, 2) == 0)
+                return ItemGenerator.Instance.GetRandomArmor();
+            
+            return ItemGenerator.Instance.GetRandomWeapon();
         }
     }
 }

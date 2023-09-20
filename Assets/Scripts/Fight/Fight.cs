@@ -95,9 +95,10 @@ namespace Assets.Fight
             
             _dicePresenterAdapter.SetDisactive();
             _popupReady.gameObject.SetActive(true);
+            _stepFightView.Show();
+            
             yield return getUserAnswer;
 
-            _stepFightView.Show();
             _elementsDamagePanel.Init(_playerAttackPresenter.Inventory.InventoryModel.GetWeapon());
             
             while (_enemyAttackPresenters.Count > 0 && _playerAttackPresenter.Unit.IsDie == false)

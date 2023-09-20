@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Assets.Enemy;
 using Assets.Fight;
+using Assets.Infrastructure;
 using Assets.Inventory;
 using Assets.Person;
 using Assets.Player;
@@ -19,6 +20,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
         [SerializeField] private AgentMovement _agent;
         [SerializeField] private float _minDistanceToStartBattle = 10.1f;
         [Space] 
+        [SerializeField] private LevelRoot _levelRoot;
         [SerializeField] private UIFight _battlefild;
 
         private InteractiveObject _targetObject;
@@ -38,6 +40,8 @@ namespace Assets.Scripts.InteractiveObjectSystem
             {
                 openPanel = () =>
                 {
+                    _levelRoot.PauseGlobalMap();
+                    
                     Curtain.Instance.ShowAnimation(() =>
                     {
                         _battlefild.SetActiveFightPlace(_playerPresenter, enemyView.EnemyPresenter);
@@ -65,6 +69,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
 
         public void ReturnToGlobalMap()
         {
+            _levelRoot.UnpauseGlobalMap();
             _clickTracker.enabled = true;
             _targetObject.DestroyObject();
         }
@@ -73,13 +78,13 @@ namespace Assets.Scripts.InteractiveObjectSystem
         {
             LevelRandomEvent levelRandomEvent = new LevelRandomEvent();
             RandomEventType randomEvent = levelRandomEvent.GetRandomEvent();
-            Debug.Log($"{randomEvent}");
-            
+
             switch (randomEvent)
             {
                 case RandomEventType.Enemy:
                     return () =>
                     {
+                        _levelRoot.PauseGlobalMap();
                         Curtain.Instance.ShowAnimation(
                             () =>
                             {
