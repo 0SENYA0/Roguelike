@@ -18,6 +18,7 @@ namespace Assets.Fight
         [SerializeField] private StepFightView _stepFightView;
 
         [Space(25)] 
+        [SerializeField] private DiceCanvasGroup _diceGroup;
         [SerializeField] private DiceView _leftDice;
         [SerializeField] private DiceView _centerDice;
         [SerializeField] private DiceView _rightDice;
@@ -82,7 +83,19 @@ namespace Assets.Fight
             
             _fight = new Fight(this, enemyAttackPresenters, playerAttackPresenter, _stepFightView, GetDicePresenterAdapter(), _IelementsDamagePanel, _popupReady, _customButtonReady);
             _fight.FightEnded += EndFight;
+            _fight.ShowDice += ShowDice;
+            _fight.HideDice += HideDice;
             _fight.Start();
+        }
+
+        private void HideDice()
+        {
+            _diceGroup.HideCanvas();
+        }
+
+        private void ShowDice()
+        {
+            _diceGroup.ShowCanvas();
         }
 
         // Calling on button
@@ -90,6 +103,8 @@ namespace Assets.Fight
         {
             FightEnded?.Invoke(FightResult.Leave);
             _fight.FightEnded -= EndFight;
+            _fight.ShowDice -= ShowDice;
+            _fight.HideDice -= HideDice;
             _fight.Dispose();
             _fight = null;
         }
@@ -99,6 +114,8 @@ namespace Assets.Fight
             FightEnded?.Invoke(_playerPresenter.Player.Healh > 0 ? FightResult.Win : FightResult.Lose);
             
             _fight.FightEnded -= EndFight;
+            _fight.ShowDice -= ShowDice;
+            _fight.HideDice -= HideDice;
             _fight.Dispose();
             _fight = null;
         }
@@ -127,7 +144,7 @@ namespace Assets.Fight
             DicePresenter rightDicePresenter =
                 new DicePresenter(_rightDice, new DiceModel(scriptableObject.Sprites), this);
 
-            return new DicePresenterAdapter(leftDicePresenter, centerDicePresenter, rightDicePresenter);
+            return new DicePresenterAdapter(_diceGroup, leftDicePresenter, centerDicePresenter, rightDicePresenter);
         }
 
         private void SelectEnemyUIPosition(IEnemyPresenter enemyPresenter)

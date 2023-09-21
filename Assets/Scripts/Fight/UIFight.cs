@@ -1,5 +1,6 @@
 using System;
 using Assets.Enemy;
+using Assets.Fight.Dice;
 using Assets.Inventory;
 using Assets.Inventory.ItemGeneratorSystem;
 using Assets.Player;

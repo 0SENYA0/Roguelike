@@ -5,7 +5,8 @@ namespace Assets.UI
     public class FollowToTarget : MonoBehaviour
     {
         [SerializeField] private Transform _target;
-        [SerializeField] [Range(0.5f, 7.5f)] private float _velocity = 1.5f;
+        [SerializeField] [Range(0, 10f)] private float _velocity = 1.5f;
+        [SerializeField] private float _offset = 10f;
 
         private void Awake()
         {
@@ -13,7 +14,7 @@ namespace Assets.UI
             {
                 x = _target.position.x,
                 y = _target.position.y,
-                z = _target.position.z - 10,
+                z = _target.position.z - _offset,
             };
         }
 
@@ -23,7 +24,7 @@ namespace Assets.UI
             {
                 x = _target.position.x,
                 y = _target.position.y,
-                z = _target.position.z - 10,
+                z = _target.position.z - _offset,
             };
 
             Vector3 pos = Vector3.Lerp(transform.position, target, _velocity * Time.deltaTime);

@@ -28,12 +28,15 @@ namespace Assets.Fight
         private readonly Queue<UnitAttackPresenter> _unitsOfQueue;          
 
         private readonly int _countSteps = 10;
+        private readonly GeneratorAttackSteps _generatorAttackSteps;
+        
         private Coroutine _coroutine;
         private bool _userIsReady;
         private int _currentQueueStep;
 
         public Action FightEnded;
-        private readonly GeneratorAttackSteps _generatorAttackSteps;
+        public Action ShowDice;
+        public Action HideDice;
 
         public Fight(ICoroutineRunner coroutineRunner, 
             List<EnemyAttackPresenter> enemyAttackPresenters,
@@ -132,7 +135,9 @@ namespace Assets.Fight
                         enemyAttackPresenter.EnemyAttackView.StopParticleEffect();
 
                     _dicePresenterAdapter.SetActive();
+                    ShowDice?.Invoke();
                     yield return waitDiceChooseUntil;
+                    HideDice?.Invoke();
                     # endregion
 
                     # region все выбрали, переходим в Idle

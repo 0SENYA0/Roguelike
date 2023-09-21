@@ -4,12 +4,14 @@ namespace Assets.Fight.Dice
 {
     public class DicePresenterAdapter : IDisposable
     {
+        private readonly DiceCanvasGroup _diceGroup;
         private readonly DicePresenter _leftDice;
         private readonly DicePresenter _centerDice;
         private readonly DicePresenter _rightDice;
 
-        public DicePresenterAdapter(DicePresenter leftDice, DicePresenter centerDice, DicePresenter rightDice)
+        public DicePresenterAdapter(DiceCanvasGroup diceGroup, DicePresenter leftDice, DicePresenter centerDice, DicePresenter rightDice)
         {
+            _diceGroup = diceGroup;
             _leftDice = leftDice;
             _centerDice = centerDice;
             _rightDice = rightDice;
