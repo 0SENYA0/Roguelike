@@ -2,7 +2,6 @@ using System;
 using Assets.Infrastructure.DataStorageSystem;
 using Assets.Scripts.SoundSystem;
 using Assets.UI.ShopWindow;
-using DefaultNamespace.Tools;
 using UnityEngine;
 
 namespace Assets.Infrastructure
@@ -56,9 +55,6 @@ namespace Assets.Infrastructure
 
         public bool TryBueItem(ShopItemType type, int price)
         {
-            Debug.Log(_playerData);
-            ConsoleTools.LogInfo("Пытаемся что-то купить");
-
             bool isBue = false;
             
             switch (type)
@@ -97,8 +93,8 @@ namespace Assets.Infrastructure
                     break;
             }
             
-            Debug.Log(_playerData);
-            ConsoleTools.LogInfo($"Результат: {isBue}");
+            PlayerData.SaveData();
+            
             return isBue;
         }
 

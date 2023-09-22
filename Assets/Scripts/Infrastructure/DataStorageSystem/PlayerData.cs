@@ -170,9 +170,9 @@ namespace Assets.Infrastructure.DataStorageSystem
         private bool CheckGameStatistics(GameStatistics newStat)
         {
             var currentStat = new GameStatistics(_gameStatistics);
-            var isCurrentAttempts = newStat.NumberOfAttempts - currentStat.NumberOfAttempts > 0;
-            var isCurrentEnemies = newStat.NumberOfEnemiesKilled - currentStat.NumberOfEnemiesKilled > 0;
-            var isCurrentBosses = newStat.NumberOfBossesKilled - currentStat.NumberOfBossesKilled > 0;
+            var isCurrentAttempts = newStat.NumberOfAttempts - currentStat.NumberOfAttempts >= 0;
+            var isCurrentEnemies = newStat.NumberOfEnemiesKilled - currentStat.NumberOfEnemiesKilled >= 0;
+            var isCurrentBosses = newStat.NumberOfBossesKilled - currentStat.NumberOfBossesKilled >= 0;
 
             return isCurrentAttempts && isCurrentEnemies && isCurrentBosses;
         }

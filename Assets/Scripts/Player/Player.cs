@@ -57,7 +57,7 @@ namespace Assets.Player
             float head = _inventoryPresenter.ActiveArmor.Head.Value;
             float armor = body + head;
             
-            return damage / (element * damage + armor);
+            return damage / (element * damage - armor);
         }
     }
 }

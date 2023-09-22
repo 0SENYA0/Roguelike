@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _priceList:
   - _level: 1
-    _nextPrice: 2999
+    _nextPrice: 3000

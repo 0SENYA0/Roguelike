@@ -16,7 +16,14 @@ namespace Assets.Infrastructure.DataStorageSystem
             NumberOfEnemiesKilled = list_numbers[1];
             NumberOfBossesKilled = list_numbers[2];
         }
-        
+
+        public GameStatistics(int numberOfAttempts, int numberOfEnemiesKilled, int numberOfBossesKilled)
+        {
+            NumberOfAttempts = numberOfAttempts;
+            NumberOfEnemiesKilled = numberOfEnemiesKilled;
+            NumberOfBossesKilled = numberOfBossesKilled;
+        }
+
         public string ConvertValueToStringLine()
         {
             return $"{NumberOfAttempts};{NumberOfEnemiesKilled};{NumberOfBossesKilled}";
