@@ -1,6 +1,7 @@
 using System;
+using System.Linq;
 using Assets.Enemy;
-using Assets.Fight.Dice;
+using Assets.Infrastructure;
 using Assets.Inventory;
 using Assets.Inventory.ItemGeneratorSystem;
 using Assets.Player;
@@ -9,12 +10,12 @@ using Assets.Scripts.SoundSystem;
 using Assets.UI;
 using Assets.UI.HUD;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Assets.Fight
 {
     public class UIFight : MonoBehaviour
     {
+        [SerializeField] private LevelRoot _levelRoot;
         [SerializeField] private GameObject _globalMap;
         [SerializeField] private GameObject _battlefieldMap;
         [SerializeField] private FightPlace _fightPlace;
@@ -24,6 +25,8 @@ namespace Assets.Fight
         [SerializeField] private SoundComponent _fightSound;
 
         private IPlayerPresenter _playerPresenter;
+        private int _countOfEnemyForFight;
+        private bool _isBoosFight;
 
         public void SetActiveFightPlace(IPlayerPresenter playerPresenter, IEnemyPresenter enemyPresenter)
         {
@@ -32,6 +35,9 @@ namespace Assets.Fight
             _fightSound.Play();
             _globalMap.SetActive(false);
             
+            _countOfEnemyForFight = enemyPresenter.Enemy.Count;
+            _isBoosFight = enemyPresenter.Enemy.FirstOrDefault(x => x.IsBoss)!.IsBoss;
+            
             _fightPlace.FightEnded += ShowRewardPanel;
             _fightPlace.Set(playerPresenter, enemyPresenter);
         }
@@ -39,14 +45,19 @@ namespace Assets.Fight
         private void ShowRewardPanel(FightResult fightResult)
         {
             _fightPlace.FightEnded -= ShowRewardPanel;
-
+            _levelRoot.IncreaseKilledEnemies(_countOfEnemyForFight);
+            
             switch (fightResult)
             {
                 case FightResult.Win:
                     var randomLoot = GetRandomLoot();
                     _rewardPanel.Show(randomLoot);
-                    _rewardPanel.OnButtonClickEvent += ShowGlobalMap;
                     _playerPresenter.Player.InventoryPresenter.InventoryModel.AddItem(randomLoot);
+                    if (_isBoosFight)
+                        _rewardPanel.OnButtonClickEvent += LoadNextLevel;
+                    else
+                        _rewardPanel.OnButtonClickEvent += ShowGlobalMap;
+                    
                     break;
                 case FightResult.Lose:
                     _losePanel.Show("Вы проиграли (((");
@@ -64,11 +75,7 @@ namespace Assets.Fight
         {
             _fightSound.Stop();
             _losePanel.OnButtonClickEvent -= OnLosePanelClick;
-            
-            Curtain.Instance.ShowAnimation(() =>
-            {
-                SceneManager.LoadScene("Menu");
-            });
+            _levelRoot.LoadMainMenu();
         }
 
         private void ShowGlobalMap()
@@ -83,6 +90,13 @@ namespace Assets.Fight
                 _battlefieldMap.SetActive(false);
                 _interactiveObjectHandler.ReturnToGlobalMap();
             });
+        }
+
+        private void LoadNextLevel()
+        {
+            _fightSound.Stop();
+            _losePanel.OnButtonClickEvent -= LoadNextLevel;
+            _levelRoot.LoadNextLevel();
         }
 
         private IInventoryItem GetRandomLoot()

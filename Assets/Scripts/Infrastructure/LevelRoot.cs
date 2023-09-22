@@ -1,3 +1,4 @@
+using Assets.Infrastructure.DataStorageSystem;
 using Assets.Person;
 using Assets.Scripts.GenerationSystem;
 using Assets.Scripts.SoundSystem;
@@ -5,6 +6,7 @@ using Assets.TimerSystem;
 using Assets.UI;
 using Assets.UI.HUD;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Infrastructure
 {
@@ -17,10 +19,12 @@ namespace Assets.Infrastructure
         [Space] 
         [SerializeField] private PlayerView _player;
 
+        private int _numberOfEnemiesKilled;
+
         private void Start()
         {
             _generation.GenerateLevel();
-            Invoke(nameof(HideCurtain), 1f);
+            Invoke(nameof(HideCurtain), 2f);
         }
 
         public void PauseGlobalMap()
@@ -33,6 +37,45 @@ namespace Assets.Infrastructure
         {
             _gameTimer.StartTimer();
             _levelSound.Play();
+        }
+
+        public void IncreaseKilledEnemies(int count)
+        {
+            _numberOfEnemiesKilled += count;
+        }
+
+        public void LoadMainMenu()
+        {
+            SaveEntries(0);
+            Curtain.Instance.ShowAnimation(() =>
+            {
+                SceneManager.LoadScene("Menu");
+            });
+        }
+
+        public void LoadNextLevel()
+        {
+            SaveEntries(1);
+            Curtain.Instance.ShowAnimation(() =>
+            {
+                SceneManager.LoadScene("LevelGeneration");
+            });
+        }
+
+        private void SaveEntries(int countOfKilledBosses)
+        {
+            if (Game.GameSettings == null)
+                return;
+
+            var gameStats = Game.GameSettings.PlayerData.GameStatistics;
+            var newGameStats = new GameStatistics(
+                gameStats.NumberOfAttempts + 1,
+                gameStats.NumberOfEnemiesKilled + _numberOfEnemiesKilled,
+                gameStats.NumberOfBossesKilled + countOfKilledBosses
+                );
+
+            Game.GameSettings.PlayerData.GameStatistics = newGameStats;
+            Game.GameSettings.PlayerData.SaveData();
         }
 
         private void HideCurtain()

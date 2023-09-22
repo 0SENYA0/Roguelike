@@ -62,7 +62,7 @@ namespace Assets.Person
             if (IsDie)
                 return;
             
-            float damageMultiplier = weapon.Damage / (CalculateDamageModifier(weapon.Element) * weapon.Damage + (_armor.Body.Value + _armor.Head.Value));
+            float damageMultiplier = CalculateDamageModifier(weapon.Element) * weapon.Damage - (_armor.Body.Value + _armor.Head.Value);
             _health -= damageMultiplier * weapon.Damage;
         }
 
