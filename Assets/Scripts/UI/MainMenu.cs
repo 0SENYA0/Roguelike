@@ -1,4 +1,5 @@
 using Assets.Scripts.SoundSystem;
+using Assets.UI.ShopWindow;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,13 +14,14 @@ namespace Assets.UI
         [SerializeField] private MenuButtonItem _settings;
         [SerializeField] private MenuButtonItem _training;
         [SerializeField] private MenuButtonItem _shop;
-        
+        [SerializeField] private ShopPanel _shopPanel;
         
         private void Start()
         {
             _sound.Play();
             Curtain.Instance.HideCurtain();
             _buttonGroups.SetActive(true);
+            _shopPanel.Init();
         }
 
         private void OnEnable()
@@ -41,6 +43,7 @@ namespace Assets.UI
         private void StartGame()
         {
             _sound.Stop();
+            _shopPanel.Dispose();
             Curtain.Instance.ShowAnimation(() => { SceneManager.LoadScene("LevelGeneration");});
         }
     }

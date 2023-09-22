@@ -2414,6 +2414,10 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 0aaad8d070c35dd4c8cf39e78ff0b510, type: 2}
   - m_RefCount: 50
     m_Data: {fileID: 11400000, guid: 0418b13991fb4aa45907fe04b41ade2e, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -2586,8 +2590,8 @@ Tilemap:
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -27, y: -18, z: 0}
-  m_Size: {x: 54, y: 50, z: 1}
+  m_Origin: {x: -29, y: -18, z: 0}
+  m_Size: {x: 56, y: 50, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -2803,10 +2807,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3076971935285648871, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -178.22998
-      objectReference: {fileID: 0}
     - target: {fileID: 3296414419366836750, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
       propertyPath: _surfaces.Array.data[0]
       value: 
@@ -2847,10 +2847,6 @@ PrefabInstance:
       propertyPath: _timer
       value: 
       objectReference: {fileID: 1205741076}
-    - target: {fileID: 4705972201780025678, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -178.22998
-      objectReference: {fileID: 0}
     - target: {fileID: 5975527765568774177, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

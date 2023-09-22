@@ -1,6 +1,9 @@
 using System;
 using Assets.Infrastructure.DataStorageSystem;
 using Assets.Scripts.SoundSystem;
+using Assets.UI.ShopWindow;
+using DefaultNamespace.Tools;
+using UnityEngine;
 
 namespace Assets.Infrastructure
 {
@@ -30,6 +33,7 @@ namespace Assets.Infrastructure
         {
             _playerData = new PlayerData();
             _sound = new Sound(_playerData);
+            Debug.Log(_playerData);
         }
 
         public void ChangeSoundSettings(SoundType type)
@@ -49,5 +53,55 @@ namespace Assets.Infrastructure
             _playerData.SaveData();
             OnLanguageChange?.Invoke(lang);
         }
+
+        public bool TryBueItem(ShopItemType type, int price)
+        {
+            Debug.Log(_playerData);
+            ConsoleTools.LogInfo("Пытаемся что-то купить");
+
+            bool isBue = false;
+            
+            switch (type)
+            {
+                case ShopItemType.Armor:
+                    if (CheckForPossibilityOfBuying(price))
+                    {
+                        _playerData.Money -= price;
+                        _playerData.ArmorLevel++;
+                        isBue = true;
+                    }
+                    break;
+                case ShopItemType.Weapon:
+                    if (CheckForPossibilityOfBuying(price))
+                    {
+                        _playerData.Money -= price;
+                        _playerData.WeaponLevel++;
+                        isBue = true;
+                    }
+                    break;
+                case ShopItemType.Potion:
+                    if (CheckForPossibilityOfBuying(price))
+                    {
+                        _playerData.Money -= price;
+                        _playerData.Potion++;
+                        isBue = true;
+                    }
+                    break;
+                case ShopItemType.Idol:
+                    if (CheckForPossibilityOfBuying(price))
+                    {
+                        _playerData.Money -= price;
+                        _playerData.Idol++;
+                        isBue = true;
+                    }
+                    break;
+            }
+            
+            Debug.Log(_playerData);
+            ConsoleTools.LogInfo($"Результат: {isBue}");
+            return isBue;
+        }
+
+        private bool CheckForPossibilityOfBuying(int payment) => _playerData.Money - payment >= 0;
     }
 }
