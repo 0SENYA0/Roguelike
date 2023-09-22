@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Assets.ScriptableObjects
 {
@@ -13,6 +14,9 @@ namespace Assets.ScriptableObjects
         [SerializeField] private ArmorStat _defaultArmorStat;
         [SerializeField] private ArmorStat _levelArmor;
         [SerializeField] private ArmorStat _bossLootArmor;
+        [Space] 
+        [SerializeField] private Range _enemyReward;
+        [SerializeField] private Range _bossReward;
 
         public WeaponStat DefaultWeaponStat => _defaultWeaponStat;
         public WeaponStat LevelWeapon => _levelWeapon;
@@ -21,6 +25,9 @@ namespace Assets.ScriptableObjects
         public ArmorStat DefaultArmorStat => _defaultArmorStat;
         public ArmorStat LevelArmor => _levelArmor;
         public ArmorStat BossLootArmor => _bossLootArmor;
+
+        public Range EnemyReward => _enemyReward;
+        public Range BossReward => _bossReward;
 
         [System.Serializable]
         public class WeaponStat

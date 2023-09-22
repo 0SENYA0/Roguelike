@@ -22,7 +22,6 @@ namespace Assets.UI.ShopWindow
 
         public void Init(string information, string level, string cost, int price, Sprite image, ShopItemType itemType)
         {
-            Debug.Log($"{cost} | {price}");
             _itemInformation.text = information;
             _currentLevel.text = level;
             _price = price;

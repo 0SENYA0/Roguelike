@@ -14,7 +14,7 @@ namespace Assets.Person
             _unit = unit;
             _unitAttackView = unitAttackView;
             FillDataForClips();
-            _baseHealth = unit.Healh;
+            _baseHealth = unit.Health;
             _unit.HealthChanged += ChangeUIHealthValue;
         }
 

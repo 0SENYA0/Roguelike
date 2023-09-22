@@ -31,19 +31,24 @@ namespace Assets.UI.HUD
         private const string DmgModifierKey = "DmgModifier";
         private const string SplashChanceKey = "SplashChance";
         private const string CriticalChanceKey = "CriticalChance";
+        private const string MoneyKey = "Money";
 
         public event Action OnButtonClickEvent; 
 
-        public void Show(IInventoryItem loot)
+        public void Show(IInventoryItem loot, int money)
         {
-            gameObject.SetActive(true);
-            _winSound.Play();
-            _button.onClick.AddListener(OnButtonClicked);
+            ActiveLootPanel();
             
             if (loot is Armor armor)
-                ShowArmorLootInfo(armor);
+                ShowArmorLootInfo(armor, money);
             else if (loot is Weapon.Weapon weapon)
-                ShowWeaponLootInfo(weapon);
+                ShowWeaponLootInfo(weapon, money);
+        }
+
+        public void Show(Armor armor, Weapon.Weapon weapon, int money)
+        {
+            ActiveLootPanel();
+            ShowBossLoot(armor, weapon, money);
         }
 
         public void Hide()
@@ -57,7 +62,14 @@ namespace Assets.UI.HUD
             OnButtonClickEvent?.Invoke();
         }
 
-        private void ShowWeaponLootInfo(Weapon.Weapon weapon)
+        private void ActiveLootPanel()
+        {
+            gameObject.SetActive(true);
+            _winSound.Play();
+            _button.onClick.AddListener(OnButtonClicked);
+        }
+
+        private void ShowWeaponLootInfo(Weapon.Weapon weapon, int money)
         {
             _defendImage.gameObject.SetActive(false);
             _attackImage.gameObject.SetActive(true);
@@ -65,6 +77,7 @@ namespace Assets.UI.HUD
             
             _name.text = "Ты победил!";
             _data.text = $"Твоя награда:\n" +
+                         $"{GetLocalizedText(MoneyKey)}: +{money}$\n" +
                          $"{GetLocalizedText(WeaponKey)}\n" +
                          $"{GetLocalizedText(DamageKey)} = {weapon.Damage}\n" +
                          $"{GetLocalizedText(DmgModifierKey)} = {weapon.ValueModifier}\n" +
@@ -72,7 +85,7 @@ namespace Assets.UI.HUD
                          $"{GetLocalizedText(CriticalChanceKey)} = {weapon.MinValueToCriticalDamage}";
         }
 
-        private void ShowArmorLootInfo(Armor armor)
+        private void ShowArmorLootInfo(Armor armor, int money)
         {
             _attackImage.gameObject.SetActive(false);
             _defendImage.gameObject.SetActive(true);
@@ -80,6 +93,25 @@ namespace Assets.UI.HUD
             
             _name.text = "Ты победил!";
             _data.text = $"Твоя награда:\n" +
+                         $"{GetLocalizedText(MoneyKey)}: +{money}$\n" +
+                         $"{GetLocalizedText(ArmorKey)}\n" +
+                         $"{GetLocalizedText(BodyKey)} = {armor.Body.Value}\n" +
+                         $"{GetLocalizedText(HeadKey)} = {armor.Head.Value}";
+        }
+
+        private void ShowBossLoot(Armor armor, Weapon.Weapon weapon, int money)
+        {
+            _attackImage.gameObject.SetActive(true);
+            _defendImage.gameObject.SetActive(true);
+            
+            _name.text = "Ты победил!";
+            _data.text = $"Твоя награда:\n" +
+                         $"{GetLocalizedText(MoneyKey)}: +{money}$\n" +
+                         $"{GetLocalizedText(WeaponKey)}\n" +
+                         $"{GetLocalizedText(DamageKey)} = {weapon.Damage}\n" +
+                         $"{GetLocalizedText(DmgModifierKey)} = {weapon.ValueModifier}\n" +
+                         $"{GetLocalizedText(SplashChanceKey)} = {weapon.ChanceToSplash}\n" +
+                         $"{GetLocalizedText(CriticalChanceKey)} = {weapon.MinValueToCriticalDamage}\n\n" +
                          $"{GetLocalizedText(ArmorKey)}\n" +
                          $"{GetLocalizedText(BodyKey)} = {armor.Body.Value}\n" +
                          $"{GetLocalizedText(HeadKey)} = {armor.Head.Value}";

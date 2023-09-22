@@ -1,3 +1,4 @@
+using System;
 using Assets.Person;
 using Assets.Scripts.InteractiveObjectSystem;
 using Assets.UI;
@@ -20,6 +21,8 @@ namespace Assets.Enemy
 
         private BoxCollider2D _boxCollider;
         private Coroutine _coroutine;
+
+        public Guid Guid { get; set; }
 
         public override void ChangeUIHealthValue(float value)
         {

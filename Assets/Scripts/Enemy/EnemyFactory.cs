@@ -6,13 +6,7 @@ namespace Assets.Enemy
 {
     public class EnemyFactory
     {
-        private const int BaseHealthFirstLevel = 100;
-
-        // public Enemy Create(IWeapon weapon, Armor armor) =>
-        //     new Enemy(BaseHealthFirstLevel, weapon, armor, new MagicItem());
-        
         public Enemy Create(IWeapon weapon, Armor armor, int health, SpriteAnimation spriteAnimation) =>
-            new Enemy(health, weapon, armor, new MagicItem(), spriteAnimation);
-
+            new Enemy(health, weapon, armor, spriteAnimation);
     }
 }

@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Generic;
 using Assets.DefendItems;
-using Assets.Fight.Element;
 using Assets.Interface;
+using Assets.Inventory.ItemGeneratorSystem;
 using Assets.Scripts.InteractiveObjectSystem;
-using Assets.Weapon;
 using Random = UnityEngine.Random;
 
 namespace Assets.Enemy
@@ -29,11 +27,6 @@ namespace Assets.Enemy
         {
             _enemy = new List<Enemy>();
             _count = GenerateRandomCountEnemy();
-            string data = _enemyView.Data;
-            data += _count;
-            
-            _enemyView.Weapon.SetNewElement(GetRandomElement());
-            _enemyView.Armor.BodyPart.SetNewElement(GetRandomElement());
 
             for (int i = 0; i < _count; i++)
             {
@@ -47,32 +40,15 @@ namespace Assets.Enemy
             }
         }
 
-        private Element GetRandomElement() => (Element)Random.Range(0, Enum.GetValues(typeof(Element)).Length);
-
         private Enemy GetEnemy()
         {
             EnemyFactory factory = new EnemyFactory();
-            WeaponFactory weaponFactory = new WeaponFactory();
-            ArmorFactory armorFactory = new ArmorFactory();
-
-            IWeapon weapon = CreateWeapon(weaponFactory);
-
-            Body body = new Body(_enemyView.Armor.BodyPart.Value, GetRandomElement());
-            Head head = new Head(_enemyView.Armor.HeadPart.Value);
-
-            Armor armor = armorFactory.Create(body, head, _enemyView.Armor.ParticleSystem);
+            IWeapon weapon = ItemGenerator.Instance.GetRandomWeapon();
+            Armor armor = ItemGenerator.Instance.GetRandomArmor();
 
             return factory.Create(weapon, armor, _enemyView.Health, _enemyView.SpriteAnimation);
         }
-
-        private IWeapon CreateWeapon(WeaponFactory weaponFactory)
-        {
-            return weaponFactory.Create(
-                _enemyView.Weapon.Damage, GetRandomElement(), _enemyView.Weapon.ChanceToSplash,
-                _enemyView.Weapon.MinValueToCriticalDamage,
-                _enemyView.Weapon.ValueModifier, _enemyView.Weapon.ParticleSystem);
-        }
-
+        
         private int GenerateRandomCountEnemy() =>
             Random.Range(1, 4);
     }

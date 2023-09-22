@@ -27,7 +27,7 @@ MonoBehaviour:
       _rus: "\u0426\u0435\u043D\u0430"
       _eng: Cost
       _tur: sdf*A&SD(
-    _image: {fileID: 21300000, guid: b3d8dbe835c404179842f9f9595f2bf0, type: 3}
+    _image: {fileID: 21300000, guid: 346be7a76850e084a89f216e4238aa51, type: 3}
     _price: {fileID: 11400000, guid: 4a45aabbddc2be5428b174fc27978b84, type: 2}
   - _itemType: 1
     text:
@@ -43,7 +43,7 @@ MonoBehaviour:
       _rus: "\u0426\u0435\u043D\u0430"
       _eng: Cost
       _tur: sdf*A&SD(
-    _image: {fileID: 21300000, guid: 413710b631bd5493ebbf1a29b2d82eb3, type: 3}
+    _image: {fileID: 21300000, guid: be31f3f0536b2d24e9e3d03729eefe8e, type: 3}
     _price: {fileID: 11400000, guid: 7a8a1e75c87c5a9428cea2f21a52caeb, type: 2}
   - _itemType: 2
     text:
@@ -58,7 +58,7 @@ MonoBehaviour:
       _rus: "\u0426\u0435\u043D\u0430"
       _eng: Cost
       _tur: sdf*A&SD(
-    _image: {fileID: 21300000, guid: 9876fcfabd3b2425687da38e45dedbc2, type: 3}
+    _image: {fileID: 1333957569, guid: 5aa2f2e24731fd444add86c3379cff25, type: 3}
     _price: {fileID: 11400000, guid: 355cdbda84987944eb4943fd725f5daf, type: 2}
   - _itemType: 3
     text:
@@ -73,5 +73,5 @@ MonoBehaviour:
       _rus: "\u0426\u0435\u043D\u0430"
       _eng: Cost
       _tur: sdf*A&SD(
-    _image: {fileID: 21300000, guid: 3c6f5b7a54bd84489ba7d655c5b7b812, type: 3}
+    _image: {fileID: 173659861, guid: 5aa2f2e24731fd444add86c3379cff25, type: 3}
     _price: {fileID: 11400000, guid: d49a045d7e4e85d40aa41b8eacca5525, type: 2}

@@ -28,6 +28,7 @@ namespace Assets.Infrastructure.DataStorageSystem
                     throw new ArgumentException("Money can't be negative");
 
                 _money = value;
+                SaveData();
             }
         }
 
@@ -40,6 +41,7 @@ namespace Assets.Infrastructure.DataStorageSystem
                     throw new AggregateException("Attempt to change the state to the same");
                 
                 _isMusicOn = value;
+                SaveData();
             }
         }
 
@@ -52,6 +54,7 @@ namespace Assets.Infrastructure.DataStorageSystem
                     throw new AggregateException("Attempt to change the state to the same");
 
                 _isSfxOn = value;
+                SaveData();
             }
         }
 
@@ -70,6 +73,7 @@ namespace Assets.Infrastructure.DataStorageSystem
                     _gameStatistics = value.ConvertValueToStringLine();
                 else
                     throw new AggregateException("Statistics values can only increase");
+                SaveData();
             }
         }
 
@@ -85,6 +89,7 @@ namespace Assets.Infrastructure.DataStorageSystem
                     throw new ArgumentException("The argument should only increase the value");
 
                 _armorLevel = value;
+                SaveData();
             }
         }
         
@@ -100,6 +105,7 @@ namespace Assets.Infrastructure.DataStorageSystem
                     throw new ArgumentException("The argument should only increase the value");
 
                 _weaponLevel = value;
+                SaveData();
             }
         }
         
@@ -112,6 +118,8 @@ namespace Assets.Infrastructure.DataStorageSystem
                     _potion = value;
                 else
                     throw new ArgumentException("The argument must differ from the old value by one and only increase the value");
+                
+                SaveData();
             }
         }
         
@@ -124,6 +132,8 @@ namespace Assets.Infrastructure.DataStorageSystem
                     _idol = value;
                 else
                     throw new ArgumentException("The argument must differ from the old value by one");
+
+                SaveData();
             }
         }
 

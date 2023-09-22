@@ -53,8 +53,8 @@ namespace Assets.Fight
                             if (tempUnitAttackPresenter.GetType() != unitAttackPresenter.GetType())
                             {
                                 tempUnitAttackPresenter = unitAttackPresenter;
-                                numberIdenticalUnits = 1;
-                                typeUnit = tempUnitAttackPresenter.GetType();
+                                numberIdenticalUnits = 0;
+                                typeUnit = null;
                                 break;
                             }
                         }

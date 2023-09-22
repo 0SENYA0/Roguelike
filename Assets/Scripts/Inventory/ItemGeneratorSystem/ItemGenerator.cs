@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Assets.DefendItems;
 using Assets.Fight.Element;
+using Assets.Infrastructure;
 using Assets.ScriptableObjects;
 using UnityEngine;
 
@@ -33,28 +34,50 @@ namespace Assets.Inventory.ItemGeneratorSystem
 
         public InventoryItem GetDefaultInventory()
         {
-            var newArmor = CreateRandomArmor(_stats.DefaultArmorStat);
-            var newWeapon = CreateRandomWeapon(_stats.DefaultWeaponStat);
+            int armorLevel = Game.GameSettings.PlayerData.ArmorLevel;
+            
+            Element randomElement = _random.RandomElement();
+            var head = new Head(_random.RandomValue(_stats.DefaultArmorStat.HeadStatValue.MinValue + armorLevel,
+                _stats.DefaultArmorStat.HeadStatValue.MaxValue + armorLevel));
 
+            var body = new Body(_random.RandomValue(_stats.DefaultArmorStat.BodyStatValue.MinValue + armorLevel,
+                _stats.DefaultArmorStat.HeadStatValue.MaxValue + armorLevel), randomElement);
+            
+            var newArmor = new Armor(body, head, _random.RandomParticle(randomElement));
+
+            int weaponLevel = Game.GameSettings.PlayerData.WeaponLevel;
+            randomElement = _random.RandomElement();
+            var dws = _stats.DefaultWeaponStat;
+            
+            var newWeapon = new Weapon.Weapon(
+                _random.RandomValue(dws.Damage.MinValue + weaponLevel, dws.Damage.MaxValue + weaponLevel),
+                randomElement,
+                (int)_random.RandomValue(dws.SplashChance.MinValue + weaponLevel, dws.SplashChance.MaxValue + weaponLevel),
+                (int)_random.RandomValue(dws.CriticalChance.MinValue + weaponLevel, dws.CriticalChance.MaxValue + weaponLevel),
+                (int)_random.RandomValue(dws.DamageModifier.MinValue + weaponLevel, dws.DamageModifier.MaxValue + weaponLevel),
+                _random.RandomParticle(randomElement));
+            
             return new InventoryItem(newArmor, newWeapon);
         }
 
-        public Armor GetRandomArmor()
+        public Armor GetRandomArmor(bool isBossLoot = false)
         {
-            return CreateRandomArmor(_stats.LevelArmor);
+            return CreateRandomArmor(isBossLoot ? _stats.BossLootArmor : _stats.LevelArmor);
         }
 
-        public Weapon.Weapon GetRandomWeapon()
+        public Weapon.Weapon GetRandomWeapon(bool isBossLoot = false)
         {
-            return CreateRandomWeapon(_stats.LevelWeapon);
+            return CreateRandomWeapon(isBossLoot ? _stats.BossLootWeapon : _stats.LevelWeapon);
         }
 
-        public InventoryItem GetBossLoot()
+        public int GetEnemyReward()
         {
-            var newArmor = CreateRandomArmor(_stats.BossLootArmor);
-            var newWeapon = CreateRandomWeapon(_stats.BossLootWeapon);
+            return (int)_random.RandomValue(_stats.EnemyReward);
+        }
 
-            return new InventoryItem(newArmor, newWeapon);
+        public int GetBossReward()
+        {
+            return (int)_random.RandomValue(_stats.BossReward);
         }
 
         private Weapon.Weapon CreateRandomWeapon(ListOfItemStatsRangesScriptableObject.WeaponStat stat)
@@ -65,7 +88,7 @@ namespace Assets.Inventory.ItemGeneratorSystem
             int criticalChance = (int)_random.RandomValue(stat.CriticalChance);
             int damageModifier = (int)_random.RandomValue(stat.DamageModifier);
             ParticleSystem particle = _random.RandomParticle(element);
-            
+
             return new Weapon.Weapon(damage, element, splashChance, criticalChance, damageModifier, particle);
         }
 

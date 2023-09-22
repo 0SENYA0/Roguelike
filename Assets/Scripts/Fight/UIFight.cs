@@ -36,7 +36,8 @@ namespace Assets.Fight
             _globalMap.SetActive(false);
             
             _countOfEnemyForFight = enemyPresenter.Enemy.Count;
-            _isBoosFight = enemyPresenter.Enemy.FirstOrDefault(x => x.IsBoss)!.IsBoss;
+            var enemyType = enemyPresenter.Enemy.FirstOrDefault(x => x.IsBoss);
+            _isBoosFight = enemyType?.IsBoss ?? false;
             
             _fightPlace.FightEnded += ShowRewardPanel;
             _fightPlace.Set(playerPresenter, enemyPresenter);
@@ -50,14 +51,10 @@ namespace Assets.Fight
             switch (fightResult)
             {
                 case FightResult.Win:
-                    var randomLoot = GetRandomLoot();
-                    _rewardPanel.Show(randomLoot);
-                    _playerPresenter.Player.InventoryPresenter.InventoryModel.AddItem(randomLoot);
                     if (_isBoosFight)
-                        _rewardPanel.OnButtonClickEvent += LoadNextLevel;
+                        CreateBossReward();
                     else
-                        _rewardPanel.OnButtonClickEvent += ShowGlobalMap;
-                    
+                        CreateEnemyReward();
                     break;
                 case FightResult.Lose:
                     _losePanel.Show("Вы проиграли (((");
@@ -69,6 +66,32 @@ namespace Assets.Fight
                 default:
                     throw new ArgumentOutOfRangeException(nameof(fightResult), fightResult, null);
             }
+        }
+
+        private void CreateBossReward()
+        {
+            var randomArmor = ItemGenerator.Instance.GetRandomArmor(_isBoosFight);
+            var randomWeapon = ItemGenerator.Instance.GetRandomWeapon(_isBoosFight);
+            var money = ItemGenerator.Instance.GetBossReward();
+            
+            Game.GameSettings.PlayerData.Money += money;
+            _playerPresenter.Player.InventoryPresenter.InventoryModel.AddItem(randomWeapon);
+            _playerPresenter.Player.InventoryPresenter.InventoryModel.AddItem(randomArmor);
+            
+            _rewardPanel.Show(randomArmor, randomWeapon, money);
+            _rewardPanel.OnButtonClickEvent += LoadNextLevel;
+        }
+
+        private void CreateEnemyReward()
+        {
+            var randomLoot = GetRandomLoot();
+            var money = ItemGenerator.Instance.GetEnemyReward();
+            
+            Game.GameSettings.PlayerData.Money += money;
+            _playerPresenter.Player.InventoryPresenter.InventoryModel.AddItem(randomLoot);
+            
+            _rewardPanel.Show(randomLoot, money);
+            _rewardPanel.OnButtonClickEvent += ShowGlobalMap;
         }
 
         private void OnLosePanelClick()

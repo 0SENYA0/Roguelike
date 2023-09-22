@@ -1,3 +1,4 @@
+using Assets.Infrastructure;
 using Assets.Inventory;
 using Assets.Player;
 using Assets.Scripts.AnimationComponent;

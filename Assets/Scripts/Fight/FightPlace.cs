@@ -25,12 +25,8 @@ namespace Assets.Fight
 
         [Space(25)] 
         [SerializeField] private PlayerWeaponPanel _elementsDamagePanel;
-
-        // Места для игрока и врагов на карте битвы
         [SerializeField] private PlayerAttackView _playerAttackView;
-
         [SerializeField] private List<EnemyAttackView> _enemyAttackViews;
-
         [SerializeField] private GameObject _popupReady;
         [SerializeField] private CustomButton _customButtonReady;
         
@@ -111,7 +107,7 @@ namespace Assets.Fight
 
         private void EndFight()
         {
-            FightEnded?.Invoke(_playerPresenter.Player.Healh > 0 ? FightResult.Win : FightResult.Lose);
+            FightEnded?.Invoke(_playerPresenter.Player.Health > PlayerHealth.MinPlayerHealth ? FightResult.Win : FightResult.Lose);
             
             _fight.FightEnded -= EndFight;
             _fight.ShowDice -= ShowDice;

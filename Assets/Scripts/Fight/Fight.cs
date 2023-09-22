@@ -170,7 +170,7 @@ namespace Assets.Fight
                     }
                     else
                     {
-                        UnitAttackPresenter enemy = _enemyAttackPresenters.FirstOrDefault(x => x.EnemyAttackView == enemyChooser.AttackView);
+                        UnitAttackPresenter enemy = _enemyAttackPresenters.FirstOrDefault(x => x.EnemyAttackView.Guid == enemyChooser.AttackView.Guid);
 
                         yield return _coroutineRunner.StartCoroutine(StartSingleAnimationCoroutine(AnimationState.Hit, enemy));
 
