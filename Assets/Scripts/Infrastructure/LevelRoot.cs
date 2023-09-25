@@ -1,3 +1,4 @@
+using System;
 using Assets.Infrastructure.DataStorageSystem;
 using Assets.Person;
 using Assets.Scripts.GenerationSystem;
@@ -46,7 +47,7 @@ namespace Assets.Infrastructure
 
         public void LoadMainMenu()
         {
-            SaveEntries(0);
+            SaveEntries(false);
             Curtain.Instance.ShowAnimation(() =>
             {
                 SceneManager.LoadScene("Menu");
@@ -55,23 +56,23 @@ namespace Assets.Infrastructure
 
         public void LoadNextLevel()
         {
-            SaveEntries(1);
+            SaveEntries(true);
             Curtain.Instance.ShowAnimation(() =>
             {
                 SceneManager.LoadScene("LevelGeneration");
             });
         }
 
-        private void SaveEntries(int countOfKilledBosses)
+        private void SaveEntries(bool isBossKilled)
         {
             if (Game.GameSettings == null)
                 return;
 
             var gameStats = Game.GameSettings.PlayerData.GameStatistics;
             var newGameStats = new GameStatistics(
-                gameStats.NumberOfAttempts + 1,
+                gameStats.NumberOfAttempts,
                 gameStats.NumberOfEnemiesKilled + _numberOfEnemiesKilled,
-                gameStats.NumberOfBossesKilled + countOfKilledBosses
+                gameStats.NumberOfBossesKilled + Convert.ToInt32(isBossKilled)
                 );
 
             Game.GameSettings.PlayerData.GameStatistics = newGameStats;

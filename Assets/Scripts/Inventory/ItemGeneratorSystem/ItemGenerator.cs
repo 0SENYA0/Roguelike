@@ -34,21 +34,25 @@ namespace Assets.Inventory.ItemGeneratorSystem
 
         public InventoryItem GetDefaultInventory()
         {
-            int armorLevel = Game.GameSettings.PlayerData.ArmorLevel;
+            int armorLevel = 1;
+            
+            if (Game.GameSettings != null)
+                armorLevel = Game.GameSettings.PlayerData.ArmorLevel;
             
             Element randomElement = _random.RandomElement();
             var head = new Head(_random.RandomValue(_stats.DefaultArmorStat.HeadStatValue.MinValue + armorLevel,
                 _stats.DefaultArmorStat.HeadStatValue.MaxValue + armorLevel));
-
             var body = new Body(_random.RandomValue(_stats.DefaultArmorStat.BodyStatValue.MinValue + armorLevel,
                 _stats.DefaultArmorStat.HeadStatValue.MaxValue + armorLevel), randomElement);
-            
             var newArmor = new Armor(body, head, _random.RandomParticle(randomElement));
 
-            int weaponLevel = Game.GameSettings.PlayerData.WeaponLevel;
+            int weaponLevel = 1;
+            
+            if (Game.GameSettings != null)
+                weaponLevel = Game.GameSettings.PlayerData.WeaponLevel;
+            
             randomElement = _random.RandomElement();
             var dws = _stats.DefaultWeaponStat;
-            
             var newWeapon = new Weapon.Weapon(
                 _random.RandomValue(dws.Damage.MinValue + weaponLevel, dws.Damage.MaxValue + weaponLevel),
                 randomElement,

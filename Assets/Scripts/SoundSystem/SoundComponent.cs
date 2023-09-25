@@ -96,7 +96,13 @@ namespace Assets.Scripts.SoundSystem
         public void Stop()
         {
             _isStopped = true;
-            StartState(FadeSound());
+            bool isMusicOn = _soundType == SoundType.Music && _isMusicOn;
+            bool isSfxOn = _soundType == SoundType.SFX && _isSfxOn;
+
+            if (isMusicOn || isSfxOn)
+                StartState(FadeSound());
+            else
+                StopAndTryRestartSound();
         }
 
         private void ChangeMusicState(bool value)

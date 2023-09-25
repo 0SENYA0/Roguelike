@@ -1,3 +1,5 @@
+using Assets.Infrastructure;
+using Assets.Infrastructure.DataStorageSystem;
 using Assets.Scripts.SoundSystem;
 using Assets.UI.ShopWindow;
 using UnityEngine;
@@ -42,9 +44,26 @@ namespace Assets.UI
 
         private void StartGame()
         {
+            AddNewTrying();
             _sound.Stop();
             _shopPanel.Dispose();
             Curtain.Instance.ShowAnimation(() => { SceneManager.LoadScene("LevelGeneration");});
+        }
+
+        private void AddNewTrying()
+        {
+            if (Game.GameSettings == null)
+                return;
+
+            var gameStats = Game.GameSettings.PlayerData.GameStatistics;
+            var newGameStats = new GameStatistics(
+                gameStats.NumberOfAttempts + 1,
+                gameStats.NumberOfEnemiesKilled,
+                gameStats.NumberOfBossesKilled
+            );
+
+            Game.GameSettings.PlayerData.GameStatistics = newGameStats;
+            Game.GameSettings.PlayerData.SaveData();
         }
     }
 

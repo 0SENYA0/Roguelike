@@ -161,6 +161,22 @@ namespace Assets.Infrastructure.DataStorageSystem
             DataManager.SaveData(data);
         }
 
+        public void ResetData()
+        {
+            var data = DataManager.GetDefaultData();
+            
+            _money = data.Money;
+            _money = 100000;
+            _isMusicOn = Convert.ToBoolean(data.Music);
+            _isSfxOn = Convert.ToBoolean(data.Sfx);
+            _localization = data.Localization;
+            _gameStatistics = data.GameStatistics;
+            _armorLevel = data.ArmorLevel;
+            _weaponLevel = data.WeaponLevel;
+            _potion = data.Potion;
+            _idol = data.Idol;
+        }
+
         private void LoadData()
         {
             var data = DataManager.GetData();
