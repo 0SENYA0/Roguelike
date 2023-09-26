@@ -3,7 +3,6 @@ using Assets.Infrastructure;
 using Assets.Inventory;
 using Assets.Person;
 using Assets.Utils;
-using DefaultNamespace.Tools;
 
 namespace Assets.Player
 {

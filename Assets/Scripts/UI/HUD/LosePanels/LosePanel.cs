@@ -36,7 +36,7 @@ namespace Assets.UI.HUD.LosePanels
             }
             else if (_levelRoot.IsPossibleToRebornForAd)
             {
-                _levelRoot.RebornWithAd();
+                
                 _adPanel.gameObject.SetActive(true);
                 _adPanel.Init();
                 _adPanel.UserAnswerEvent += ProcessUserAnswer;

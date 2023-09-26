@@ -144,6 +144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 291988688}
   - component: {fileID: 291988687}
+  - component: {fileID: 291988689}
   m_Layer: 0
   m_Name: '### LEVEL ROOT ###'
   m_TagString: Untagged
@@ -164,6 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelNumber: 3
+  _itemGenerator: {fileID: 6740884636237816837}
   _generation: {fileID: 2119340938}
   _gameTimer: {fileID: 1205741076}
   _levelSound: {fileID: 505907160}
@@ -187,6 +189,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &291988689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291988686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d9f2333cdf42488e4d05421b0934c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _levelRoot: {fileID: 291988687}
 --- !u!1 &505907156
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,6 +1532,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3916919725813484630, guid: 70c5f7affd9cbb04e8e4b38fc9643ff4, type: 3}
   m_PrefabInstance: {fileID: 6740884636237816835}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6740884636237816837 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2255400281635571473, guid: 70c5f7affd9cbb04e8e4b38fc9643ff4, type: 3}
+  m_PrefabInstance: {fileID: 6740884636237816835}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef5ac80ed3924dd39f903ecd34fab7a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &9125397594068669290 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7868454527974686894, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}

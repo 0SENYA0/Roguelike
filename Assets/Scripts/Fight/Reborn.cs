@@ -31,8 +31,8 @@ namespace Assets.Fight
             
             Game.GameSettings.PlayerData.Idol--;
             _playerPresenter.Player.Reborn();
-            //_playerPresenter.Player.Heal(PlayerHealth.MaxPlayerHealth / 2);
-            _playerPresenter.Player.Heal(1);
+            _playerPresenter.Player.Heal(PlayerHealth.MaxPlayerHealth / 2);
+            //_playerPresenter.Player.Heal(1);
             
             Curtain.Instance.ShowAnimation(() =>
             {
@@ -47,8 +47,8 @@ namespace Assets.Fight
             ConsoleTools.LogSuccess("Показываем рекламу для возраждения!");
             
             _playerPresenter.Player.Reborn();
-            //_playerPresenter.Player.Heal(PlayerHealth.MaxPlayerHealth / 2);
-            _playerPresenter.Player.Heal(1);
+            _playerPresenter.Player.Heal(PlayerHealth.MaxPlayerHealth / 2);
+            //_playerPresenter.Player.Heal(1);
             
             Curtain.Instance.ShowAnimation(() =>
             {

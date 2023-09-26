@@ -10,7 +10,6 @@ namespace Assets.Inventory.ItemGeneratorSystem
 {
     public class ItemGenerator : MonoBehaviour
     {
-        [SerializeField] private LevelRoot _levelRoot;
         [SerializeField] private LevelsStatsScriptableObject _levelsStats;
         [SerializeField] private ElementsParticleScriptableObject _elementsParticle;
 
@@ -19,15 +18,15 @@ namespace Assets.Inventory.ItemGeneratorSystem
 
         public static ItemGenerator Instance { get; private set; }
 
-        private void Awake()
+        public void Init(int levelNumber)
         {
             Instance = this;
             _random = new RandomParameterGenerator(_elementsParticle);
 
-            var currentLevelStats = _levelsStats.ListStats.FirstOrDefault(x => x.LevelNumber == _levelRoot.LevelNumber);
+            var currentLevelStats = _levelsStats.ListStats.FirstOrDefault(x => x.LevelNumber == levelNumber);
 
             if (currentLevelStats == null)
-                throw new Exception($"There are no item characteristics for this level: {_levelRoot.LevelNumber}!");
+                throw new Exception($"There are no item characteristics for this level: {levelNumber}!");
 
             _stats = currentLevelStats.List;
         }

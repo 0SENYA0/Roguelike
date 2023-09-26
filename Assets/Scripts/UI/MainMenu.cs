@@ -1,5 +1,6 @@
 using Assets.Infrastructure;
 using Assets.Infrastructure.DataStorageSystem;
+using Assets.Infrastructure.SceneLoadHandler;
 using Assets.Scripts.SoundSystem;
 using Assets.UI.ShopWindow;
 using IJunior.TypedScenes;
@@ -48,7 +49,10 @@ namespace Assets.UI
             AddNewTrying();
             _sound.Stop();
             _shopPanel.Dispose();
-            Curtain.Instance.ShowAnimation(() => { Level_1.Load();});
+            Curtain.Instance.ShowAnimation(() =>
+            {
+                LevelLoadingChooser.LoadScene(1, null);
+            });
         }
 
         private void AddNewTrying()
