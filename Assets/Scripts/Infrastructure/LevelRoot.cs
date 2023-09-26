@@ -6,6 +6,7 @@ using Assets.Scripts.SoundSystem;
 using Assets.TimerSystem;
 using Assets.UI;
 using Assets.UI.HUD;
+using IJunior.TypedScenes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -56,7 +57,7 @@ namespace Assets.Infrastructure
             SaveEntries(false);
             Curtain.Instance.ShowAnimation(() =>
             {
-                SceneManager.LoadScene("Menu");
+                Menu.Load();
             });
         }
 

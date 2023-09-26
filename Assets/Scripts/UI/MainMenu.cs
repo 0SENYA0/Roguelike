@@ -2,6 +2,7 @@ using Assets.Infrastructure;
 using Assets.Infrastructure.DataStorageSystem;
 using Assets.Scripts.SoundSystem;
 using Assets.UI.ShopWindow;
+using IJunior.TypedScenes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -47,7 +48,7 @@ namespace Assets.UI
             AddNewTrying();
             _sound.Stop();
             _shopPanel.Dispose();
-            Curtain.Instance.ShowAnimation(() => { SceneManager.LoadScene("LevelGeneration");});
+            Curtain.Instance.ShowAnimation(() => { Level_1.Load();});
         }
 
         private void AddNewTrying()
