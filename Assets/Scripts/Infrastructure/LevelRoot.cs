@@ -13,6 +13,7 @@ namespace Assets.Infrastructure
 {
     public class LevelRoot : MonoBehaviour
     {
+        [SerializeField] private int _levelNumber;
         [SerializeField] private ProceduralGeneration _generation;
         [SerializeField] private Timer _gameTimer;
         [SerializeField] private SoundComponent _levelSound;
@@ -24,6 +25,7 @@ namespace Assets.Infrastructure
         private bool _isPossibleToRebornForAd;
 
         public bool IsPossibleToRebornForAd => _isPossibleToRebornForAd;
+        public int LevelNumber => _levelNumber;
 
         private void Start()
         {

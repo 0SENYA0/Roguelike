@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a6357b2790470b999f20579ce71bb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _levelNumber: 5
   _generation: {fileID: 2119340938}
   _gameTimer: {fileID: 1205741076}
   _levelSound: {fileID: 505907160}
@@ -1139,6 +1140,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3076971935285648871, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -178.22998
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296414419366836750, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
+      propertyPath: _ruleTileWall
+      value: 
+      objectReference: {fileID: 11400000, guid: 1796f94da2430574d879848bc3362f9d, type: 2}
+    - target: {fileID: 3296414419366836750, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
+      propertyPath: _ruleTileFloor
+      value: 
+      objectReference: {fileID: 11400000, guid: 9fb2d8d9d5ae0994b949dba16c924942, type: 2}
     - target: {fileID: 3296414419366836750, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
       propertyPath: _surfaces.Array.data[0]
       value: 
@@ -1179,6 +1192,30 @@ PrefabInstance:
       propertyPath: _timer
       value: 
       objectReference: {fileID: 1205741076}
+    - target: {fileID: 4705972201780025678, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -178.22998
+      objectReference: {fileID: 0}
+    - target: {fileID: 5248166243195636658, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
+      propertyPath: _chanceWalkerSpawn
+      value: 0.126
+      objectReference: {fileID: 0}
+    - target: {fileID: 5248166243195636658, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
+      propertyPath: _chanceWalkerDestoy
+      value: 0.006
+      objectReference: {fileID: 0}
+    - target: {fileID: 5248166243195636658, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
+      propertyPath: _roomSizeWorldUnits.x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5248166243195636658, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
+      propertyPath: _roomSizeWorldUnits.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5248166243195636658, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
+      propertyPath: _chanceWalkerChangeDirection
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5975527765568774177, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1378,6 +1415,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 291988688}
     m_Modifications:
+    - target: {fileID: 2255400281635571473, guid: 70c5f7affd9cbb04e8e4b38fc9643ff4, type: 3}
+      propertyPath: _levelRoot
+      value: 
+      objectReference: {fileID: 291988687}
     - target: {fileID: 3916919725813484630, guid: 70c5f7affd9cbb04e8e4b38fc9643ff4, type: 3}
       propertyPath: m_RootOrder
       value: -1
