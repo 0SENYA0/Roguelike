@@ -9,6 +9,7 @@ using Assets.Scripts.InteractiveObjectSystem;
 using Assets.Scripts.SoundSystem;
 using Assets.UI;
 using Assets.UI.HUD;
+using Assets.UI.HUD.LosePanels;
 using UnityEngine;
 
 namespace Assets.Fight
@@ -57,14 +58,35 @@ namespace Assets.Fight
                         CreateEnemyReward();
                     break;
                 case FightResult.Lose:
-                    _losePanel.Show("Вы проиграли (((");
-                    _losePanel.OnButtonClickEvent += OnLosePanelClick;
+                    _losePanel.Show();
+                    _losePanel.UserAnswerEvent += OnLosePanelClick;
                     break;
                 case FightResult.Leave:
                     ShowGlobalMap();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(fightResult), fightResult, null);
+            }
+        }
+
+        private void OnLosePanelClick(UserLossAnswers answers)
+        {
+            _fightSound.Stop();
+            _losePanel.UserAnswerEvent -= OnLosePanelClick;
+            _losePanel.Hide();
+            var reborn = new Reborn(_playerPresenter, _globalMap, _battlefieldMap, _interactiveObjectHandler);
+            
+            switch (answers)
+            {
+                case UserLossAnswers.Ad:
+                    reborn.RebornWithAD();
+                    break;
+                case UserLossAnswers.Idol:
+                    reborn.RebornWithIdol();
+                    break;
+                case UserLossAnswers.Menu:
+                    _levelRoot.LoadMainMenu();
+                    break;
             }
         }
 
@@ -94,13 +116,6 @@ namespace Assets.Fight
             _rewardPanel.OnButtonClickEvent += ShowGlobalMap;
         }
 
-        private void OnLosePanelClick()
-        {
-            _fightSound.Stop();
-            _losePanel.OnButtonClickEvent -= OnLosePanelClick;
-            _levelRoot.LoadMainMenu();
-        }
-
         private void ShowGlobalMap()
         {
             _fightSound.Stop();
@@ -118,7 +133,7 @@ namespace Assets.Fight
         private void LoadNextLevel()
         {
             _fightSound.Stop();
-            _losePanel.OnButtonClickEvent -= LoadNextLevel;
+            _rewardPanel.OnButtonClickEvent -= LoadNextLevel;
             _levelRoot.LoadNextLevel();
         }
 

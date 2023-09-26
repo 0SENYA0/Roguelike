@@ -79,10 +79,10 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5475193215ddcb5428c5b24df6cffbff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.9375, y: 1.03125}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -205,7 +205,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.1259505}
     oldSize: {x: 2, y: 2}
-    newSize: {x: 1.9375, y: 1.03125}
+    newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -225,13 +225,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 525bcf98ae9342ad9ea6e1ab678415ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _translationName:
+    _rus: "\u0414\u0435\u043C\u043E\u043D\u0438\u0447\u0435\u0441\u043A\u0438\u0439
+      \u0418\u0434\u043E\u043B"
+    _eng: Demon Idol
+    _tur: "\u0130blis \u0130dol\xFC"
   _type: 0
-  _translationName: E_DemonIdol
   _numberOfAwards: 1
-  _data: 
   _health: 2
-  _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
-  _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
   _sprite: {fileID: -308952419, guid: 83f95a2f654c02d4fb9f63be38c3c445, type: 3}
   _spriteAnimation: {fileID: 6675882888495108783}
 --- !u!1001 &1573320343707720457

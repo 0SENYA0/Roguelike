@@ -21,10 +21,14 @@ namespace Assets.Infrastructure
         [SerializeField] private PlayerView _player;
 
         private int _numberOfEnemiesKilled;
+        private bool _isPossibleToRebornForAd;
+
+        public bool IsPossibleToRebornForAd => _isPossibleToRebornForAd;
 
         private void Start()
         {
             _generation.GenerateLevel();
+            _isPossibleToRebornForAd = true;
             Invoke(nameof(HideCurtain), 2f);
         }
 
@@ -61,6 +65,11 @@ namespace Assets.Infrastructure
             {
                 SceneManager.LoadScene("LevelGeneration");
             });
+        }
+
+        public void RebornWithAd()
+        {
+            _isPossibleToRebornForAd = false;
         }
 
         private void SaveEntries(bool isBossKilled)

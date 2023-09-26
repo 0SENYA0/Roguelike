@@ -70,6 +70,7 @@ namespace Assets.Fight
         {
             _customButtonReady.onClick.RemoveListener(GetUserAnswer);
             _dicePresenterAdapter.Dispose();
+            _elementsDamagePanel.Dispose();
 
             UnSubscribeOnDieEnemies();
             _playerAttackPresenter.Unit.Died -= ActionAfterDie;
@@ -206,7 +207,6 @@ namespace Assets.Fight
 
             _coroutineRunner.StopCoroutine(_coroutine);
             _coroutine = null;
-            _elementsDamagePanel.Dispose();
             _stepFightView.Hide();
             FightEnded?.Invoke();
         }

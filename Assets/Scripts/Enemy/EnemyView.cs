@@ -1,10 +1,9 @@
 using Assets.DefendItems;
+using Assets.Infrastructure;
 using Assets.Interface;
 using Assets.Inventory.ItemGeneratorSystem;
-using Assets.ScriptableObjects;
 using Assets.Scripts.AnimationComponent;
 using Assets.Scripts.InteractiveObjectSystem;
-using Lean.Localization;
 using UnityEngine;
 
 namespace Assets.Enemy
@@ -26,7 +25,7 @@ namespace Assets.Enemy
         public Armor Armor => _armor;
         public Sprite Sprite => _sprite;
         public SpriteAnimation SpriteAnimation => _spriteAnimation;
-        public string Name => LeanLocalization.GetTranslation(_translationName).Data.ToString();
+        public string Name => _translationName.GetLocalization(Game.GameSettings.CurrentLocalization);
         
         protected override void OnStart()
         {

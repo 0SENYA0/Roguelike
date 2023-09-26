@@ -49,6 +49,11 @@ namespace Assets.Person
             HealthChanged?.Invoke(_health);
         }
 
+        public void Reborn()
+        {
+            IsDie = false;
+        }
+
         protected virtual void ConditionForDead()
         {
             if (_health <= 0)

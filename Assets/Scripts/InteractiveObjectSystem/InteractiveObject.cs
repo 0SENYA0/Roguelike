@@ -1,7 +1,6 @@
 using Assets.Fight.Element;
-using Lean.Localization;
+using Assets.ScriptableObjects;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Assets.Scripts.InteractiveObjectSystem
@@ -9,11 +8,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
     [RequireComponent(typeof(Collider2D))]
     public class InteractiveObject : MonoBehaviour
     {
-        [SerializeField]
-        [LeanTranslationName]
-        [FormerlySerializedAs("phraseName")]
-        [FormerlySerializedAs("translationTitle")]
-        protected string _translationName;
+        [SerializeField] protected LocalizedText _translationName;
         [SerializeField] private ObjectType _type;
         [SerializeField] private int _numberOfAwards = 1;
 

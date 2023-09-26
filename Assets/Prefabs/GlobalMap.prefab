@@ -9923,7 +9923,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.20575778, y: 0}
   m_AnchorMax: {x: 0.79253566, y: 1}
-  m_AnchoredPosition: {x: 2.5, y: -178.22997}
+  m_AnchoredPosition: {x: 2.5, y: -178.22998}
   m_SizeDelta: {x: 1129, y: -356.46}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7327664051440882448
@@ -10424,7 +10424,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.20575778, y: 0}
   m_AnchorMax: {x: 0.79253566, y: 1}
-  m_AnchoredPosition: {x: 2.5, y: -178.22997}
+  m_AnchoredPosition: {x: 2.5, y: -178.22998}
   m_SizeDelta: {x: 1129, y: -356.46}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1418593794290637539
@@ -13435,6 +13435,7 @@ MonoBehaviour:
   _sfxButton:
     _button: {fileID: 8187478260610211}
     _icon: {fileID: 2997928501628722932}
+  _resetPlayerData: {fileID: 0}
   _soundImageOn: {fileID: 21300000, guid: 901d64fc6ad9d44799c2ad0fd4f182d2, type: 3}
   _soundImageOff: {fileID: 21300000, guid: 78757b0623f3b4309b7cc69c4769ae37, type: 3}
 --- !u!1 &9128807458712530507
@@ -14431,7 +14432,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6351379197448896491, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_text
-      value: Exit
+      value: "\u041E\u0442\u043C\u0435\u043D\u0430"
       objectReference: {fileID: 0}
     - target: {fileID: 6398953944205788885, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_text
@@ -14588,7 +14589,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6351379197448896491, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_text
-      value: Play
+      value: "\u041E\u043A\u0435\u0439"
       objectReference: {fileID: 0}
     - target: {fileID: 6398953944205788885, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_text
@@ -15121,7 +15122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6351379197448896491, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_text
-      value: Play
+      value: "\u041E\u0442\u043C\u0435\u043D\u0430"
       objectReference: {fileID: 0}
     - target: {fileID: 6398953944205788885, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_text
@@ -15592,7 +15593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6351379197448896491, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_text
-      value: Play
+      value: "\u0420\u0438\u0441\u043A\u043D\u0443\u0442\u044C"
       objectReference: {fileID: 0}
     - target: {fileID: 6398953944205788885, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_text
