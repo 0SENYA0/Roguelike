@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultWeaponStat:
     _damage:
-      _minValue: 200
-      _maxValue: 201
+      _minValue: 500
+      _maxValue: 501
     _SplashChance:
       _minValue: 1
       _maxValue: 1

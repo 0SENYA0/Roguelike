@@ -20,6 +20,12 @@ namespace Assets.Infrastructure.SceneLoadHandler
                 case 4:
                     Level_4.Load(playerLevel);
                     break;
+                case 5:
+                    Final_Level_1.Load(null);
+                    break;
+                default:
+                    Menu.Load();
+                    break;
             }
         }
     }

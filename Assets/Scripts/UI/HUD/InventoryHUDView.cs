@@ -9,7 +9,7 @@ namespace Assets.UI.HUD
         [SerializeField] private PlayerView _inventory;
         [SerializeField] private TMP_Text _text;
 
-        private const float ArtificialDelayBeforeShowing = 1f;
+        private const float ArtificialDelayBeforeShowing = 2f;
 
         private void Start()
         {

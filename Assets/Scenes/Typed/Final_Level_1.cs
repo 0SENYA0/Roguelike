@@ -13,19 +13,19 @@ namespace IJunior.TypedScenes
     using UnityEngine.SceneManagement;
     
     
-    public class LevelGeneration : TypedScene
+    public class Final_Level_1 : TypedScene
     {
         
-        private const string _sceneName = "LevelGeneration";
+        private const string _sceneName = "Final_Level_1";
         
-        public static void Load(LoadSceneMode loadSceneMode = LoadSceneMode.Single)
+        public static void Load(Assets.Infrastructure.SceneLoadHandler.PlayerLevelData argument, LoadSceneMode loadSceneMode = LoadSceneMode.Single)
         {
-            LoadScene(_sceneName, loadSceneMode);
+            LoadScene(_sceneName, loadSceneMode, argument);
         }
         
-        public static UnityEngine.AsyncOperation LoadAsync(LoadSceneMode loadSceneMode = LoadSceneMode.Single)
+        public static UnityEngine.AsyncOperation LoadAsync(Assets.Infrastructure.SceneLoadHandler.PlayerLevelData argument, LoadSceneMode loadSceneMode = LoadSceneMode.Single)
         {
-            return LoadScene(_sceneName, loadSceneMode);
+            return LoadScene(_sceneName, loadSceneMode, argument);
         }
     }
 }
