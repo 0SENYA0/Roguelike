@@ -1,11 +1,12 @@
 using Assets.Scripts.GenerationSystem.LevelMovement;
+using Assets.Scripts.SoundSystem;
 using UnityEngine;
 
 namespace Assets.Player
 {
     public class PlayerStepSound : MonoBehaviour
     {
-        //[SerializeField] private SoundComponent _sound;
+        [SerializeField] private SoundComponent _sound;
         [SerializeField] private float _stepTime = 2f;
         [SerializeField] private AgentMovement _agentMovement;
 
@@ -18,7 +19,7 @@ namespace Assets.Player
                 if (_timeLastStep >= _stepTime)
                 {
                     _timeLastStep = 0;
-                    //_sound.Play();
+                    _sound.Play();
                 }
             }
 

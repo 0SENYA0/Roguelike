@@ -21,7 +21,7 @@ namespace Assets.Infrastructure.SceneLoadHandler
                     Level_4.Load(playerLevel);
                     break;
                 case 5:
-                    Final_Level_1.Load(null);
+                    Final_Level_1.Load();
                     break;
                 default:
                     Menu.Load();

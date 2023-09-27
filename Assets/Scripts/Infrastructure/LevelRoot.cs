@@ -29,13 +29,7 @@ namespace Assets.Infrastructure
 
         public bool IsPossibleToRebornForAd => _isPossibleToRebornForAd;
         public int LevelNumber => _levelNumber;
-
-        // private void Start()
-        // {
-        //     _generation.GenerateLevel();
-        //     _isPossibleToRebornForAd = true;
-        //     Invoke(nameof(HideCurtain), 2f);
-        // }
+        
 
         public void Init(PlayerLevelData playerLevelData)
         {
@@ -46,7 +40,6 @@ namespace Assets.Infrastructure
             else
                 _player.Init(playerLevelData.Health, playerLevelData.Inventory);
             
-            //_generation.GenerateLevel();
             _isPossibleToRebornForAd = true;
             Invoke(nameof(HideCurtain), 2f);
         }
