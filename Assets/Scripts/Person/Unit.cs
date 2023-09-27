@@ -61,12 +61,14 @@ namespace Assets.Person
         {
             if (IsDie)
                 return;
-            
-            float damageMultiplier = CalculateDamageModifier(weapon.Element) * weapon.Damage - (_armor.Body.Value + _armor.Head.Value);
-            _health -= damageMultiplier * weapon.Damage;
+
+            float elementMultiplier = CalculateDamageModifier(weapon.Element, _armor.Body.Element);
+            float damage = elementMultiplier * weapon.Damage;
+            float armorValue = (_armor.Body.Value + _armor.Head.Value);
+            _health -=  Math.Abs(damage - armorValue);
         }
 
-        protected virtual float CalculateDamageModifier(Element element) =>
-            ElementManager.GetDamageModifier(element, _armor.Body.Element);
+        protected float CalculateDamageModifier(Element weaponElement, Element armorElement) =>
+            ElementManager.GetDamageModifier(weaponElement, armorElement);
     }
 }

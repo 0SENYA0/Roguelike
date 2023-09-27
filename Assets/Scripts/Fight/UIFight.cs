@@ -36,7 +36,8 @@ namespace Assets.Fight
             _globalMap.SetActive(false);
             
             _countOfEnemyForFight = enemyPresenter.Enemy.Count;
-            _isBoosFight = enemyPresenter.Enemy.FirstOrDefault(x => x.IsBoss)!.IsBoss;
+            Enemy.Enemy enemyType = enemyPresenter.Enemy.FirstOrDefault(x => x.IsBoss);
+            _isBoosFight = enemyType?.IsBoss ?? false;
             
             _fightPlace.FightEnded += ShowRewardPanel;
             _fightPlace.Set(playerPresenter, enemyPresenter);

@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SdkLoadSscene.unity
     guid: 2d0578845c2d61640908f29031b0828c
   - enabled: 1
+    path: Assets/Scenes/TrainingLevel.unity
+    guid: 83c0649aa3ef23742ad3fafbb7c18556
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 9d5b00c07879a43469af420cb695e9ad
   - enabled: 1

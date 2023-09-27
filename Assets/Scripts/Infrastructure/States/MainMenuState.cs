@@ -24,7 +24,7 @@ namespace Assets.Infrastructure.States
         public void Update()
         {
             _gameStateMachine.Enter<GameplayState>();
-            _sceneLoader.LoadScene("LevelGeneration");
+            _sceneLoader.LoadScene("TrainingLevel");
         }
     }
 }
