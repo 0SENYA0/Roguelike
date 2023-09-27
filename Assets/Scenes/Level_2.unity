@@ -543,6 +543,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7992360678229543904, guid: d4c1c1e532ba68e48bc2a4e0d60025ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e27e64a094f035c4792bcb3887d0bcd3, type: 3}
     - target: {fileID: 8255728016286363253, guid: d4c1c1e532ba68e48bc2a4e0d60025ac, type: 3}
       propertyPath: _globalMap
       value: 
@@ -1319,6 +1323,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlobalMap
       objectReference: {fileID: 0}
+    - target: {fileID: 7964188287670015564, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
+      propertyPath: _bossTemplate
+      value: 
+      objectReference: {fileID: 5355334694282723081, guid: 0e2398c8420cc024d9a5223595a52c75, type: 3}
     - target: {fileID: 8460159953828866334, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

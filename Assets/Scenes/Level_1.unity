@@ -1299,6 +1299,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GlobalMap
       objectReference: {fileID: 0}
+    - target: {fileID: 7964188287670015564, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
+      propertyPath: _bossTemplate
+      value: 
+      objectReference: {fileID: 2258063343484286669, guid: 70016c3ebad72f943a50343a9efb31f6, type: 3}
     - target: {fileID: 8460159953828866334, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
