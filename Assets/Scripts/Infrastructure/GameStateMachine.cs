@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using Assets.Infrastructure.States;
 using Assets.Interface;
+using Assets.StateMachines;
 
 namespace Assets.Infrastructure
 {
-    public class GameStateMachine
+    public class GameStateMachine : StateMachineBase
     {
         private Dictionary<Type, IExitableState> _states;
         private IExitableState _currentState;
@@ -45,5 +46,12 @@ namespace Assets.Infrastructure
 
         private TState GetState<TState>() where TState : class, IExitableState =>
             _states[typeof(TState)] as TState;
+    }
+
+    public interface IStateMachine
+    {
+        public void Enter<TState>() where TState : class, IState;
+
+        public void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadState<TPayload>;
     }
 }
