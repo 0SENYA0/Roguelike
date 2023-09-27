@@ -33,11 +33,17 @@ namespace Assets.Infrastructure.DataStorageSystem
             string loc = PlayerPrefs.HasKey(LocalizationKey) ? PlayerPrefs.GetString(LocalizationKey) : LocalizationDefault;
             string statistics = PlayerPrefs.HasKey(GameStatisticsKey) ? PlayerPrefs.GetString(GameStatisticsKey) : GameStatisticsDefault;
             int armorLevel = PlayerPrefs.HasKey(ArmorKey) ? PlayerPrefs.GetInt(ArmorKey) : ArmorLevelDefault;
-            int weaponLevel = PlayerPrefs.HasKey(WeaponKey) ? PlayerPrefs.GetInt(WeaponKey) : WeaponLevelDefault;;
+            int weaponLevel = PlayerPrefs.HasKey(WeaponKey) ? PlayerPrefs.GetInt(WeaponKey) : WeaponLevelDefault;
             int potion = PlayerPrefs.HasKey(PotionKey) ? PlayerPrefs.GetInt(PotionKey) : PotionDefault;
             int idol = PlayerPrefs.HasKey(IdolKey) ? PlayerPrefs.GetInt(IdolKey) : IdolDefault;
             
             return new Data(money, sound, sfx, loc, statistics, armorLevel, weaponLevel, potion, idol);
+        }
+
+        public static Data GetDefaultData()
+        {
+            return new Data(MoneyDefault, MusicDefault, SfxDefault, LocalizationDefault, GameStatisticsDefault, 
+                ArmorLevelDefault, WeaponLevelDefault, PotionDefault, IdolDefault);
         }
 
         public static void SaveData(Data data)

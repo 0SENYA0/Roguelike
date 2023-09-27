@@ -9,6 +9,7 @@ using Assets.Scripts.InteractiveObjectSystem;
 using Assets.Scripts.SoundSystem;
 using Assets.UI;
 using Assets.UI.HUD;
+using Assets.UI.HUD.LosePanels;
 using UnityEngine;
 
 namespace Assets.Fight
@@ -36,7 +37,9 @@ namespace Assets.Fight
             _globalMap.SetActive(false);
             
             _countOfEnemyForFight = enemyPresenter.Enemy.Count;
-            Enemy.Enemy enemyType = enemyPresenter.Enemy.FirstOrDefault(x => x.IsBoss);
+
+            var enemyType = enemyPresenter.Enemy.FirstOrDefault(x => x.IsBoss);
+
             _isBoosFight = enemyType?.IsBoss ?? false;
             
             _fightPlace.FightEnded += ShowRewardPanel;
@@ -51,18 +54,14 @@ namespace Assets.Fight
             switch (fightResult)
             {
                 case FightResult.Win:
-                    var randomLoot = GetRandomLoot();
-                    _rewardPanel.Show(randomLoot);
-                    _playerPresenter.Player.InventoryPresenter.InventoryModel.AddItem(randomLoot);
                     if (_isBoosFight)
-                        _rewardPanel.OnButtonClickEvent += LoadNextLevel;
+                        CreateBossReward();
                     else
-                        _rewardPanel.OnButtonClickEvent += ShowGlobalMap;
-                    
+                        CreateEnemyReward();
                     break;
                 case FightResult.Lose:
-                    _losePanel.Show("Вы проиграли (((");
-                    _losePanel.OnButtonClickEvent += OnLosePanelClick;
+                    _losePanel.Show();
+                    _losePanel.UserAnswerEvent += OnLosePanelClick;
                     break;
                 case FightResult.Leave:
                     ShowGlobalMap();
@@ -72,11 +71,52 @@ namespace Assets.Fight
             }
         }
 
-        private void OnLosePanelClick()
+        private void OnLosePanelClick(UserLossAnswers answers)
         {
             _fightSound.Stop();
-            _losePanel.OnButtonClickEvent -= OnLosePanelClick;
-            _levelRoot.LoadMainMenu();
+            _losePanel.UserAnswerEvent -= OnLosePanelClick;
+            _losePanel.Hide();
+            var reborn = new Reborn(_playerPresenter, _globalMap, _battlefieldMap, _interactiveObjectHandler);
+            
+            switch (answers)
+            {
+                case UserLossAnswers.Ad:
+                    _levelRoot.RebornWithAd();
+                    reborn.RebornWithAD();
+                    break;
+                case UserLossAnswers.Idol:
+                    reborn.RebornWithIdol();
+                    break;
+                case UserLossAnswers.Menu:
+                    _levelRoot.LoadMainMenu();
+                    break;
+            }
+        }
+
+        private void CreateBossReward()
+        {
+            var randomArmor = ItemGenerator.Instance.GetRandomArmor(_isBoosFight);
+            var randomWeapon = ItemGenerator.Instance.GetRandomWeapon(_isBoosFight);
+            var money = ItemGenerator.Instance.GetBossReward();
+            
+            Game.GameSettings.PlayerData.Money += money;
+            _playerPresenter.Player.InventoryPresenter.InventoryModel.AddItem(randomWeapon);
+            _playerPresenter.Player.InventoryPresenter.InventoryModel.AddItem(randomArmor);
+            
+            _rewardPanel.Show(randomArmor, randomWeapon, money);
+            _rewardPanel.OnButtonClickEvent += LoadNextLevel;
+        }
+
+        private void CreateEnemyReward()
+        {
+            var randomLoot = GetRandomLoot();
+            var money = ItemGenerator.Instance.GetEnemyReward();
+            
+            Game.GameSettings.PlayerData.Money += money;
+            _playerPresenter.Player.InventoryPresenter.InventoryModel.AddItem(randomLoot);
+            
+            _rewardPanel.Show(randomLoot, money);
+            _rewardPanel.OnButtonClickEvent += ShowGlobalMap;
         }
 
         private void ShowGlobalMap()
@@ -96,7 +136,7 @@ namespace Assets.Fight
         private void LoadNextLevel()
         {
             _fightSound.Stop();
-            _losePanel.OnButtonClickEvent -= LoadNextLevel;
+            _rewardPanel.OnButtonClickEvent -= LoadNextLevel;
             _levelRoot.LoadNextLevel();
         }
 

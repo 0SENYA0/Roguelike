@@ -1,5 +1,9 @@
 using Assets.DefendItems;
+using Assets.Infrastructure;
 using Assets.Person;
+using Assets.Utils;
+using DefaultNamespace.Tools;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +22,9 @@ namespace Assets.Inventory.Panel
         [SerializeField] private Button _closeArmor;
         [SerializeField] private GameObject _panelArmor;
         [SerializeField] private ArmorPanelView _armor;
+        [Space] 
+        [SerializeField] private Button _potion;
+        [SerializeField] private TMP_Text _numberOfPotion;
 
         private void Awake()
         {
@@ -26,6 +33,9 @@ namespace Assets.Inventory.Panel
             
             _openArmor.onClick.AddListener(OpenArmorPanel);
             _closeArmor.onClick.AddListener(CloseArmorPanel);
+            
+            _potion.onClick.AddListener(UsePotion);
+            _numberOfPotion.text = Game.GameSettings != null ? Game.GameSettings.PlayerData.Potion.ToString() : "0";
         }
 
         private void OnDestroy()
@@ -35,6 +45,20 @@ namespace Assets.Inventory.Panel
             
             _openArmor.onClick.RemoveListener(OpenArmorPanel);
             _closeArmor.onClick.RemoveListener(CloseArmorPanel);
+            
+            _potion.onClick.RemoveListener(UsePotion);
+        }
+
+        private void UsePotion()
+        {
+            if (Game.GameSettings == null)
+                return;
+
+            if (Game.GameSettings.PlayerData.Potion > 0 && _player.PlayerPresenter.Player.Health < PlayerHealth.MaxPlayerHealth)
+            {
+                _player.PlayerPresenter.UsePotion();
+                _numberOfPotion.text = Game.GameSettings.PlayerData.Potion.ToString();
+            }
         }
 
         private void OpenWeaponPanel()

@@ -22,7 +22,7 @@ namespace Assets.Player
 
         public override void ChangeUIHealthValue(float value)
         {
-            int currentHeartsCount = ((int)_player.PlayerPresenter.Player.Healh) / 100 + 1;
+            int currentHeartsCount = ((int)_player.PlayerPresenter.Player.Health) / 100 + 1;
 
             foreach (var heart in _heart)
             {

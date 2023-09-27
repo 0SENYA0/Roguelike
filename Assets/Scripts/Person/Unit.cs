@@ -14,14 +14,12 @@ namespace Assets.Person
         private IPersonStateMachine _personStateMachine;
         private IWeapon _weapon;
         private Armor _armor;
-        private MagicItem _magicItem;
-        
-        public Unit(float health, IWeapon weapon, Armor armor, MagicItem magicItem, SpriteAnimation spriteAnimation)
+
+        public Unit(float health, IWeapon weapon, Armor armor, SpriteAnimation spriteAnimation)
         {
             _health = health;
             _weapon = weapon;
             _armor = armor;
-            _magicItem = magicItem;
             SpriteAnimation = spriteAnimation;
             _personStateMachine = new PersonStateMachine();
         }
@@ -30,7 +28,7 @@ namespace Assets.Person
         public event Action<float> HealthChanged;
 
         public SpriteAnimation SpriteAnimation { get; }
-        public float Healh => _health;
+        public float Health => _health;
         public IWeapon Weapon => _weapon;
         public Armor Armor => _armor;
         public bool IsDie { get; private set; } = false;
@@ -43,6 +41,17 @@ namespace Assets.Person
             ConditionForDead();
             HealthChanged?.Invoke(_health);
             Debug.Log("здоровье = "+ _health); 
+        }
+        
+        public void Heal(int value)
+        {
+            _health += value;
+            HealthChanged?.Invoke(_health);
+        }
+
+        public void Reborn()
+        {
+            IsDie = false;
         }
 
         protected virtual void ConditionForDead()
@@ -70,5 +79,6 @@ namespace Assets.Person
 
         protected float CalculateDamageModifier(Element weaponElement, Element armorElement) =>
             ElementManager.GetDamageModifier(weaponElement, armorElement);
+
     }
 }

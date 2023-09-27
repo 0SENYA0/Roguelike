@@ -1,6 +1,8 @@
 using Assets.Enemy;
+using Assets.Infrastructure;
 using Assets.Inventory;
 using Assets.Person;
+using Assets.Utils;
 
 namespace Assets.Player
 {
@@ -20,6 +22,18 @@ namespace Assets.Player
 
         public PlayerView PlayerView => _playerView;
         public Player Player => _player;
+        
+        public void UsePotion()
+        {
+            if (Game.GameSettings == null)
+                return;
+
+            if (Game.GameSettings.PlayerData.Potion > 0 && _player.Health < PlayerHealth.MaxPlayerHealth)
+            {
+                Game.GameSettings.PlayerData.Potion--;
+                _player.Heal(Potion.PotionValue);
+            }
+        }
 
         private Player GetNewPlayer()
         {
@@ -38,5 +52,6 @@ namespace Assets.Player
     {
         public PlayerView PlayerView { get; }
         public Player Player { get; }
+        public void UsePotion();
     }
 }

@@ -1,17 +1,22 @@
+using System;
 using Assets.Infrastructure.DataStorageSystem;
+using Assets.Infrastructure.SceneLoadHandler;
+using Assets.Inventory.ItemGeneratorSystem;
 using Assets.Person;
 using Assets.Scripts.GenerationSystem;
 using Assets.Scripts.SoundSystem;
 using Assets.TimerSystem;
 using Assets.UI;
 using Assets.UI.HUD;
+using IJunior.TypedScenes;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Assets.Infrastructure
 {
     public class LevelRoot : MonoBehaviour
     {
+        [SerializeField] private int _levelNumber;
+        [SerializeField] private ItemGenerator _itemGenerator;
         [SerializeField] private ProceduralGeneration _generation;
         [SerializeField] private Timer _gameTimer;
         [SerializeField] private SoundComponent _levelSound;
@@ -20,10 +25,22 @@ namespace Assets.Infrastructure
         [SerializeField] private PlayerView _player;
 
         private int _numberOfEnemiesKilled;
+        private bool _isPossibleToRebornForAd;
 
-        private void Start()
+        public bool IsPossibleToRebornForAd => _isPossibleToRebornForAd;
+        public int LevelNumber => _levelNumber;
+        
+
+        public void Init(PlayerLevelData playerLevelData)
         {
-            _generation.GenerateLevel();
+            _itemGenerator.Init(_levelNumber);
+            
+            if (playerLevelData == null)
+                _player.Init();
+            else
+                _player.Init(playerLevelData.Health, playerLevelData.Inventory);
+            
+            _isPossibleToRebornForAd = true;
             Invoke(nameof(HideCurtain), 2f);
         }
 
@@ -46,32 +63,40 @@ namespace Assets.Infrastructure
 
         public void LoadMainMenu()
         {
-            SaveEntries(0);
+            SaveEntries(false);
             Curtain.Instance.ShowAnimation(() =>
             {
-                SceneManager.LoadScene("Menu");
+                Menu.Load();
             });
         }
 
         public void LoadNextLevel()
         {
-            SaveEntries(1);
+            SaveEntries(true);
             Curtain.Instance.ShowAnimation(() =>
             {
-                SceneManager.LoadScene("LevelGeneration");
+                LevelLoadingChooser.LoadScene(
+                    _levelNumber + 1, 
+                    new PlayerLevelData(_player.PlayerPresenter.Player.Health, 
+                        _player.PlayerPresenter.Player.InventoryPresenter));
             });
         }
 
-        private void SaveEntries(int countOfKilledBosses)
+        public void RebornWithAd()
+        {
+            _isPossibleToRebornForAd = false;
+        }
+
+        private void SaveEntries(bool isBossKilled)
         {
             if (Game.GameSettings == null)
                 return;
 
             var gameStats = Game.GameSettings.PlayerData.GameStatistics;
             var newGameStats = new GameStatistics(
-                gameStats.NumberOfAttempts + 1,
+                gameStats.NumberOfAttempts,
                 gameStats.NumberOfEnemiesKilled + _numberOfEnemiesKilled,
-                gameStats.NumberOfBossesKilled + countOfKilledBosses
+                gameStats.NumberOfBossesKilled + Convert.ToInt32(isBossKilled)
                 );
 
             Game.GameSettings.PlayerData.GameStatistics = newGameStats;
@@ -80,6 +105,7 @@ namespace Assets.Infrastructure
 
         private void HideCurtain()
         {
+            _generation.GenerateLevel();
             Curtain.Instance.HideCurtain();
             _gameTimer.StartTimer();
             _levelSound.Play();

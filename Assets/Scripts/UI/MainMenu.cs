@@ -1,5 +1,9 @@
+using Assets.Infrastructure;
+using Assets.Infrastructure.DataStorageSystem;
+using Assets.Infrastructure.SceneLoadHandler;
 using Assets.Scripts.SoundSystem;
 using Assets.UI.ShopWindow;
+using IJunior.TypedScenes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -42,9 +46,29 @@ namespace Assets.UI
 
         private void StartGame()
         {
+            AddNewTrying();
             _sound.Stop();
             _shopPanel.Dispose();
-            Curtain.Instance.ShowAnimation(() => { SceneManager.LoadScene("LevelGeneration");});
+            Curtain.Instance.ShowAnimation(() =>
+            {
+                LevelLoadingChooser.LoadScene(1, null);
+            });
+        }
+
+        private void AddNewTrying()
+        {
+            if (Game.GameSettings == null)
+                return;
+
+            var gameStats = Game.GameSettings.PlayerData.GameStatistics;
+            var newGameStats = new GameStatistics(
+                gameStats.NumberOfAttempts + 1,
+                gameStats.NumberOfEnemiesKilled,
+                gameStats.NumberOfBossesKilled
+            );
+
+            Game.GameSettings.PlayerData.GameStatistics = newGameStats;
+            Game.GameSettings.PlayerData.SaveData();
         }
     }
 

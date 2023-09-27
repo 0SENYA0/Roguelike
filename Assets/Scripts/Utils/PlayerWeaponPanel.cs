@@ -39,6 +39,9 @@ namespace Assets.Utils
 
         public void Dispose()
         {
+            if (_items == null)
+                return;
+            
             foreach (var weapon in _items)
             {
                 weapon.OnItemClicked -= OnItemSelected;

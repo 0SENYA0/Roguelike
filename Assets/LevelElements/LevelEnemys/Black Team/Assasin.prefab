@@ -206,13 +206,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 525bcf98ae9342ad9ea6e1ab678415ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _translationName:
+    _rus: "\u0410\u0441\u0441\u0430\u0441\u0438\u043D"
+    _eng: Assassin
+    _tur: "Suikast\xE7\u0131"
   _type: 0
-  _translationName: E_Assassin
   _numberOfAwards: 1
-  _data: 
   _health: 20
-  _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
-  _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
   _sprite: {fileID: 1523503080, guid: 83f95a2f654c02d4fb9f63be38c3c445, type: 3}
   _spriteAnimation: {fileID: 8220381066613894502}
 --- !u!1001 &5681285143584554510

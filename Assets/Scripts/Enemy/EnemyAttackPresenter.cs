@@ -1,3 +1,4 @@
+using System;
 using Assets.Person;
 
 namespace Assets.Enemy
@@ -6,11 +7,12 @@ namespace Assets.Enemy
     {
         private readonly Enemy _enemy;
         private readonly EnemyAttackView _enemyAttackView;
-        
+
         public EnemyAttackPresenter(Enemy enemy, EnemyAttackView enemyAttackView) : base(enemy, enemyAttackView)
         {
             _enemy = enemy;
             _enemyAttackView = enemyAttackView;
+            _enemyAttackView.Guid = Guid.NewGuid();
             SetElementsSpriteForUI();
         }
         

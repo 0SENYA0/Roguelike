@@ -1,4 +1,4 @@
-using Assets.ScriptableObjects;
+using Assets.DefendItems;
 using Assets.Scripts.AnimationComponent;
 using UnityEngine;
 
@@ -8,9 +8,9 @@ namespace Assets.Interface
     {
         public int Health { get; }
 
-        public WeaponScriptableObject Weapon { get; }
+        public Weapon.Weapon Weapon { get; }
 
-        public ArmorScriptableObject Armor { get; }
+        public Armor Armor { get; }
 
         public Sprite Sprite { get; }
 

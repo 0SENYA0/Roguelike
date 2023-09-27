@@ -203,13 +203,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 525bcf98ae9342ad9ea6e1ab678415ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _translationName:
+    _rus: "\u0423\u043F\u044B\u0440\u044C"
+    _eng: Ghoul
+    _tur: Gulyabani
   _type: 0
-  _translationName: E_Ghoul
   _numberOfAwards: 1
-  _data: 
   _health: 20
-  _weapon: {fileID: 11400000, guid: db8b9bd7c8744bd408821cdcea894c34, type: 2}
-  _armor: {fileID: 11400000, guid: b4cf26b18b3a7c943ad477b2f476a40a, type: 2}
   _sprite: {fileID: -289433371, guid: 83f95a2f654c02d4fb9f63be38c3c445, type: 3}
   _spriteAnimation: {fileID: 3914485625993381693}
 --- !u!1001 &8283123137947846983

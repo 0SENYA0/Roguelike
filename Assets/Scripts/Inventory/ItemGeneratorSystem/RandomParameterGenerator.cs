@@ -1,3 +1,4 @@
+using System;
 using Assets.Fight.Element;
 using Assets.ScriptableObjects;
 using UnityEngine;
@@ -17,6 +18,11 @@ namespace Assets.Inventory.ItemGeneratorSystem
         public float RandomValue(ListOfItemStatsRangesScriptableObject.Range range)
         {
             return Random.Range(range.MinValue, range.MaxValue);
+        }
+
+        public float RandomValue(float a, float b)
+        {
+            return Random.Range(a, b);
         }
 
         public Element RandomElement()

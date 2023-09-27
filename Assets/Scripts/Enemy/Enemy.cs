@@ -10,8 +10,8 @@ namespace Assets.Enemy
         private string _name;
         private string _data;
 
-        public Enemy(int health, IWeapon weapon, Armor armor, MagicItem magicItem,  SpriteAnimation spriteAnimation) 
-            : base(health, weapon, armor, magicItem, spriteAnimation)
+        public Enemy(int health, IWeapon weapon, Armor armor,  SpriteAnimation spriteAnimation) 
+            : base(health, weapon, armor, spriteAnimation)
         {
         }
         
