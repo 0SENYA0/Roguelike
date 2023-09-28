@@ -7,8 +7,6 @@ namespace Assets.Weapon
 {
     public class Weapon : IWeapon, IInventoryItem
     {
-        private bool _isSelect;
-        
         public Weapon(float damage, Element element, int chanceToSplash, int minValueToCriticalDamage, int valueModifier, ParticleSystem particleSystem)
         {
             ChanceToSplash = chanceToSplash;
@@ -17,7 +15,6 @@ namespace Assets.Weapon
             ParticleSystem = particleSystem;
             Damage = damage;
             Element = element;
-            _isSelect = false;
         }
 
         public float Damage { get; }
@@ -26,16 +23,5 @@ namespace Assets.Weapon
         public int ChanceToSplash { get; }
         public int MinValueToCriticalDamage { get; }
         public int ValueModifier { get; }
-        public bool IsSelect => _isSelect;
-        
-        public void Select()
-        {
-            _isSelect = true;
-        }
-
-        public void UnSelect()
-        {
-            _isSelect = false;
-        }
     }
 }

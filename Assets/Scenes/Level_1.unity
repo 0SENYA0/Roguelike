@@ -1200,6 +1200,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3296414419366836750, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
+      propertyPath: _lastPoint
+      value: 
+      objectReference: {fileID: 11400000, guid: e5d48c39fa4a5f84d9b846d07a9890e9, type: 2}
+    - target: {fileID: 3296414419366836750, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
+      propertyPath: _firstPoint
+      value: 
+      objectReference: {fileID: 11400000, guid: 50a5c2c730445aa449c38ba64c3d2d09, type: 2}
+    - target: {fileID: 3296414419366836750, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
       propertyPath: _surfaces.Array.data[0]
       value: 
       objectReference: {fileID: 1737618914}
@@ -1274,6 +1282,14 @@ PrefabInstance:
     - target: {fileID: 6338103914630029778, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6458262614967360226, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
+      propertyPath: FallbackText
+      value: Map_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6458262614967360226, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
+      propertyPath: translationName
+      value: Map_1
       objectReference: {fileID: 0}
     - target: {fileID: 6959336878038422597, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
