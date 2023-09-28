@@ -1239,6 +1239,10 @@ PrefabInstance:
       propertyPath: _timer
       value: 
       objectReference: {fileID: 1205741076}
+    - target: {fileID: 4815860675977482509, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
+      propertyPath: _health
+      value: 800
+      objectReference: {fileID: 0}
     - target: {fileID: 5975527765568774177, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

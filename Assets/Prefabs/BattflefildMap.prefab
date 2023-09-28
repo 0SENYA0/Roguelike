@@ -3057,8 +3057,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041C\u043E\u0436\u043D\u043E \u043F\u043E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C
-    \u0440\u0435\u043A\u043B\u0430\u043C\u0443"
+  m_text: "\u0412\u0430\u0448 \u0438\u043D\u0432\u0435\u043D\u0442\u0430\u0440\u044C
+    \u043F\u0435\u0440\u0435\u0433\u0440\u0443\u0436\u0435\u043D \u0434\u043B\u044F
+    \u044D\u0442\u043E\u0439 \u043D\u0430\u0433\u0440\u0430\u0434\u044B. \u0412\u044B\u043A\u0438\u043D\u044C\u0442\u0435
+    \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u044B, \u0447\u0442\u043E\u0431\u044B
+    \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C \u043D\u043E\u0432\u0443\u044E
+    \u043D\u0430\u0433\u0440\u0430\u0434\u0443 (\u0432\u044B\u043A\u0438\u043D\u0443\u0442\u044C: "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 38594c1657908df4c8d562912e4a56df, type: 2}
   m_sharedMaterial: {fileID: 7716666250647446535, guid: 38594c1657908df4c8d562912e4a56df, type: 2}
@@ -10081,8 +10085,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1280, y: -720.5926}
-  m_SizeDelta: {x: 2360, y: 841.1852}
+  m_AnchoredPosition: {x: 1280, y: -720.57556}
+  m_SizeDelta: {x: 2360, y: 841.1511}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2192487558481443180
 MonoBehaviour:
@@ -10689,8 +10693,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 590, y: -420.5926}
-  m_SizeDelta: {x: 1180, y: 841.1852}
+  m_AnchoredPosition: {x: 590, y: -420.57556}
+  m_SizeDelta: {x: 1180, y: 841.1511}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8743697206563437663
 CanvasRenderer:
@@ -11098,13 +11102,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022396642562336233}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  translationName: Settings
-  FallbackText: Settings
+  translationName: LeaveGame
+  FallbackText: LeaveGame
 --- !u!1 &2022612683239221971
 GameObject:
   m_ObjectHideFlags: 0
@@ -12675,6 +12679,7 @@ GameObject:
   - component: {fileID: 5660279259206221641}
   - component: {fileID: 7961543272381729062}
   - component: {fileID: 4530070040598240099}
+  - component: {fileID: 3895556105135205610}
   m_Layer: 5
   m_Name: Text_Lable
   m_TagString: Untagged
@@ -12730,7 +12735,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ready?
+  m_text: "\u0413\u043E\u0442\u043E\u0432\u044B?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 38594c1657908df4c8d562912e4a56df, type: 2}
   m_sharedMaterial: {fileID: 7716666250647446535, guid: 38594c1657908df4c8d562912e4a56df, type: 2}
@@ -12799,6 +12804,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3895556105135205610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2412031350373356377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Ready
+  FallbackText: Ready
 --- !u!1 &2422558874061546472
 GameObject:
   m_ObjectHideFlags: 0
@@ -13528,7 +13547,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Play
+  m_text: "\u0418\u0433\u0440\u0430\u0442\u044C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 38594c1657908df4c8d562912e4a56df, type: 2}
   m_sharedMaterial: {fileID: 7716666250647446535, guid: 38594c1657908df4c8d562912e4a56df, type: 2}
@@ -13844,8 +13863,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 290.7, y: -420.5926}
-  m_SizeDelta: {x: 581.4, y: 841.1852}
+  m_AnchoredPosition: {x: 290.7, y: -420.57556}
+  m_SizeDelta: {x: 581.4, y: 841.1511}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1101783944307842290
 MonoBehaviour:
@@ -15106,6 +15125,7 @@ RectTransform:
   - {fileID: 2814565134521601151}
   - {fileID: 3837753596207983787}
   - {fileID: 5109872208449396092}
+  - {fileID: 7927762373740996534}
   m_Father: {fileID: 1477917457461445430}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17857,7 +17877,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1280, y: -1241.1852}
+  m_AnchoredPosition: {x: 1280, y: -1241.1511}
   m_SizeDelta: {x: 2360, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2679343920473958729
@@ -19923,8 +19943,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 290.7, y: -204.0463}
-  m_SizeDelta: {x: 581.4, y: 358.0926}
+  m_AnchoredPosition: {x: 290.7, y: -204.03778}
+  m_SizeDelta: {x: 581.4, y: 358.07556}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4088281964877271406
 GameObject:
@@ -20062,9 +20082,9 @@ MonoBehaviour:
   _finalLossButton: {fileID: 5921201692809967065}
   _finalLossText: {fileID: 1809152998481112328}
   _localizedFinalLoss:
-    _rus: "\u0423\u0441\u0451, \u0442\u044B \u0438\u0437\u0434\u043E"
-    _eng: You dead
-    _tur: 123
+    _rus: "\u0418\u0433\u0440\u0430 \u043E\u043A\u043E\u043D\u0447\u0435\u043D\u0430"
+    _eng: Game over
+    _tur: Oyun bitti
   _idolPanel: {fileID: 7465580045884963394}
   _adPanel: {fileID: 4154540406789392320}
 --- !u!82 &641182178833557230
@@ -22548,8 +22568,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1770, y: -420.5926}
-  m_SizeDelta: {x: 1180, y: 841.1852}
+  m_AnchoredPosition: {x: 1770, y: -420.57556}
+  m_SizeDelta: {x: 1180, y: 841.1511}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8976499704778604724
 CanvasRenderer:
@@ -23294,10 +23314,19 @@ MonoBehaviour:
   _buttonNo: {fileID: 7747130256277466658}
   _text: {fileID: 7994695132140870280}
   _localizedPanel:
-    _rus: "\u041C\u043E\u0436\u043D\u043E \u043F\u043E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C
-      \u0440\u0435\u043A\u043B\u0430\u043C\u0443"
-    _eng: Watch AD
-    _tur: ad 123123
+    _rus: "\u0412\u044B \u0443\u043C\u0435\u0440\u043B\u0438. \u0412\u044B \u043C\u043E\u0436\u0435\u0442\u0435
+      \u043F\u043E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u0440\u0435\u043A\u043B\u0430\u043C\u0443,
+      \u0447\u0442\u043E\u0431\u044B \u0432\u043E\u0437\u0440\u043E\u0434\u0438\u0442\u044C\u0441\u044F.
+      \u0412\u044B \u0432\u0435\u0440\u043D\u0435\u0442\u0435\u0441\u044C \u0432
+      \u0438\u0433\u0440\u0443 \u0441 \u043F\u043E\u043B\u043E\u0432\u0438\u043D\u043E\u0439
+      \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u044F, \u043D\u043E \u043F\u043E\u0442\u0435\u0440\u044F\u0435\u0442\u0435
+      \u043D\u0430\u0433\u0440\u0430\u0434\u0443 \u0437\u0430 \u044D\u0442\u043E\u0442
+      \u0431\u043E\u0439."
+    _eng: You're dead. You can watch ads to be reborn. You will return to the game
+      with half your health, but you will lose the reward for this fight.
+    _tur: "Sen \xF6ld\xFCn. Yeniden do\u011Fmak i\xE7in reklamlar\u0131 izleyebilirsiniz.
+      Sa\u011Fl\u0131\u011F\u0131n\u0131z\u0131n yar\u0131s\u0131 ile oyuna geri
+      d\xF6neceksiniz, ancak bu d\xF6v\xFC\u015F\xFCn \xF6d\xFCl\xFCn\xFC kaybedeceksiniz."
   _answers: 0
 --- !u!1 &5074941019707364117
 GameObject:
@@ -24617,8 +24646,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 290.7, y: -612.1389}
-  m_SizeDelta: {x: 581.4, y: 358.0926}
+  m_AnchoredPosition: {x: 290.7, y: -612.11334}
+  m_SizeDelta: {x: 581.4, y: 358.07556}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5444894441066653506
 GameObject:
@@ -26018,6 +26047,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5678302427408201143}
   m_CullTransparentMesh: 1
+--- !u!1 &5721321065156678723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7927762373740996534}
+  - component: {fileID: 5200349093109227832}
+  - component: {fileID: 6088981664750387745}
+  m_Layer: 5
+  m_Name: AD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7927762373740996534
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5721321065156678723}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7875868256806854749}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -473, y: -264}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5200349093109227832
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5721321065156678723}
+  m_CullTransparentMesh: 1
+--- !u!114 &6088981664750387745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5721321065156678723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 391584432233c4e0a864435a50a098c5, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &5747132884854622496
 GameObject:
   m_ObjectHideFlags: 0
@@ -28762,6 +28867,7 @@ GameObject:
   - component: {fileID: 5855165101958587327}
   - component: {fileID: 436840448140585287}
   - component: {fileID: 2519862287652501070}
+  - component: {fileID: 1637695441247868709}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -28886,6 +28992,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1637695441247868709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6430768968384218207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: InfoElements
+  FallbackText: InfoElements
 --- !u!1 &6457619776683391572
 GameObject:
   m_ObjectHideFlags: 0
@@ -29042,8 +29162,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 889.30005, y: -420.5926}
-  m_SizeDelta: {x: 581.4, y: 841.1852}
+  m_AnchoredPosition: {x: 889.30005, y: -420.57556}
+  m_SizeDelta: {x: 581.4, y: 841.1511}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6476614878110717745
 GameObject:
@@ -29293,10 +29413,18 @@ MonoBehaviour:
   _buttonNo: {fileID: 1080304489538236333}
   _text: {fileID: 959477460955919937}
   _localizedPanel:
-    _rus: "\u041C\u043E\u0436\u043D\u043E \u0432\u043E\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u044C\u0441\u044F
-      \u0438\u0434\u043E\u043B\u043E\u043C"
-    _eng: Use idol
-    _tur: 123123
+    _rus: "\u0412\u044B \u0443\u043C\u0435\u0440\u043B\u0438. \u0412\u044B \u043C\u043E\u0436\u0435\u0442\u0435
+      \u0432\u043E\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u044C\u0441\u044F
+      \u0418\u0434\u043E\u043B\u043E\u043C. \u0412\u044B \u0432\u0435\u0440\u043D\u0435\u0442\u0435\u0441\u044C
+      \u0432 \u0438\u0433\u0440\u0443 \u0441 \u043F\u043E\u043B\u043E\u0432\u0438\u043D\u043E\u0439
+      \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u044F, \u043D\u043E \u043F\u043E\u0442\u0435\u0440\u044F\u0435\u0442\u0435
+      \u043D\u0430\u0433\u0440\u0430\u0434\u0443 \u0437\u0430 \u044D\u0442\u043E\u0442
+      \u0431\u043E\u0439."
+    _eng: You're dead. You can use the Idol. You will return to the game with half
+      your health, but you will lose the reward for this fight.
+    _tur: "Sen \xF6ld\xFCn. \u0130dol\xFC kullanabilirsin. Sa\u011Fl\u0131\u011F\u0131n\u0131z\u0131n
+      yar\u0131s\u0131 ile oyuna geri d\xF6neceksiniz, ancak bu d\xF6v\xFC\u015F\xFCn
+      \xF6d\xFCl\xFCn\xFC kaybedeceksiniz."
   _answers: 1
 --- !u!1 &6605253138163080083
 GameObject:
@@ -32618,13 +32746,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7549125298634440259}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  translationName: Settings
-  FallbackText: Settings
+  translationName: LeaveFightMessage
+  FallbackText: LeaveFightMessage
 --- !u!1 &7550197969731808224
 GameObject:
   m_ObjectHideFlags: 0
@@ -33326,7 +33454,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7649382603707658557}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
   m_Name: 
@@ -39795,7 +39923,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1554469325880773797, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554469325880773797, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
+      propertyPath: FallbackText
+      value: LeaveGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554469325880773797, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
+      propertyPath: translationName
+      value: LeaveGame
       objectReference: {fileID: 0}
     - target: {fileID: 2832258337153455300, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_text
@@ -39803,7 +39939,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4563749011913832434, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563749011913832434, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
+      propertyPath: FallbackText
+      value: LeaveGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563749011913832434, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
+      propertyPath: translationName
+      value: LeaveGame
       objectReference: {fileID: 0}
     - target: {fileID: 5705280671670380958, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_Pivot.x
@@ -39979,7 +40123,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7680512543897155812, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680512543897155812, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
+      propertyPath: FallbackText
+      value: LeaveGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680512543897155812, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
+      propertyPath: translationName
+      value: LeaveGame
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -40134,7 +40286,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1554469325880773797, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554469325880773797, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
+      propertyPath: FallbackText
+      value: LeaveGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554469325880773797, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
+      propertyPath: translationName
+      value: LeaveGame
       objectReference: {fileID: 0}
     - target: {fileID: 2589836603614342045, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_SizeDelta.x
@@ -40166,7 +40326,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4563749011913832434, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563749011913832434, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
+      propertyPath: FallbackText
+      value: LeaveGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563749011913832434, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
+      propertyPath: translationName
+      value: LeaveGame
       objectReference: {fileID: 0}
     - target: {fileID: 5705280671670380958, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_Pivot.x
@@ -40314,7 +40482,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7680512543897155812, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680512543897155812, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
+      propertyPath: FallbackText
+      value: LeaveGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680512543897155812, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
+      propertyPath: translationName
+      value: LeaveGame
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -29,4 +29,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Plugins/unity-typed-scenes-master/Assets/Plugins/TypedScenes/Samples/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/GUI Kit Casual Game/Scenes/DemoScene.unity
+    guid: 78addc77d730f4f38a4a7d5e73530376
+  - enabled: 1
+    path: Assets/Scenes/SceneLoaderMap.unity
+    guid: faa1fe4510068b74195a2bc1c2f82dbb
+  - enabled: 1
+    path: Assets/Scenes/Test.unity
+    guid: dbbe4ed21cb35fb42a36d1c32d3b1742
   m_configObjects: {}

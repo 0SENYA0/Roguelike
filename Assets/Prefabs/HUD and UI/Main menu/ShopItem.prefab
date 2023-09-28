@@ -654,11 +654,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2652747811786826606, guid: 627eef690fa139347a2d4b9a7b99d4df, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652747811786826606, guid: 627eef690fa139347a2d4b9a7b99d4df, type: 3}
+      propertyPath: FallbackText
+      value: Buy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652747811786826606, guid: 627eef690fa139347a2d4b9a7b99d4df, type: 3}
+      propertyPath: translationName
+      value: Buy
       objectReference: {fileID: 0}
     - target: {fileID: 2669472886011328976, guid: 627eef690fa139347a2d4b9a7b99d4df, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2669472886011328976, guid: 627eef690fa139347a2d4b9a7b99d4df, type: 3}
+      propertyPath: FallbackText
+      value: Buy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2669472886011328976, guid: 627eef690fa139347a2d4b9a7b99d4df, type: 3}
+      propertyPath: translationName
+      value: Buy
       objectReference: {fileID: 0}
     - target: {fileID: 2832258337153455300, guid: 627eef690fa139347a2d4b9a7b99d4df, type: 3}
       propertyPath: m_text
@@ -750,7 +766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6351379197448896491, guid: 627eef690fa139347a2d4b9a7b99d4df, type: 3}
       propertyPath: m_text
-      value: "%\u041A\u0443\u043F\u0438\u0442\u044C%"
+      value: "\u041A\u0443\u043F\u0438\u0442\u044C"
       objectReference: {fileID: 0}
     - target: {fileID: 6398953944205788885, guid: 627eef690fa139347a2d4b9a7b99d4df, type: 3}
       propertyPath: m_text
@@ -762,7 +778,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7199661063049821783, guid: 627eef690fa139347a2d4b9a7b99d4df, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199661063049821783, guid: 627eef690fa139347a2d4b9a7b99d4df, type: 3}
+      propertyPath: FallbackText
+      value: Buy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199661063049821783, guid: 627eef690fa139347a2d4b9a7b99d4df, type: 3}
+      propertyPath: translationName
+      value: Buy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -15,63 +15,104 @@ MonoBehaviour:
   _shopItems:
   - _itemType: 0
     text:
-      _rus: "\u0421\u0430\u043C\u0430\u044F \u0430\u0445\u0443\u0435\u043D\u043D\u0430\u044F
-        \u0431\u0440\u043E\u043D\u044F"
-      _eng: Samya ahyenna armor
-      _tur: as7dalsdiasd
+      _rus: "\u0412\u0430\u0448\u0430 \u0441\u0442\u0430\u0440\u0442\u043E\u0432\u0430\u044F
+        \u0431\u0440\u043E\u043D\u044F. \u0421 \u043A\u0430\u0436\u0434\u044B\u043C
+        \u0443\u0440\u043E\u0432\u043D\u0435\u043C \u043F\u0440\u043E\u043A\u0430\u0447\u043A\u0438,
+        \u0432\u044B \u0431\u0443\u0434\u0435\u0442\u0435 \u043D\u0430\u0447\u0438\u043D\u0430\u0442\u044C
+        \u0441 \u0431\u043E\u043B\u0435\u0435 \u043A\u0440\u0435\u043F\u043A\u043E\u0439
+        \u0431\u0440\u043E\u043D\u0435\u0439. \u0412\u043B\u0438\u044F\u0435\u0442
+        \u0442\u043E\u043B\u044C\u043A\u043E \u043D\u0430 \u043F\u0435\u0440\u0432\u044B\u0439
+        \u0443\u0440\u043E\u0432\u0435\u043D\u044C "
+      _eng: Your starting armor. With each level of leveling, you will start with
+        stronger armor. Affects only the first level
+      _tur: "Ba\u015Flang\u0131\xE7 z\u0131rh\u0131n. Her seviye seviyelendirme ile
+        daha g\xFC\xE7l\xFC z\u0131rhla ba\u015Flayacaks\u0131n\u0131z. Sadece ilk
+        seviyeyi etkiler"
     _level:
       _rus: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C"
       _eng: Level
-      _tur: '#!@LLKJ!J@#'
+      _tur: Seviye
     _cost:
       _rus: "\u0426\u0435\u043D\u0430"
       _eng: Cost
-      _tur: sdf*A&SD(
+      _tur: Maliyet
     _image: {fileID: 21300000, guid: 346be7a76850e084a89f216e4238aa51, type: 3}
     _price: {fileID: 11400000, guid: 4a45aabbddc2be5428b174fc27978b84, type: 2}
   - _itemType: 1
     text:
-      _rus: "\u0421\u0430\u043C\u0430\u044F \u0430\u0445\u0443\u0435\u043D\u043D\u0430\u044F
-        \u0434\u0443\u0431\u0438\u043D\u0430"
-      _eng: Samya ahyenna weapon
-      _tur: as7dalsdiasd
+      _rus: "\u0412\u0430\u0448\u0430 \u0441\u0442\u0430\u0440\u0442\u043E\u0432\u043E\u0435
+        \u043E\u0440\u0443\u0436\u0438\u0435. \u0421 \u043A\u0430\u0436\u0434\u044B\u043C
+        \u0443\u0440\u043E\u0432\u043D\u0435\u043C \u043F\u0440\u043E\u043A\u0430\u0447\u043A\u0438,
+        \u0432\u044B \u0431\u0443\u0434\u0435\u0442\u0435 \u043D\u0430\u0447\u0438\u043D\u0430\u0442\u044C
+        \u0441 \u0431\u043E\u043B\u0435\u0435 \u0441\u0438\u043B\u044C\u043D\u044B\u043C
+        \u043E\u0440\u0443\u0436\u0438\u0435\u043C. \u0412\u043B\u0438\u044F\u0435\u0442
+        \u0442\u043E\u043B\u044C\u043A\u043E \u043D\u0430 \u043F\u0435\u0440\u0432\u044B\u0439
+        \u0443\u0440\u043E\u0432\u0435\u043D\u044C "
+      _eng: Your starting weapon. With each level of leveling, you will start with
+        a stronger weapon. Affects only the first level
+      _tur: "Ba\u015Flang\u0131\xE7 silah\u0131n. Her seviye seviyelendirme ile daha
+        g\xFC\xE7l\xFC bir silahla ba\u015Flayacaks\u0131n\u0131z. Sadece ilk seviyeyi
+        etkiler"
     _level:
       _rus: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C"
       _eng: Level
-      _tur: '#!@LLKJ!J@#'
+      _tur: Seviye
     _cost:
       _rus: "\u0426\u0435\u043D\u0430"
       _eng: Cost
-      _tur: sdf*A&SD(
+      _tur: Maliyet
     _image: {fileID: 21300000, guid: be31f3f0536b2d24e9e3d03729eefe8e, type: 3}
     _price: {fileID: 11400000, guid: 7a8a1e75c87c5a9428cea2f21a52caeb, type: 2}
   - _itemType: 2
     text:
-      _rus: "\u0417\u0435\u043B\u044C\u043A\u0430 \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u044F"
-      _eng: Health potion
-      _tur: as7dalsdiasd
+      _rus: "\u0417\u0435\u043B\u044C\u0435 \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u044F.
+        \u041F\u0440\u0438 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0438
+        \u043F\u043E\u043B\u043D\u043E\u0441\u0442\u044C\u044E \u0432\u043E\u0441\u0441\u0442\u0430\u043D\u0430\u0432\u043B\u0438\u0432\u0430\u0435\u0442
+        \u043E\u0434\u043D\u043E \u0441\u0435\u0440\u0434\u0446\u0435. \u041C\u043E\u0436\u043D\u043E
+        \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u044C
+        \u0438\u0437 \u0438\u043D\u0432\u0435\u043D\u0442\u0430\u0440\u044F \u0432\u043D\u0435
+        \u0431\u043E\u044F."
+      _eng: A health potion. When used, it completely restores one heart. Can be
+        used from inventory outside of combat.
+      _tur: "Bir sa\u011Fl\u0131k iksiri. Kullan\u0131ld\u0131\u011F\u0131nda, bir
+        kalbi tamamen geri y\xFCkler. Sava\u015F d\u0131\u015F\u0131ndaki envanterden
+        kullan\u0131labilir."
     _level:
       _rus: "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E"
       _eng: Count
-      _tur: '#!@LLKJ!J@#'
+      _tur: "Say\u0131"
     _cost:
       _rus: "\u0426\u0435\u043D\u0430"
       _eng: Cost
-      _tur: sdf*A&SD(
+      _tur: Maliyet
     _image: {fileID: 1333957569, guid: 5aa2f2e24731fd444add86c3379cff25, type: 3}
     _price: {fileID: 11400000, guid: 355cdbda84987944eb4943fd725f5daf, type: 2}
   - _itemType: 3
     text:
-      _rus: "\u0418\u0434\u043E\u043B \u0432\u043E\u0441\u043A\u0440\u0435\u0448\u0435\u043D\u0438\u044F"
-      _eng: Idol relive
-      _tur: as7dalsdiasd
+      _rus: "\u0418\u0434\u043E\u043B \u0432\u043E\u0441\u043A\u0440\u0435\u0448\u0435\u043D\u0438\u044F.
+        \u0415\u0441\u043B\u0438 \u0432\u044B \u043F\u0440\u043E\u0438\u0433\u0440\u0430\u0435\u0442\u0435
+        \u0431\u043E\u0439, \u0442\u043E \u043C\u043E\u0436\u0435\u0442\u0435 \u0432\u043E\u0437\u0440\u043E\u0434\u0438\u0442\u044C\u0441\u044F
+        \u0441 \u043F\u043E\u043C\u043E\u0449\u044C\u044E \u044D\u0442\u043E\u0433\u043E
+        \u0438\u0434\u043E\u043B\u0430. \u041F\u0440\u0438 \u044D\u0442\u043E\u043C
+        \u0432\u044B \u0432\u0435\u0440\u043D\u0435\u0442\u0435\u0441\u044C \u0441
+        \u043F\u043E\u043B\u043E\u0432\u0438\u043D\u043E\u0439 \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u044F
+        \u0438 \u043D\u0435 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u0435 \u043D\u0430\u0433\u0440\u0430\u0434\u0443
+        \u0437\u0430 \u043F\u0440\u043E\u0438\u0433\u0440\u0430\u043D\u043D\u044B\u0439
+        \u0431\u043E\u0439"
+      _eng: The idol of resurrection. If you lose the fight, you can be reborn with
+        this idol. At the same time, you will return with half your health and will
+        not receive a reward for a lost battle
+      _tur: "Dirili\u015F idol\xFC. Sava\u015F\u0131 kaybedersen, bu idolle yeniden
+        do\u011Fabilirsin. Ayn\u0131 zamanda sa\u011Fl\u0131\u011F\u0131n\u0131z\u0131n
+        yar\u0131s\u0131 ile geri d\xF6necek ve kaybedilen bir sava\u015F i\xE7in
+        \xF6d\xFCl alamayacaks\u0131n\u0131z"
     _level:
       _rus: "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E"
       _eng: Count
-      _tur: '#!@LLKJ!J@#'
+      _tur: "Say\u0131"
     _cost:
       _rus: "\u0426\u0435\u043D\u0430"
       _eng: Cost
-      _tur: sdf*A&SD(
+      _tur: Maliyet
     _image: {fileID: 173659861, guid: 5aa2f2e24731fd444add86c3379cff25, type: 3}
     _price: {fileID: 11400000, guid: d49a045d7e4e85d40aa41b8eacca5525, type: 2}

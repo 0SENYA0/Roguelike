@@ -32,8 +32,7 @@ namespace Assets.Fight
             Game.GameSettings.PlayerData.Idol--;
             _playerPresenter.Player.Reborn();
             _playerPresenter.Player.Heal(PlayerHealth.MaxPlayerHealth / 2);
-            //_playerPresenter.Player.Heal(1);
-            
+
             Curtain.Instance.ShowAnimation(() =>
             {
                 _globalMap.SetActive(true);
@@ -48,8 +47,7 @@ namespace Assets.Fight
             
             _playerPresenter.Player.Reborn();
             _playerPresenter.Player.Heal(PlayerHealth.MaxPlayerHealth / 2);
-            //_playerPresenter.Player.Heal(1);
-            
+
             Curtain.Instance.ShowAnimation(() =>
             {
                 _globalMap.SetActive(true);
