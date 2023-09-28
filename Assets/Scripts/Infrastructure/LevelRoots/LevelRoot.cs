@@ -13,7 +13,7 @@ using UnityEngine;
 
 namespace Assets.Infrastructure
 {
-    public class LevelRoot : MonoBehaviour
+    public class LevelRoot : LevelRootBase
     {
         [SerializeField] private int _levelNumber;
         [SerializeField] private ItemGenerator _itemGenerator;
@@ -31,7 +31,7 @@ namespace Assets.Infrastructure
         public int LevelNumber => _levelNumber;
         
 
-        public void Init(PlayerLevelData playerLevelData)
+        public override void Init(PlayerLevelData playerLevelData)
         {
             _itemGenerator.Init(_levelNumber);
             

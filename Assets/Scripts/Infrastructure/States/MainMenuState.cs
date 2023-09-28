@@ -15,8 +15,11 @@ namespace Assets.Infrastructure.States
             _sceneLoader = sceneLoader;
         }
 
-        public void Enter() => 
+        public void Enter()
+        {
+            _sceneLoader.LoadScene("Menu");
             MainMenuButtonPlayObserver.Instance.Registry(this);
+        }
 
         public void Exit() => 
             MainMenuButtonPlayObserver.Instance.UnRegistry(this);

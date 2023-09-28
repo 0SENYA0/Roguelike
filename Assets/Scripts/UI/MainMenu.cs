@@ -51,7 +51,7 @@ namespace Assets.UI
             _shopPanel.Dispose();
             Curtain.Instance.ShowAnimation(() =>
             {
-                LevelLoadingChooser.LoadScene(1, null);
+                LevelLoadingChooser.LoadScene(0, null);
             });
         }
 

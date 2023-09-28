@@ -8,9 +8,6 @@ namespace Assets.Infrastructure
 {
     public class GameStateMachine : StateMachineBase
     {
-        private Dictionary<Type, IExitableState> _states;
-        private IExitableState _currentState;
-
         public GameStateMachine(SceneLoader sceneLoader, SdkLoader sdkLoader)
         {
             _states = new Dictionary<Type, IExitableState>()
@@ -21,37 +18,5 @@ namespace Assets.Infrastructure
                 [typeof(GameplayState)] = new GameplayState(this),
             };
         }
-
-        public void Enter<TState>() where TState : class, IState
-        {
-            IState newState = ChangeState<TState>();
-            newState.Enter();
-        }
-
-        public void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadState<TPayload>
-        {
-            TState newState = ChangeState<TState>();
-            newState.Enter(payload);
-        }
-
-        private TState ChangeState<TState>() where TState : class, IExitableState
-        {
-            _currentState?.Exit();
-
-            TState newState = GetState<TState>();
-            _currentState = newState;
-
-            return newState;
-        }
-
-        private TState GetState<TState>() where TState : class, IExitableState =>
-            _states[typeof(TState)] as TState;
-    }
-
-    public interface IStateMachine
-    {
-        public void Enter<TState>() where TState : class, IState;
-
-        public void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadState<TPayload>;
     }
 }

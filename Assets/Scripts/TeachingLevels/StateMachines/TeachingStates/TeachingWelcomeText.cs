@@ -51,7 +51,7 @@ namespace Assets.TeachingLevels.StateMachines.TeachingStates
 
             isPrint = true;
             
-            //_teachingAreaText.SoundComponent.Play();
+            _teachingAreaText.SoundComponent.Play();
             for (int i = 1; i <= _currentText.Length; i++)
             {
                 if (skip)
@@ -64,7 +64,7 @@ namespace Assets.TeachingLevels.StateMachines.TeachingStates
                 yield return new WaitForSeconds(delay);
             }
             
-            //_teachingAreaText.SoundComponent.Stop();
+            _teachingAreaText.SoundComponent.Stop();
             isPrint = false;
         }
     }

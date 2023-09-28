@@ -30,7 +30,6 @@ namespace Assets.Player
                 damage = CalculateNewDamage(weapon);
 
             _health -= damage;
-
         }
 
         private float CalculateNewDamage(IWeapon weapon)

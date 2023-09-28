@@ -26,10 +26,8 @@ namespace Assets.Infrastructure.States
 #if UNITY_WEBGL && !UNITY_EDITOR
             _sdkLoader.LoadSdk(onSuccessCallback: SetStartLanguage);
 #endif
-            // _sceneLoader.LoadScene("Menu");
-            // _gameStateMachine.Enter<MainMenuState>();
-
-            _gameStateMachine.Enter<TrainingState>();
+            
+            _gameStateMachine.Enter<MainMenuState>();
         }
 
         private void SetStartLanguage()

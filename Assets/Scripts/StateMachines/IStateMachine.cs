@@ -1,6 +1,6 @@
 using Assets.Interface;
 
-namespace Assets.Infrastructure
+namespace Assets.StateMachines
 {
     public interface IStateMachine
     {

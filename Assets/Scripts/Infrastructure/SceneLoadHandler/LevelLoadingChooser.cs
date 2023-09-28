@@ -8,6 +8,9 @@ namespace Assets.Infrastructure.SceneLoadHandler
         {
             switch (levelNumber)
             {
+                case 0:
+                    TrainingLevel.Load(playerLevel);
+                    break;
                 case 1:
                     Level_1.Load(null);
                     break;
