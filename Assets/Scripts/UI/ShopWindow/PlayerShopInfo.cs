@@ -1,7 +1,9 @@
 using Assets.Infrastructure;
 using Assets.ScriptableObjects;
+using Assets.YandexAds;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.UI.ShopWindow
 {
@@ -9,6 +11,19 @@ namespace Assets.UI.ShopWindow
     {
         [SerializeField] private TMP_Text _information;
         [SerializeField] private PlayerShopInfoScriptableObject _localized;
+        [SerializeField] private Button _addMoneyButton;
+        [SerializeField] private int _additionalMoney = 1000;
+        [SerializeField] private YandexAdView _yandexAd;
+
+        private void OnEnable()
+        {
+            _addMoneyButton.onClick.AddListener(ShowRewardAd);
+        }
+
+        private void OnDisable()
+        {
+            _addMoneyButton.onClick.RemoveListener(ShowRewardAd);
+        }
 
         public void UpdateInfo()
         {
@@ -22,6 +37,17 @@ namespace Assets.UI.ShopWindow
                        $"{_localized.Money.GetLocalization(lang)}: {money}$";
 
             _information.text = text;
+        }
+
+        private void ShowRewardAd()
+        {
+            _yandexAd.ShowRewardVideo(AddMoneyToPlayer);
+        }
+
+        private void AddMoneyToPlayer()
+        {
+            Game.GameSettings.PlayerData.Money += _additionalMoney;
+            UpdateInfo();
         }
     }
 }

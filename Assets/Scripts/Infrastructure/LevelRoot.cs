@@ -8,6 +8,7 @@ using Assets.Scripts.SoundSystem;
 using Assets.TimerSystem;
 using Assets.UI;
 using Assets.UI.HUD;
+using Assets.YandexAds;
 using IJunior.TypedScenes;
 using UnityEngine;
 
@@ -21,6 +22,7 @@ namespace Assets.Infrastructure
         [SerializeField] private Timer _gameTimer;
         [SerializeField] private SoundComponent _levelSound;
         [SerializeField] private PlayerInfo _playerInfo;
+        [SerializeField] private YandexAdView _yandexAd;
         [Space] 
         [SerializeField] private PlayerView _player;
 
@@ -30,7 +32,6 @@ namespace Assets.Infrastructure
         public bool IsPossibleToRebornForAd => _isPossibleToRebornForAd;
         public int LevelNumber => _levelNumber;
         
-
         public void Init(PlayerLevelData playerLevelData)
         {
             _itemGenerator.Init(_levelNumber);
@@ -73,18 +74,24 @@ namespace Assets.Infrastructure
         public void LoadNextLevel()
         {
             SaveEntries(true);
+            _yandexAd.ShowInterstitialAd(LoadLevelWithCurtain);
+        }
+
+        public void RebornWithAd(Action callback)
+        {
+            _yandexAd.ShowRewardVideo(callback);
+            _isPossibleToRebornForAd = false;
+        }
+
+        private void LoadLevelWithCurtain()
+        {
             Curtain.Instance.ShowAnimation(() =>
             {
                 LevelLoadingChooser.LoadScene(
-                    _levelNumber + 1, 
-                    new PlayerLevelData(_player.PlayerPresenter.Player.Health, 
+                    _levelNumber + 1,
+                    new PlayerLevelData(_player.PlayerPresenter.Player.Health,
                         _player.PlayerPresenter.Player.InventoryPresenter));
             });
-        }
-
-        public void RebornWithAd()
-        {
-            _isPossibleToRebornForAd = false;
         }
 
         private void SaveEntries(bool isBossKilled)

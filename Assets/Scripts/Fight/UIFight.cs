@@ -79,8 +79,7 @@ namespace Assets.Fight
             switch (answers)
             {
                 case UserLossAnswers.Ad:
-                    _levelRoot.RebornWithAd();
-                    reborn.RebornWithAD();
+                    _levelRoot.RebornWithAd(reborn.RebornWithAD);
                     break;
                 case UserLossAnswers.Idol:
                     reborn.RebornWithIdol();

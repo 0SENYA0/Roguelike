@@ -1904,6 +1904,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _information: {fileID: 649769496349813309}
   _localized: {fileID: 11400000, guid: 6b23e4b5253aa1243ae1fd33b1000c55, type: 2}
+  _addMoneyButton: {fileID: 973500105038241566}
+  _additionalMoney: 1000
+  _yandexAd: {fileID: 0}
 --- !u!1 &8826169134729364360
 GameObject:
   m_ObjectHideFlags: 0

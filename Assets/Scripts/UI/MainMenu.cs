@@ -3,15 +3,15 @@ using Assets.Infrastructure.DataStorageSystem;
 using Assets.Infrastructure.SceneLoadHandler;
 using Assets.Scripts.SoundSystem;
 using Assets.UI.ShopWindow;
-using IJunior.TypedScenes;
+using Assets.YandexAds;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Assets.UI
 {
     public class MainMenu : MonoBehaviour
     {
+        [SerializeField] private YandexAdView _yandexAd;
         [SerializeField] private SoundComponent _sound;
         [SerializeField] private GameObject _buttonGroups;
         [SerializeField] private Button _startGame;
@@ -49,6 +49,11 @@ namespace Assets.UI
             AddNewTrying();
             _sound.Stop();
             _shopPanel.Dispose();
+            _yandexAd.ShowInterstitialAd(LoadFirstLevel);
+        }
+
+        private void LoadFirstLevel()
+        {
             Curtain.Instance.ShowAnimation(() =>
             {
                 LevelLoadingChooser.LoadScene(1, null);

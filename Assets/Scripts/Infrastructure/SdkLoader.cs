@@ -20,6 +20,7 @@ namespace Assets.Infrastructure
 #if !UNITY_WEBGL && UNITY_EDITOR
              yield break;
 #endif
+            YandexGamesSdk.CallbackLogging = true;
             yield return YandexGamesSdk.Initialize(() => onSuccessCallback?.Invoke());
         }
     }

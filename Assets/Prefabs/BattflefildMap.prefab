@@ -39207,11 +39207,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1554469325880773797, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554469325880773797, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
+      propertyPath: FallbackText
+      value: LeaveGame
       objectReference: {fileID: 0}
     - target: {fileID: 1554469325880773797, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: translationName
-      value: Ok
+      value: LeaveGame
       objectReference: {fileID: 0}
     - target: {fileID: 2832258337153455300, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_text
@@ -39219,11 +39223,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4563749011913832434, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563749011913832434, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
+      propertyPath: FallbackText
+      value: LeaveGame
       objectReference: {fileID: 0}
     - target: {fileID: 4563749011913832434, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: translationName
-      value: Ok
+      value: LeaveGame
       objectReference: {fileID: 0}
     - target: {fileID: 5705280671670380958, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_Pivot.x
@@ -39331,11 +39339,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7680512543897155812, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680512543897155812, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
+      propertyPath: FallbackText
+      value: LeaveGame
       objectReference: {fileID: 0}
     - target: {fileID: 7680512543897155812, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: translationName
-      value: Ok
+      value: LeaveGame
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -39624,11 +39636,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1554469325880773797, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554469325880773797, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
+      propertyPath: FallbackText
+      value: LeaveGame
       objectReference: {fileID: 0}
     - target: {fileID: 1554469325880773797, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: translationName
-      value: Ok
+      value: LeaveGame
       objectReference: {fileID: 0}
     - target: {fileID: 2832258337153455300, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_text
@@ -39636,11 +39652,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4563749011913832434, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4563749011913832434, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: translationName
-      value: Ok
+      value: LeaveGame
       objectReference: {fileID: 0}
     - target: {fileID: 5705280671670380958, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_Pivot.x
@@ -39748,11 +39764,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7680512543897155812, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7680512543897155812, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: translationName
-      value: Ok
+      value: LeaveGame
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -40512,11 +40528,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1554469325880773797, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554469325880773797, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
+      propertyPath: FallbackText
+      value: LeaveGame
       objectReference: {fileID: 0}
     - target: {fileID: 1554469325880773797, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: translationName
-      value: Ok
+      value: LeaveGame
       objectReference: {fileID: 0}
     - target: {fileID: 2832258337153455300, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_text
@@ -40524,11 +40544,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4563749011913832434, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4563749011913832434, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
+      propertyPath: FallbackText
+      value: LeaveGame
       objectReference: {fileID: 0}
     - target: {fileID: 4563749011913832434, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: translationName
-      value: Ok
+      value: LeaveGame
       objectReference: {fileID: 0}
     - target: {fileID: 5705280671670380958, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_Pivot.x
@@ -40636,11 +40660,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7680512543897155812, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680512543897155812, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
+      propertyPath: FallbackText
+      value: LeaveGame
       objectReference: {fileID: 0}
     - target: {fileID: 7680512543897155812, guid: 385bfb22fd1f8e746818708f620a7373, type: 3}
       propertyPath: translationName
-      value: Ok
+      value: LeaveGame
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

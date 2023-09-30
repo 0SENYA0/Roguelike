@@ -43,8 +43,6 @@ namespace Assets.Fight
 
         public void RebornWithAD()
         {
-            ConsoleTools.LogSuccess("Показываем рекламу для возраждения!");
-            
             _playerPresenter.Player.Reborn();
             _playerPresenter.Player.Heal(PlayerHealth.MaxPlayerHealth / 2);
 
