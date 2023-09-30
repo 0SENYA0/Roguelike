@@ -27,7 +27,7 @@ namespace Assets.Inventory.Panel
             _item = armor;
 
             _image.sprite = _elementsSprite.GetElementSprite(armor.Body.Element);
-            _name.text = "Random name";
+            _name.text = _nameOfElements.GetElementName(armor.Body.Element);
             _body.text = $"{armor.Body.Value}";
             _head.text = $"{armor.Head.Value}";
 

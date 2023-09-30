@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Assets.Person;
 using UnityEngine;
@@ -16,6 +15,7 @@ namespace Assets.UI.HUD
         {
             _player = player;
             _player.PlayerPresenter.Player.HealthChanged += OnHealthChang;
+            OnHealthChang(_player.PlayerPresenter.Player.Health);
         }
 
         private void OnDestroy()

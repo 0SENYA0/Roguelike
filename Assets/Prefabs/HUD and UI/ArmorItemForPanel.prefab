@@ -198,6 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7549c611fa4f4a1f9b598fb37160e676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _nameOfElements: {fileID: 11400000, guid: 1f345a3c3a7648e4e91b8aee255ea52c, type: 2}
   _remove: {fileID: 3794313882778808557}
   _elementsSprite: {fileID: 11400000, guid: 0f3920720628acb4086ff5f7d5d87e21, type: 2}
   _image: {fileID: 5361116218705693280}

@@ -1,4 +1,5 @@
 using System;
+using Assets.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,7 @@ namespace Assets.Inventory.Panel
 {
     public class PanelItem : MonoBehaviour
     {
+        [SerializeField] protected NameOfElementsScriptableObject _nameOfElements;
         [SerializeField] protected Button _remove;
 
         protected IInventoryItem _item;

@@ -1,6 +1,5 @@
 using System;
 using Agava.WebUtility;
-using Assets.Infrastructure;
 using UnityEngine;
 
 namespace Assets.YandexAds

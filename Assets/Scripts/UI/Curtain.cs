@@ -8,6 +8,7 @@ namespace Assets.UI
     public class Curtain : MonoBehaviour
     {
         private readonly int _isHideKey = Animator.StringToHash("IsShow");
+        private readonly int _showKey = Animator.StringToHash("Show");
         private readonly float _artificialDelay = 0.5f;
 
         public static Curtain Instance { get; private set; }
@@ -25,8 +26,7 @@ namespace Assets.UI
 
         public void HideCurtain()
         {
-            _animator.SetTrigger("Show");
-            //_animator.SetBool(_isHideKey, false);
+            _animator.SetTrigger(_showKey);
         }
         
         public void ShowAnimation(Action nextAction = null)

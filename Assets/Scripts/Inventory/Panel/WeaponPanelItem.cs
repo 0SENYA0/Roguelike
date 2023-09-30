@@ -21,8 +21,8 @@ namespace Assets.Inventory.Panel
             _item = weapon as IInventoryItem;
             
             _image.sprite = _elementsSprite.GetElementSprite(weapon.Element);
-            _name.text = "Random name";
-            _damage.text = $"{weapon.Damage}";
+            _name.text = _nameOfElements.GetElementName(weapon.Element);
+            _damage.text = $"{weapon.Damage:F1}";
             _splash.text = $"{weapon.ChanceToSplash}";
             _critical.text = $"{weapon.MinValueToCriticalDamage}";
             _modifier.text = $"{weapon.ValueModifier}";
