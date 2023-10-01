@@ -1,6 +1,6 @@
+using Assets.Config;
 using TMPro;
 using UnityEngine;
-
 
 namespace Assets.Loot
 {
@@ -9,15 +9,12 @@ namespace Assets.Loot
         [SerializeField] private TMP_Text _label;
         [SerializeField] private TMP_Text _data;
 
-        private const string LabelKey = "RandomEvent";
-        private const string DataKey = "EnemyOrLoot";
-
         public void Show()
         {
             gameObject.SetActive(true);
             
-            _label.text = GetLocalizedText(LabelKey);
-            _data.text = GetLocalizedText(DataKey);
+            _label.text = GetLocalizedText(LanguageConfig.RandomEventKey);
+            _data.text = GetLocalizedText(LanguageConfig.EnemyOrLootKey);
         }
     }
 }

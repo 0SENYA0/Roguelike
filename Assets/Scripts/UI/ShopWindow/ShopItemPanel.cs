@@ -17,8 +17,7 @@ namespace Assets.UI.ShopWindow
 
         private readonly List<ShopItem> _shopItems = new();
         private string _lang;
-
-
+        
         public void Init()
         {
             _lang = Game.GameSettings.CurrentLocalization;

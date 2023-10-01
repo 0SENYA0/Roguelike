@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Assets.Config;
 using Assets.Enemy;
 using Assets.Fight.Dice;
 using Assets.Interface;

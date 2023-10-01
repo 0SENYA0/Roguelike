@@ -1,8 +1,8 @@
+using Assets.Config;
 using Assets.Enemy;
 using Assets.Infrastructure;
 using Assets.Inventory;
 using Assets.Person;
-using Assets.Utils;
 
 namespace Assets.Player
 {

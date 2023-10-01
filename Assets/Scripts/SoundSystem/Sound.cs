@@ -4,31 +4,30 @@ using Assets.Infrastructure.DataStorageSystem;
 
 namespace Assets.Scripts.SoundSystem
 {
-    public class Sound: ISound, IDisposable
+    public class Sound : ISound, IDisposable
     {
         private readonly IPlayerData _playerData;
-        
-        public bool IsMusicOn { get => _isMusicOn; }
-        public bool IsSfxOn { get => _isSfxOn; }
-
-        public event Action<bool> OnMusicStateChanged;
-        public event Action<bool> OnSfxStateChanged;
-        public event Action<bool> OnPauseStateChanged;
 
         private bool _isMusicOn;
         private bool _isSfxOn;
 
-
         public Sound(IPlayerData playerData)
         {
             _playerData = playerData;
-            
+
             _isMusicOn = playerData.IsMusicOn;
             _isSfxOn = playerData.IsSfxOn;
 
             WebApplication.InBackgroundChangeEvent += ChangeBackgroundSounds;
         }
 
+        public event Action<bool> OnMusicStateChanged;
+        public event Action<bool> OnSfxStateChanged;
+        public event Action<bool> OnPauseStateChanged;
+
+        public bool IsMusicOn => _isMusicOn;
+        public bool IsSfxOn => _isSfxOn;
+        
         public void UpdateSoundSettings(SoundType type)
         {
             if (type == SoundType.Music)
@@ -57,7 +56,7 @@ namespace Assets.Scripts.SoundSystem
         {
             WebApplication.InBackgroundChangeEvent -= ChangeBackgroundSounds;
         }
-        
+
         private void ChangeBackgroundSounds(bool hidden)
         {
             if (hidden)

@@ -4,11 +4,11 @@ namespace Assets.TimerSystem
 {
     public class Timer : MonoBehaviour
     {
-        public float TimePerSeconds => _time;
-
         private float _time = 0f;
         private bool _isRun;
         
+        public float TimePerSeconds => _time;
+
         private void Update()
         {
             if (_isRun == false)

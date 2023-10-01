@@ -1,8 +1,7 @@
+using Assets.Config;
 using Assets.DefendItems;
 using Assets.Infrastructure;
 using Assets.Person;
-using Assets.Utils;
-using DefaultNamespace.Tools;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -35,7 +34,7 @@ namespace Assets.Inventory.Panel
             _closeArmor.onClick.AddListener(CloseArmorPanel);
             
             _potion.onClick.AddListener(UsePotion);
-            _numberOfPotion.text = Game.GameSettings != null ? Game.GameSettings.PlayerData.Potion.ToString() : "0";
+            _numberOfPotion.text = Game.GameSettings.PlayerData.Potion.ToString();
         }
 
         private void OnDestroy()
@@ -51,9 +50,6 @@ namespace Assets.Inventory.Panel
 
         private void UsePotion()
         {
-            if (Game.GameSettings == null)
-                return;
-
             if (Game.GameSettings.PlayerData.Potion > 0 && _player.PlayerPresenter.Player.Health < PlayerHealth.MaxPlayerHealth)
             {
                 _player.PlayerPresenter.UsePotion();

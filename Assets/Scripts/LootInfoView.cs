@@ -1,3 +1,4 @@
+using Assets.Config;
 using Assets.Scripts.InteractiveObjectSystem;
 using TMPro;
 using UnityEngine;
@@ -22,15 +23,6 @@ namespace Assets
         [SerializeField] private Image _element;
         [SerializeField] private ElementsSpriteView _elementsSpriteView;
 
-        private const string WeaponKey = "Weapon";
-        private const string DamageKey = "Damage";
-        private const string ArmorKey = "Armor";
-        private const string BodyKey = "Body";
-        private const string HeadKey = "Head";
-        private const string DmgModifierKey = "DmgModifier";
-        private const string SplashChanceKey = "SplashChance";
-        private const string CriticalChanceKey = "CriticalChance";
-      
         public void Show(InteractiveLootObject lootObject)
         {
             gameObject.SetActive(true);
@@ -47,11 +39,11 @@ namespace Assets
             _attackImage.gameObject.SetActive(true);
             _element.sprite = _elementsSpriteView.GetElementSprite(lootObject.Weapon.Element);
             
-            _name.text = GetLocalizedText(WeaponKey);
-            _data.text = $"{GetLocalizedText(DamageKey)} = {lootObject.Weapon.Damage}\n" +
-                         $"{GetLocalizedText(DmgModifierKey)} = {lootObject.Weapon.ValueModifier}\n" +
-                         $"{GetLocalizedText(SplashChanceKey)} = {lootObject.Weapon.ChanceToSplash}\n" +
-                         $"{GetLocalizedText(CriticalChanceKey)} = {lootObject.Weapon.MinValueToCriticalDamage}";
+            _name.text = GetLocalizedText(LanguageConfig.WeaponKey);
+            _data.text = $"{GetLocalizedText(LanguageConfig.DamageKey)} = {lootObject.Weapon.Damage}\n" +
+                         $"{GetLocalizedText(LanguageConfig.DmgModifierKey)} = {lootObject.Weapon.ValueModifier}\n" +
+                         $"{GetLocalizedText(LanguageConfig.SplashChanceKey)} = {lootObject.Weapon.ChanceToSplash}\n" +
+                         $"{GetLocalizedText(LanguageConfig.CriticalChanceKey)} = {lootObject.Weapon.MinValueToCriticalDamage}";
         }
 
         private void ShowArmorLootInfo(InteractiveLootObject lootObject)
@@ -60,9 +52,9 @@ namespace Assets
             _defendImage.gameObject.SetActive(true);
             _element.sprite = _elementsSpriteView.GetElementSprite(lootObject.Armor.Body.Element);
             
-            _name.text = GetLocalizedText(ArmorKey);
-            _data.text = $"{GetLocalizedText(BodyKey)} = {lootObject.Armor.Body.Value}\n" +
-                         $"{GetLocalizedText(HeadKey)} = {lootObject.Armor.Head.Value}";
+            _name.text = GetLocalizedText(LanguageConfig.ArmorKey);
+            _data.text = $"{GetLocalizedText(LanguageConfig.BodyKey)} = {lootObject.Armor.Body.Value}\n" +
+                         $"{GetLocalizedText(LanguageConfig.HeadKey)} = {lootObject.Armor.Head.Value}";
         }
     }
 }

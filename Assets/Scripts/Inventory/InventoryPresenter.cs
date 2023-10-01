@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using Assets.DefendItems;
 using Assets.Inventory.ItemGeneratorSystem;
-using UnityEngine;
 
 namespace Assets.Inventory
 {
@@ -14,13 +13,10 @@ namespace Assets.Inventory
         {
             _inventoryModel = new InventoryModel(inventorySize);
             GenerateDefaultInventory();
-            
-            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomWeapon());
-            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomWeapon());
-            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomWeapon());
-            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomWeapon());
-            _inventoryModel.AddItem(ItemGenerator.Instance.GetRandomWeapon());
         }
+
+        public InventoryModel InventoryModel => _inventoryModel;
+        public Armor ActiveArmor => _inventoryModel.GetArmor().FirstOrDefault(x => x.IsSelect);
 
         public void SelectActiveArmor(Armor armor)
         {
@@ -42,8 +38,5 @@ namespace Assets.Inventory
 
             defaultInventory.Armor.Select();
         }
-
-        public InventoryModel InventoryModel => _inventoryModel;
-        public Armor ActiveArmor => _inventoryModel.GetArmor().FirstOrDefault(x => x.IsSelect);
     }
 }

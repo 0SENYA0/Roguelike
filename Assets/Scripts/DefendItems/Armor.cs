@@ -18,6 +18,7 @@ namespace Assets.DefendItems
         public ParticleSystem ParticleSystem { get; private set; }
         public Head Head { get; private set; }
         public Body Body { get; private set; }
+        
         public bool IsSelect => _isSelect;
 
         public void Select()

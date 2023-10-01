@@ -1,4 +1,3 @@
-using System;
 using Assets.Fight.Element;
 using Assets.ScriptableObjects;
 using UnityEngine;

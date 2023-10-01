@@ -1,10 +1,9 @@
 using System;
+using Assets.Config;
 using Assets.Infrastructure;
 using Assets.Player;
 using Assets.Scripts.InteractiveObjectSystem;
 using Assets.UI;
-using Assets.Utils;
-using DefaultNamespace.Tools;
 using UnityEngine;
 
 namespace Assets.Fight

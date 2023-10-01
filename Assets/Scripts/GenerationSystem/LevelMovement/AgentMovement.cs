@@ -43,7 +43,7 @@ namespace Assets.Scripts.GenerationSystem.LevelMovement
         private void SetNewTargetPosition(Vector3 position)
         {
             Vector3Int coordinate = _floorTilemap.WorldToCell(position);
-            var tile = _floorTilemap.GetTile(coordinate);
+            TileBase tile = _floorTilemap.GetTile(coordinate);
 
             if (tile != null)
             {

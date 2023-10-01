@@ -12,9 +12,9 @@ namespace Assets.Scripts.InteractiveObjectSystem
         [SerializeField] private ObjectType _type;
         [SerializeField] private int _numberOfAwards = 1;
 
-        public ObjectType Type => _type;
-
         private Element _element;
+        
+        public ObjectType Type => _type;
         public int NumberOfAwards => _numberOfAwards;
         
         private void Start()
@@ -35,7 +35,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
 
         public GameObject GetObject()
         {
-            return this.gameObject;
+            return gameObject;
         }
 
         protected virtual void OnStart()

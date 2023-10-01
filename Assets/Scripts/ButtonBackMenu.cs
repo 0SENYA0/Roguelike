@@ -1,6 +1,6 @@
 using Assets.UI;
+using IJunior.TypedScenes;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Assets
@@ -27,7 +27,7 @@ namespace Assets
 
         private void LoadMainMenu()
         {
-            Curtain.Instance.ShowAnimation(() => {SceneManager.LoadScene("Menu");});
+            Curtain.Instance.ShowAnimation(() => {Menu.Load();});
         }
     }
 }

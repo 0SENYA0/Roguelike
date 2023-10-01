@@ -10,7 +10,7 @@ namespace Assets.Scripts.AnimationComponent
     {
         [SerializeField] [Range(1, 30)] private int _frameRate = 10;
         [SerializeField] private AnimationClip[] _clips;
-        public event Action OnAnimationComplete;
+
         private SpriteRenderer _renderer;
         private float _secPerFrame;
         private float _nextFrameTime;
@@ -18,8 +18,11 @@ namespace Assets.Scripts.AnimationComponent
         private int _currentClip;
         private bool _isPlaying = true;
 
+        public event Action OnAnimationComplete;
+        
         public int FrameRate => _frameRate;
         public IReadOnlyList<AnimationClip> AnimationClips => _clips;
+        
         private void Awake()
         {
             _renderer = GetComponent<SpriteRenderer>();
@@ -27,7 +30,7 @@ namespace Assets.Scripts.AnimationComponent
 
             StartAnimation();
         }
-        
+
         private void OnEnable()
         {
             _nextFrameTime = Time.time + _secPerFrame;
@@ -95,10 +98,10 @@ namespace Assets.Scripts.AnimationComponent
         public AnimationClip GetClip(AnimationState state)
         {
             AnimationClip clip = _clips.Where(x => x.State == state).FirstOrDefault();
-            
+
             if (clip == null)
                 return null;
-            
+
             return clip;
         }
 

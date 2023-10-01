@@ -26,6 +26,8 @@ namespace Assets.Infrastructure
         [Space] 
         [SerializeField] private PlayerView _player;
 
+        private readonly float _delayForNavmeshagent = 1.5f;
+        
         private int _numberOfEnemiesKilled;
         private bool _isPossibleToRebornForAd;
 
@@ -42,7 +44,7 @@ namespace Assets.Infrastructure
                 _player.Init(playerLevelData.Health, playerLevelData.Inventory);
             
             _isPossibleToRebornForAd = true;
-            Invoke(nameof(HideCurtain), 2f);
+            Invoke(nameof(HideCurtain), _delayForNavmeshagent);
         }
 
         public void PauseGlobalMap()
@@ -81,6 +83,11 @@ namespace Assets.Infrastructure
         {
             _yandexAd.ShowRewardVideo(callback);
             _isPossibleToRebornForAd = false;
+        }
+
+        public void ShowInterstitialAd(Action callback)
+        {
+            _yandexAd.ShowInterstitialAd(callback);
         }
 
         private void LoadLevelWithCurtain()

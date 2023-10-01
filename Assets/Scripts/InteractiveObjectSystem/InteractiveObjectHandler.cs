@@ -103,12 +103,14 @@ namespace Assets.Scripts.InteractiveObjectSystem
                 case RandomEventType.AD:
                     return () =>
                     {
-                        ConsoleTools.LogSuccess("Идет показ рекламы");
-                        _clickTracker.enabled = true;
-                        _targetObject.DestroyObject();
+                        _levelRoot.ShowInterstitialAd(() =>
+                        {
+                            _clickTracker.enabled = true;
+                            _targetObject.DestroyObject();
+                        });
                     };
                 default:
-                    throw new Exception("Рандом сломался :(");
+                    throw new Exception("LevelRandomEvent.GetRandomEvent() returned an incorrect event type");
             }
         }
 

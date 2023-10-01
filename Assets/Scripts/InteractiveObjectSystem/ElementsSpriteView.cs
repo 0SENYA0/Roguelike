@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.InteractiveObjectSystem
 {
-    [CreateAssetMenu(fileName = "ElementSprite", menuName = "Elements", order = 0)]
+    [CreateAssetMenu(fileName = "ElementSprite", menuName = "ScriptableObject/Elements", order = 0)]
     public class ElementsSpriteView : ScriptableObject
     {
         [SerializeField] private Sprite _fire;

@@ -13,8 +13,8 @@ namespace Assets.Scripts.InteractiveObjectSystem.CanvasInfoSystem
         [SerializeField] private LootInfoView _randomLootPanel;
         [SerializeField] private WarningMessage _warningMessage;
 
-        [Space] [Header("Player inventory")] [SerializeField]
-        private PlayerView _inventory;
+        [Space] [Header("Player inventory")] 
+        [SerializeField] private PlayerView _inventory;
 
         public event Action<bool> UserResponse;
 

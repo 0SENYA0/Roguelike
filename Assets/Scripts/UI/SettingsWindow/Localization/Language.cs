@@ -20,20 +20,5 @@ namespace Assets.UI.SettingsWindow.Localization
                     return ENG;
             }
         }
-
-        public static string GetAnonymous(string lang)
-        {
-            switch (lang)
-            {
-                case ENG:
-                    return "Anonymous";
-                case RUS:
-                    return "Аноним";
-                case TUR:
-                    return "Anonim";
-                default:
-                    return "Anonymous";
-            }
-        }
     }
 }

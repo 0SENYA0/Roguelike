@@ -1,4 +1,5 @@
 using System;
+using Assets.Config;
 using Assets.DefendItems;
 using Assets.Inventory;
 using Assets.Scripts.InteractiveObjectSystem;
@@ -22,17 +23,7 @@ namespace Assets.UI.HUD
         [SerializeField]private TMP_Text _data;
         [SerializeField] private Image _element;
         [SerializeField] private ElementsSpriteView _elementsSpriteView;
-
-        private const string WeaponKey = "Weapon";
-        private const string DamageKey = "Damage";
-        private const string ArmorKey = "Armor";
-        private const string BodyKey = "Body";
-        private const string HeadKey = "Head";
-        private const string DmgModifierKey = "DmgModifier";
-        private const string SplashChanceKey = "SplashChance";
-        private const string CriticalChanceKey = "CriticalChance";
-        private const string MoneyKey = "Money";
-
+        
         public event Action OnButtonClickEvent; 
 
         public void Show(IInventoryItem loot, int money)
@@ -77,12 +68,12 @@ namespace Assets.UI.HUD
             
             _name.text = "Ты победил!";
             _data.text = $"Твоя награда:\n" +
-                         $"{GetLocalizedText(MoneyKey)}: +{money}$\n" +
-                         $"{GetLocalizedText(WeaponKey)}\n" +
-                         $"{GetLocalizedText(DamageKey)} = {weapon.Damage}\n" +
-                         $"{GetLocalizedText(DmgModifierKey)} = {weapon.ValueModifier}\n" +
-                         $"{GetLocalizedText(SplashChanceKey)} = {weapon.ChanceToSplash}\n" +
-                         $"{GetLocalizedText(CriticalChanceKey)} = {weapon.MinValueToCriticalDamage}";
+                         $"{GetLocalizedText(LanguageConfig.MoneyKey)}: +{money}$\n" +
+                         $"{GetLocalizedText(LanguageConfig.WeaponKey)}\n" +
+                         $"{GetLocalizedText(LanguageConfig.DamageKey)} = {weapon.Damage}\n" +
+                         $"{GetLocalizedText(LanguageConfig.DmgModifierKey)} = {weapon.ValueModifier}\n" +
+                         $"{GetLocalizedText(LanguageConfig.SplashChanceKey)} = {weapon.ChanceToSplash}\n" +
+                         $"{GetLocalizedText(LanguageConfig.CriticalChanceKey)} = {weapon.MinValueToCriticalDamage}";
         }
 
         private void ShowArmorLootInfo(Armor armor, int money)
@@ -93,10 +84,10 @@ namespace Assets.UI.HUD
             
             _name.text = "Ты победил!";
             _data.text = $"Твоя награда:\n" +
-                         $"{GetLocalizedText(MoneyKey)}: +{money}$\n" +
-                         $"{GetLocalizedText(ArmorKey)}\n" +
-                         $"{GetLocalizedText(BodyKey)} = {armor.Body.Value}\n" +
-                         $"{GetLocalizedText(HeadKey)} = {armor.Head.Value}";
+                         $"{GetLocalizedText(LanguageConfig.MoneyKey)}: +{money}$\n" +
+                         $"{GetLocalizedText(LanguageConfig.ArmorKey)}\n" +
+                         $"{GetLocalizedText(LanguageConfig.BodyKey)} = {armor.Body.Value}\n" +
+                         $"{GetLocalizedText(LanguageConfig.HeadKey)} = {armor.Head.Value}";
         }
 
         private void ShowBossLoot(Armor armor, Weapon.Weapon weapon, int money)
@@ -106,15 +97,15 @@ namespace Assets.UI.HUD
             
             _name.text = "Ты победил!";
             _data.text = $"Твоя награда:\n" +
-                         $"{GetLocalizedText(MoneyKey)}: +{money}$\n" +
-                         $"{GetLocalizedText(WeaponKey)}\n" +
-                         $"{GetLocalizedText(DamageKey)} = {weapon.Damage}\n" +
-                         $"{GetLocalizedText(DmgModifierKey)} = {weapon.ValueModifier}\n" +
-                         $"{GetLocalizedText(SplashChanceKey)} = {weapon.ChanceToSplash}\n" +
-                         $"{GetLocalizedText(CriticalChanceKey)} = {weapon.MinValueToCriticalDamage}\n\n" +
-                         $"{GetLocalizedText(ArmorKey)}\n" +
-                         $"{GetLocalizedText(BodyKey)} = {armor.Body.Value}\n" +
-                         $"{GetLocalizedText(HeadKey)} = {armor.Head.Value}";
+                         $"{GetLocalizedText(LanguageConfig.MoneyKey)}: +{money}$\n" +
+                         $"{GetLocalizedText(LanguageConfig.WeaponKey)}\n" +
+                         $"{GetLocalizedText(LanguageConfig.DamageKey)} = {weapon.Damage}\n" +
+                         $"{GetLocalizedText(LanguageConfig.DmgModifierKey)} = {weapon.ValueModifier}\n" +
+                         $"{GetLocalizedText(LanguageConfig.SplashChanceKey)} = {weapon.ChanceToSplash}\n" +
+                         $"{GetLocalizedText(LanguageConfig.CriticalChanceKey)} = {weapon.MinValueToCriticalDamage}\n\n" +
+                         $"{GetLocalizedText(LanguageConfig.ArmorKey)}\n" +
+                         $"{GetLocalizedText(LanguageConfig.BodyKey)} = {armor.Body.Value}\n" +
+                         $"{GetLocalizedText(LanguageConfig.HeadKey)} = {armor.Head.Value}";
         }
         
         protected string GetLocalizedText(string key)

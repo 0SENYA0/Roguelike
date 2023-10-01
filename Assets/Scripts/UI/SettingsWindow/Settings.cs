@@ -15,14 +15,12 @@ namespace Assets.UI.SettingsWindow
 
         private void OnEnable()
         {
-            if (Game.GameSettings != null)
-            {
-                _musicButton.Icon.sprite = Game.GameSettings.Sound.IsMusicOn ? _soundImageOn : _soundImageOff;
-                _sfxButton.Icon.sprite = Game.GameSettings.Sound.IsSfxOn ? _soundImageOn : _soundImageOff;
-            }            
+            _musicButton.Icon.sprite = Game.GameSettings.Sound.IsMusicOn ? _soundImageOn : _soundImageOff;
+            _sfxButton.Icon.sprite = Game.GameSettings.Sound.IsSfxOn ? _soundImageOn : _soundImageOff;           
             
             if (_resetPlayerData != null)
                 _resetPlayerData.onClick.AddListener(ResetPlayerData);
+            
             _musicButton.Button.onClick.AddListener(OnMusicClickChange);
             _sfxButton.Button.onClick.AddListener(OnSfxClickChange);
         }
@@ -31,33 +29,25 @@ namespace Assets.UI.SettingsWindow
         {
             if (_resetPlayerData != null)
                 _resetPlayerData.onClick.RemoveListener(ResetPlayerData);
+            
             _musicButton.Button.onClick.RemoveListener(OnMusicClickChange);
             _sfxButton.Button.onClick.RemoveListener(OnSfxClickChange);
         }
 
         private void OnMusicClickChange()
         {
-            if (Game.GameSettings == null) 
-                return;
-            
             Game.GameSettings.ChangeSoundSettings(SoundType.Music);
             _musicButton.Icon.sprite = Game.GameSettings.Sound.IsMusicOn ? _soundImageOn : _soundImageOff;
         }
 
         private void OnSfxClickChange()
         {
-            if (Game.GameSettings == null) 
-                return;
-            
             Game.GameSettings.ChangeSoundSettings(SoundType.SFX);
             _sfxButton.Icon.sprite = Game.GameSettings.Sound.IsSfxOn ? _soundImageOn : _soundImageOff;
         }
 
         private void ResetPlayerData()
         {
-            if (Game.GameSettings == null)
-                return;
-
             Game.GameSettings.PlayerData.ResetData();
             Game.GameSettings.PlayerData.SaveData();
         }
