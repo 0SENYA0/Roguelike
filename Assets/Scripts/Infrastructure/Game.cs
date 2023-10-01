@@ -8,9 +8,9 @@ namespace Assets.Infrastructure
         private static GameSettings _gameSettings;
 
         public Game(ICoroutineRunner coroutineRunner)
-        { 
-            _gameStateMachine = new GameStateMachine(new SceneLoader(coroutineRunner), new SdkLoader(coroutineRunner));
+        {
             _gameSettings = new GameSettings();
+            _gameStateMachine = new GameStateMachine(new SceneLoader(coroutineRunner), new SdkLoader(coroutineRunner));
         }
 
         public static GameSettings GameSettings => _gameSettings;

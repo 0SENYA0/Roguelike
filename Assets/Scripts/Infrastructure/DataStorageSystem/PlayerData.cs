@@ -187,22 +187,12 @@ namespace Assets.Infrastructure.DataStorageSystem
             _money = 100000;
             _isMusicOn = Convert.ToBoolean(data.Music);
             _isSfxOn = Convert.ToBoolean(data.Sfx);
-            _localization = CheckLocalization(data.Localization);
+            _localization = data.Localization;
             _gameStatistics = data.GameStatistics;
             _armorLevel = data.ArmorLevel;
             _weaponLevel = data.WeaponLevel;
             _potion = data.Potion;
             _idol = data.Idol;
-        }
-
-        private string CheckLocalization(string lang)
-        {
-            if (lang == "")
-            {
-                lang = Language.DefineLanguage(YandexGamesSdk.Environment.i18n.lang);
-            }
-
-            return lang;
         }
 
         private bool CheckGameStatistics(GameStatistics newStat)

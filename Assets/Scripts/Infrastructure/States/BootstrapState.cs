@@ -1,5 +1,6 @@
 using Agava.YandexGames;
 using Assets.Interface;
+using Assets.UI.SettingsWindow.Localization;
 using UnityEngine;
 
 namespace Assets.Infrastructure.States
@@ -32,22 +33,14 @@ namespace Assets.Infrastructure.States
 
         private void SetStartLanguage()
         {
-            switch (YandexGamesSdk.Environment.i18n.lang)
-            {
-                case EnglishLanguage:
-                    Debug.Log(EnglishLanguage);
-                    break;
-                case RussianLanguage:
-                    Debug.Log(RussianLanguage);
-                    break;
-                case TurkishLanguage:
-                    Debug.Log(TurkishLanguage);
-                    break;
-                default:
-                    Debug.Log("");
-                    break;
-            }
+            Debug.Log($"[Game] is null: {Game.GameSettings == null}");
             
+            if (Game.GameSettings != null && Game.GameSettings.CurrentLocalization == "")
+            {
+                var lang = Language.DefineLanguage(YandexGamesSdk.Environment.i18n.lang);
+                Game.GameSettings.ChangeLocalization(lang);
+            }
+
             _sceneLoader.LoadScene("Menu");
             _gameStateMachine.Enter<MainMenuState>();
         }
