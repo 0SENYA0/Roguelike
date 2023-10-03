@@ -41,9 +41,9 @@ namespace Assets
             
             _name.text = GetLocalizedText(LanguageConfig.WeaponKey);
             _data.text = $"{GetLocalizedText(LanguageConfig.DamageKey)} = {lootObject.Weapon.Damage}\n" +
-                         $"{GetLocalizedText(LanguageConfig.DmgModifierKey)} = {lootObject.Weapon.ValueModifier}\n" +
+                         $"{GetLocalizedText(LanguageConfig.DmgModifierKey)} = {lootObject.Weapon.ChanceToModifier}\n" +
                          $"{GetLocalizedText(LanguageConfig.SplashChanceKey)} = {lootObject.Weapon.ChanceToSplash}\n" +
-                         $"{GetLocalizedText(LanguageConfig.CriticalChanceKey)} = {lootObject.Weapon.MinValueToCriticalDamage}";
+                         $"{GetLocalizedText(LanguageConfig.CriticalChanceKey)} = {lootObject.Weapon.ChanceToCritical}";
         }
 
         private void ShowArmorLootInfo(InteractiveLootObject lootObject)

@@ -150,8 +150,11 @@ namespace Assets.Fight
                     # endregion
                     
                     # region применяем атаку/атаки
-                    
-                    bool isSplashAttack = _dicePresenterAdapter.LeftDiceValue == enemyChooser.Weapon.ChanceToSplash;
+
+                    bool isSplashAttack = enemyChooser.Weapon.ChanceToSplash == _dicePresenterAdapter.LeftDiceValue;
+                    bool isCritical = enemyChooser.Weapon.ChanceToCritical == _dicePresenterAdapter.CenterDiceValue;
+                    bool isModification = enemyChooser.Weapon.ChanceToModifier == _dicePresenterAdapter.RightDiceValue;
+                    Debug.Log($"Left: {isSplashAttack} | Center: {isCritical} | Right: {isModification}");
                     
                     if (isSplashAttack)
                     {
@@ -161,7 +164,7 @@ namespace Assets.Fight
 
                         foreach (UnitAttackPresenter enemy in allLiveEnemy)
                         {
-                            enemy.Unit.TakeDamage(enemyChooser.Weapon);
+                            enemy.Unit.TakeDamage(enemyChooser.Weapon, isCritical, isModification);
 
                             if (enemy.Unit.IsDie)
                                 enemy.ShowAnimation(AnimationState.Dei);
@@ -175,7 +178,7 @@ namespace Assets.Fight
 
                         yield return _coroutineRunner.StartCoroutine(StartSingleAnimationCoroutine(AnimationState.Hit, enemy));
 
-                        enemy.Unit.TakeDamage(enemyChooser.Weapon);
+                        enemy.Unit.TakeDamage(enemyChooser.Weapon, isCritical, isModification);
 
                         if (enemy.Unit.IsDie)
                             enemy.ShowAnimation(AnimationState.Dei);
@@ -191,7 +194,7 @@ namespace Assets.Fight
                     yield return _coroutineRunner.StartCoroutine(StartSingleAnimationCoroutine(AnimationState.Attack, unitAttackPresenter));
                     unitAttackPresenter.ShowAnimation(AnimationState.Idle);
 
-                    _playerAttackPresenter.Unit.TakeDamage(enemy.Weapon);
+                    _playerAttackPresenter.Unit.TakeDamage(enemy.Weapon, false, enemy.IsBoss);
 
                     yield return _coroutineRunner.StartCoroutine(StartSingleAnimationCoroutine(AnimationState.Hit, _playerAttackPresenter));
 

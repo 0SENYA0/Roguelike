@@ -35,9 +35,9 @@ namespace Assets.Person
         public IPersonStateMachine PersonStateMachine => _personStateMachine;
         public Sprite Sprite { get; set; }
 
-        public void TakeDamage(IWeapon weapon)
+        public void TakeDamage(IWeapon weapon, bool isCriticalDamage, bool isModifiedDamage)
         {
-            CalculateDamageMultiplier(weapon);
+            CalculateDamageMultiplier(weapon, isCriticalDamage, isModifiedDamage);
             ConditionForDead();
             HealthChanged?.Invoke(_health);
             Debug.Log("здоровье = "+ _health); 
@@ -66,15 +66,23 @@ namespace Assets.Person
                 IsDie = false;
         }
 
-        protected virtual void CalculateDamageMultiplier(IWeapon weapon)
+        protected virtual void CalculateDamageMultiplier(IWeapon weapon, bool isCriticalDamage, bool isModifiedDamage)
         {
             if (IsDie)
                 return;
 
             float elementMultiplier = CalculateDamageModifier(weapon.Element, _armor.Body.Element);
+
             float damage = elementMultiplier * weapon.Damage;
+
+            if (isCriticalDamage)
+                damage *= 2;
+
+            if (isModifiedDamage)
+                damage *= 2;
+
             float armorValue = (_armor.Body.Value + _armor.Head.Value);
-            _health -=  Math.Abs(damage - armorValue);
+            _health -= Math.Max(damage - armorValue, 1);
         }
 
         protected float CalculateDamageModifier(Element weaponElement, Element element) =>

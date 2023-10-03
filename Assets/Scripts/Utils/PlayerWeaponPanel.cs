@@ -24,7 +24,7 @@ namespace Assets.Utils
             _items = new List<WeaponPanelElement>();
 
             if (weapons.Count() == 0)
-                _defaultWeapon = new Weapon.Weapon(1, Element.Fire, 0, 0, 0, null);
+                _defaultWeapon = new Weapon.Weapon(1, Element.Fire, 0, 0, 0);
             
             foreach (var weapon in weapons)
             {

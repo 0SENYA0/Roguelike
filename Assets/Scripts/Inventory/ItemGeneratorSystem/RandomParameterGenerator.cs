@@ -19,6 +19,11 @@ namespace Assets.Inventory.ItemGeneratorSystem
             return Random.Range(range.MinValue, range.MaxValue);
         }
 
+        public int RandomDice()
+        {
+            return Random.Range(0, 7);
+        }
+
         public float RandomValue(float a, float b)
         {
             return Random.Range(a, b);

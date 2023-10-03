@@ -55,10 +55,9 @@ namespace Assets.Inventory.ItemGeneratorSystem
             var newWeapon = new Weapon.Weapon(
                 _random.RandomValue(dws.Damage.MinValue + weaponLevel, dws.Damage.MaxValue + weaponLevel),
                 randomElement,
-                (int)_random.RandomValue(dws.SplashChance.MinValue + weaponLevel, dws.SplashChance.MaxValue + weaponLevel),
-                (int)_random.RandomValue(dws.CriticalChance.MinValue + weaponLevel, dws.CriticalChance.MaxValue + weaponLevel),
-                (int)_random.RandomValue(dws.DamageModifier.MinValue + weaponLevel, dws.DamageModifier.MaxValue + weaponLevel),
-                _random.RandomParticle(randomElement));
+                _random.RandomDice(),
+                _random.RandomDice(),
+                _random.RandomDice());
             
             return new InventoryItem(newArmor, newWeapon);
         }
@@ -87,12 +86,11 @@ namespace Assets.Inventory.ItemGeneratorSystem
         {
             float damage = _random.RandomValue(stat.Damage);
             Element element = _random.RandomElement();
-            int splashChance = (int)_random.RandomValue(stat.SplashChance);
-            int criticalChance = (int)_random.RandomValue(stat.CriticalChance);
-            int damageModifier = (int)_random.RandomValue(stat.DamageModifier);
-            ParticleSystem particle = _random.RandomParticle(element);
+            int splashChance = _random.RandomDice();
+            int criticalChance = _random.RandomDice();
+            int damageModifier = _random.RandomDice();
 
-            return new Weapon.Weapon(damage, element, splashChance, criticalChance, damageModifier, particle);
+            return new Weapon.Weapon(damage, element, splashChance, criticalChance, damageModifier);
         }
 
         private Armor CreateRandomArmor(ListOfItemStatsRangesScriptableObject.ArmorStat stat)

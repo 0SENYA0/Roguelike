@@ -28,8 +28,8 @@ namespace Assets.Inventory.Panel
 
             _image.sprite = _elementsSprite.GetElementSprite(armor.Body.Element);
             _name.text = _nameOfElements.GetElementName(armor.Body.Element);
-            _body.text = $"{armor.Body.Value}";
-            _head.text = $"{armor.Head.Value}";
+            _body.text = $"{armor.Body.Value:F1}";
+            _head.text = $"{armor.Head.Value:F1}";
 
             if (armor.IsSelect)
                 _background.sprite = _selectSprite;

@@ -71,9 +71,9 @@ namespace Assets.UI.HUD
                          $"{GetLocalizedText(LanguageConfig.MoneyKey)}: +{money}$\n" +
                          $"{GetLocalizedText(LanguageConfig.WeaponKey)}\n" +
                          $"{GetLocalizedText(LanguageConfig.DamageKey)} = {weapon.Damage}\n" +
-                         $"{GetLocalizedText(LanguageConfig.DmgModifierKey)} = {weapon.ValueModifier}\n" +
+                         $"{GetLocalizedText(LanguageConfig.DmgModifierKey)} = {weapon.ChanceToModifier}\n" +
                          $"{GetLocalizedText(LanguageConfig.SplashChanceKey)} = {weapon.ChanceToSplash}\n" +
-                         $"{GetLocalizedText(LanguageConfig.CriticalChanceKey)} = {weapon.MinValueToCriticalDamage}";
+                         $"{GetLocalizedText(LanguageConfig.CriticalChanceKey)} = {weapon.ChanceToCritical}";
         }
 
         private void ShowArmorLootInfo(Armor armor, int money)
@@ -100,9 +100,9 @@ namespace Assets.UI.HUD
                          $"{GetLocalizedText(LanguageConfig.MoneyKey)}: +{money}$\n" +
                          $"{GetLocalizedText(LanguageConfig.WeaponKey)}\n" +
                          $"{GetLocalizedText(LanguageConfig.DamageKey)} = {weapon.Damage}\n" +
-                         $"{GetLocalizedText(LanguageConfig.DmgModifierKey)} = {weapon.ValueModifier}\n" +
+                         $"{GetLocalizedText(LanguageConfig.DmgModifierKey)} = {weapon.ChanceToModifier}\n" +
                          $"{GetLocalizedText(LanguageConfig.SplashChanceKey)} = {weapon.ChanceToSplash}\n" +
-                         $"{GetLocalizedText(LanguageConfig.CriticalChanceKey)} = {weapon.MinValueToCriticalDamage}\n\n" +
+                         $"{GetLocalizedText(LanguageConfig.CriticalChanceKey)} = {weapon.ChanceToCritical}\n\n" +
                          $"{GetLocalizedText(LanguageConfig.ArmorKey)}\n" +
                          $"{GetLocalizedText(LanguageConfig.BodyKey)} = {armor.Body.Value}\n" +
                          $"{GetLocalizedText(LanguageConfig.HeadKey)} = {armor.Head.Value}";

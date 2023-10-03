@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Assets.ScriptableObjects
 {
@@ -33,14 +32,8 @@ namespace Assets.ScriptableObjects
         public class WeaponStat
         {
             [SerializeField] private Range _damage;
-            [SerializeField] private Range _SplashChance;
-            [SerializeField] private Range _CriticalChance;
-            [SerializeField] private Range _DamageModifier;
 
             public Range Damage => _damage;
-            public Range SplashChance => _SplashChance;
-            public Range CriticalChance => _CriticalChance;
-            public Range DamageModifier => _DamageModifier;
         }
 
         [System.Serializable]

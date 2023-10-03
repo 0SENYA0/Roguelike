@@ -20,26 +20,29 @@ namespace Assets.Player
             _inventoryPresenter = inventoryPresenter;
         }
 
-        protected override void CalculateDamageMultiplier(IWeapon weapon)
+        protected override void CalculateDamageMultiplier(IWeapon weapon, bool isCriticalDamage, bool isModifiedDamage)
         {
             float damage = 0f;
 
             if (_inventoryPresenter.ActiveArmor == null)
                 damage = weapon.Damage * 2;
             else
-                damage = CalculateNewDamage(weapon);
+                damage = CalculateNewDamage(weapon, isModifiedDamage);
 
             _health -= damage;
         }
 
-        private float CalculateNewDamage(IWeapon weapon)
+        private float CalculateNewDamage(IWeapon weapon, bool isModifiedDamage)
         {
             float elementMultiplier = CalculateDamageModifier(weapon.Element, _inventoryPresenter.ActiveArmor.Body.Element);
             float damage = elementMultiplier * weapon.Damage;
-            float armorValue =
-                (_inventoryPresenter.ActiveArmor.Body.Value + _inventoryPresenter.ActiveArmor.Head.Value);
 
-            return Math.Abs(damage - armorValue);
+            if (isModifiedDamage)
+                damage *= 2;
+            
+            float armorValue = _inventoryPresenter.ActiveArmor.Body.Value + _inventoryPresenter.ActiveArmor.Head.Value;
+
+            return Math.Max(damage - armorValue, 1);
         }
     }
 }

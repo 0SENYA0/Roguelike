@@ -7,21 +7,19 @@ namespace Assets.Weapon
 {
     public class Weapon : IWeapon, IInventoryItem
     {
-        public Weapon(float damage, Element element, int chanceToSplash, int minValueToCriticalDamage, int valueModifier, ParticleSystem particleSystem)
+        public Weapon(float damage, Element element, int chanceToSplash, int minValueToCriticalDamage, int valueModifier)
         {
             ChanceToSplash = chanceToSplash;
-            MinValueToCriticalDamage = minValueToCriticalDamage;
-            ValueModifier = valueModifier;
-            ParticleSystem = particleSystem;
+            ChanceToCritical = minValueToCriticalDamage;
+            ChanceToModifier = valueModifier;
             Damage = damage;
             Element = element;
         }
 
         public float Damage { get; }
         public Element Element { get; }
-        public ParticleSystem ParticleSystem { get; }
         public int ChanceToSplash { get; }
-        public int MinValueToCriticalDamage { get; }
-        public int ValueModifier { get; }
+        public int ChanceToCritical { get; }
+        public int ChanceToModifier { get; }
     }
 }

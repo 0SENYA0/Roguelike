@@ -30,10 +30,10 @@ namespace Assets.Utils
             
             _image.sprite = _elementsSprite.GetElementSprite(weapon.Element);
             _name.text = _nameOfElements.GetElementName(weapon.Element);
-            _damage.text = $"{weapon.Damage}";
+            _damage.text = $"{weapon.Damage:F1}";
             _splash.text = $"{weapon.ChanceToSplash}";
-            _critical.text = $"{weapon.MinValueToCriticalDamage}";
-            _modifier.text = $"{weapon.ValueModifier}";
+            _critical.text = $"{weapon.ChanceToCritical}";
+            _modifier.text = $"{weapon.ChanceToModifier}";
             
             _useButton.onClick.AddListener(OnClickItem);
         }
