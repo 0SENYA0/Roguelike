@@ -1336,11 +1336,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5248166243195636658, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
       propertyPath: _roomSizeWorldUnits.x
-      value: 60
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5248166243195636658, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
       propertyPath: _roomSizeWorldUnits.y
-      value: 60
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5975527765568774177, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
       propertyPath: m_AnchorMax.y
