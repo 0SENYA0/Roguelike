@@ -216,7 +216,7 @@ MonoBehaviour:
     _tur: "Droid Zapper'\u0131n"
   _type: 0
   _numberOfAwards: 1
-  _health: 12
+  _health: 30
   _sprite: {fileID: -609751161, guid: 83f95a2f654c02d4fb9f63be38c3c445, type: 3}
   _spriteAnimation: {fileID: 7175715463153988616}
 --- !u!1001 &8957970385746386925

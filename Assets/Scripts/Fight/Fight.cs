@@ -68,6 +68,7 @@ namespace Assets.Fight
 
         public void Dispose()
         {
+            HideDice?.Invoke();
             _customButtonReady.onClick.RemoveListener(GetUserAnswer);
             _dicePresenterAdapter.Dispose();
             _elementsDamagePanel.Dispose();
@@ -135,7 +136,11 @@ namespace Assets.Fight
                     foreach (EnemyAttackPresenter enemyAttackPresenter in _enemyAttackPresenters)
                         enemyAttackPresenter.EnemyAttackView.StopParticleEffect();
 
-                    _dicePresenterAdapter.SetActive();
+                    _dicePresenterAdapter.SetActive(
+                        enemyChooser.Weapon.ChanceToSplash.ToString(),
+                        enemyChooser.Weapon.ChanceToCritical.ToString(),
+                        enemyChooser.Weapon.ChanceToModifier.ToString());
+                    
                     ShowDice?.Invoke();
                     yield return waitDiceChooseUntil;
                     HideDice?.Invoke();
@@ -154,8 +159,7 @@ namespace Assets.Fight
                     bool isSplashAttack = enemyChooser.Weapon.ChanceToSplash == _dicePresenterAdapter.LeftDiceValue;
                     bool isCritical = enemyChooser.Weapon.ChanceToCritical == _dicePresenterAdapter.CenterDiceValue;
                     bool isModification = enemyChooser.Weapon.ChanceToModifier == _dicePresenterAdapter.RightDiceValue;
-                    Debug.Log($"Left: {isSplashAttack} | Center: {isCritical} | Right: {isModification}");
-                    
+
                     if (isSplashAttack)
                     {
                         List<EnemyAttackPresenter> allLiveEnemy = _enemyAttackPresenters.Where(x => x.Unit.IsDie == false).ToList();
@@ -255,12 +259,10 @@ namespace Assets.Fight
         {
             if (_playerAttackPresenter.Unit == unit)
             {
-                ConsoleTools.LogError("Я вмЭр");
                 StartSingleAnimationCoroutine(AnimationState.Dei, _playerAttackPresenter);
             }
             else
             {
-                ConsoleTools.LogError($"враг вмЭр: {unit}");
                 EnemyAttackPresenter enemyPresenter = _enemyAttackPresenters.FirstOrDefault(x => x.Unit == unit);
                 _enemyAttackPresenters.Remove(enemyPresenter);
 

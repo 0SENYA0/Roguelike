@@ -24,8 +24,12 @@ namespace Assets.Fight.Dice
         public void SetSprite(Sprite sprite) =>
             _diceImage.sprite = sprite;
 
-        public void SetActive()
+        public void SetChance(string chance) =>
+            _text.text = chance;
+
+        public void SetActive(string chance)
         {
+            _text.text = chance;
             _button.interactable = true;
             _diceImage.color = new Color(255, 255, 255, 255);
         }

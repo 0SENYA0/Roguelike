@@ -170,6 +170,7 @@ MonoBehaviour:
   _gameTimer: {fileID: 1205741076}
   _levelSound: {fileID: 505907160}
   _playerInfo: {fileID: 107099827}
+  _playerInfoBattle: {fileID: 931275088}
   _yandexAd: {fileID: 1439301494}
   _player: {fileID: 1716400666}
 --- !u!4 &291988688
@@ -562,6 +563,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4c1c1e532ba68e48bc2a4e0d60025ac, type: 3}
+--- !u!114 &931275088 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5794270391383262031, guid: d4c1c1e532ba68e48bc2a4e0d60025ac, type: 3}
+  m_PrefabInstance: {fileID: 931275087}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b90e0a482d4add84b6dc5522773c08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1037382648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1282,6 +1294,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3076971935285648871, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -178.22998
+      objectReference: {fileID: 0}
     - target: {fileID: 3296414419366836750, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
       propertyPath: _lastPoint
       value: 
@@ -1330,6 +1346,10 @@ PrefabInstance:
       propertyPath: _timer
       value: 
       objectReference: {fileID: 1205741076}
+    - target: {fileID: 4705972201780025678, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -178.22998
+      objectReference: {fileID: 0}
     - target: {fileID: 4815860675977482509, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
       propertyPath: _health
       value: 800
@@ -1487,6 +1507,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 291988688}
     m_Modifications:
+    - target: {fileID: 3273832702189965049, guid: 0061d2501204d554db3efd66ac45ec51, type: 3}
+      propertyPath: entries.Array.data[1].Text
+      value: "\u0428\u0430\u043D\u0441 \u043A\u0440\u0438\u0442. \u0443\u0440\u043E\u043D\u0430"
+      objectReference: {fileID: 0}
     - target: {fileID: 7141113770773144591, guid: 0061d2501204d554db3efd66ac45ec51, type: 3}
       propertyPath: m_Name
       value: LeanLocalization

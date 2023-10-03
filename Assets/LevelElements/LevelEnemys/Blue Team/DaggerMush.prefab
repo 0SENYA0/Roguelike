@@ -211,7 +211,7 @@ MonoBehaviour:
     _tur: "Han\xE7er Lapa"
   _type: 0
   _numberOfAwards: 1
-  _health: 35
+  _health: 30
   _sprite: {fileID: -1994071057, guid: 83f95a2f654c02d4fb9f63be38c3c445, type: 3}
   _spriteAnimation: {fileID: 8981151776570709827}
 --- !u!1001 &7989832824793600914

@@ -30,8 +30,8 @@ namespace Assets.Fight.Dice
         public void Dispose() =>
             _diceView.Shuffled -= StartAnimation;
 
-        public void SetActive() =>
-            _diceView.SetActive();
+        public void SetActive(string chance) =>
+            _diceView.SetActive(chance);
 
         public void SetDisactive() =>
             _diceView.SetDisactive();

@@ -211,7 +211,7 @@ MonoBehaviour:
     _tur: Heilbot'un
   _type: 0
   _numberOfAwards: 1
-  _health: 20
+  _health: 30
   _sprite: {fileID: 898721197, guid: 83f95a2f654c02d4fb9f63be38c3c445, type: 3}
   _spriteAnimation: {fileID: 4881698709050121933}
 --- !u!1001 &5659645083361776975

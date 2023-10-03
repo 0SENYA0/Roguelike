@@ -22,6 +22,7 @@ namespace Assets.Infrastructure
         [SerializeField] private Timer _gameTimer;
         [SerializeField] private SoundComponent _levelSound;
         [SerializeField] private PlayerInfo _playerInfo;
+        [SerializeField] private PlayerInfo _playerInfoBattle;
         [SerializeField] private YandexAdView _yandexAd;
         [Space] 
         [SerializeField] private PlayerView _player;
@@ -124,6 +125,7 @@ namespace Assets.Infrastructure
             _gameTimer.StartTimer();
             _levelSound.Play();
             _playerInfo.Init(_player);
+            _playerInfoBattle.Init(_player);
         }
     }
 }

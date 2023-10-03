@@ -13,15 +13,13 @@ MonoBehaviour:
   m_Name: LevelStats
   m_EditorClassIdentifier: 
   _listStats:
-  - _levelNumber: 0
-    _list: {fileID: 11400000, guid: f9947c18223a2ed468d16a3f89e51dfb, type: 2}
   - _levelNumber: 1
     _list: {fileID: 11400000, guid: f9947c18223a2ed468d16a3f89e51dfb, type: 2}
   - _levelNumber: 2
-    _list: {fileID: 11400000, guid: e5377ebce59f0e2488218529ce1a1e2e, type: 2}
+    _list: {fileID: 11400000, guid: b273f30de52a94b4ba76a927de443267, type: 2}
   - _levelNumber: 3
-    _list: {fileID: 11400000, guid: 4b454a8394e2f094d81d82c7fc22d7e4, type: 2}
+    _list: {fileID: 11400000, guid: f89cdd2f99a4c5949ba82d5186f74fce, type: 2}
   - _levelNumber: 4
-    _list: {fileID: 11400000, guid: 900a4dc99997c1c49bd5f1de4c468771, type: 2}
+    _list: {fileID: 11400000, guid: 5bb7ccdc4ac59c642ad755305e3565d6, type: 2}
   - _levelNumber: 10
     _list: {fileID: 11400000, guid: f9947c18223a2ed468d16a3f89e51dfb, type: 2}

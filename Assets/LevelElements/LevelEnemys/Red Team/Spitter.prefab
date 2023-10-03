@@ -211,7 +211,7 @@ MonoBehaviour:
     _tur: "T\xFCk\xFCr\xFCc\xFC"
   _type: 0
   _numberOfAwards: 1
-  _health: 20
+  _health: 30
   _sprite: {fileID: -136354388, guid: 83f95a2f654c02d4fb9f63be38c3c445, type: 3}
   _spriteAnimation: {fileID: 918833024529444341}
 --- !u!1001 &4438554510447209534

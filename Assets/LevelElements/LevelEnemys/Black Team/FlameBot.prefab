@@ -224,7 +224,7 @@ MonoBehaviour:
     _tur: Alev Bot
   _type: 0
   _numberOfAwards: 1
-  _health: 50
+  _health: 30
   _sprite: {fileID: -1119510172, guid: 83f95a2f654c02d4fb9f63be38c3c445, type: 3}
   _spriteAnimation: {fileID: 5193000878701451483}
 --- !u!1001 &4678262256829577785

@@ -104,6 +104,7 @@ namespace Assets.Fight
             _fight.HideDice -= HideDice;
             _fight.Dispose();
             _fight = null;
+            HideDice();
         }
 
         private void EndFight()

@@ -28,11 +28,11 @@ namespace Assets.Fight.Dice
             _rightDice.SetDisactive();
         }
 
-        public void SetActive()
+        public void SetActive(string leftChance, string centerChance, string rightChance)
         {
-            _leftDice.SetActive();
-            _centerDice.SetActive();
-            _rightDice.SetActive();
+            _leftDice.SetActive(leftChance);
+            _centerDice.SetActive(centerChance);
+            _rightDice.SetActive(rightChance);
         }
 
         public void Dispose()

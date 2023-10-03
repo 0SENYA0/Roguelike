@@ -212,7 +212,7 @@ MonoBehaviour:
     _tur: "Suikast\xE7\u0131"
   _type: 0
   _numberOfAwards: 1
-  _health: 20
+  _health: 30
   _sprite: {fileID: 1523503080, guid: 83f95a2f654c02d4fb9f63be38c3c445, type: 3}
   _spriteAnimation: {fileID: 8220381066613894502}
 --- !u!1001 &5681285143584554510

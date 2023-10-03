@@ -210,7 +210,7 @@ MonoBehaviour:
     _tur: "Koruyucu K\u0131l\u0131\xE7"
   _type: 0
   _numberOfAwards: 1
-  _health: 45
+  _health: 30
   _sprite: {fileID: -1716851049, guid: 83f95a2f654c02d4fb9f63be38c3c445, type: 3}
   _spriteAnimation: {fileID: 1433776716384900017}
 --- !u!1001 &2840594293844920241

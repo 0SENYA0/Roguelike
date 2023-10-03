@@ -28,11 +28,21 @@ namespace Assets.UI.ShopWindow
 
                 var information = item.Text.GetLocalization(_lang);
                 var level = $"{item.Level.GetLocalization(_lang)}: {GetPlayerData(item.ItemType)}";
-                var price = item.Price.GetLevelCost(GetPlayerData(item.ItemType));
-                var cost = $"{item.Cost.GetLocalization(_lang)}: {price}$";
+
+                int price = item.Price.GetLevelCost(GetPlayerData(item.ItemType));
+                string cost;
+                
+                if (item.Price.HasNextPrice(GetPlayerData(item.ItemType)))
+                {
+                    cost = $"{item.Cost.GetLocalization(_lang)}: {price}$";
+                    newShopItem.OnBueItemEvent += OnBueItem;
+                }
+                else
+                {
+                    cost = $"{item.Cost.GetLocalization(_lang)}: ---";
+                }
 
                 newShopItem.Init(information, level, cost, price, item.Image, item.ItemType);
-                newShopItem.OnBueItemEvent += OnBueItem;
 
                 _shopItems.Add(newShopItem);
             }
@@ -46,13 +56,19 @@ namespace Assets.UI.ShopWindow
             if (item == null || shopItem == null)
                 throw new Exception("This product or show item is not available on the store panel");
             
-            var price = shopItem.Price.GetLevelCost(GetPlayerData(item.ItemType));
+            var price = shopItem.Price.GetLevelCost(GetPlayerData(shopItem.ItemType));
+            string cost = shopItem.Price.HasNextPrice(GetPlayerData(shopItem.ItemType)) ? 
+                $"{shopItem.Cost.GetLocalization(_lang)}: {price}$" : 
+                $"{shopItem.Cost.GetLocalization(_lang)}: ---";
+
+            if (shopItem.Price.HasNextPrice(GetPlayerData(shopItem.ItemType)) == false)
+                item.OnBueItemEvent -= OnBueItem;
+            
             item.UpdateInformation(
                 shopItem.Text.GetLocalization(_lang),
                 $"{shopItem.Level.GetLocalization(_lang)}: {GetPlayerData(shopItem.ItemType)}",
-                $"{shopItem.Cost.GetLocalization(_lang)}: {price}$",
-                price
-                );
+                cost,
+                price);
         }
 
         public void Dispose()
@@ -73,12 +89,17 @@ namespace Assets.UI.ShopWindow
                 var information = shopItem.Text.GetLocalization(_lang);
                 var level = $"{shopItem.Level.GetLocalization(_lang)}: {GetPlayerData(shopItem.ItemType)}";
                 var price = shopItem.Price.GetLevelCost(GetPlayerData(shopItem.ItemType));
-                var cost = $"{shopItem.Cost.GetLocalization(_lang)}: {price}$";
+                string cost = shopItem.Price.HasNextPrice(GetPlayerData(shopItem.ItemType)) ? 
+                    $"{shopItem.Cost.GetLocalization(_lang)}: {price}$" : 
+                    $"{shopItem.Cost.GetLocalization(_lang)}: ---";
 
                 var item = _shopItems.FirstOrDefault(x => x.ItemType == shopItem.ItemType);
 
                 if (item == null)
                     throw new Exception("This product is not available on the store panel");
+                
+                if (shopItem.Price.HasNextPrice(GetPlayerData(shopItem.ItemType)) == false)
+                    item.OnBueItemEvent -= OnBueItem;
 
                 item.UpdateInformation(information, level, cost, price);
             }

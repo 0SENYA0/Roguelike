@@ -11,10 +11,12 @@ namespace Assets.Config
         public const string ArmorKey = "Armor";
         public const string BodyKey = "Body";
         public const string HeadKey = "Head";
+        public const string CountKey = "Amount";
         public const string DmgModifierKey = "DmgModifier";
         public const string SplashChanceKey = "SplashChance";
         public const string CriticalChanceKey = "CriticalChance";
         public const string MoneyKey = "Money";
+        public const string BossKey = "Boss";
         
         public static string GetAnonymous(string lang)
         {

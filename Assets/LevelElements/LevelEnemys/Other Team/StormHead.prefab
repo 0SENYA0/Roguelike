@@ -226,7 +226,7 @@ MonoBehaviour:
     _tur: "F\u0131rt\u0131naba\u015F\u0131"
   _type: 0
   _numberOfAwards: 1
-  _health: 12
+  _health: 30
   _sprite: {fileID: 428915169, guid: 83f95a2f654c02d4fb9f63be38c3c445, type: 3}
   _spriteAnimation: {fileID: 3840892866608774327}
 --- !u!1001 &5915899143819828630

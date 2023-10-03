@@ -1,4 +1,5 @@
 using System.Linq;
+using Assets.Config;
 using Assets.Enemy;
 using Assets.Scripts.InteractiveObjectSystem;
 using TMPro;
@@ -18,10 +19,6 @@ namespace Assets
 
         [SerializeField] private ElementsSpriteView _elementsSprite;
 
-        private const string DamageKey = "Damage";
-        private const string ArmorKey = "Armor";
-        private const string CountKey = "Amount";
-
         public void Show(IEnemyPresenter enemyPresenter)
         {
             HideAttackAndDefendPanel();
@@ -40,16 +37,16 @@ namespace Assets
         private void AddInfoTest(IEnemyPresenter enemyPresenter)
         {
             _lable.text = enemyPresenter.Enemy.Select(x => x.IsBoss).FirstOrDefault() ? 
-                $"{GetLocalizedText("Boss")}: {enemyPresenter.EnemyView.Name}" : 
+                $"{GetLocalizedText(LanguageConfig.BossKey)}: {enemyPresenter.EnemyView.Name}" : 
                 enemyPresenter.EnemyView.Name;
 
-            _damageInfo.text = $"{GetLocalizedText(DamageKey)}: {enemyPresenter.Enemy.Select(x => x.Weapon).FirstOrDefault().Damage}";
+            _damageInfo.text = $"{GetLocalizedText(LanguageConfig.DamageKey)}: {enemyPresenter.Enemy.Select(x => x.Weapon).FirstOrDefault().Damage:F1}";
 
             int armorValue = (int)enemyPresenter.Enemy.Select(x => x.Armor).FirstOrDefault().Body.Value +
                              (int)enemyPresenter.Enemy.Select(x => x.Armor).FirstOrDefault().Body.Value;
             
-            _armorInfo.text = $"{GetLocalizedText(ArmorKey)}: {armorValue}";
-            _countInfo.text = $"{GetLocalizedText(CountKey)}: {enemyPresenter.Enemy.Count}";
+            _armorInfo.text = $"{GetLocalizedText(LanguageConfig.ArmorKey)}: {armorValue}";
+            _countInfo.text = $"{GetLocalizedText(LanguageConfig.CountKey)}: {enemyPresenter.Enemy.Count}";
         }        
 
         private void ShowCorrectStatsOfEnemies(IEnemyPresenter enemyPresenter)

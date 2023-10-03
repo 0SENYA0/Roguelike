@@ -14,43 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultWeaponStat:
     _damage:
-      _minValue: 500
-      _maxValue: 501
-    _SplashChance:
       _minValue: 1
-      _maxValue: 1
-    _CriticalChance:
-      _minValue: 1
-      _maxValue: 1
-    _DamageModifier:
-      _minValue: 1
-      _maxValue: 1
+      _maxValue: 5
   _levelWeapon:
     _damage:
-      _minValue: 20
-      _maxValue: 40
-    _SplashChance:
-      _minValue: 20
-      _maxValue: 40
-    _CriticalChance:
-      _minValue: 20
-      _maxValue: 40
-    _DamageModifier:
-      _minValue: 20
-      _maxValue: 40
+      _minValue: 15
+      _maxValue: 27
   _bossLootWeapon:
     _damage:
-      _minValue: 40
-      _maxValue: 50
-    _SplashChance:
-      _minValue: 40
-      _maxValue: 50
-    _CriticalChance:
-      _minValue: 40
-      _maxValue: 50
-    _DamageModifier:
-      _minValue: 40
-      _maxValue: 50
+      _minValue: 26
+      _maxValue: 30
   _defaultArmorStat:
     _headStatValue:
       _minValue: 1
@@ -60,21 +33,21 @@ MonoBehaviour:
       _maxValue: 1
   _levelArmor:
     _headStatValue:
-      _minValue: 20
-      _maxValue: 30
+      _minValue: 5
+      _maxValue: 20
     _bodyStatValue:
-      _minValue: 20
-      _maxValue: 30
+      _minValue: 5
+      _maxValue: 20
   _bossLootArmor:
     _headStatValue:
-      _minValue: 25
-      _maxValue: 35
+      _minValue: 19
+      _maxValue: 22
     _bodyStatValue:
-      _minValue: 25
-      _maxValue: 32
+      _minValue: 19
+      _maxValue: 22
   _enemyReward:
-    _minValue: 25
-    _maxValue: 150
+    _minValue: 20
+    _maxValue: 160
   _bossReward:
-    _minValue: 250
-    _maxValue: 300
+    _minValue: 300
+    _maxValue: 350

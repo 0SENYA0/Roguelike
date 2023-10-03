@@ -213,7 +213,7 @@ MonoBehaviour:
     _tur: Sihirdar
   _type: 0
   _numberOfAwards: 1
-  _health: 20
+  _health: 30
   _sprite: {fileID: -2011617979, guid: 83f95a2f654c02d4fb9f63be38c3c445, type: 3}
   _spriteAnimation: {fileID: 7095833982433348876}
 --- !u!1001 &2335069682300196236

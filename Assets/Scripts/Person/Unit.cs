@@ -40,7 +40,6 @@ namespace Assets.Person
             CalculateDamageMultiplier(weapon, isCriticalDamage, isModifiedDamage);
             ConditionForDead();
             HealthChanged?.Invoke(_health);
-            Debug.Log("здоровье = "+ _health); 
         }
         
         public void Heal(int value)

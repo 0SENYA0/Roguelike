@@ -21,5 +21,6 @@ MonoBehaviour:
     _nextPrice: 3000
   - _level: 4
     _nextPrice: 4000
-  - _level: 4
+  - _level: 5
     _nextPrice: 5000
+  _maxLevel: 25

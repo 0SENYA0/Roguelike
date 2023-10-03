@@ -184,7 +184,6 @@ namespace Assets.Infrastructure.DataStorageSystem
             var data = DataManager.GetData();
             
             _money = data.Money;
-            _money = 100000;
             _isMusicOn = Convert.ToBoolean(data.Music);
             _isSfxOn = Convert.ToBoolean(data.Sfx);
             _localization = data.Localization;

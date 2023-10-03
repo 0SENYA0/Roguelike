@@ -15,3 +15,4 @@ MonoBehaviour:
   _priceList:
   - _level: 1
     _nextPrice: 3000
+  _maxLevel: 1000

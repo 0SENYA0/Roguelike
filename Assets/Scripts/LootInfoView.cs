@@ -40,7 +40,7 @@ namespace Assets
             _element.sprite = _elementsSpriteView.GetElementSprite(lootObject.Weapon.Element);
             
             _name.text = GetLocalizedText(LanguageConfig.WeaponKey);
-            _data.text = $"{GetLocalizedText(LanguageConfig.DamageKey)} = {lootObject.Weapon.Damage}\n" +
+            _data.text = $"{GetLocalizedText(LanguageConfig.DamageKey)} = {lootObject.Weapon.Damage:F1}\n" +
                          $"{GetLocalizedText(LanguageConfig.DmgModifierKey)} = {lootObject.Weapon.ChanceToModifier}\n" +
                          $"{GetLocalizedText(LanguageConfig.SplashChanceKey)} = {lootObject.Weapon.ChanceToSplash}\n" +
                          $"{GetLocalizedText(LanguageConfig.CriticalChanceKey)} = {lootObject.Weapon.ChanceToCritical}";
@@ -53,8 +53,8 @@ namespace Assets
             _element.sprite = _elementsSpriteView.GetElementSprite(lootObject.Armor.Body.Element);
             
             _name.text = GetLocalizedText(LanguageConfig.ArmorKey);
-            _data.text = $"{GetLocalizedText(LanguageConfig.BodyKey)} = {lootObject.Armor.Body.Value}\n" +
-                         $"{GetLocalizedText(LanguageConfig.HeadKey)} = {lootObject.Armor.Head.Value}";
+            _data.text = $"{GetLocalizedText(LanguageConfig.BodyKey)} = {lootObject.Armor.Body.Value:F1}\n" +
+                         $"{GetLocalizedText(LanguageConfig.HeadKey)} = {lootObject.Armor.Head.Value:F1}";
         }
     }
 }

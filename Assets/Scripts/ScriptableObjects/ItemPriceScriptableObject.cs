@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Assets.ScriptableObjects
 {
@@ -9,7 +8,13 @@ namespace Assets.ScriptableObjects
     public class ItemPriceScriptableObject : ScriptableObject
     {
         [SerializeField] private List<Price> _priceList;
+        [SerializeField] private int _maxLevel;
 
+        public bool HasNextPrice(int level)
+        {
+            return level < _maxLevel;
+        }
+        
         public int GetLevelCost(int level)
         {
             if (_priceList.Count == 1)

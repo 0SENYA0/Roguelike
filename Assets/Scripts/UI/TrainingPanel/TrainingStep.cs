@@ -12,6 +12,7 @@ namespace Assets.UI.TrainingPanel
         Elements,
         ElementsStats,
         Fight,
+        Dice,
         Death,
         Boss
     }
