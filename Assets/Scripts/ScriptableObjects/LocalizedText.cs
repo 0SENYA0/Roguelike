@@ -21,7 +21,7 @@ namespace Assets.ScriptableObjects
                 case Language.TUR:
                     return _tur;
                 default:
-                    return "%ERROR IN LOCALIZATION%";
+                    return _eng;
             }
         }
     }

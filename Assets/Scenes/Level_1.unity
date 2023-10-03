@@ -574,6 +574,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ProfilerView
       objectReference: {fileID: 0}
+    - target: {fileID: 680561249786026991, guid: 81ef78f9270fe3f42944faf38dfdeb0e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2552617245080028532, guid: 81ef78f9270fe3f42944faf38dfdeb0e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1329,6 +1333,14 @@ PrefabInstance:
     - target: {fileID: 4815860675977482509, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
       propertyPath: _health
       value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 5248166243195636658, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
+      propertyPath: _roomSizeWorldUnits.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5248166243195636658, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
+      propertyPath: _roomSizeWorldUnits.y
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5975527765568774177, guid: af549cefc4bc97348a9c8fb48f4190bd, type: 3}
       propertyPath: m_AnchorMax.y

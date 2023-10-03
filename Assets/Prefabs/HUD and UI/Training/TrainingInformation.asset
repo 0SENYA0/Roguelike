@@ -1,0 +1,309 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41be1350132d4e9eb54d3645dac731fb, type: 3}
+  m_Name: TrainingInformation
+  m_EditorClassIdentifier: 
+  _information:
+  - _step: 0
+    _sprite:
+      _rus: {fileID: 21300000, guid: 98d728defc4014e48bbe368805e0252e, type: 3}
+      _eng: {fileID: 21300000, guid: 98d728defc4014e48bbe368805e0252e, type: 3}
+      _tur: {fileID: 21300000, guid: 98d728defc4014e48bbe368805e0252e, type: 3}
+    _label:
+      _rus: "\u0426\u0435\u043B\u044C \u0438\u0433\u0440\u044B"
+      _eng: The goal of the game
+      _tur: "Oyunun amac\u0131"
+    _text:
+      _rus: "\u0421\u043E\u0431\u0440\u0430\u0442\u044C \u043B\u0443\u0447\u0448\u0435\u044E
+        \u044D\u043A\u0438\u043F\u0438\u0440\u043E\u0432\u043A\u0443 \u0438 \u043F\u043E\u0431\u0435\u0434\u0438\u0442\u044C
+        \u0432\u0441\u0435\u0445 \u0431\u043E\u0441\u0441\u043E\u0432."
+      _eng: Collect the best equipment and defeat all the bosses.
+      _tur: "En iyi ekipman\u0131 toplay\u0131n ve t\xFCm patronlar\u0131 alt edin."
+  - _step: 1
+    _sprite:
+      _rus: {fileID: 21300000, guid: bfb6ce0bced975e449a8d52ad1c5f813, type: 3}
+      _eng: {fileID: 21300000, guid: bfb6ce0bced975e449a8d52ad1c5f813, type: 3}
+      _tur: {fileID: 21300000, guid: bfb6ce0bced975e449a8d52ad1c5f813, type: 3}
+    _label:
+      _rus: "\u041F\u0435\u0440\u0435\u0434\u0432\u0438\u0436\u0435\u043D\u0438\u0435"
+      _eng: Movement
+      _tur: Hareket
+    _text:
+      _rus: "\u041D\u0430\u0436\u043C\u0438\u0442\u0435 \u0432 \u0442\u043E\u0447\u043A\u0443,
+        \u043A\u0443\u0434\u0430 \u0445\u043E\u0442\u0438\u0442\u0435 \u043F\u0435\u0440\u0435\u043C\u0435\u0441\u0442\u0438\u0442\u044C\u0441\u044F,
+        \u0438 \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436 \u0441\u0430\u043C
+        \u0442\u0443\u0434\u0430 \u043F\u0435\u0440\u0435\u0439\u0434\u0435\u0442.
+        \u0425\u043E\u0434\u0438\u0442\u044C \u043C\u043E\u0436\u043D\u043E \u0442\u043E\u043B\u044C\u043A\u043E
+        \u043F\u043E \u043F\u043E\u043B\u0443."
+      _eng: Click on the point where you want to move, and the character will go
+        there himself. You can only walk on the floor.
+      _tur: "Ta\u015F\u0131mak istedi\u011Finiz noktaya t\u0131klay\u0131n ve karakter
+        oraya kendisi gidecek. Sadece yerde y\xFCr\xFCyebilirsin."
+  - _step: 2
+    _sprite:
+      _rus: {fileID: 21300000, guid: ebdef554f99d0f948b849e845dd9c668, type: 3}
+      _eng: {fileID: 21300000, guid: ebdef554f99d0f948b849e845dd9c668, type: 3}
+      _tur: {fileID: 21300000, guid: ebdef554f99d0f948b849e845dd9c668, type: 3}
+    _label:
+      _rus: "\u0421\u043B\u0443\u0447\u0430\u0439\u043D\u044B\u0435 \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u044B"
+      _eng: Random items
+      _tur: "Rastgele \xF6\u011Feler"
+    _text:
+      _rus: "\u041D\u0430 \u0443\u0440\u043E\u0432\u043D\u0435 \u043D\u0430\u0445\u043E\u0434\u044F\u0442\u0441\u044F
+        \u0441\u043B\u0443\u0447\u0430\u0439\u043D\u044B\u0435 \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u044B.
+        \u0427\u0442\u043E\u0431\u044B \u043F\u043E\u0434\u043E\u0431\u0440\u0430\u0442\u044C
+        \u0438\u0445, \u043D\u0430\u0436\u043C\u0438\u0442\u0435 \u043D\u0430 \u0438\u043A\u043E\u043D\u043A\u0443
+        \u0441\u0443\u043D\u0434\u0443\u043A\u0430 \u0438 \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u0435,
+        \u0447\u0442\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0438\u0445 \u0437\u0430\u0431\u0440\u0430\u0442\u044C."
+      _eng: There are random items on the level. To pick them up, click on the chest
+        icon and confirm that you want to pick them up.
+      _tur: "Seviyede rastgele \xF6\u011Feler var. Onlar\u0131 almak i\xE7in g\xF6\u011F\xFCs
+        \xFCt\xFCs\xFCne t\u0131klay\u0131n ve almak istedi\u011Finizi onaylay\u0131n."
+  - _step: 3
+    _sprite:
+      _rus: {fileID: 21300000, guid: 2f01f4f221cf1f94a9bf226d9e53c4cb, type: 3}
+      _eng: {fileID: 21300000, guid: 2f01f4f221cf1f94a9bf226d9e53c4cb, type: 3}
+      _tur: {fileID: 21300000, guid: 2f01f4f221cf1f94a9bf226d9e53c4cb, type: 3}
+    _label:
+      _rus: "\u0421\u043B\u0443\u0447\u0430\u0439\u043D\u044B\u0435 \u0441\u043E\u0431\u044B\u0442\u0438\u044F"
+      _eng: Random events
+      _tur: Rastgele olaylar
+    _text:
+      _rus: "\u041D\u0430 \u0443\u0440\u043E\u0432\u043D\u0435 \u0437\u043D\u0430\u043A\u043E\u043C
+        \u0432\u043E\u043F\u0440\u043E\u0441\u0430 \u043E\u0431\u043E\u0437\u043D\u0430\u0447\u0430\u0435\u0442\u0441\u044F
+        \u0441\u043B\u0443\u0447\u0430\u0439\u043D\u043E\u0435 \u0441\u043E\u0431\u044B\u0442\u0438\u0435.
+        \u042D\u0442\u043E \u043C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C
+        \u043A\u0430\u043A \u0432\u0440\u0430\u0433, \u0442\u0430\u043A \u0438 \u043D\u043E\u0432\u044B\u0439
+        \u043F\u0440\u0435\u0434\u043C\u0435\u0442. \u0427\u0442\u043E\u0431\u044B
+        \u043F\u0440\u043E\u0432\u0435\u0440\u0438\u0442\u044C, \u043D\u0430\u0436\u043C\u0438\u0442\u0435
+        \u043D\u0430 \u0438\u043A\u043E\u043D\u043A\u0443 \u0432\u043E\u043F\u0440\u043E\u0441\u0430
+        \u0438 \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u0435,
+        \u0447\u0442\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0440\u0438\u0441\u043A\u043D\u0443\u0442\u044C."
+      _eng: At the level, a question mark indicates a random event. It can be either
+        an enemy or a new item. To check, click on the question icon and confirm
+        that you want to take a risk.
+      _tur: "Seviyede, bir soru i\u015Fareti rastgele bir olay\u0131 g\xF6sterir.
+        Bir d\xFC\u015Fman veya yeni bir e\u015Fya olabilir. Kontrol etmek i\xE7in
+        soru simgesine t\u0131klay\u0131n ve risk almak istedi\u011Finizi onaylay\u0131n."
+  - _step: 4
+    _sprite:
+      _rus: {fileID: 21300000, guid: efa737f94c3077d418f0e204b7ca5b13, type: 3}
+      _eng: {fileID: 21300000, guid: efa737f94c3077d418f0e204b7ca5b13, type: 3}
+      _tur: {fileID: 21300000, guid: efa737f94c3077d418f0e204b7ca5b13, type: 3}
+    _label:
+      _rus: "\u0418\u043D\u0432\u0435\u043D\u0442\u0430\u0440\u044C"
+      _eng: Inventory
+      _tur: Envanter
+    _text:
+      _rus: "\u0423 \u0432\u0430\u0441 \u0432 \u0438\u043D\u0432\u0435\u043D\u0442\u0430\u0440\u0435
+        \u0445\u0440\u0430\u043D\u044F\u0442\u0441\u044F \u0432\u0430\u0448\u0438
+        \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u044B - \u043E\u0440\u0443\u0436\u0438\u0435
+        \u0438 \u0431\u0440\u043E\u043D\u044F. \u0415\u0441\u043B\u0438 \u0438\u043D\u0432\u0435\u043D\u0442\u0430\u0440\u044C
+        \u043F\u0435\u0440\u0435\u043F\u043E\u043B\u043D\u0435\u043D, \u0432\u044B
+        \u043C\u043E\u0436\u0435\u0442\u0435 \u0432\u044B\u0431\u0440\u043E\u0441\u0438\u0442\u044C
+        \u043B\u0438\u0448\u043D\u0438\u0435 \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u044B.
+        \u0423\u0447\u0442\u0438\u0442\u0435, \u0447\u0442\u043E \u043C\u043E\u0436\u043D\u043E
+        \u0432\u044B\u0431\u0440\u043E\u0441\u0438\u0442\u044C \u0430\u0431\u0441\u043E\u043B\u044E\u0442\u043D\u043E
+        \u0432\u0441\u0435 \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u044B, \u0442\u043E\u0433\u0434\u0430
+        \u0432\u044B \u0431\u0443\u0434\u0435\u0442\u0435 \u0433\u043E\u043B\u044B\u043C
+        \u0441\u0440\u0430\u0436\u0430\u0442\u044C\u0441\u044F \u0441 \u043F\u0440\u043E\u0442\u0438\u0432\u043D\u0438\u043A\u0430\u043C\u0438."
+      _eng: You have your items stored in your inventory - weapons and armor. If
+        the inventory is full, you can throw away the extra items. Keep in mind that
+        you can throw away absolutely all items, then you will fight naked with opponents.
+      _tur: "E\u015Fyalar\u0131n\u0131z envanterinizde saklan\u0131r - silahlar ve
+        z\u0131rhlar. Envanter doluysa, fazladan e\u015Fyalar\u0131 atabilirsiniz.
+        Kesinlikle t\xFCm e\u015Fyalar\u0131 atabilece\u011Finizi unutmay\u0131n,
+        o zaman rakiplerle \xE7\u0131plak sava\u015Facaks\u0131n\u0131z."
+  - _step: 5
+    _sprite:
+      _rus: {fileID: 21300000, guid: 328eb788ff7ea5b40b3ab9f10ee0f994, type: 3}
+      _eng: {fileID: 21300000, guid: a785577fd9492544299755ad2a3179cd, type: 3}
+      _tur: {fileID: 21300000, guid: c7e13f41ad24a4941a2ef02c5db2269a, type: 3}
+    _label:
+      _rus: "\u0411\u0440\u043E\u043D\u044F"
+      _eng: Armor
+      _tur: "Z\u0131rh"
+    _text:
+      _rus: "\u0412\u044B \u043C\u043E\u0436\u0435\u0442\u0435 \u0432\u044B\u0431\u0440\u0430\u0442\u044C
+        \u0431\u0440\u043E\u043D\u044E, \u043A\u043E\u0442\u043E\u0440\u0430\u044F
+        \u0431\u0443\u0434\u0435\u0442 \u043D\u0430 \u0432\u0430\u0441 \u043E\u0434\u0435\u0442\u0430
+        \u0432\u043E \u0432\u0440\u0435\u043C\u044F \u0431\u043E\u044F. \u0412\u044B\u0431\u0440\u0430\u0442\u044C
+        \u0431\u0440\u043E\u043D\u044E \u043C\u043E\u0436\u043D\u043E \u0442\u043E\u043B\u044C\u043A\u043E
+        \u0432\u043D\u0435 \u0431\u043E\u044F. \u0427\u0435\u043C \u043B\u0443\u0447\u0448\u0435
+        \u0435\u0451 \u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A\u0438,
+        \u0442\u0435\u043C \u043C\u0435\u043D\u044C\u0448\u0435 \u0443\u0440\u043E\u043D\u0430
+        \u0432\u044B \u0431\u0443\u0434\u0435\u0442\u0435 \u043F\u043E\u043B\u0443\u0447\u0430\u0442\u044C."
+      _eng: You can choose the armor that you will be wearing during the battle.
+        You can choose armor only outside of combat. The better its characteristics,
+        the less damage you will receive.
+      _tur: "Sava\u015F s\u0131ras\u0131nda giyece\u011Finiz z\u0131rh\u0131 se\xE7ebilirsiniz.
+        Z\u0131rh\u0131 sadece sava\u015F d\u0131\u015F\u0131nda se\xE7ebilirsiniz.
+        \xD6zellikleri ne kadar iyi olursa, o kadar az hasar al\u0131rs\u0131n\u0131z."
+  - _step: 6
+    _sprite:
+      _rus: {fileID: 21300000, guid: b9bdc0a50af226f4c8f004b78114f880, type: 3}
+      _eng: {fileID: 21300000, guid: 7bf8b16624db9364fbece6c15cbd767d, type: 3}
+      _tur: {fileID: 21300000, guid: 2a7e23038f7ace345abb6600cd284638, type: 3}
+    _label:
+      _rus: "\u041E\u0440\u0443\u0436\u0438\u0435"
+      _eng: Weapon
+      _tur: Silah
+    _text:
+      _rus: "\u0427\u0435\u043C \u0430\u0442\u0430\u043A\u043E\u0432\u0430\u0442\u044C
+        \u043C\u044B \u043C\u043E\u0436\u0435\u0442\u0435 \u0432\u044B\u0431\u0438\u0440\u0430\u0442\u044C
+        \u0442\u043E\u043B\u044C\u043A\u043E \u0432\u043E \u0432\u0440\u0435\u043C\u044F
+        \u0441\u0430\u043C\u043E\u0433\u043E \u0431\u043E\u044F. \u0423 \u043E\u0440\u0443\u0436\u0438\u044F
+        \u043C\u043D\u043E\u0433\u043E \u0440\u0430\u0437\u043B\u0438\u0447\u043D\u044B\u0445
+        \u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043A.
+        \u0427\u0435\u043C \u0431\u0438\u0442\u044C \u2014 \u0432\u044B\u0431\u0438\u0440\u0430\u0439\u0442\u0435
+        \u0441 \u0443\u043C\u043E\u043C."
+      _eng: "We can choose what to attack only during the battle itself. Weapons
+        have many different characteristics. What to beat \u2014 choose wisely."
+      _tur: "Sadece sava\u015F s\u0131ras\u0131nda neye sald\u0131raca\u011F\u0131m\u0131z\u0131
+        se\xE7ebiliriz. Silahlar\u0131n bir\xE7ok farkl\u0131 \xF6zelli\u011Fi vard\u0131r.
+        Ne yenmeli - ak\u0131ll\u0131ca se\xE7in."
+  - _step: 7
+    _sprite:
+      _rus: {fileID: 21300000, guid: 999c7cd8124ae8646b2ff92163ce2909, type: 3}
+      _eng: {fileID: 21300000, guid: 999c7cd8124ae8646b2ff92163ce2909, type: 3}
+      _tur: {fileID: 21300000, guid: 999c7cd8124ae8646b2ff92163ce2909, type: 3}
+    _label:
+      _rus: "\u0421\u0442\u0438\u0445\u0438\u0438"
+      _eng: Elements
+      _tur: Elementler
+    _text:
+      _rus: "\u0412\u0441\u0435 \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u044B
+        \u043E\u0431\u043B\u0430\u0434\u0430\u044E\u0442 \u043E\u0434\u043D\u043E\u0439
+        \u0438\u0437 5 \u0441\u0442\u0438\u0445\u0438\u0439. \u041A\u0430\u0436\u0434\u0430\u044F
+        \u0441\u0442\u0438\u0445\u0438\u044F \u043C\u043E\u0436\u0435\u0442 \u043D\u0430\u043D\u0435\u0441\u0442\u0438
+        \u0434\u0432\u043E\u0439\u043D\u043E\u0439, \u043F\u043E\u043B\u043E\u0432\u0438\u043D\u0443
+        \u0438\u043B\u0438 \u043E\u0431\u044B\u0447\u043D\u044B\u0439 \u0443\u0440\u043E\u043D
+        \u0434\u0440\u0443\u0433\u0438\u043C \u0441\u0442\u0438\u0445\u0438\u044F\u043C.
+        \u0415\u0441\u043B\u0438 \u0443 \u0432\u0430\u0441 \u043E\u0440\u0443\u0436\u0438\u0435
+        \u0441\u043E \u0441\u0442\u0438\u0445\u0438\u0435\u0439 \u043E\u0433\u043E\u043D\u044C,
+        \u043E\u043D\u043E \u043D\u0430\u043D\u0435\u0441\u0435\u0442 \u0434\u0432\u043E\u0439\u043D\u043E\u0439
+        \u0443\u0440\u043E\u043D \u0431\u0440\u043E\u043D\u0435 \u0438\u0437 \u0434\u0435\u0440\u0435\u0432\u0430
+        \u0438 \u0432\u043E\u0434\u044B, \u043F\u043E\u043B\u043E\u0432\u0438\u043D\u0443
+        \u0443\u0440\u043E\u043D\u0430 \u043C\u0435\u0442\u0430\u043B\u043B\u0443
+        \u0438 \u0437\u0435\u043C\u043B\u0435, \u0438 \u043E\u0431\u044B\u0447\u043D\u044B\u0439
+        \u0443\u0440\u043E\u043D \u0431\u0440\u043E\u043D\u0435 \u0438\u0437 \u043E\u0433\u043D\u044F."
+      _eng: All items have one of the 5 elements. Each element can deal double, half
+        or normal damage to other elements. If you have a fire weapon, it will deal
+        double damage to wood and water armor, half damage to metal and earth, and
+        normal damage to fire armor.
+      _tur: "T\xFCm \xF6\u011Feler 5 \xF6\u011Feden birine sahiptir. Her eleman di\u011Fer
+        elemanlara \xE7ift, yar\u0131m veya normal hasar verebilir. Ate\u015Fli silah\u0131n\u0131z
+        varsa, tahta ve su z\u0131rh\u0131na iki kat hasar, metal ve topra\u011Fa
+        yar\u0131 hasar ve ate\u015F z\u0131rh\u0131na normal hasar verir."
+  - _step: 8
+    _sprite:
+      _rus: {fileID: 21300000, guid: 4aa381c52d9dd424e9326aa47db17fec, type: 3}
+      _eng: {fileID: 21300000, guid: 909aeb5d365a6344691b1f4e3af7cfa1, type: 3}
+      _tur: {fileID: 21300000, guid: 4b1e73f6f2237de4d8405a6e2adbcf26, type: 3}
+    _label:
+      _rus: "\u0421\u0442\u0438\u0445\u0438\u0438"
+      _eng: Elements
+      _tur: Elementler
+    _text:
+      _rus: "\u0412 \u043B\u044E\u0431\u043E\u0439 \u043C\u043E\u043C\u0435\u043D\u0442
+        \u0432 \u043C\u0435\u043D\u044E \u043F\u0430\u0443\u0437\u044B \u0432\u044B
+        \u043C\u043E\u0436\u0435\u0442\u0435 \u043F\u043E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C
+        \u043F\u043E\u043B\u043D\u043E\u0435 \u0432\u0437\u0430\u0438\u043C\u043E\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435
+        \u0441\u0442\u0438\u0445\u0438\u0439."
+      _eng: At any time in the pause menu, you can view the full interaction of the
+        elements.
+      _tur: "Duraklat men\xFCs\xFCnde istedi\u011Finiz zaman, \xF6\u011Felerin t\xFCm
+        etkile\u015Fimini g\xF6r\xFCnt\xFCleyebilirsiniz."
+  - _step: 9
+    _sprite:
+      _rus: {fileID: 21300000, guid: 468f73f1177a53f4b976efabff40a25e, type: 3}
+      _eng: {fileID: 21300000, guid: 468f73f1177a53f4b976efabff40a25e, type: 3}
+      _tur: {fileID: 21300000, guid: 468f73f1177a53f4b976efabff40a25e, type: 3}
+    _label:
+      _rus: "\u0411\u043E\u0439"
+      _eng: Fight
+      _tur: Kavga
+    _text:
+      _rus: "\u0421\u0440\u0430\u0436\u0435\u043D\u0438\u0435 \u0438\u0434\u0435\u0442
+        \u043F\u043E \u043E\u0447\u0435\u0440\u0435\u0434\u0438. \u0412\u0432\u0435\u0440\u0445\u0443
+        \u0432\u044B \u0432\u0441\u0435\u0433\u0434\u0430 \u043C\u043E\u0436\u0435\u0442\u0435
+        \u0443\u0432\u0438\u0434\u0435\u0442\u044C, \u0447\u0435\u0439 \u0445\u043E\u0434
+        \u0441\u0435\u0439\u0447\u0430\u0441 \u0438\u0434\u0435\u0442 \u0438 \u0447\u0435\u0439
+        \u0431\u0443\u0434\u0435\u0442 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u043C.
+        \u041A\u043E\u0433\u0434\u0430 \u0432\u0430\u0448 \u0445\u043E\u0434, \u0432\u044B
+        \u0434\u043E\u043B\u0436\u043D\u044B \u0432\u044B\u0431\u0440\u0430\u0442\u044C,
+        \u043A\u0430\u043A\u043E\u0433\u043E \u043F\u0440\u043E\u0442\u0438\u0432\u043D\u0438\u043A\u0430
+        \u0432\u044B \u0445\u043E\u0442\u0438\u0442\u0435 \u0430\u0442\u0430\u043A\u043E\u0432\u0430\u0442\u044C,
+        \u0430 \u0437\u0430\u0442\u0435\u043C, \u043A\u0430\u043A\u0438\u043C \u043E\u0440\u0443\u0436\u0438\u0435\u043C
+        \u0432\u044B \u0445\u043E\u0442\u0438\u0442\u0435 \u0435\u0433\u043E \u0430\u0442\u0430\u043A\u043E\u0432\u0430\u0442\u044C.
+        \u041F\u043E\u0441\u043B\u0435 \u043F\u043E\u0431\u0435\u0434\u044B \u0432\u044B
+        \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u0435 \u0441\u043B\u0443\u0447\u0430\u0439\u043D\u0443\u044E
+        \u043D\u0430\u0433\u0440\u0430\u0434\u0443."
+      _eng: The battle is taking turns. At the top you can always see whose move
+        is going on now and whose will be next. When it's your turn, you have to
+        choose which opponent you want to attack, and then which weapon you want
+        to attack him with. After winning, you will receive a random reward.
+      _tur: "Sava\u015F s\u0131rayla devam ediyor. En \xFCstte, \u015Fimdi kimin
+        hamlesinin devam etti\u011Fini ve s\u0131rada kimin olaca\u011F\u0131n\u0131
+        her zaman g\xF6rebilirsiniz. S\u0131ra size geldi\u011Finde, hangi rakibe
+        sald\u0131rmak istedi\u011Finizi ve ard\u0131ndan ona hangi silahla sald\u0131rmak
+        istedi\u011Finizi se\xE7melisiniz. Kazand\u0131ktan sonra rastgele bir \xF6d\xFCl
+        alacaks\u0131n\u0131z."
+  - _step: 10
+    _sprite:
+      _rus: {fileID: 21300000, guid: 246942700d82685499fc67f08389ff5b, type: 3}
+      _eng: {fileID: 21300000, guid: 246942700d82685499fc67f08389ff5b, type: 3}
+      _tur: {fileID: 21300000, guid: 246942700d82685499fc67f08389ff5b, type: 3}
+    _label:
+      _rus: "\u0421\u043C\u0435\u0440\u0442\u044C"
+      _eng: Death
+      _tur: "\xD6l\xFCm"
+    _text:
+      _rus: "\u0415\u0441\u043B\u0438 \u0432\u044B \u043F\u043E\u0433\u0438\u0431\u043D\u0438\u0442\u0435,
+        \u0443 \u0432\u0430\u0441 \u0431\u0443\u0434\u0435\u0442 \u0448\u0430\u043D\u0441
+        \u0432\u043E\u0441\u043A\u0440\u0435\u0441\u043D\u0443\u0442\u044C, \u043D\u043E
+        \u0431\u043E\u0439 \u0431\u0443\u0434\u0435\u0442 \u0441\u0447\u0438\u0442\u0430\u0442\u044C\u0441\u044F
+        \u043F\u0440\u043E\u0438\u0433\u0440\u0430\u043D\u043D\u044B\u043C, \u0438
+        \u0432\u044B \u043D\u0435 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u0435
+        \u043D\u0430\u0433\u0440\u0430\u0434\u0443 \u0437\u0430 \u043D\u0435\u0433\u043E."
+      _eng: If you die, you will have a chance to resurrect, but the fight will be
+        considered lost, and you will not receive a reward for it.
+      _tur: "E\u011Fer \xF6l\xFCrsen, diriltme \u015Fans\u0131n olacak, ama sava\u015F
+        kaybedilmi\u015F say\u0131lacak ve bunun i\xE7in bir \xF6d\xFCl almayacaks\u0131n."
+  - _step: 11
+    _sprite:
+      _rus: {fileID: 21300000, guid: e7e49e434b65bc04197a7ed3c6e24232, type: 3}
+      _eng: {fileID: 21300000, guid: e7e49e434b65bc04197a7ed3c6e24232, type: 3}
+      _tur: {fileID: 21300000, guid: e7e49e434b65bc04197a7ed3c6e24232, type: 3}
+    _label:
+      _rus: "\u0411\u043E\u0441\u0441"
+      _eng: Boss
+      _tur: Patron
+    _text:
+      _rus: "\u0411\u043E\u0441\u0441 - \u044D\u0442\u043E \u043F\u043E\u0441\u043B\u0435\u0434\u043D\u0438\u0439
+        \u0432\u0440\u0430\u0433 \u0443\u0440\u043E\u0432\u043D\u044F. \u041F\u043E\u0431\u0435\u0434\u0438\u0432
+        \u0435\u0433\u043E, \u0432\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u0435
+        \u0434\u0432\u043E\u0439\u043D\u0443\u044E \u043D\u0430\u0433\u0440\u0430\u0434\u0443
+        \u0438 \u0441\u0440\u0430\u0437\u0443 \u0436\u0435 \u043E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u0435\u0441\u044C
+        \u043D\u0430 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0439 \u0443\u0440\u043E\u0432\u0435\u043D\u044C.
+        \u0412 \u0441\u043B\u0443\u0447\u0430\u0435 \u0441\u043C\u0435\u0440\u0442\u0438
+        \u0432\u0430\u043C \u043D\u0435 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u0441\u044F
+        \u043F\u0435\u0440\u0435\u0440\u043E\u0434\u0438\u0442\u044C\u0441\u044F.
+        \u0423\u0434\u0430\u0447\u0438 \u0432\u0430\u043C \u0432 \u0432\u0430\u0448\u0438\u0445
+        \u043F\u0440\u0438\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u044F\u0445!"
+      _eng: The boss is the last enemy of the level. After defeating him, you will
+        receive a double reward and immediately go to the next level. In case of
+        death, you will not be reborn. Good luck with your adventures!
+      _tur: "Patron, seviyenin son d\xFC\u015Fman\u0131d\u0131r. Onu yendikten sonra
+        \xE7ifte \xF6d\xFCl alacak ve hemen bir sonraki seviyeye ge\xE7eceksiniz.
+        \xD6l\xFCm durumunda, yeniden do\u011Fmayacaks\u0131n. Maceralar\u0131n\u0131zda
+        iyi \u015Fanslar!"
