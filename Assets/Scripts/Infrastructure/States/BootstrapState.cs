@@ -11,10 +11,6 @@ namespace Assets.Infrastructure.States
         private readonly SdkLoader _sdkLoader;
         private readonly SceneLoader _sceneLoader;
 
-        private const string EnglishLanguage = "en";
-        private const string RussianLanguage = "ru";
-        private const string TurkishLanguage = "tr";
-
         public BootstrapState(GameStateMachine gameStateMachine, SdkLoader sdkLoader, SceneLoader sceneLoader)
         {
             _gameStateMachine = gameStateMachine;
@@ -33,14 +29,25 @@ namespace Assets.Infrastructure.States
 
         private void SetStartLanguage()
         {
-            Debug.Log($"[Game] is null: {Game.GameSettings == null}");
-            
             if (Game.GameSettings != null && Game.GameSettings.CurrentLocalization == "")
             {
                 var lang = Language.DefineLanguage(YandexGamesSdk.Environment.i18n.lang);
                 Game.GameSettings.ChangeLocalization(lang);
             }
 
+            if (PlayerAccount.IsAuthorized)
+            {
+                PlayerAccount.GetProfileData(SetPlayerName);
+            }
+            
+            _sceneLoader.LoadScene("Menu");
+            _gameStateMachine.Enter<MainMenuState>();
+        }
+
+        private void SetPlayerName(PlayerAccountProfileDataResponse playerData)
+        {
+            Game.GameSettings.SetPlayerProfileName(playerData.publicName);
+            
             _sceneLoader.LoadScene("Menu");
             _gameStateMachine.Enter<MainMenuState>();
         }

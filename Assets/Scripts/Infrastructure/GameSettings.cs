@@ -2,7 +2,6 @@ using System;
 using Assets.Infrastructure.DataStorageSystem;
 using Assets.Scripts.SoundSystem;
 using Assets.UI.ShopWindow;
-using UnityEngine;
 
 namespace Assets.Infrastructure
 {
@@ -10,6 +9,7 @@ namespace Assets.Infrastructure
     {
         private Sound _sound;
         private PlayerData _playerData;
+        private string _playerName = string.Empty;
 
         public event Action<string> OnLanguageChange;
 
@@ -21,18 +21,12 @@ namespace Assets.Infrastructure
         public ISound Sound => _sound;
         public PlayerData PlayerData => _playerData;
         public string CurrentLocalization => _playerData.Localization;
+        public string PlayerName => _playerName;
 
         public void Dispose()
         {
             _sound.Dispose();
             _playerData.SaveData();
-        }
-
-        private void Initialization()
-        {
-            _playerData = new PlayerData();
-            _sound = new Sound(_playerData);
-            Debug.Log(_playerData);
         }
 
         public void ChangeSoundSettings(SoundType type)
@@ -96,6 +90,17 @@ namespace Assets.Infrastructure
             PlayerData.SaveData();
             
             return isBue;
+        }
+
+        public void SetPlayerProfileName(string playerName)
+        {
+            _playerName = playerName;
+        }
+
+        private void Initialization()
+        {
+            _playerData = new PlayerData();
+            _sound = new Sound(_playerData);
         }
 
         private bool CheckForPossibilityOfBuying(int payment) => _playerData.Money - payment >= 0;

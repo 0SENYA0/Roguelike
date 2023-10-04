@@ -9,27 +9,20 @@ namespace Assets.UI.SettingsWindow
     {
         [SerializeField] private SettingsButton _musicButton;
         [SerializeField] private SettingsButton _sfxButton;
-        [SerializeField] private Button _resetPlayerData;
         [SerializeField] private Sprite _soundImageOn;
         [SerializeField] private Sprite _soundImageOff;
 
         private void OnEnable()
         {
             _musicButton.Icon.sprite = Game.GameSettings.Sound.IsMusicOn ? _soundImageOn : _soundImageOff;
-            _sfxButton.Icon.sprite = Game.GameSettings.Sound.IsSfxOn ? _soundImageOn : _soundImageOff;           
-            
-            if (_resetPlayerData != null)
-                _resetPlayerData.onClick.AddListener(ResetPlayerData);
-            
+            _sfxButton.Icon.sprite = Game.GameSettings.Sound.IsSfxOn ? _soundImageOn : _soundImageOff;
+
             _musicButton.Button.onClick.AddListener(OnMusicClickChange);
             _sfxButton.Button.onClick.AddListener(OnSfxClickChange);
         }
 
         private void OnDisable()
         {
-            if (_resetPlayerData != null)
-                _resetPlayerData.onClick.RemoveListener(ResetPlayerData);
-            
             _musicButton.Button.onClick.RemoveListener(OnMusicClickChange);
             _sfxButton.Button.onClick.RemoveListener(OnSfxClickChange);
         }
@@ -44,12 +37,6 @@ namespace Assets.UI.SettingsWindow
         {
             Game.GameSettings.ChangeSoundSettings(SoundType.SFX);
             _sfxButton.Icon.sprite = Game.GameSettings.Sound.IsSfxOn ? _soundImageOn : _soundImageOff;
-        }
-
-        private void ResetPlayerData()
-        {
-            Game.GameSettings.PlayerData.ResetData();
-            Game.GameSettings.PlayerData.SaveData();
         }
     }
 
