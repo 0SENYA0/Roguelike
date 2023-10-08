@@ -415,6 +415,7 @@ MonoBehaviour:
   _isRestartIfCalledAgain: 0
   _smoothFade: 1
   _timeToFade: 0.5
+  _isStopped: 0
 --- !u!82 &900148494
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1585,10 +1586,6 @@ PrefabInstance:
     - target: {fileID: 3457014615898574254, guid: 69d14fa01395e3c498ba05da68fe951d, type: 3}
       propertyPath: m_Name
       value: PopupTrainig
-      objectReference: {fileID: 0}
-    - target: {fileID: 5256486521600610169, guid: 69d14fa01395e3c498ba05da68fe951d, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -59.44391
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

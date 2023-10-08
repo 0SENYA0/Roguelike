@@ -24,28 +24,18 @@ namespace Assets.UI.HUD.LosePanels
         
         public event Action<UserLossAnswers> UserAnswerEvent; 
 
-        public void Show()
+        public void Show(bool isBoosFight)
         {
             _loseSound.Play();
-            
-            if (Game.GameSettings.PlayerData.Idol > 0)
-            {
-                _idolPanel.gameObject.SetActive(true);
-                _idolPanel.Init();
-                _idolPanel.UserAnswerEvent += ProcessUserAnswer;
-            }
+
+            if (isBoosFight)
+                BackToMenu();
+            else if (Game.GameSettings.PlayerData.Idol > 0)
+                OfferRebornByIdol();
             else if (_levelRoot.IsPossibleToRebornForAd)
-            {
-                _adPanel.gameObject.SetActive(true);
-                _adPanel.Init();
-                _adPanel.UserAnswerEvent += ProcessUserAnswer;
-            }
+                OfferRebornByAd();
             else
-            {
-                _finalLossPanel.SetActive(true);
-                _finalLossButton.onClick.AddListener(OnButtonClicked);
-                _finalLossText.text = _localizedFinalLoss.GetLocalization(Game.GameSettings.CurrentLocalization);
-            }           
+                BackToMenu();           
         }
 
         public void Hide()
@@ -53,6 +43,27 @@ namespace Assets.UI.HUD.LosePanels
             _idolPanel.gameObject.SetActive(false);
             _adPanel.gameObject.SetActive(false);
             _finalLossPanel.SetActive(false);
+        }
+
+        private void BackToMenu()
+        {
+            _finalLossPanel.SetActive(true);
+            _finalLossButton.onClick.AddListener(OnButtonClicked);
+            _finalLossText.text = _localizedFinalLoss.GetLocalization(Game.GameSettings.CurrentLocalization);
+        }
+
+        private void OfferRebornByIdol()
+        {
+            _idolPanel.gameObject.SetActive(true);
+            _idolPanel.Init();
+            _idolPanel.UserAnswerEvent += ProcessUserAnswer;
+        }
+
+        private void OfferRebornByAd()
+        {
+            _adPanel.gameObject.SetActive(true);
+            _adPanel.Init();
+            _adPanel.UserAnswerEvent += ProcessUserAnswer;
         }
 
         private void ProcessUserAnswer(UserLossAnswers answer)

@@ -49,18 +49,27 @@ namespace Assets.YandexLeaderboard
 
         private void Authorized()
         {
-            PlayerAccount.Authorize(
-                onSuccessCallback: () =>
-                {
-                    PlayerAccount.RequestPersonalProfileDataPermission();
-                    AddPlayerToLeaderboard();
-                    FormListOfPlayers();
-                    DisplayPlayersResults();
-                },
-                onErrorCallback: (error) =>
-                {
-                    CloseLeaderboard();
-                });
+            if (PlayerAccount.IsAuthorized == false)
+            {
+                FormListOfPlayers();
+                FormPlayersResults();
+                _leaderboardView.gameObject.SetActive(true);
+            }
+            else
+            {
+                FormListOfPlayers();
+                FormPlayersResults();
+                
+                PlayerAccount.Authorize(
+                    onSuccessCallback: () =>
+                    {
+                        PlayerAccount.RequestPersonalProfileDataPermission();
+                        AddPlayerToLeaderboard();
+                        FormPlayersResults();
+                    });
+                
+                _leaderboardView.gameObject.SetActive(true);
+            }
         }
 
         private void AddPlayerToLeaderboard()
@@ -112,7 +121,7 @@ namespace Assets.YandexLeaderboard
             });
         }
 
-        private void DisplayPlayersResults()
+        private void FormPlayersResults()
         {
             if (PlayerAccount.IsAuthorized == false)
             {
@@ -136,8 +145,6 @@ namespace Assets.YandexLeaderboard
                     _playerRanking.Initialize(new LeaderboardData(rank, language, nickName, score, picture));
                 });
             }
-            
-            _leaderboardView.gameObject.SetActive(true);
         }
 
         private string GetName(string publicName)

@@ -19,8 +19,10 @@ namespace Assets.YandexAds
                 onOpenCallback: Game.GameSettings.Sound.Pause,
                 onRewardedCallback: rewardMethod.Invoke,
                 onCloseCallback: Game.GameSettings.Sound.UpPause,
-                onErrorCallback: (x) => Game.GameSettings.Sound.UpPause()
-                );
+                onErrorCallback: (x) =>
+                {
+                    Game.GameSettings.Sound.UpPause();
+                });
         }
 
         public void ShowInterstitialAd(Action callback)

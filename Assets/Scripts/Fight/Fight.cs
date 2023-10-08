@@ -131,7 +131,7 @@ namespace Assets.Fight
 
                     yield return new WaitUntil(enemyChooser.TryChooseEnemy);
                     # endregion
-                    
+
                     # region жмякаем кубики
                     foreach (EnemyAttackPresenter enemyAttackPresenter in _enemyAttackPresenters)
                         enemyAttackPresenter.EnemyAttackView.StopParticleEffect();

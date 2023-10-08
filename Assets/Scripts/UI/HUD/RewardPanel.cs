@@ -16,11 +16,10 @@ namespace Assets.UI.HUD
         [SerializeField] private Button _button;
         [SerializeField] private SoundComponent _winSound;
         [Space]
-        [Header("Блоки элементов")] 
         [SerializeField] private Image _attackImage;
         [SerializeField] private Image _defendImage;
         [SerializeField] private TMP_Text _name;
-        [SerializeField]private TMP_Text _data;
+        [SerializeField] private TMP_Text _data;
         [SerializeField] private Image _element;
         [SerializeField] private ElementsSpriteView _elementsSpriteView;
         
@@ -70,7 +69,7 @@ namespace Assets.UI.HUD
             _data.text = $"Твоя награда:\n" +
                          $"{GetLocalizedText(LanguageConfig.MoneyKey)}: +{money}$\n" +
                          $"{GetLocalizedText(LanguageConfig.WeaponKey)}\n" +
-                         $"{GetLocalizedText(LanguageConfig.DamageKey)} = {weapon.Damage}\n" +
+                         $"{GetLocalizedText(LanguageConfig.DamageKey)} = {weapon.Damage:F1}\n" +
                          $"{GetLocalizedText(LanguageConfig.DmgModifierKey)} = {weapon.ChanceToModifier}\n" +
                          $"{GetLocalizedText(LanguageConfig.SplashChanceKey)} = {weapon.ChanceToSplash}\n" +
                          $"{GetLocalizedText(LanguageConfig.CriticalChanceKey)} = {weapon.ChanceToCritical}";
@@ -86,8 +85,8 @@ namespace Assets.UI.HUD
             _data.text = $"Твоя награда:\n" +
                          $"{GetLocalizedText(LanguageConfig.MoneyKey)}: +{money}$\n" +
                          $"{GetLocalizedText(LanguageConfig.ArmorKey)}\n" +
-                         $"{GetLocalizedText(LanguageConfig.BodyKey)} = {armor.Body.Value}\n" +
-                         $"{GetLocalizedText(LanguageConfig.HeadKey)} = {armor.Head.Value}";
+                         $"{GetLocalizedText(LanguageConfig.BodyKey)} = {armor.Body.Value:F1}\n" +
+                         $"{GetLocalizedText(LanguageConfig.HeadKey)} = {armor.Head.Value:F1}";
         }
 
         private void ShowBossLoot(Armor armor, Weapon.Weapon weapon, int money)
@@ -99,13 +98,13 @@ namespace Assets.UI.HUD
             _data.text = $"Твоя награда:\n" +
                          $"{GetLocalizedText(LanguageConfig.MoneyKey)}: +{money}$\n" +
                          $"{GetLocalizedText(LanguageConfig.WeaponKey)}\n" +
-                         $"{GetLocalizedText(LanguageConfig.DamageKey)} = {weapon.Damage}\n" +
+                         $"{GetLocalizedText(LanguageConfig.DamageKey)} = {weapon.Damage:F1}\n" +
                          $"{GetLocalizedText(LanguageConfig.DmgModifierKey)} = {weapon.ChanceToModifier}\n" +
                          $"{GetLocalizedText(LanguageConfig.SplashChanceKey)} = {weapon.ChanceToSplash}\n" +
                          $"{GetLocalizedText(LanguageConfig.CriticalChanceKey)} = {weapon.ChanceToCritical}\n\n" +
                          $"{GetLocalizedText(LanguageConfig.ArmorKey)}\n" +
-                         $"{GetLocalizedText(LanguageConfig.BodyKey)} = {armor.Body.Value}\n" +
-                         $"{GetLocalizedText(LanguageConfig.HeadKey)} = {armor.Head.Value}";
+                         $"{GetLocalizedText(LanguageConfig.BodyKey)} = {armor.Body.Value:F1}\n" +
+                         $"{GetLocalizedText(LanguageConfig.HeadKey)} = {armor.Head.Value:F1}";
         }
         
         protected string GetLocalizedText(string key)

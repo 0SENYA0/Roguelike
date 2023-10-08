@@ -355,6 +355,7 @@ MonoBehaviour:
   _isRestartIfCalledAgain: 0
   _smoothFade: 1
   _timeToFade: 1
+  _isStopped: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,6 +483,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 514187896910649756, guid: d4c1c1e532ba68e48bc2a4e0d60025ac, type: 3}
+      propertyPath: _clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 41faab124a5012846b3f322ae07bb590, type: 3}
     - target: {fileID: 1148052574409356564, guid: d4c1c1e532ba68e48bc2a4e0d60025ac, type: 3}
       propertyPath: m_Name
       value: BattflefildMap

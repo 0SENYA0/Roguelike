@@ -58,7 +58,7 @@ namespace Assets.Fight
                         CreateEnemyReward();
                     break;
                 case FightResult.Lose:
-                    _losePanel.Show();
+                    _losePanel.Show(_isBoosFight);
                     _losePanel.UserAnswerEvent += OnLosePanelClick;
                     break;
                 case FightResult.Leave:

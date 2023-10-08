@@ -27,7 +27,7 @@ namespace Assets.Scripts.SoundSystem
         private Coroutine _coroutine;
         private SoundState _state;
 
-        private bool _isStopped;
+        [SerializeField] private bool _isStopped;
         private bool _isMusicOn;
         private bool _isSfxOn;
 
@@ -70,12 +70,6 @@ namespace Assets.Scripts.SoundSystem
             Game.GameSettings.Sound.OnMusicStateChanged -= ChangeMusicState;
             Game.GameSettings.Sound.OnSfxStateChanged -= ChangeSfxState;
             Game.GameSettings.Sound.OnPauseStateChanged -= ChangePauseState;
-        }
-
-        private void Start()
-        {
-            if (_playOnAwake)
-                Play();
         }
 
         private void OnDestroy()
