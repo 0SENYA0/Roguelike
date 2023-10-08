@@ -15,7 +15,7 @@ MonoBehaviour:
   _defaultWeaponStat:
     _damage:
       _minValue: 1
-      _maxValue: 1
+      _maxValue: 10
   _levelWeapon:
     _damage:
       _minValue: 5
@@ -27,17 +27,17 @@ MonoBehaviour:
   _defaultArmorStat:
     _headStatValue:
       _minValue: 1
-      _maxValue: 1
+      _maxValue: 5
     _bodyStatValue:
       _minValue: 1
-      _maxValue: 1
+      _maxValue: 5
   _levelArmor:
     _headStatValue:
       _minValue: 1
-      _maxValue: 10
+      _maxValue: 7
     _bodyStatValue:
       _minValue: 1
-      _maxValue: 10
+      _maxValue: 7
   _bossLootArmor:
     _headStatValue:
       _minValue: 5

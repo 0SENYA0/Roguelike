@@ -49,8 +49,9 @@ namespace Assets.YandexLeaderboard
 
         private void Authorized()
         {
-            if (PlayerAccount.IsAuthorized == false)
+            if (PlayerAccount.IsAuthorized)
             {
+                PlayerAccount.RequestPersonalProfileDataPermission();
                 FormListOfPlayers();
                 FormPlayersResults();
                 _leaderboardView.gameObject.SetActive(true);
@@ -59,16 +60,16 @@ namespace Assets.YandexLeaderboard
             {
                 FormListOfPlayers();
                 FormPlayersResults();
+                _leaderboardView.gameObject.SetActive(true);
                 
                 PlayerAccount.Authorize(
                     onSuccessCallback: () =>
                     {
                         PlayerAccount.RequestPersonalProfileDataPermission();
                         AddPlayerToLeaderboard();
+                        FormListOfPlayers();
                         FormPlayersResults();
                     });
-                
-                _leaderboardView.gameObject.SetActive(true);
             }
         }
 
@@ -99,7 +100,7 @@ namespace Assets.YandexLeaderboard
         private void FormListOfPlayers()
         {
             var players = new List<LeaderboardData>();
-
+            
             Leaderboard.GetEntries(LeaderboardConfig.LeaderboardKey, (result) =>
             {
                 int resultAmount = Mathf.Clamp(result.entries.Length, 1, LeaderboardConfig.MaxNumberOfPlayersInLeaderboard);

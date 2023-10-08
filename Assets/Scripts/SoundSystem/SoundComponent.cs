@@ -189,18 +189,14 @@ namespace Assets.Scripts.SoundSystem
 
         private IEnumerator WaitPlaySound(float timeToStop)
         {
-            while (_source.time < timeToStop)
-            {
-                yield return null;
-            }
-
+            yield return new WaitForSeconds(timeToStop);
             StartState(FadeSound());
         }
 
         private IEnumerator FadeSound()
         {
             _state = SoundState.Fade;
-
+            
             if (_smoothFade == false)
             {
                 StopAndTryRestartSound();
@@ -225,7 +221,9 @@ namespace Assets.Scripts.SoundSystem
             _source.Stop();
 
             if (_isLoop && _isStopped == false)
+            {
                 PlaySound();
+            }
         }
     }
 }
