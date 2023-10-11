@@ -1,3 +1,4 @@
+using Agava.YandexGames;
 using Assets.Infrastructure;
 using Assets.Infrastructure.DataStorageSystem;
 using Assets.Infrastructure.SceneLoadHandler;
@@ -19,9 +20,11 @@ namespace Assets.UI
         [SerializeField] private MenuButtonItem _training;
         [SerializeField] private MenuButtonItem _shop;
         [SerializeField] private ShopPanel _shopPanel;
-        
+
         private void Start()
         {
+            YandexGamesSdk.GameReady();
+            
             _sound.Play();
             Curtain.Instance.HideCurtain();
             _buttonGroups.SetActive(true);

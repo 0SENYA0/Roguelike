@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using Agava.YandexGames;
 using Assets.Config;
 using Assets.Infrastructure;
-using Assets.Scripts.GenerationSystem.LevelMovement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,9 +12,8 @@ namespace Assets.YandexLeaderboard
         [Header("Control buttons")]
         [SerializeField] private Button _showLeaderboard;
         [SerializeField] private Button _closeLeaderboard;
-        [Header("Player control")]
-        [SerializeField] private MouseClickTracker _playerMovement;
-        [Header("leaderboard view")]
+        [Header("Panels")]
+        [SerializeField] private AuthorizationMessage _authorization;
         [SerializeField] private LeaderboardItem _playerRanking;
         [SerializeField] private LeaderboardView _leaderboardView;
 
@@ -34,43 +32,50 @@ namespace Assets.YandexLeaderboard
         private void CloseLeaderboard()
         {
             _leaderboardView.gameObject.SetActive(false);
-
-            if (_playerMovement != null)
-                _playerMovement.enabled = true;
         }
 
         private void ShowLeaderboard()
         {
-            if (_playerMovement != null)
-                _playerMovement.enabled = false;
-
-            Authorized();
-        }
-
-        private void Authorized()
-        {
             if (PlayerAccount.IsAuthorized)
             {
                 PlayerAccount.RequestPersonalProfileDataPermission();
+                AddPlayerToLeaderboard();
                 FormListOfPlayers();
                 FormPlayersResults();
                 _leaderboardView.gameObject.SetActive(true);
             }
             else
             {
-                FormListOfPlayers();
-                FormPlayersResults();
-                _leaderboardView.gameObject.SetActive(true);
-                
-                PlayerAccount.Authorize(
-                    onSuccessCallback: () =>
-                    {
-                        PlayerAccount.RequestPersonalProfileDataPermission();
-                        AddPlayerToLeaderboard();
-                        FormListOfPlayers();
-                        FormPlayersResults();
-                    });
+                ShowAuthorizationWarning();
             }
+        }
+
+        private void ShowAuthorizationWarning()
+        {
+            _authorization.gameObject.SetActive(true);
+            _authorization.Show();
+            _authorization.UserResponse += OnUserResponse;
+        }
+
+        private void OnUserResponse(bool userResponse)
+        {
+            _authorization.UserResponse -= OnUserResponse;
+            
+            if (userResponse)
+                Authorized();
+        }
+
+        private void Authorized()
+        {
+            PlayerAccount.Authorize(
+                onSuccessCallback: () =>
+                {
+                    PlayerAccount.RequestPersonalProfileDataPermission();
+                    AddPlayerToLeaderboard();
+                    FormListOfPlayers();
+                    FormPlayersResults();
+                    _leaderboardView.gameObject.SetActive(true);
+                });
         }
 
         private void AddPlayerToLeaderboard()

@@ -1414,6 +1414,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Leaderboard
       objectReference: {fileID: 0}
+    - target: {fileID: 4741854489173420818, guid: 792ffad6cf3e9094d8cf88385ed2d0e2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5479844642877134322, guid: 792ffad6cf3e9094d8cf88385ed2d0e2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
