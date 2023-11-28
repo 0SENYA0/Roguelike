@@ -11,9 +11,6 @@ namespace Assets.Interface
     {
         void Enter(TPayload payload);
     }
-
-    public interface IParameterState<TPayload>
-    { }
     
     public interface IExitableState
     {

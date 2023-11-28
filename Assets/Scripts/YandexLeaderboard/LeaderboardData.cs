@@ -11,11 +11,11 @@ namespace Assets.YandexLeaderboard
             Picture = picture;
         }
 
-        public int Rank { get; private set; }
-        public string Language { get; private set; }
-        public string NickName  { get; private set; }
-        public int Score { get; private set; }
-        public string Picture { get; private set; }
+        public int Rank { get; }
+        public string Language { get; }
+        public string NickName  { get; }
+        public int Score { get; }
+        public string Picture { get; }
 
     }
 }

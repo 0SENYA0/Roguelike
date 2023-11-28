@@ -14,12 +14,8 @@ namespace Assets.Infrastructure
         public SceneLoader(ICoroutineRunner  coroutineRunner) => 
             _coroutineRunner = coroutineRunner;
         
-        public  void LoadScene(string sceneName, Action onLoadedCallback = null)
-        {
-             LoadSceneCoroutine(sceneName, onLoadedCallback).ToUniTask();
-             //_coroutineRunner.StartCoroutine(LoadSceneCoroutine(sceneName, onLoadedCallback));
-             
-        }
+        public  void LoadScene(string sceneName, Action onLoadedCallback = null) =>
+            _coroutineRunner.StartCoroutine(LoadSceneCoroutine(sceneName, onLoadedCallback));
 
         private IEnumerator LoadSceneCoroutine(string sceneName, Action onLoadedCallback = null)
         {

@@ -8,7 +8,10 @@ namespace Assets.Scripts.InteractiveObjectSystem
     {
         private Weapon.Weapon _weapon;
         private Armor _armor;
-
+        
+        public Weapon.Weapon Weapon => _weapon;
+        public Armor Armor => _armor;
+        
         protected override void OnStart()
         {
             base.OnStart();
@@ -18,8 +21,5 @@ namespace Assets.Scripts.InteractiveObjectSystem
             else
                 _armor = ItemGenerator.Instance.GetRandomArmor();
         }
-
-        public Weapon.Weapon Weapon => _weapon;
-        public Armor Armor => _armor;
     }
 }

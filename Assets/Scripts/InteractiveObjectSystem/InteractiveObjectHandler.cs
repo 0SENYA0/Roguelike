@@ -9,7 +9,6 @@ using Assets.Player;
 using Assets.Scripts.GenerationSystem.LevelMovement;
 using Assets.Scripts.InteractiveObjectSystem.RandomEventSystem;
 using Assets.UI;
-using DefaultNamespace.Tools;
 using UnityEngine;
 
 namespace Assets.Scripts.InteractiveObjectSystem

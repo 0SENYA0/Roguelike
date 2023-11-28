@@ -38,11 +38,6 @@ namespace Assets.Utils
             _useButton.onClick.AddListener(OnClickItem);
         }
         
-        public void OnDispose()
-        {
-            _useButton.onClick.RemoveListener(OnClickItem);
-        }
-
         public void Destroy()
         {
             _useButton.onClick.RemoveListener(OnClickItem);

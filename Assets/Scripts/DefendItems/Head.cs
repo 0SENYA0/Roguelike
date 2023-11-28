@@ -5,7 +5,6 @@ namespace Assets.DefendItems
         public Head(float value) =>
             Value = value;
 
-        //TODO Повышение характеристик
         public float Value { get; }
     }
 }

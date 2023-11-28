@@ -26,7 +26,7 @@ namespace Assets.Inventory.ItemGeneratorSystem
             var currentLevelStats = _levelsStats.ListStats.FirstOrDefault(x => x.LevelNumber == levelNumber);
 
             if (currentLevelStats == null)
-                throw new Exception($"There are no item characteristics for this level: {levelNumber}!");
+                throw new ArgumentException($"There are no item characteristics for this level: {levelNumber}!");
 
             _stats = currentLevelStats.List;
         }
@@ -103,15 +103,4 @@ namespace Assets.Inventory.ItemGeneratorSystem
         }
     }
 
-    public class InventoryItem
-    {
-        public InventoryItem(Armor armor, Weapon.Weapon weapon)
-        {
-            Armor = armor;
-            Weapon = weapon;
-        }
-
-        public Armor Armor { get; private set; }
-        public Weapon.Weapon Weapon { get; private set; }
-    }
 }

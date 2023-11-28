@@ -9,7 +9,6 @@ using Assets.Person;
 using Assets.Player;
 using Assets.Scripts.UI.Widgets;
 using Assets.Utils;
-using DefaultNamespace.Tools;
 using UnityEngine;
 using AnimationState = Assets.Scripts.AnimationComponent.AnimationState;
 

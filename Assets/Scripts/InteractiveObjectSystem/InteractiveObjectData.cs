@@ -11,8 +11,8 @@ namespace Assets.Scripts.InteractiveObjectSystem
             Element = element;
         }
 
-        public string Name { get; private set; }
-        public string Data { get; private set; }
-        public Element Element { get; private set; }
+        public string Name { get; }
+        public string Data { get; }
+        public Element Element { get; }
     }
 }

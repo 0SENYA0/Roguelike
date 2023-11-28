@@ -35,18 +35,10 @@ namespace Assets.YandexAds
 
         private void WebApplicationFocus(bool unfocusStatus)
         {
-            // if (unfocusStatus)
-            //     Time.timeScale = 0;
-            // else
-            //     Time.timeScale = 1;
-        }
-
-        private void OnApplicationFocus(bool pauseStatus)
-        {
-            // if (pauseStatus == false)
-            //     Time.timeScale = 0;
-            // else
-            //     Time.timeScale = 1;
+            if (unfocusStatus)
+                Time.timeScale = 0;
+            else
+                Time.timeScale = 1;
         }
     }
 }

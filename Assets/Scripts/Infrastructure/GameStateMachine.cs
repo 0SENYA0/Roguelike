@@ -16,7 +16,6 @@ namespace Assets.Infrastructure
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, sdkLoader, sceneLoader),
                 [typeof(MainMenuState)] = new MainMenuState(this, sceneLoader),
-                [typeof(GameplayState)] = new GameplayState(this),
             };
         }
 
