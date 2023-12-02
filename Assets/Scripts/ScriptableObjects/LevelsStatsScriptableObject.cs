@@ -3,21 +3,11 @@ using UnityEngine;
 
 namespace Assets.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "LevelStats", menuName = "ScriptableObject/LevelStats", order = 0)]
-    public class LevelsStatsScriptableObject : ScriptableObject
-    {
-        [SerializeField] private List<Level> _listStats;
+	[CreateAssetMenu(fileName = "LevelStats", menuName = "ScriptableObject/LevelStats", order = 0)]
+	public class LevelsStatsScriptableObject : ScriptableObject
+	{
+		[SerializeField] private List<Level> _listStats;
 
-        public List<Level> ListStats => _listStats;
-
-        [System.Serializable]
-        public class Level
-        {
-            [SerializeField] private int _levelNumber;
-            [SerializeField] private ListOfItemStatsRangesScriptableObject _list;
-
-            public int LevelNumber => _levelNumber;
-            public ListOfItemStatsRangesScriptableObject List => _list;
-        }
-    }
+		public List<Level> ListStats => _listStats;
+	}
 }

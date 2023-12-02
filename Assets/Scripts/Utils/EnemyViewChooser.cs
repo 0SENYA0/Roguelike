@@ -1,85 +1,85 @@
 using System;
 using Assets.Enemy;
 using Assets.Inventory;
+using Assets.Weapons;
 using UnityEngine;
 
 namespace Assets.Utils
 {
-    public class EnemyViewChooser : IDisposable
-    {
-        private readonly PlayerWeaponPanel _weaponPanel;
-        private readonly int _mouseKey = 0;
+	public class EnemyViewChooser : IDisposable
+	{
+		private readonly PlayerWeaponPanel _weaponPanel;
+		private readonly int _mouseKey = 0;
 
-        private EnemyAttackView _attackView;
-        private bool _haveClick;
-        private Camera _camera;
-        private Weapon.Weapon _activeWeapon;
+		private EnemyAttackView _attackView;
+		private bool _haveClick;
+		private Camera _camera;
+		private Weapon _activeWeapon;
 
-        public EnemyViewChooser(PlayerWeaponPanel weaponPanel)
-        {
-            _camera = Camera.main;
-            
-            _weaponPanel = weaponPanel;
+		public EnemyViewChooser(PlayerWeaponPanel weaponPanel)
+		{
+			_camera = Camera.main;
 
-            _weaponPanel.ChooseWeaponEvent += ChooseWeapon;
-            _weaponPanel.ClosePanelEvent += OnClosePanel;
-        }
+			_weaponPanel = weaponPanel;
 
-        public Weapon.Weapon Weapon => _activeWeapon;
-        public EnemyAttackView AttackView => _attackView;
+			_weaponPanel.ChooseWeaponEvent += ChooseWeapon;
+			_weaponPanel.ClosePanelEvent += OnClosePanel;
+		}
 
-        public bool TryChooseEnemy()
-        {
-            if (TryGetEnemyView(out EnemyAttackView unitAttackView))
-            {
-                _attackView = unitAttackView;
-                _weaponPanel.Show();
-            }
+		public Weapon Weapon => _activeWeapon;
 
-            if (_haveClick)
-            {
-                _haveClick = false;
-                return true;
-            }
+		public EnemyAttackView AttackView => _attackView;
 
-            return false;
-        }
+		public bool TryChooseEnemy()
+		{
+			if (TryGetEnemyView(out EnemyAttackView unitAttackView))
+			{
+				_attackView = unitAttackView;
+				_weaponPanel.Show();
+			}
 
-        public void Dispose()
-        {
-            _weaponPanel.ChooseWeaponEvent -= ChooseWeapon;
-            _weaponPanel.ClosePanelEvent -= OnClosePanel;
-        }
+			if (_haveClick)
+			{
+				_haveClick = false;
+				return true;
+			}
 
-        private void OnClosePanel()
-        {
-            _weaponPanel.Hide();
-        }
+			return false;
+		}
 
-        private void ChooseWeapon(IInventoryItem obj)
-        {
-            _activeWeapon = obj as Weapon.Weapon;
-            _haveClick = true;
-            _weaponPanel.Hide();
-        }
+		public void Dispose()
+		{
+			_weaponPanel.ChooseWeaponEvent -= ChooseWeapon;
+			_weaponPanel.ClosePanelEvent -= OnClosePanel;
+		}
 
-        private bool TryGetEnemyView(out EnemyAttackView data)
-        {
-            data = null;
+		private void OnClosePanel() =>
+			_weaponPanel.Hide();
 
-            if (Input.GetMouseButtonDown(_mouseKey))
-            {
-                Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
+		private void ChooseWeapon(IInventoryItem obj)
+		{
+			_activeWeapon = obj as Weapon;
+			_haveClick = true;
+			_weaponPanel.Hide();
+		}
 
-                if (hit.collider != null && hit.collider.TryGetComponent(out EnemyAttackView selectedObject))
-                {
-                    data = selectedObject;
-                    return true;
-                }
-            }
+		private bool TryGetEnemyView(out EnemyAttackView data)
+		{
+			data = null;
 
-            return false;
-        }
-    }
+			if (Input.GetMouseButtonDown(_mouseKey))
+			{
+				Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+				RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
+
+				if (hit.collider != null && hit.collider.TryGetComponent(out EnemyAttackView selectedObject))
+				{
+					data = selectedObject;
+					return true;
+				}
+			}
+
+			return false;
+		}
+	}
 }

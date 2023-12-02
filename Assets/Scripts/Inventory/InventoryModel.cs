@@ -2,55 +2,58 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.DefendItems;
+using Assets.Weapons;
 
 namespace Assets.Inventory
 {
-    public class InventoryModel
-    {
-        private readonly List<IInventoryItem> _items;
-        private readonly int _maxSize;
+	public class InventoryModel
+	{
+		private readonly List<IInventoryItem> _items;
+		private readonly int _maxSize;
 
-        public InventoryModel(int maxSize)
-        {
-            _maxSize = maxSize;
-            _items = new List<IInventoryItem>();
-        }
+		public InventoryModel(int maxSize)
+		{
+			_maxSize = maxSize;
+			_items = new List<IInventoryItem>();
+		}
 
-        public event Action<int, int> CountItemsChangeEvent; 
+		public event Action<int, int> CountItemsChangeEvent;
 
-        public int TotalSize => _items.Count;
-        public int MaxSize => _maxSize;
+		public int TotalSize => _items.Count;
 
-        public IReadOnlyList<Armor> GetArmor() => _items.OfType<Armor>().ToList();
-        public IReadOnlyList<Weapon.Weapon> GetWeapon() => _items.OfType<Weapon.Weapon>().ToList();
+		public int MaxSize => _maxSize;
 
-        public void AddItem(IInventoryItem item)
-        {
-            if (TotalSize < _maxSize)
-            {
-                _items.Add(item);
-                CountItemsChangeEvent?.Invoke(MaxSize, TotalSize);
-            }
-            else
-            {
-                throw new AggregateException("Inventory is full");
-            }
-        }
+		public IReadOnlyList<Armor> GetArmor() => _items.OfType<Armor>().ToList();
 
-        public void RemoveItem(IInventoryItem item)
-        {
-            if (_items.Contains(item))
-            {
-                if (item is Armor armor)
-                    armor.UnSelect();
-                
-                _items.Remove(item);
-                CountItemsChangeEvent?.Invoke(MaxSize, TotalSize);
-            }
-            else
-            {
-                throw new AggregateException("This item is not in the inventory");
-            }
-        }
-    }
+		public IReadOnlyList<Weapon> GetWeapon() => _items.OfType<Weapon>().ToList();
+
+		public void AddItem(IInventoryItem item)
+		{
+			if (TotalSize < _maxSize)
+			{
+				_items.Add(item);
+				CountItemsChangeEvent?.Invoke(MaxSize, TotalSize);
+			}
+			else
+			{
+				throw new AggregateException("Inventory is full");
+			}
+		}
+
+		public void RemoveItem(IInventoryItem item)
+		{
+			if (_items.Contains(item))
+			{
+				if (item is Armor armor)
+					armor.UnSelect();
+
+				_items.Remove(item);
+				CountItemsChangeEvent?.Invoke(MaxSize, TotalSize);
+			}
+			else
+			{
+				throw new AggregateException("This item is not in the inventory");
+			}
+		}
+	}
 }

@@ -5,15 +5,11 @@ namespace Assets.Infrastructure.States
 {
     public class MainMenuState : IState, IButtonObserver
     {
-        private readonly GameStateMachine _gameStateMachine;
+        private const string GenerationStateName = "LevelGeneration";
         private readonly SceneLoader _sceneLoader;
-        private IButton _button;
 
-        public MainMenuState(GameStateMachine gameStateMachine, SceneLoader sceneLoader)
-        {
-            _gameStateMachine = gameStateMachine;
+        public MainMenuState(SceneLoader sceneLoader) =>
             _sceneLoader = sceneLoader;
-        }
 
         public void Enter() => 
             MainMenuButtonPlayObserver.Instance.Registry(this);
@@ -21,9 +17,7 @@ namespace Assets.Infrastructure.States
         public void Exit() => 
             MainMenuButtonPlayObserver.Instance.UnRegistry(this);
 
-        public void Update()
-        {
-            _sceneLoader.LoadScene("LevelGeneration");
-        }
+        public void Update() =>
+            _sceneLoader.LoadScene(GenerationStateName);
     }
 }

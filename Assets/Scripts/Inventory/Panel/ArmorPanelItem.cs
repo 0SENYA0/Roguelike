@@ -48,9 +48,7 @@ namespace Assets.Inventory.Panel
                 _background.sprite = _defaultSprite;
         }
 
-        private void OnClickUse()
-        {
+        private void OnClickUse() =>
             OnItemUse?.Invoke(_item);
-        }
     }
 }

@@ -6,15 +6,13 @@ namespace Assets.Fight
     public class ElementsDamagePanel : MonoBehaviour, IElementsDamagePanel
     {
         [SerializeField] private Button _exit;
+        [SerializeField] private ElementInfoLine _fireElementInfoLine;
+        [SerializeField] private ElementInfoLine _treeElementInfoLine;
+        [SerializeField] private ElementInfoLine _waterElementInfoLine;
+        [SerializeField] private ElementInfoLine _metalElementInfoLine;
+        [SerializeField] private ElementInfoLine _stoneElementInfoLine;
 
         public Button Exit => _exit;
-
-        [SerializeField] ElementInfoLine _fireElementInfoLine;
-        [SerializeField] ElementInfoLine _treeElementInfoLine;
-        [SerializeField] ElementInfoLine _waterElementInfoLine;
-        [SerializeField] ElementInfoLine _metalElementInfoLine;
-        [SerializeField] ElementInfoLine _stoneElementInfoLine;
-
 
         public IElementInfoLine FireElementInfoLine => _fireElementInfoLine;
 
@@ -26,39 +24,16 @@ namespace Assets.Fight
 
         public IElementInfoLine StoneElementInfoLine => _stoneElementInfoLine;
 
-        private void OnEnable()
-        {
+        private void OnEnable() =>
             _exit.onClick.AddListener(HidePanel);
-        }
 
-        private void OnDisable()
-        {
+        private void OnDisable() =>
             _exit.onClick.RemoveListener(HidePanel);
-        }
 
-        public void HidePanel()
-        {
-            print("OnCLick exit button - hide panel");
+        public void HidePanel() =>
             gameObject.SetActive(false);
-        }
 
         public void ShowPanel() =>
             gameObject.SetActive(true);
-    }
-
-    public interface IElementsDamagePanel
-    {
-        void ShowPanel();
-        public void HidePanel();
-        public Button Exit { get; }
-        public IElementInfoLine FireElementInfoLine { get; }
-
-        public IElementInfoLine TreeElementInfoLine { get; }
-
-        public IElementInfoLine WaterElementInfoLine { get; }
-
-        public IElementInfoLine MetalElementInfoLine { get; }
-
-        public IElementInfoLine StoneElementInfoLine { get; }
     }
 }

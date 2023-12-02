@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Assets.Infrastructure.DataStorageSystem
 {
-    public static class DataManager
+    public static class DataService
     {
         private const string MoneyKey = "money";
         private const string MusicKey = "music";
@@ -39,12 +39,6 @@ namespace Assets.Infrastructure.DataStorageSystem
             return new Data(money, sound, sfx, lang, statistics, armorLevel, weaponLevel, potion, idol);
         }
 
-        public static Data GetDefaultData()
-        {
-            return new Data(MoneyDefault, MusicDefault, SfxDefault, LocalizationDefault, GameStatisticsDefault, 
-                ArmorLevelDefault, WeaponLevelDefault, PotionDefault, IdolDefault);
-        }
-
         public static void SaveData(Data data)
         {
             PlayerPrefs.SetInt(MoneyKey, data.Money);
@@ -57,32 +51,6 @@ namespace Assets.Infrastructure.DataStorageSystem
             PlayerPrefs.SetInt(PotionKey, data.Potion);
             PlayerPrefs.SetInt(IdolKey, data.Idol);
             PlayerPrefs.Save();
-        }
-    }
-
-    public readonly struct Data
-    {
-        public readonly int Money;
-        public readonly int Music;
-        public readonly int Sfx;
-        public readonly string Localization;
-        public readonly string GameStatistics;
-        public readonly int ArmorLevel;
-        public readonly int WeaponLevel;
-        public readonly int Potion;
-        public readonly int Idol;
-
-        public Data(int money, int music, int sfx, string localization, string gameStatistics, int armorLevel, int weaponLevel, int potion, int idol)
-        {
-            Money = money;
-            Music = music;
-            Sfx = sfx;
-            Localization = localization;
-            GameStatistics = gameStatistics;
-            ArmorLevel = armorLevel;
-            WeaponLevel = weaponLevel;
-            Potion = potion;
-            Idol = idol;
         }
     }
 }

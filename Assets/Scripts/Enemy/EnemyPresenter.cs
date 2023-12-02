@@ -7,59 +7,49 @@ using Random = UnityEngine.Random;
 
 namespace Assets.Enemy
 {
-    public class EnemyPresenter : IEnemyPresenter
-    {
-        private readonly EnemyView _enemyView;
+	public class EnemyPresenter : IEnemyPresenter
+	{
+		private readonly EnemyView _enemyView;
 
-        private List<Enemy> _enemy;
-        private int _count;
+		private List<Enemy> _enemy;
+		private int _count;
 
-        public EnemyPresenter(EnemyView enemyView)
-        {
-            _enemyView = enemyView;
-            Start();
-        }
+		public EnemyPresenter(EnemyView enemyView)
+		{
+			_enemyView = enemyView;
+			Start();
+		}
 
-        public EnemyView EnemyView => _enemyView;
-        public IReadOnlyList<Enemy> Enemy => _enemy;
+		public EnemyView EnemyView => _enemyView;
 
-        private void Start()
-        {
-            _enemy = new List<Enemy>();
-            _count = GenerateRandomCountEnemy();
+		public IReadOnlyList<Enemy> Enemy => _enemy;
 
-            for (int i = 0; i < _count; i++)
-            {
-                Enemy enemy = GetEnemy();
-                enemy.Sprite = _enemyView.Sprite;
+		private void Start()
+		{
+			_enemy = new List<Enemy>();
+			_count = GenerateRandomCountEnemy();
 
-                if (_enemyView.Type == ObjectType.Boos)
-                    enemy.MakeBoss();
+			for (int i = 0; i < _count; i++)
+			{
+				Enemy enemy = CreateEnemy();
+				enemy.Sprite = _enemyView.Sprite;
 
-                _enemy.Add(enemy);
-            }
-        }
+				if (_enemyView.Type == ObjectType.Boos)
+					enemy.MakeBoss();
 
-        private Enemy GetEnemy()
-        {
-            EnemyFactory factory = new EnemyFactory();
-            IWeapon weapon = ItemGenerator.Instance.GetRandomWeapon();
-            Armor armor = ItemGenerator.Instance.GetRandomArmor();
+				_enemy.Add(enemy);
+			}
+		}
 
-            return factory.Create(weapon, armor, _enemyView.Health, _enemyView.SpriteAnimation);
-        }
-        
-        private int GenerateRandomCountEnemy() =>
-            Random.Range(1, 4);
-    }
+		private Enemy CreateEnemy()
+		{
+			IWeapon weapon = ItemGenerator.Instance.GetRandomWeapon();
+			Armor armor = ItemGenerator.Instance.GetRandomArmor();
 
-    public interface IEnemyPresenter : IUnitPresenter
-    {
-        public EnemyView EnemyView { get; }
-        public IReadOnlyList<Enemy> Enemy { get; }
-    }
+			return new Enemy(_enemyView.Health, weapon, armor, _enemyView.SpriteAnimation);
+		}
 
-    public interface IUnitPresenter
-    {
-    }
+		private int GenerateRandomCountEnemy() =>
+			Random.Range(1, 4);
+	}
 }

@@ -12,39 +12,21 @@ namespace Assets.Scripts.InteractiveObjectSystem
         [SerializeField] private ObjectType _type;
         [SerializeField] private int _numberOfAwards = 1;
 
-        private Element _element;
-        
         public ObjectType Type => _type;
+
         public int NumberOfAwards => _numberOfAwards;
-        
-        private void Start()
-        {
-            _element = GetRandomElement();
+
+        private void Start() =>
             OnStart();
-        }
 
-        public void DestroyObject()
-        {
+        public void DestroyObject() =>
             Destroy(this.gameObject);
-        }
-
-        public InteractiveObjectData GetData()
-        {
-            return null;
-        }
-
-        public GameObject GetObject()
-        {
-            return gameObject;
-        }
 
         protected virtual void OnStart()
         {
         }
 
-        protected Element GetRandomElement()
-        {
-            return (Element)Random.Range(0, 5);
-        }
+        protected Element GetRandomElement() =>
+            (Element)Random.Range(0, 5);
     }
 }

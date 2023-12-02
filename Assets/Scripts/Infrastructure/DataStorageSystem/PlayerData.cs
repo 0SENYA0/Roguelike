@@ -1,6 +1,4 @@
 using System;
-using Agava.YandexGames;
-using Assets.UI.SettingsWindow.Localization;
 
 namespace Assets.Infrastructure.DataStorageSystem
 {
@@ -16,9 +14,15 @@ namespace Assets.Infrastructure.DataStorageSystem
         private int _potion;
         private int _idol;
         
-        public PlayerData()
-        {
+        public PlayerData() =>
             LoadData();
+
+        public override string ToString()
+        {
+            string message = $"money: {_money} | music: {_isMusicOn} | sfx: {_isSfxOn} |" +
+                             $"lang: {_localization} | stats: {_gameStatistics} | armor: {_armorLevel} |" +
+                             $"weapon: {_weaponLevel} | potion: {_potion} | idol: {_idol}";
+            return message;
         }
 
         public int Money
@@ -94,7 +98,7 @@ namespace Assets.Infrastructure.DataStorageSystem
                 SaveData();
             }
         }
-        
+
         public int WeaponLevel
         {
             get => _weaponLevel;
@@ -110,7 +114,7 @@ namespace Assets.Infrastructure.DataStorageSystem
                 SaveData();
             }
         }
-        
+
         public int Potion
         {
             get => _potion;
@@ -124,7 +128,7 @@ namespace Assets.Infrastructure.DataStorageSystem
                 SaveData();
             }
         }
-        
+
         public int Idol
         {
             get => _idol;
@@ -139,17 +143,9 @@ namespace Assets.Infrastructure.DataStorageSystem
             }
         }
 
-        public override string ToString()
-        {
-            var message = $"money: {_money} | music: {_isMusicOn} | sfx: {_isSfxOn} |" +
-                          $"lang: {_localization} | stats: {_gameStatistics} | armor: {_armorLevel} |" +
-                          $"weapon: {_weaponLevel} | potion: {_potion} | idol: {_idol}";
-            return message;
-        }
-
         public void SaveData()
         {
-            var data = new Data(
+            Data data = new Data(
                 _money,
                 Convert.ToInt32(_isMusicOn),
                 Convert.ToInt32(_isSfxOn),
@@ -160,12 +156,12 @@ namespace Assets.Infrastructure.DataStorageSystem
                 _potion,
                 _idol);
             
-            DataManager.SaveData(data);
+            DataService.SaveData(data);
         }
 
         private void LoadData()
         {
-            var data = DataManager.GetData();
+            Data data = DataService.GetData();
             
             _money = data.Money;
             _isMusicOn = Convert.ToBoolean(data.Music);
@@ -180,22 +176,18 @@ namespace Assets.Infrastructure.DataStorageSystem
 
         private bool CheckGameStatistics(GameStatistics newStat)
         {
-            var currentStat = new GameStatistics(_gameStatistics);
-            var isCurrentAttempts = newStat.NumberOfAttempts - currentStat.NumberOfAttempts >= 0;
-            var isCurrentEnemies = newStat.NumberOfEnemiesKilled - currentStat.NumberOfEnemiesKilled >= 0;
-            var isCurrentBosses = newStat.NumberOfBossesKilled - currentStat.NumberOfBossesKilled >= 0;
+            GameStatistics currentStat = new GameStatistics(_gameStatistics);
+            bool isCurrentAttempts = newStat.NumberOfAttempts - currentStat.NumberOfAttempts >= 0;
+            bool isCurrentEnemies = newStat.NumberOfEnemiesKilled - currentStat.NumberOfEnemiesKilled >= 0;
+            bool isCurrentBosses = newStat.NumberOfBossesKilled - currentStat.NumberOfBossesKilled >= 0;
 
             return isCurrentAttempts && isCurrentEnemies && isCurrentBosses;
         }
 
-        private bool CheckValueForDifferenceInOne(int oldValue, int newValue)
-        {
-            return MathF.Abs(oldValue - newValue) == 1 && newValue >= 0;
-        }
+        private bool CheckValueForDifferenceInOne(int oldValue, int newValue) =>
+            MathF.Abs(oldValue - newValue) == 1 && newValue >= 0;
 
-        private bool CheckForAnIncreaseInValue(int oldValue, int newValue)
-        {
-            return newValue - oldValue > 0;
-        }
+        private bool CheckForAnIncreaseInValue(int oldValue, int newValue) =>
+            newValue - oldValue > 0;
     }
 }

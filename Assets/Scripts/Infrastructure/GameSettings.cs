@@ -11,16 +11,17 @@ namespace Assets.Infrastructure
         private PlayerData _playerData;
         private string _playerName = string.Empty;
 
+        public GameSettings() =>
+            Initialization();
+
         public event Action<string> OnLanguageChange;
 
-        public GameSettings()
-        {
-            Initialization();
-        }
-
         public ISound Sound => _sound;
+
         public PlayerData PlayerData => _playerData;
+
         public string CurrentLocalization => _playerData.Localization;
+
         public string PlayerName => _playerName;
 
         public void Dispose()
@@ -60,6 +61,7 @@ namespace Assets.Infrastructure
                         _playerData.ArmorLevel++;
                         isBue = true;
                     }
+                    
                     break;
                 case ShopItemType.Weapon:
                     if (CheckForPossibilityOfBuying(price))
@@ -68,6 +70,7 @@ namespace Assets.Infrastructure
                         _playerData.WeaponLevel++;
                         isBue = true;
                     }
+                    
                     break;
                 case ShopItemType.Potion:
                     if (CheckForPossibilityOfBuying(price))
@@ -76,6 +79,7 @@ namespace Assets.Infrastructure
                         _playerData.Potion++;
                         isBue = true;
                     }
+                    
                     break;
                 case ShopItemType.Idol:
                     if (CheckForPossibilityOfBuying(price))
@@ -84,6 +88,7 @@ namespace Assets.Infrastructure
                         _playerData.Idol++;
                         isBue = true;
                     }
+                    
                     break;
             }
             
@@ -92,17 +97,13 @@ namespace Assets.Infrastructure
             return isBue;
         }
 
-        public void SetPlayerProfileName(string playerName)
-        {
-            _playerName = playerName;
-        }
-
         private void Initialization()
         {
             _playerData = new PlayerData();
             _sound = new Sound(_playerData);
         }
 
-        private bool CheckForPossibilityOfBuying(int payment) => _playerData.Money - payment >= 0;
+        private bool CheckForPossibilityOfBuying(int payment) =>
+            _playerData.Money - payment >= 0;
     }
 }

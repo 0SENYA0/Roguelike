@@ -4,8 +4,8 @@ namespace Assets.Infrastructure
 {
     public class Game
     {
-        private GameStateMachine _gameStateMachine;
         private static GameSettings _gameSettings;
+        private readonly GameStateMachine _gameStateMachine;
 
         public Game(ICoroutineRunner coroutineRunner)
         {

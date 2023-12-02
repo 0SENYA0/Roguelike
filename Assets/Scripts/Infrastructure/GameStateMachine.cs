@@ -15,7 +15,7 @@ namespace Assets.Infrastructure
             _states = new Dictionary<Type, IExitableState>()
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, sdkLoader, sceneLoader),
-                [typeof(MainMenuState)] = new MainMenuState(this, sceneLoader),
+                [typeof(MainMenuState)] = new MainMenuState(sceneLoader),
             };
         }
 
@@ -23,12 +23,6 @@ namespace Assets.Infrastructure
         {
             IState newState = ChangeState<TState>();
             newState.Enter();
-        }
-
-        public void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadState<TPayload>
-        {
-            TState newState = ChangeState<TState>();
-            newState.Enter(payload);
         }
 
         private TState ChangeState<TState>() where TState : class, IExitableState

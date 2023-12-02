@@ -5,10 +5,10 @@ using Assets.Fight;
 using Assets.Infrastructure;
 using Assets.Inventory;
 using Assets.Person;
-using Assets.Player;
 using Assets.Scripts.GenerationSystem.LevelMovement;
 using Assets.Scripts.InteractiveObjectSystem.RandomEventSystem;
 using Assets.UI;
+using Assets.User;
 using UnityEngine;
 
 namespace Assets.Scripts.InteractiveObjectSystem
@@ -125,7 +125,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
                 _distance = Vector3.Distance(_agent.transform.position, targetPosition);
             }
 
-            action();
+            action?.Invoke();
         }
     }
 }

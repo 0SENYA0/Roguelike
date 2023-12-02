@@ -5,38 +5,39 @@ using Assets.Inventory.ItemGeneratorSystem;
 
 namespace Assets.Inventory
 {
-    public class InventoryPresenter
-    {
-        private readonly InventoryModel _inventoryModel;
+	public class InventoryPresenter
+	{
+		private readonly InventoryModel _inventoryModel;
 
-        public InventoryPresenter(int inventorySize)
-        {
-            _inventoryModel = new InventoryModel(inventorySize);
-            GenerateDefaultInventory();
-        }
+		public InventoryPresenter(int inventorySize)
+		{
+			_inventoryModel = new InventoryModel(inventorySize);
+			GenerateDefaultInventory();
+		}
 
-        public InventoryModel InventoryModel => _inventoryModel;
-        public Armor ActiveArmor => _inventoryModel.GetArmor().FirstOrDefault(x => x.IsSelect);
+		public InventoryModel InventoryModel => _inventoryModel;
 
-        public void SelectActiveArmor(Armor armor)
-        {
-            var selectedArmor = _inventoryModel.GetArmor().FirstOrDefault(x => x.IsSelect);
-            selectedArmor?.UnSelect();
+		public Armor ActiveArmor => _inventoryModel.GetArmor().FirstOrDefault(x => x.IsSelect);
 
-            armor.Select();
-        }
+		public void SelectActiveArmor(Armor armor)
+		{
+			Armor selectedArmor = _inventoryModel.GetArmor().FirstOrDefault(x => x.IsSelect);
+			selectedArmor?.UnSelect();
 
-        private void GenerateDefaultInventory()
-        {
-            if (ItemGenerator.Instance == null)
-                throw new Exception("Inventory don't loaded");
-            
-            var defaultInventory = ItemGenerator.Instance.GetDefaultInventory();
+			armor.Select();
+		}
 
-            _inventoryModel.AddItem(defaultInventory.Armor);
-            _inventoryModel.AddItem(defaultInventory.Weapon);
+		private void GenerateDefaultInventory()
+		{
+			if (ItemGenerator.Instance == null)
+				throw new Exception("Inventory don't loaded");
 
-            defaultInventory.Armor.Select();
-        }
-    }
+			InventoryItem defaultInventory = ItemGenerator.Instance.GetDefaultInventory();
+
+			_inventoryModel.AddItem(defaultInventory.Armor);
+			_inventoryModel.AddItem(defaultInventory.Weapon);
+
+			defaultInventory.Armor.Select();
+		}
+	}
 }

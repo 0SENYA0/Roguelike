@@ -87,14 +87,10 @@ namespace Assets.Inventory.Panel
             _panelArmor.SetActive(false);
         }
 
-        private void RemoveItem(IInventoryItem obj)
-        {
+        private void RemoveItem(IInventoryItem obj) =>
             _player.InventoryPresenter.InventoryModel.RemoveItem(obj);
-        }
 
-        private void SelectItem(IInventoryItem obj)
-        {
+        private void SelectItem(IInventoryItem obj) =>
             _player.InventoryPresenter.SelectActiveArmor(obj as Armor);
-        }
     }
 }

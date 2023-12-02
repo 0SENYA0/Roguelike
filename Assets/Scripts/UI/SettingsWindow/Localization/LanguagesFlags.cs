@@ -10,7 +10,7 @@ namespace Assets.UI.SettingsWindow.Localization
 
         private void Awake()
         {
-            foreach (var flag in _flags)
+            foreach (Flag flag in _flags)
             {
                 flag.FlagClicked += OnFlagClick;
                 flag.SetIconActive(false);
@@ -34,7 +34,7 @@ namespace Assets.UI.SettingsWindow.Localization
 
         private void OnDisable()
         {
-            foreach (var flag in _flags)
+            foreach (Flag flag in _flags)
             {
                 flag.FlagClicked += OnFlagClick;
                 flag.SetIconActive(false);
@@ -43,11 +43,9 @@ namespace Assets.UI.SettingsWindow.Localization
 
         private void OnFlagClick(Flag clickedFlag, string selectedLanguage)
         {
-            foreach (var flag in _flags)
-            {
+            foreach (Flag flag in _flags)
                 flag.SetIconActive(false);
-            }
-            
+
             clickedFlag.SetIconActive(true);
             
             if (Game.GameSettings == null) 

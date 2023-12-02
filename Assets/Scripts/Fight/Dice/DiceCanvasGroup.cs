@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using Assets.Interface;
 using UnityEngine;
@@ -10,10 +9,8 @@ namespace Assets.Fight.Dice
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private float _time;
 
-        public event Action OnChangedCompletedEvent;
-
         private Coroutine _coroutine;
-        
+
         public void ShowCanvas()
         {
             if (_coroutine != null)
@@ -29,7 +26,7 @@ namespace Assets.Fight.Dice
             
             _coroutine = StartCoroutine(ChangeAlpha(1, 0, _time));
         }
-        
+
         private IEnumerator ChangeAlpha(float startAlpha, float endAlpha, float duration)
         {
             _canvasGroup.alpha = startAlpha;
@@ -37,15 +34,13 @@ namespace Assets.Fight.Dice
             
             while (Time.time < startTime + duration)
             {
-                float t = (Time.time - startTime) / duration;
-                _canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, t);
+                float time = (Time.time - startTime) / duration;
+                _canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, time);
 
                 yield return null;
             }
             
             _canvasGroup.alpha = endAlpha;
-            
-            OnChangedCompletedEvent?.Invoke();
             _coroutine = null;
         }
     }

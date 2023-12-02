@@ -8,38 +8,32 @@ namespace Assets.Scripts.GenerationSystem.LevelMovement
     public class MouseClickTracker : MonoBehaviour
     {
         private readonly int _mouseKey = 0;
-        
-        public UnityAction<Vector3> MoveClick;
-        public UnityAction<InteractiveObject, Vector3> ObjectClick;
 
         private Vector3 _mousePosition;
         private bool _isPointerOverUi;
         private Camera _camera;
 
-        private void Start()
-        {
+        public UnityAction<Vector3> MoveClick;
+        public UnityAction<InteractiveObject, Vector3> ObjectClick;
+
+        private void Start() =>
             _camera = Camera.main;
-        }
 
         private void Update()
         {
             if (Input.GetMouseButtonDown(_mouseKey))
             {
-                bool _isPointerOverUi = EventSystem.current.IsPointerOverGameObject();
+                bool isPointerOverUi = EventSystem.current.IsPointerOverGameObject();
                 
-                if(_isPointerOverUi)
+                if(isPointerOverUi)
                     return;
                 
                 _mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
-                
+
                 if (TryGetInteractiveObject(out InteractiveObject selectedObject))
-                {
                     ObjectClick?.Invoke(selectedObject, _mousePosition);
-                }
                 else
-                {
                     MoveClick?.Invoke(_mousePosition);
-                }
             }
         }
 

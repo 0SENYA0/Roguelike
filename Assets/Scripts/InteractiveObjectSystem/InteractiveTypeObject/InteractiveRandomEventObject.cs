@@ -8,15 +8,15 @@ namespace Assets.Scripts.InteractiveObjectSystem
 {
     public class InteractiveRandomEventObject : InteractiveObject
     {
-        [SerializeField] private InteractiveLootObject _interactiveLootObject;
         [SerializeField] private List<EnemyView> _enemyView;
-        
+
         public IEnemyPresenter GetRandomEnemy() => new EnemyPresenter(_enemyView[Random.Range(0, _enemyView.Count)]);
 
         public IInventoryItem GetRandomLoot()
         {
             if (Random.Range(0, 2) == 0)
                 return ItemGenerator.Instance.GetRandomWeapon();
+
             return ItemGenerator.Instance.GetRandomArmor();
         }
     }

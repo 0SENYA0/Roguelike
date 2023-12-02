@@ -24,9 +24,7 @@ namespace Assets.Infrastructure.DataStorageSystem
             NumberOfBossesKilled = numberOfBossesKilled;
         }
 
-        public string ConvertValueToStringLine()
-        {
-            return $"{NumberOfAttempts};{NumberOfEnemiesKilled};{NumberOfBossesKilled}";
-        }
+        public string ConvertValueToStringLine() =>
+            $"{NumberOfAttempts};{NumberOfEnemiesKilled};{NumberOfBossesKilled}";
     }
 }

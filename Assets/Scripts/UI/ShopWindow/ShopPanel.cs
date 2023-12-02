@@ -4,37 +4,35 @@ using UnityEngine;
 
 namespace Assets.UI.ShopWindow
 {
-    public class ShopPanel : MonoBehaviour, IDisposable
-    {
-        [SerializeField] private ShopItemPanel _shopItemPanel;
-        [SerializeField] private PlayerShopInfo _playerShopInfo;
+	public class ShopPanel : MonoBehaviour, IDisposable
+	{
+		[SerializeField] private ShopItemPanel _shopItemPanel;
+		[SerializeField] private PlayerShopInfo _playerShopInfo;
 
-        private void OnEnable()
-        {
-            _shopItemPanel.UpdateAllItemInformation();
-            _playerShopInfo.UpdateInfo();
-        }
+		private void OnEnable()
+		{
+			_shopItemPanel.UpdateAllItemInformation();
+			_playerShopInfo.UpdateInfo();
+		}
 
-        public void Init()
-        {
-            _shopItemPanel.Init();
-            _shopItemPanel.BueItemEvent += OnBueItemEvent;
-            
-            _playerShopInfo.UpdateInfo();
-        }
+		public void Init()
+		{
+			_shopItemPanel.Init();
+			_shopItemPanel.BueItemEvent += OnBueItemEvent;
 
-        public void Dispose()
-        {
-            _shopItemPanel.Dispose();
-        }
+			_playerShopInfo.UpdateInfo();
+		}
 
-        private void OnBueItemEvent(ShopItemType itemForBue, int price)
-        {
-            if (Game.GameSettings.TryBueItem(itemForBue, price))
-            {
-                _shopItemPanel.UpdateItemInformation(itemForBue);
-                _playerShopInfo.UpdateInfo();
-            }
-        }
-    }
+		public void Dispose() =>
+			_shopItemPanel.Dispose();
+
+		private void OnBueItemEvent(ShopItemType itemForBue, int price)
+		{
+			if (Game.GameSettings.TryBueItem(itemForBue, price))
+			{
+				_shopItemPanel.UpdateItemInformation(itemForBue);
+				_playerShopInfo.UpdateInfo();
+			}
+		}
+	}
 }

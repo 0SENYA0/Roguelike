@@ -5,56 +5,53 @@ using UnityEngine;
 
 namespace Assets.Inventory.Panel
 {
-    public class ArmorPanelView : MonoBehaviour
-    {
-        [SerializeField] private ArmorPanelItem _template;
-        [SerializeField] private Transform _container;
-        
-        public Action<IInventoryItem> RemoveItem;
-        public Action<IInventoryItem> SelectItem; 
-        
-        private List<ArmorPanelItem> _items = new();
+	public class ArmorPanelView : MonoBehaviour
+	{
+		[SerializeField] private ArmorPanelItem _template;
+		[SerializeField] private Transform _container;
 
-        public void Show(IEnumerable<Armor> armors)
-        {
-            foreach (var armor in armors)
-            {
-                var newItem = Instantiate(_template, _container).GetComponent<ArmorPanelItem>();
-                newItem.Init(armor);
-                newItem.OnItemClicked += OnItemRemove;
-                newItem.OnItemUse += OnItemUse;
-                _items.Add(newItem);
-            }
-        }
+		private List<ArmorPanelItem> _items = new List<ArmorPanelItem>();
 
-        public void Hide()
-        {
-            foreach (var item in _items)
-            {
-                if (item == null)
-                    continue;
-                
-                item.OnItemClicked -= OnItemRemove;
-                item.OnItemUse -= OnItemUse;
-                item.OnDispose();
-            }
+		public Action<IInventoryItem> RemoveItem;
 
-            _items = new();
-        }
+		public Action<IInventoryItem> SelectItem;
 
-        private void OnItemRemove(IInventoryItem obj)
-        {
-            RemoveItem?.Invoke(obj);
-        }
+		public void Show(IEnumerable<Armor> armors)
+		{
+			foreach (Armor armor in armors)
+			{
+				ArmorPanelItem newItem = Instantiate(_template, _container).GetComponent<ArmorPanelItem>();
+				newItem.Init(armor);
+				newItem.OnItemClicked += OnItemRemove;
+				newItem.OnItemUse += OnItemUse;
+				_items.Add(newItem);
+			}
+		}
 
-        private void OnItemUse(IInventoryItem obj)
-        {
-            SelectItem?.Invoke(obj);
+		public void Hide()
+		{
+			foreach (ArmorPanelItem item in _items)
+			{
+				if (item == null)
+					continue;
 
-            foreach (var item in _items)
-            {
-                item.CheckSelect();
-            }
-        }
-    }
+				item.OnItemClicked -= OnItemRemove;
+				item.OnItemUse -= OnItemUse;
+				item.OnDispose();
+			}
+
+			_items = new List<ArmorPanelItem>();
+		}
+
+		private void OnItemRemove(IInventoryItem obj) =>
+			RemoveItem?.Invoke(obj);
+
+		private void OnItemUse(IInventoryItem obj)
+		{
+			SelectItem?.Invoke(obj);
+
+			foreach (ArmorPanelItem item in _items)
+				item.CheckSelect();
+		}
+	}
 }

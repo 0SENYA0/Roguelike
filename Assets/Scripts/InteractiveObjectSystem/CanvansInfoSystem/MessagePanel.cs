@@ -62,9 +62,7 @@ namespace Assets.Scripts.InteractiveObjectSystem.CanvasInfoSystem
             return false;
         }
 
-        private void CallResponse(bool answer)
-        {
+        private void CallResponse(bool answer) =>
             UserResponse?.Invoke(answer);
-        }
     }
 }

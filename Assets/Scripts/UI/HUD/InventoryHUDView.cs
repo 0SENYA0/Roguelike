@@ -11,10 +11,11 @@ namespace Assets.UI.HUD
 
         private const float ArtificialDelayBeforeShowing = 1.5f;
 
-        private void Start()
-        {
+        private void Start() =>
             Invoke(nameof(InitSubscribe), ArtificialDelayBeforeShowing);
-        }
+
+        private void OnDestroy() =>
+            _inventory.InventoryPresenter.InventoryModel.CountItemsChangeEvent -= OnCountItemsChange;
 
         private void InitSubscribe()
         {
@@ -23,14 +24,7 @@ namespace Assets.UI.HUD
                 _inventory.InventoryPresenter.InventoryModel.TotalSize);
         }
 
-        private void OnDestroy()
-        {
-            _inventory.InventoryPresenter.InventoryModel.CountItemsChangeEvent -= OnCountItemsChange;
-        }
-
-        private void OnCountItemsChange(int maxCount, int currentCount)
-        {
+        private void OnCountItemsChange(int maxCount, int currentCount) =>
             _text.text = $"{currentCount}/{maxCount}";
-        }
     }
 }

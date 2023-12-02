@@ -10,7 +10,7 @@ namespace Assets.UI.HUD.LosePanels
 {
     public class LosePanel : MonoBehaviour
     {
-        [SerializeField] private SoundComponent _loseSound;
+        [SerializeField] private SoundService _loseSound;
         [SerializeField] private LevelRoot _levelRoot;
         [Header("Final Loss")] 
         [SerializeField] private GameObject _finalLossPanel;

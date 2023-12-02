@@ -1,4 +1,5 @@
 using Assets.Infrastructure;
+using Assets.Infrastructure.DataStorageSystem;
 using Assets.ScriptableObjects;
 using Assets.YandexAds;
 using TMPro;
@@ -15,34 +16,28 @@ namespace Assets.UI.ShopWindow
         [SerializeField] private int _additionalMoney = 1000;
         [SerializeField] private YandexAdView _yandexAd;
 
-        private void OnEnable()
-        {
+        private void OnEnable() =>
             _addMoneyButton.onClick.AddListener(ShowRewardAd);
-        }
 
-        private void OnDisable()
-        {
+        private void OnDisable() =>
             _addMoneyButton.onClick.RemoveListener(ShowRewardAd);
-        }
 
         public void UpdateInfo()
         {
-            var lang = Game.GameSettings.CurrentLocalization;
-            var stats = Game.GameSettings.PlayerData.GameStatistics;
-            var money = Game.GameSettings.PlayerData.Money;
+            string lang = Game.GameSettings.CurrentLocalization;
+            GameStatistics stats = Game.GameSettings.PlayerData.GameStatistics;
+            int money = Game.GameSettings.PlayerData.Money;
             
-            var text = $"{_localized.NumberOfAttempts.GetLocalization(lang)}: {stats.NumberOfAttempts}\n\n" +
-                       $"{_localized.NumberOfEnemy.GetLocalization(lang)}: {stats.NumberOfEnemiesKilled}\n\n" +
-                       $"{_localized.NumberOfBoss.GetLocalization(lang)}: {stats.NumberOfBossesKilled}\n\n" +
-                       $"{_localized.Money.GetLocalization(lang)}: {money}$";
+            string text = $"{_localized.NumberOfAttempts.GetLocalization(lang)}: {stats.NumberOfAttempts}\n\n" +
+                          $"{_localized.NumberOfEnemy.GetLocalization(lang)}: {stats.NumberOfEnemiesKilled}\n\n" +
+                          $"{_localized.NumberOfBoss.GetLocalization(lang)}: {stats.NumberOfBossesKilled}\n\n" +
+                          $"{_localized.Money.GetLocalization(lang)}: {money}$";
 
             _information.text = text;
         }
 
-        private void ShowRewardAd()
-        {
+        private void ShowRewardAd() =>
             _yandexAd.ShowRewardVideo(AddMoneyToPlayer);
-        }
 
         private void AddMoneyToPlayer()
         {

@@ -5,14 +5,12 @@ using UnityEngine;
 
 namespace Assets.YandexLeaderboard
 {
-    public class AuthorizationMessage : InfoView
-    {
-        [SerializeField] private LocalizedText _localizedText;
-        [SerializeField] private TMP_Text _text;
+	public class AuthorizationMessage : InfoView
+	{
+		[SerializeField] private LocalizedText _localizedText;
+		[SerializeField] private TMP_Text _text;
 
-        public void Show()
-        {
-            _text.text = _localizedText.GetLocalization(Game.GameSettings.CurrentLocalization);
-        }
-    }
+		public void Show() =>
+			_text.text = _localizedText.GetLocalization(Game.GameSettings.CurrentLocalization);
+	}
 }

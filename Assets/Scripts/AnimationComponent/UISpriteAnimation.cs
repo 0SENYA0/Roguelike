@@ -13,7 +13,7 @@ namespace Assets.Scripts.AnimationComponent
         private float _nextFrameTime;
         private int _currentFrame;
         private Image _image;
-        
+
         private void Awake()
         {
             _image = GetComponent<Image>();

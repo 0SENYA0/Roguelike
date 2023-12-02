@@ -6,8 +6,6 @@ namespace Assets.UI.SettingsWindow.Localization
         public const string RUS = "Russian";
         public const string TUR = "Turkish";
         
-        public static readonly string[] ListOfAllLanguage = {ENG, RUS, TUR};
-        
         public static string DefineLanguage(string lang)
         {
             switch (lang)

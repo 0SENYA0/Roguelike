@@ -17,7 +17,7 @@ namespace Assets.Config
         public const string CriticalChanceKey = "CriticalChance";
         public const string MoneyKey = "Money";
         public const string BossKey = "Boss";
-        
+
         public static string GetAnonymous(string lang)
         {
             switch (lang)

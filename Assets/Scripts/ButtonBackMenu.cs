@@ -10,24 +10,16 @@ namespace Assets
     {
         private Button _button;
 
-        private void Awake()
-        {
+        private void Awake() =>
             _button = GetComponent<Button>();
-        }
 
-        private void OnEnable()
-        {
+        private void OnEnable() =>
             _button.onClick.AddListener(LoadMainMenu);
-        }
 
-        private void OnDisable()
-        {
+        private void OnDisable() =>
             _button.onClick.RemoveListener(LoadMainMenu);
-        }
 
-        private void LoadMainMenu()
-        {
+        private void LoadMainMenu() =>
             Curtain.Instance.ShowAnimation(() => {Menu.Load();});
-        }
     }
 }

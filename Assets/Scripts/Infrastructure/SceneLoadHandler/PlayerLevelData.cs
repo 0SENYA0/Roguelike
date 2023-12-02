@@ -11,6 +11,7 @@ namespace Assets.Infrastructure.SceneLoadHandler
         }
 
         public float Health { get; }
+
         public InventoryPresenter Inventory { get; }
     }
 }

@@ -1,15 +1,17 @@
 using System;
 using System.Linq;
+using Assets.DefendItems;
 using Assets.Enemy;
 using Assets.Infrastructure;
 using Assets.Inventory;
 using Assets.Inventory.ItemGeneratorSystem;
-using Assets.Player;
 using Assets.Scripts.InteractiveObjectSystem;
 using Assets.Scripts.SoundSystem;
 using Assets.UI;
 using Assets.UI.HUD;
 using Assets.UI.HUD.LosePanels;
+using Assets.User;
+using Assets.Weapons;
 using UnityEngine;
 
 namespace Assets.Fight
@@ -23,7 +25,7 @@ namespace Assets.Fight
         [SerializeField] private InteractiveObjectHandler _interactiveObjectHandler;
         [SerializeField] private RewardPanel _rewardPanel;
         [SerializeField] private LosePanel _losePanel;
-        [SerializeField] private SoundComponent _fightSound;
+        [SerializeField] private SoundService _fightSound;
 
         private IPlayerPresenter _playerPresenter;
         private int _countOfEnemyForFight;
@@ -74,7 +76,7 @@ namespace Assets.Fight
             _fightSound.Stop();
             _losePanel.UserAnswerEvent -= OnLosePanelClick;
             _losePanel.Hide();
-            var reborn = new Reborn(_playerPresenter, _globalMap, _battlefieldMap, _interactiveObjectHandler);
+            Reborn reborn = new Reborn(_playerPresenter, _globalMap, _battlefieldMap, _interactiveObjectHandler);
             
             switch (answers)
             {
@@ -92,9 +94,9 @@ namespace Assets.Fight
 
         private void CreateBossReward()
         {
-            var randomArmor = ItemGenerator.Instance.GetRandomArmor(_isBoosFight);
-            var randomWeapon = ItemGenerator.Instance.GetRandomWeapon(_isBoosFight);
-            var money = ItemGenerator.Instance.GetBossReward();
+            Armor randomArmor = ItemGenerator.Instance.GetRandomArmor(_isBoosFight);
+            Weapon randomWeapon = ItemGenerator.Instance.GetRandomWeapon(_isBoosFight);
+            int money = ItemGenerator.Instance.GetBossReward();
             
             Game.GameSettings.PlayerData.Money += money;
             _playerPresenter.Player.InventoryPresenter.InventoryModel.AddItem(randomWeapon);
@@ -106,8 +108,8 @@ namespace Assets.Fight
 
         private void CreateEnemyReward()
         {
-            var randomLoot = GetRandomLoot();
-            var money = ItemGenerator.Instance.GetEnemyReward();
+            IInventoryItem randomLoot = GetRandomLoot();
+            int money = ItemGenerator.Instance.GetEnemyReward();
             
             Game.GameSettings.PlayerData.Money += money;
             _playerPresenter.Player.InventoryPresenter.InventoryModel.AddItem(randomLoot);

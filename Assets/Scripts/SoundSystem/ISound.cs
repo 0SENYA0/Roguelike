@@ -2,16 +2,20 @@ using System;
 
 namespace Assets.Scripts.SoundSystem
 {
-    public interface ISound
-    {
-        bool IsMusicOn { get; }
-        bool IsSfxOn { get; }
+	public interface ISound
+	{
+		event Action<bool> OnMusicStateChanged;
 
-        event Action<bool> OnMusicStateChanged; 
-        event Action<bool> OnSfxStateChanged;
-        event Action<bool> OnPauseStateChanged;
+		event Action<bool> OnSfxStateChanged;
 
-        void Pause();
-        void UpPause();
-    }
+		event Action<bool> OnPauseStateChanged;
+
+		bool IsMusicOn { get; }
+
+		bool IsSfxOn { get; }
+
+		void Pause();
+
+		void UpPause();
+	}
 }

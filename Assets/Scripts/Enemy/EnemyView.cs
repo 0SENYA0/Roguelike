@@ -4,6 +4,7 @@ using Assets.Interface;
 using Assets.Inventory.ItemGeneratorSystem;
 using Assets.Scripts.AnimationComponent;
 using Assets.Scripts.InteractiveObjectSystem;
+using Assets.Weapons;
 using UnityEngine;
 
 namespace Assets.Enemy
@@ -16,15 +17,20 @@ namespace Assets.Enemy
 
         private EnemyPresenter _enemyPresenter;
         private Armor _armor;
-        private Weapon.Weapon _weapon;
+        private Weapon _weapon;
 
         public IEnemyPresenter EnemyPresenter => _enemyPresenter;
-
+        
         public int Health => _health;
-        public Weapon.Weapon Weapon => _weapon;
+        
+        public Weapon Weapon => _weapon;
+        
         public Armor Armor => _armor;
+        
         public Sprite Sprite => _sprite;
+        
         public SpriteAnimation SpriteAnimation => _spriteAnimation;
+        
         public string Name => _translationName.GetLocalization(Game.GameSettings.CurrentLocalization);
         
         protected override void OnStart()

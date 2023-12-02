@@ -10,7 +10,6 @@ namespace Assets.Scripts.GenerationSystem
         private LevelGenerator _levelGenerator;
         private LevelView _levelView;
         private Spawner _spawner;
-        
         private GridSpace[,] _grid;
 
         public void GenerateLevel()

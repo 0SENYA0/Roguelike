@@ -2,9 +2,9 @@ namespace Assets.Fight.Element
 {
     public static class ElementManager
     {
-        private static readonly float _normalModifier = 1f;
-        private static readonly float _increasedModifier = 2f;
-        private static readonly float _loweredModifier = 0.5f;
+        private readonly static float _normalModifier = 1f;
+        private readonly static float _increasedModifier = 2f;
+        private readonly static float _loweredModifier = 0.5f;
 
         public static float GetDamageModifier(Element attack, Element defender)
         {
@@ -24,14 +24,5 @@ namespace Assets.Fight.Element
 
             return _loweredModifier;
         }
-    }
-
-    public enum Element
-    {
-        Fire = 0,
-        Tree = 1,
-        Water = 2,
-        Metal = 3,
-        Stone = 4,
     }
 }

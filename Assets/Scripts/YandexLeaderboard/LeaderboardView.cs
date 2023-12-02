@@ -3,34 +3,34 @@ using UnityEngine;
 
 namespace Assets.YandexLeaderboard
 {
-    public class LeaderboardView : MonoBehaviour
-    {
-        [SerializeField] private GameObject _leaderboardItemTemplate;
-        [SerializeField] private Transform _content;
-        
-        private List<GameObject> _spawnedElements = new List<GameObject>();
+	public class LeaderboardView : MonoBehaviour
+	{
+		[SerializeField] private GameObject _leaderboardItemTemplate;
+		[SerializeField] private Transform _content;
 
-        public void ConstructLeaderboard(List<LeaderboardData> playersInfo)
-        {
-            ClearLeaderboard();
+		private List<GameObject> _spawnedElements = new List<GameObject>();
 
-            foreach (LeaderboardData data in playersInfo)
-            {
-                GameObject leaderboardElementInstance = Instantiate(_leaderboardItemTemplate, _content);
-                
-                LeaderboardItem leaderboardElement = leaderboardElementInstance.GetComponent<LeaderboardItem>();
-                leaderboardElement.Initialize(data);
-                
-                _spawnedElements.Add(leaderboardElementInstance);
-            }
-        }
+		public void ConstructLeaderboard(List<LeaderboardData> playersInfo)
+		{
+			ClearLeaderboard();
 
-        private void ClearLeaderboard()
-        {
-            foreach (var element in _spawnedElements)
-                Destroy(element);
+			foreach (LeaderboardData data in playersInfo)
+			{
+				GameObject leaderboardElementInstance = Instantiate(_leaderboardItemTemplate, _content);
 
-            _spawnedElements = new List<GameObject>();
-        }
-    }
+				LeaderboardItem leaderboardElement = leaderboardElementInstance.GetComponent<LeaderboardItem>();
+				leaderboardElement.Initialize(data);
+
+				_spawnedElements.Add(leaderboardElementInstance);
+			}
+		}
+
+		private void ClearLeaderboard()
+		{
+			foreach (GameObject element in _spawnedElements)
+				Destroy(element);
+
+			_spawnedElements = new List<GameObject>();
+		}
+	}
 }

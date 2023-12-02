@@ -1,5 +1,6 @@
 using Assets.DefendItems;
 using Assets.Scripts.AnimationComponent;
+using Assets.Weapons;
 using UnityEngine;
 
 namespace Assets.Interface
@@ -8,7 +9,7 @@ namespace Assets.Interface
     {
         public int Health { get; }
 
-        public Weapon.Weapon Weapon { get; }
+        public Weapon Weapon { get; }
 
         public Armor Armor { get; }
 

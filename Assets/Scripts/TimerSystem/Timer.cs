@@ -4,7 +4,7 @@ namespace Assets.TimerSystem
 {
     public class Timer : MonoBehaviour
     {
-        private float _time = 0f;
+        private float _time;
         private bool _isRun;
         
         public float TimePerSeconds => _time;
@@ -17,19 +17,13 @@ namespace Assets.TimerSystem
             _time += Time.deltaTime;
         }
 
-        public void StartTimer()
-        {
+        public void StartTimer() =>
             _isRun = true;
-        }
 
-        public void Pause()
-        {
+        public void Pause() =>
             _isRun = false;
-        }
 
-        public void Reset()
-        {
+        public void Reset() =>
             _time = 0f;
-        }
     }
 }

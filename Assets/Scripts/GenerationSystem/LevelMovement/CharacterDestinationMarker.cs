@@ -9,20 +9,18 @@ namespace Assets.Scripts.GenerationSystem.LevelMovement
         [SerializeField] float _blackAtDistance = 1f;
         [SerializeField] private SpriteRenderer _renderer;
 
-        public void SetPosition(Vector3 position)
-        {
-            transform.position = new Vector3(position.x, position.y, 0);
-        }
-
         private void Update()
         {
-            var distance = (_characterTarget.position - transform.position).magnitude;
+            float distance = (_characterTarget.position - transform.position).magnitude;
             distance -= _blackAtDistance;
             
-            var percentage = distance / _hidingDistance;
+            float percentage = distance / _hidingDistance;
             percentage = Mathf.Clamp(percentage, 0, 1);
 
             _renderer.material.color = new Color(1, 1, 1, percentage);
         }
+
+        public void SetPosition(Vector3 position) =>
+            transform.position = new Vector3(position.x, position.y, 0);
     }
 }

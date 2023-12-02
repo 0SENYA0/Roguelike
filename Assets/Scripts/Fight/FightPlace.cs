@@ -4,9 +4,9 @@ using Assets.Config;
 using Assets.Enemy;
 using Assets.Fight.Dice;
 using Assets.Interface;
-using Assets.Player;
 using Assets.ScriptableObjects;
 using Assets.Scripts.UI.Widgets;
+using Assets.User;
 using Assets.Utils;
 using UnityEngine;
 
@@ -25,21 +25,20 @@ namespace Assets.Fight
         [SerializeField] private DiceView _rightDice;
 
         [Space(25)] 
-        [SerializeField] private PlayerWeaponPanel _elementsDamagePanel;
+        [SerializeField] private PlayerWeaponPanel _elementsPanel;
         [SerializeField] private PlayerAttackView _playerAttackView;
         [SerializeField] private List<EnemyAttackView> _enemyAttackViews;
         [SerializeField] private GameObject _popupReady;
         [SerializeField] private CustomButton _customButtonReady;
-        
-        private Fight _fight;
-        private EnemyPoint _spawnPoint;
 
         private const int Enemy = 1;
         private const int TwoEnemy = 2;
         private const int ThreeEnemy = 3;
         private const int Boss = 4;
 
-        private PlayerWeaponPanel _IelementsDamagePanel;
+        private Fight _fight;
+        private EnemyPoint _spawnPoint;
+        private PlayerWeaponPanel _elementsDamagePanel;
         private IPlayerPresenter _playerPresenter;
         private RectTransform _playerRectTransform;
 
@@ -47,7 +46,7 @@ namespace Assets.Fight
 
         private void OnEnable()
         {
-            _IelementsDamagePanel = _elementsDamagePanel;
+            _elementsDamagePanel = _elementsPanel;
             _playerRectTransform = _playerPosition.GetComponent<RectTransform>();
         }
 
@@ -58,7 +57,19 @@ namespace Assets.Fight
 
             _playerAttackView.transform.position = GetScreenCoordinates(_playerRectTransform).center;
         }
-        
+
+        public Rect GetScreenCoordinates(RectTransform uiElement)
+        {
+            Vector3[] worldCorners = new Vector3[4];
+            uiElement.GetWorldCorners(worldCorners);
+            Rect result = new Rect(
+                worldCorners[0].x,
+                worldCorners[0].y,
+                worldCorners[2].x - worldCorners[0].x,
+                worldCorners[2].y - worldCorners[0].y);
+            return result;
+        }
+
         public void Set(IPlayerPresenter playerPresenter, IEnemyPresenter enemyPresenter)
         {
             _playerPresenter = playerPresenter;
@@ -78,24 +89,19 @@ namespace Assets.Fight
             for (int i = 0; i < enemyPresenter.Enemy.Count; i++)
                  enemyAttackPresenters.Add(new EnemyAttackPresenter(enemyPresenter.Enemy[i], _enemyAttackViews[i]));
             
-            _fight = new Fight(this, enemyAttackPresenters, playerAttackPresenter, _stepFightView, GetDicePresenterAdapter(), _IelementsDamagePanel, _popupReady, _customButtonReady);
+            _fight = new Fight(this, enemyAttackPresenters, playerAttackPresenter, _stepFightView, GetDicePresenterAdapter(), _elementsDamagePanel, _popupReady, _customButtonReady);
             _fight.FightEnded += EndFight;
             _fight.ShowDice += ShowDice;
             _fight.HideDice += HideDice;
             _fight.Start();
         }
 
-        private void HideDice()
-        {
+        private void HideDice() =>
             _diceGroup.HideCanvas();
-        }
 
-        private void ShowDice()
-        {
+        private void ShowDice() =>
             _diceGroup.ShowCanvas();
-        }
 
-        // Calling on button
         public void OnLeaveFight()
         {
             FightEnded?.Invoke(FightResult.Leave);
@@ -118,18 +124,6 @@ namespace Assets.Fight
             _fight = null;
         }
 
-        public Rect GetScreenCoordinates(RectTransform uiElement)
-        {
-            Vector3[] worldCorners = new Vector3[4];
-            uiElement.GetWorldCorners(worldCorners);
-            Rect result = new Rect(
-                worldCorners[0].x,
-                worldCorners[0].y,
-                worldCorners[2].x - worldCorners[0].x,
-                worldCorners[2].y - worldCorners[0].y);
-            return result;
-        }
-
         private DicePresenterAdapter GetDicePresenterAdapter()
         {
             DiceSpriteScriptableObject scriptableObject =
@@ -142,7 +136,7 @@ namespace Assets.Fight
             DicePresenter rightDicePresenter =
                 new DicePresenter(_rightDice, new DiceModel(scriptableObject.Sprites), this);
 
-            return new DicePresenterAdapter(_diceGroup, leftDicePresenter, centerDicePresenter, rightDicePresenter);
+            return new DicePresenterAdapter(leftDicePresenter, centerDicePresenter, rightDicePresenter);
         }
 
         private void SelectEnemyUIPosition(IEnemyPresenter enemyPresenter)

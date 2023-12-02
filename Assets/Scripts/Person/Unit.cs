@@ -7,80 +7,84 @@ using UnityEngine;
 
 namespace Assets.Person
 {
-    public  class Unit
-    {
-        protected float _health;
-        private IWeapon _weapon;
-        private Armor _armor;
+	public class Unit
+	{
+		protected float _health;
+		private IWeapon _weapon;
+		private Armor _armor;
 
-        public Unit(float health, IWeapon weapon, Armor armor, SpriteAnimation spriteAnimation)
-        {
-            _health = health;
-            _weapon = weapon;
-            _armor = armor;
-            SpriteAnimation = spriteAnimation;
-        }
+		public Unit(float health, IWeapon weapon, Armor armor, SpriteAnimation spriteAnimation)
+		{
+			_health = health;
+			_weapon = weapon;
+			_armor = armor;
+			SpriteAnimation = spriteAnimation;
+		}
 
-        public event Action<Unit> Died;
-        public event Action<float> HealthChanged;
+		public event Action<Unit> Died;
 
-        public SpriteAnimation SpriteAnimation { get; }
-        public float Health => _health;
-        public IWeapon Weapon => _weapon;
-        public Armor Armor => _armor;
-        public bool IsDie { get; private set; } = false;
-        public Sprite Sprite { get; set; }
+		public event Action<float> HealthChanged;
 
-        public void TakeDamage(IWeapon weapon, bool isCriticalDamage, bool isModifiedDamage)
-        {
-            CalculateDamageMultiplier(weapon, isCriticalDamage, isModifiedDamage);
-            ConditionForDead();
-            HealthChanged?.Invoke(_health);
-        }
-        
-        public void Heal(int value)
-        {
-            _health += value;
-            HealthChanged?.Invoke(_health);
-        }
+		public SpriteAnimation SpriteAnimation { get; }
 
-        public void Reborn()
-        {
-            IsDie = false;
-        }
+		public float Health => _health;
 
-        protected virtual void ConditionForDead()
-        {
-            if (_health <= 0)
-            {
-                IsDie = true;
-                Died?.Invoke(this);
-                _health = 0;
-            }
-            else
-                IsDie = false;
-        }
+		public IWeapon Weapon => _weapon;
 
-        protected virtual void CalculateDamageMultiplier(IWeapon weapon, bool isCriticalDamage, bool isModifiedDamage)
-        {
-            if (IsDie)
-                return;
+		public Armor Armor => _armor;
 
-            float elementMultiplier = CalculateDamageModifier(weapon.Element, _armor.Body.Element);
+		public bool IsDie { get; private set; }
 
-            float damage = elementMultiplier * weapon.Damage;
+		public Sprite Sprite { get; set; }
 
-            if (isCriticalDamage)
-                damage *= 2;
+		public void TakeDamage(IWeapon weapon, bool isCriticalDamage, bool isModifiedDamage)
+		{
+			CalculateDamageMultiplier(weapon, isCriticalDamage, isModifiedDamage);
+			ConditionForDead();
+			HealthChanged?.Invoke(_health);
+		}
 
-            if (isModifiedDamage)
-                damage *= 2;
+		public void Heal(int value)
+		{
+			_health += value;
+			HealthChanged?.Invoke(_health);
+		}
 
-            float armorValue = (_armor.Body.Value + _armor.Head.Value);
-            _health -= Math.Max(damage - armorValue, 1);
-        }
+		public void Reborn() =>
+			IsDie = false;
 
-        protected float CalculateDamageModifier(Element weaponElement, Element element) =>
-            ElementManager.GetDamageModifier(weaponElement, element);
-    }
+		protected virtual void ConditionForDead()
+		{
+			if (_health <= 0)
+			{
+				IsDie = true;
+				Died?.Invoke(this);
+				_health = 0;
+			}
+			else
+				IsDie = false;
+		}
+
+		protected virtual void CalculateDamageMultiplier(IWeapon weapon, bool isCriticalDamage, bool isModifiedDamage)
+		{
+			if (IsDie)
+				return;
+
+			float elementMultiplier = CalculateDamageModifier(weapon.Element, _armor.Body.Element);
+
+			float damage = elementMultiplier * weapon.Damage;
+
+			if (isCriticalDamage)
+				damage *= 2;
+
+			if (isModifiedDamage)
+				damage *= 2;
+
+			float armorValue = (_armor.Body.Value + _armor.Head.Value);
+			_health -= Math.Max(damage - armorValue, 1);
+		}
+
+		protected float CalculateDamageModifier(Element weaponElement, Element element) =>
+			ElementManager.GetDamageModifier(weaponElement, element);
+	}
 }

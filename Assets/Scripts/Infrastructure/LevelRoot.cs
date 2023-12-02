@@ -20,7 +20,7 @@ namespace Assets.Infrastructure
         [SerializeField] private ItemGenerator _itemGenerator;
         [SerializeField] private ProceduralGeneration _generation;
         [SerializeField] private Timer _gameTimer;
-        [SerializeField] private SoundComponent _levelSound;
+        [SerializeField] private SoundService _levelSound;
         [SerializeField] private PlayerInfo _playerInfo;
         [SerializeField] private PlayerInfo _playerInfoBattle;
         [SerializeField] private YandexAdView _yandexAd;
@@ -33,8 +33,7 @@ namespace Assets.Infrastructure
         private bool _isPossibleToRebornForAd;
 
         public bool IsPossibleToRebornForAd => _isPossibleToRebornForAd;
-        public int LevelNumber => _levelNumber;
-        
+
         public void Init(PlayerLevelData playerLevelData)
         {
             _itemGenerator.Init(_levelNumber);
@@ -60,10 +59,8 @@ namespace Assets.Infrastructure
             _levelSound.Play();
         }
 
-        public void IncreaseKilledEnemies(int count)
-        {
+        public void IncreaseKilledEnemies(int count) =>
             _numberOfEnemiesKilled += count;
-        }
 
         public void LoadMainMenu()
         {
@@ -86,10 +83,8 @@ namespace Assets.Infrastructure
             _isPossibleToRebornForAd = false;
         }
 
-        public void ShowInterstitialAd(Action callback)
-        {
+        public void ShowInterstitialAd(Action callback) =>
             _yandexAd.ShowInterstitialAd(callback);
-        }
 
         private void LoadLevelWithCurtain()
         {
@@ -107,8 +102,8 @@ namespace Assets.Infrastructure
             if (Game.GameSettings == null)
                 return;
 
-            var gameStats = Game.GameSettings.PlayerData.GameStatistics;
-            var newGameStats = new GameStatistics(
+            GameStatistics gameStats = Game.GameSettings.PlayerData.GameStatistics;
+            GameStatistics newGameStats = new GameStatistics(
                 gameStats.NumberOfAttempts,
                 gameStats.NumberOfEnemiesKilled + _numberOfEnemiesKilled,
                 gameStats.NumberOfBossesKilled + Convert.ToInt32(isBossKilled)

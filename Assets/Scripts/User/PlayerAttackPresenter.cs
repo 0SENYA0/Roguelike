@@ -1,14 +1,15 @@
 using Assets.Inventory;
 using Assets.Person;
 
-namespace Assets.Player
+namespace Assets.User
 {
     public class PlayerAttackPresenter : UnitAttackPresenter
     {
         private readonly PlayerAttackView _playerAttackView;
         private readonly InventoryPresenter _inventory;
 
-        public PlayerAttackPresenter(Player player, PlayerAttackView playerAttackView) : base(player, playerAttackView)
+        public PlayerAttackPresenter(Player player, PlayerAttackView playerAttackView) 
+            : base(player, playerAttackView)
         {
             _playerAttackView = playerAttackView;
             _inventory = player.InventoryPresenter;

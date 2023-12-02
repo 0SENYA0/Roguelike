@@ -4,6 +4,7 @@ using Assets.DefendItems;
 using Assets.Inventory;
 using Assets.Scripts.InteractiveObjectSystem;
 using Assets.Scripts.SoundSystem;
+using Assets.Weapons;
 using Lean.Localization;
 using TMPro;
 using UnityEngine;
@@ -14,7 +15,7 @@ namespace Assets.UI.HUD
     public class RewardPanel : MonoBehaviour
     {
         [SerializeField] private Button _button;
-        [SerializeField] private SoundComponent _winSound;
+        [SerializeField] private SoundService _winSound;
         [Space]
         [SerializeField] private Image _attackImage;
         [SerializeField] private Image _defendImage;
@@ -31,20 +32,21 @@ namespace Assets.UI.HUD
             
             if (loot is Armor armor)
                 ShowArmorLootInfo(armor, money);
-            else if (loot is Weapon.Weapon weapon)
+            else if (loot is Weapon weapon)
                 ShowWeaponLootInfo(weapon, money);
         }
 
-        public void Show(Armor armor, Weapon.Weapon weapon, int money)
+        public void Show(Armor armor, Weapon weapon, int money)
         {
             ActiveLootPanel();
             ShowBossLoot(armor, weapon, money);
         }
 
-        public void Hide()
-        {
+        public void Hide() =>
             gameObject.SetActive(false);
-        }
+
+        protected string GetLocalizedText(string key) =>
+            LeanLocalization.GetTranslation(key).Data.ToString();
 
         private void OnButtonClicked()
         {
@@ -59,7 +61,7 @@ namespace Assets.UI.HUD
             _button.onClick.AddListener(OnButtonClicked);
         }
 
-        private void ShowWeaponLootInfo(Weapon.Weapon weapon, int money)
+        private void ShowWeaponLootInfo(Weapon weapon, int money)
         {
             _defendImage.gameObject.SetActive(false);
             _attackImage.gameObject.SetActive(true);
@@ -89,7 +91,7 @@ namespace Assets.UI.HUD
                          $"{GetLocalizedText(LanguageConfig.HeadKey)} = {armor.Head.Value:F1}";
         }
 
-        private void ShowBossLoot(Armor armor, Weapon.Weapon weapon, int money)
+        private void ShowBossLoot(Armor armor, Weapon weapon, int money)
         {
             _attackImage.gameObject.SetActive(true);
             _defendImage.gameObject.SetActive(true);
@@ -105,11 +107,6 @@ namespace Assets.UI.HUD
                          $"{GetLocalizedText(LanguageConfig.ArmorKey)}\n" +
                          $"{GetLocalizedText(LanguageConfig.BodyKey)} = {armor.Body.Value:F1}\n" +
                          $"{GetLocalizedText(LanguageConfig.HeadKey)} = {armor.Head.Value:F1}";
-        }
-        
-        protected string GetLocalizedText(string key)
-        {
-            return LeanLocalization.GetTranslation(key).Data.ToString();
         }
     }
 }

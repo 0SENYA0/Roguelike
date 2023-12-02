@@ -12,7 +12,9 @@ namespace Assets.Fight.Dice
         [SerializeField] private Image _diceImage;
 
         public event Action Shuffled;
+
         public string CurrentDiceSide => _diceImage.sprite.name;
+
         public TMP_Text Text => _text;
         
         private void OnEnable() =>
@@ -23,9 +25,6 @@ namespace Assets.Fight.Dice
 
         public void SetSprite(Sprite sprite) =>
             _diceImage.sprite = sprite;
-
-        public void SetChance(string chance) =>
-            _text.text = chance;
 
         public void SetActive(string chance)
         {
@@ -39,7 +38,7 @@ namespace Assets.Fight.Dice
             _button.interactable = false;
             _diceImage.color = new Color(255, 255, 255, 100);
         }
-        
+
         private void Shuffle() =>
             Shuffled?.Invoke();
     }

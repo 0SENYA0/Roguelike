@@ -8,30 +8,20 @@ namespace Assets.YandexAds
     {
         private YandexAd _yandexAd;
 
-        private void Start()
-        {
+        private void Start() =>
             _yandexAd = new YandexAd();
-        }
 
-        private void OnEnable()
-        {
+        private void OnEnable() =>
             WebApplication.InBackgroundChangeEvent += WebApplicationFocus;
-        }
 
-        private void OnDisable()
-        {
+        private void OnDisable() =>
             WebApplication.InBackgroundChangeEvent -= WebApplicationFocus;
-        }
 
-        public void ShowRewardVideo(Action rewardMethod)
-        {
+        public void ShowRewardVideo(Action rewardMethod) =>
             _yandexAd.ShowRewardVideo(rewardMethod);
-        }
 
-        public void ShowInterstitialAd(Action callback)
-        {
+        public void ShowInterstitialAd(Action callback) =>
             _yandexAd.ShowInterstitialAd(callback);
-        }
 
         private void WebApplicationFocus(bool unfocusStatus)
         {

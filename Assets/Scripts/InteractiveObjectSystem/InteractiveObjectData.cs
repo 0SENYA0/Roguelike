@@ -12,7 +12,9 @@ namespace Assets.Scripts.InteractiveObjectSystem
         }
 
         public string Name { get; }
+
         public string Data { get; }
+
         public Element Element { get; }
     }
 }

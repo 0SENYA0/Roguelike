@@ -14,7 +14,7 @@ namespace Assets.Enemy
             : base(health, weapon, armor, spriteAnimation)
         {
         }
-        
+
         public bool IsBoss { get; private set; }
 
         public void MakeBoss() =>

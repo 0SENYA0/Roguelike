@@ -6,55 +6,55 @@ using UnityEngine.UI;
 
 namespace Assets
 {
-    public class LootInfoView : InfoView
-    {
-        [Header("блок атакующего элемента")] [SerializeField]
-        private Image _attackImage;
-        
-        [Header("блок защитного элемента")] [SerializeField]
-        private Image _defendImage;
+	public class LootInfoView : InfoView
+	{
+		[Header("блок атакующего элемента")] [SerializeField]
+		private Image _attackImage;
 
-        [Header("блок названия")] [SerializeField]
-        private TMP_Text _name;
+		[Header("блок защитного элемента")] [SerializeField]
+		private Image _defendImage;
 
-        [Header("блок описания")] [SerializeField]
-        private TMP_Text _data;
+		[Header("блок названия")] [SerializeField]
+		private TMP_Text _name;
 
-        [SerializeField] private Image _element;
-        [SerializeField] private ElementsSpriteView _elementsSpriteView;
+		[Header("блок описания")] [SerializeField]
+		private TMP_Text _data;
 
-        public void Show(InteractiveLootObject lootObject)
-        {
-            gameObject.SetActive(true);
-            
-            if (lootObject.Weapon != null)
-                ShowWeaponLootInfo(lootObject);
-            else
-                ShowArmorLootInfo(lootObject);
-        }
+		[SerializeField] private Image _element;
+		[SerializeField] private ElementsSpriteView _elementsSpriteView;
 
-        private void ShowWeaponLootInfo(InteractiveLootObject lootObject)
-        {
-            _defendImage.gameObject.SetActive(false);
-            _attackImage.gameObject.SetActive(true);
-            _element.sprite = _elementsSpriteView.GetElementSprite(lootObject.Weapon.Element);
-            
-            _name.text = GetLocalizedText(LanguageConfig.WeaponKey);
-            _data.text = $"{GetLocalizedText(LanguageConfig.DamageKey)} = {lootObject.Weapon.Damage:F1}\n" +
-                         $"{GetLocalizedText(LanguageConfig.DmgModifierKey)} = {lootObject.Weapon.ChanceToModifier}\n" +
-                         $"{GetLocalizedText(LanguageConfig.SplashChanceKey)} = {lootObject.Weapon.ChanceToSplash}\n" +
-                         $"{GetLocalizedText(LanguageConfig.CriticalChanceKey)} = {lootObject.Weapon.ChanceToCritical}";
-        }
+		public void Show(InteractiveLootObject lootObject)
+		{
+			gameObject.SetActive(true);
 
-        private void ShowArmorLootInfo(InteractiveLootObject lootObject)
-        {
-            _attackImage.gameObject.SetActive(false);
-            _defendImage.gameObject.SetActive(true);
-            _element.sprite = _elementsSpriteView.GetElementSprite(lootObject.Armor.Body.Element);
-            
-            _name.text = GetLocalizedText(LanguageConfig.ArmorKey);
-            _data.text = $"{GetLocalizedText(LanguageConfig.BodyKey)} = {lootObject.Armor.Body.Value:F1}\n" +
-                         $"{GetLocalizedText(LanguageConfig.HeadKey)} = {lootObject.Armor.Head.Value:F1}";
-        }
-    }
+			if (lootObject.Weapon != null)
+				ShowWeaponLootInfo(lootObject);
+			else
+				ShowArmorLootInfo(lootObject);
+		}
+
+		private void ShowWeaponLootInfo(InteractiveLootObject lootObject)
+		{
+			_defendImage.gameObject.SetActive(false);
+			_attackImage.gameObject.SetActive(true);
+			_element.sprite = _elementsSpriteView.GetElementSprite(lootObject.Weapon.Element);
+
+			_name.text = GetLocalizedText(LanguageConfig.WeaponKey);
+			_data.text = $"{GetLocalizedText(LanguageConfig.DamageKey)} = {lootObject.Weapon.Damage:F1}\n" +
+			             $"{GetLocalizedText(LanguageConfig.DmgModifierKey)} = {lootObject.Weapon.ChanceToModifier}\n" +
+			             $"{GetLocalizedText(LanguageConfig.SplashChanceKey)} = {lootObject.Weapon.ChanceToSplash}\n" +
+			             $"{GetLocalizedText(LanguageConfig.CriticalChanceKey)} = {lootObject.Weapon.ChanceToCritical}";
+		}
+
+		private void ShowArmorLootInfo(InteractiveLootObject lootObject)
+		{
+			_attackImage.gameObject.SetActive(false);
+			_defendImage.gameObject.SetActive(true);
+			_element.sprite = _elementsSpriteView.GetElementSprite(lootObject.Armor.Body.Element);
+
+			_name.text = GetLocalizedText(LanguageConfig.ArmorKey);
+			_data.text = $"{GetLocalizedText(LanguageConfig.BodyKey)} = {lootObject.Armor.Body.Value:F1}\n" +
+			             $"{GetLocalizedText(LanguageConfig.HeadKey)} = {lootObject.Armor.Head.Value:F1}";
+		}
+	}
 }

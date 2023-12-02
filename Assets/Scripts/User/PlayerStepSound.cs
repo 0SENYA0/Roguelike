@@ -2,11 +2,11 @@ using Assets.Scripts.GenerationSystem.LevelMovement;
 using Assets.Scripts.SoundSystem;
 using UnityEngine;
 
-namespace Assets.Player
+namespace Assets.User
 {
     public class PlayerStepSound : MonoBehaviour
     {
-        [SerializeField] private SoundComponent _sound;
+        [SerializeField] private SoundService _sound;
         [SerializeField] private float _stepTime = 2f;
         [SerializeField] private AgentMovement _agentMovement;
 

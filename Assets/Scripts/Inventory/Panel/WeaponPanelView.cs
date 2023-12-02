@@ -5,43 +5,41 @@ using UnityEngine;
 
 namespace Assets.Inventory.Panel
 {
-    public class WeaponPanelView : MonoBehaviour
-    {
-        [SerializeField] private WeaponPanelItem _template;
-        [SerializeField] private Transform _container;
-        
-        public Action<IInventoryItem> RemoveItem;
+	public class WeaponPanelView : MonoBehaviour
+	{
+		[SerializeField] private WeaponPanelItem _template;
+		[SerializeField] private Transform _container;
 
-        private List<WeaponPanelItem> _items = new();
+		private List<WeaponPanelItem> _items = new List<WeaponPanelItem>();
 
-        public void Show(IEnumerable<IWeapon> weapons)
-        {
-            foreach (var weapon in weapons)
-            {
-                var newItem = Instantiate(_template, _container).GetComponent<WeaponPanelItem>();
-                newItem.Init(weapon);
-                newItem.OnItemClicked += OnItemRemove;
-                _items.Add(newItem);
-            }
-        }
+		public Action<IInventoryItem> RemoveItem;
 
-        public void Hide()
-        {
-            foreach (var item in _items)
-            {
-                if (item == null)
-                    continue;
-                
-                item.OnItemClicked -= OnItemRemove;
-                item.OnDispose();
-            }
+		public void Show(IEnumerable<IWeapon> weapons)
+		{
+			foreach (IWeapon weapon in weapons)
+			{
+				WeaponPanelItem newItem = Instantiate(_template, _container).GetComponent<WeaponPanelItem>();
+				newItem.Init(weapon);
+				newItem.OnItemClicked += OnItemRemove;
+				_items.Add(newItem);
+			}
+		}
 
-            _items = new();
-        }
+		public void Hide()
+		{
+			foreach (WeaponPanelItem item in _items)
+			{
+				if (item == null)
+					continue;
 
-        private void OnItemRemove(IInventoryItem obj)
-        {
-            RemoveItem?.Invoke(obj);
-        }
-    }
+				item.OnItemClicked -= OnItemRemove;
+				item.OnDispose();
+			}
+
+			_items = new List<WeaponPanelItem>();
+		}
+
+		private void OnItemRemove(IInventoryItem obj) =>
+			RemoveItem?.Invoke(obj);
+	}
 }

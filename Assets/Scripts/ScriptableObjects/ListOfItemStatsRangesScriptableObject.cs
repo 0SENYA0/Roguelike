@@ -2,58 +2,32 @@ using UnityEngine;
 
 namespace Assets.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "ListOfItemStatsRanges", menuName = "ScriptableObject/ListOfItemStatsRanges",
-        order = 0)]
-    public class ListOfItemStatsRangesScriptableObject : ScriptableObject
-    {
-        [SerializeField] private WeaponStat _defaultWeaponStat;
-        [SerializeField] private WeaponStat _levelWeapon;
-        [SerializeField] private WeaponStat _bossLootWeapon;
-        [Space] 
-        [SerializeField] private ArmorStat _defaultArmorStat;
-        [SerializeField] private ArmorStat _levelArmor;
-        [SerializeField] private ArmorStat _bossLootArmor;
-        [Space] 
-        [SerializeField] private Range _enemyReward;
-        [SerializeField] private Range _bossReward;
+	[CreateAssetMenu(fileName = "ListOfItemStatsRanges", menuName = "ScriptableObject/ListOfItemStatsRanges", order = 0)]
+	public class ListOfItemStatsRangesScriptableObject : ScriptableObject
+	{
+		[SerializeField] private WeaponStat _defaultWeaponStat;
+		[SerializeField] private WeaponStat _levelWeapon;
+		[SerializeField] private WeaponStat _bossLootWeapon;
+		[Space] [SerializeField] private ArmorStat _defaultArmorStat;
+		[SerializeField] private ArmorStat _levelArmor;
+		[SerializeField] private ArmorStat _bossLootArmor;
+		[Space] [SerializeField] private Range _enemyReward;
+		[SerializeField] private Range _bossReward;
 
-        public WeaponStat DefaultWeaponStat => _defaultWeaponStat;
-        public WeaponStat LevelWeapon => _levelWeapon;
-        public WeaponStat BossLootWeapon => _bossLootWeapon;
+		public WeaponStat DefaultWeaponStat => _defaultWeaponStat;
 
-        public ArmorStat DefaultArmorStat => _defaultArmorStat;
-        public ArmorStat LevelArmor => _levelArmor;
-        public ArmorStat BossLootArmor => _bossLootArmor;
+		public WeaponStat LevelWeapon => _levelWeapon;
 
-        public Range EnemyReward => _enemyReward;
-        public Range BossReward => _bossReward;
+		public WeaponStat BossLootWeapon => _bossLootWeapon;
 
-        [System.Serializable]
-        public class WeaponStat
-        {
-            [SerializeField] private Range _damage;
+		public ArmorStat DefaultArmorStat => _defaultArmorStat;
 
-            public Range Damage => _damage;
-        }
+		public ArmorStat LevelArmor => _levelArmor;
 
-        [System.Serializable]
-        public class ArmorStat
-        {
-            [SerializeField] private Range _headStatValue;
-            [SerializeField] private Range _bodyStatValue;
+		public ArmorStat BossLootArmor => _bossLootArmor;
 
-            public Range HeadStatValue => _headStatValue;
-            public Range BodyStatValue => _bodyStatValue;
-        }
+		public Range EnemyReward => _enemyReward;
 
-        [System.Serializable]
-        public class Range
-        {
-            [SerializeField] private float _minValue;
-            [SerializeField] private float _maxValue;
-
-            public float MinValue => _minValue;
-            public float MaxValue => _maxValue;
-        }
-    }
+		public Range BossReward => _bossReward;
+	}
 }

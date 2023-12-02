@@ -12,10 +12,8 @@ namespace Assets.Scripts.InteractiveObjectSystem.CanvasInfoSystem
         private Vector3 _targetPosition;
         private InteractiveObject _selectedObject;
 
-        private void Start()
-        {
+        private void Start() =>
             _clickTracker.ObjectClick += ShowPanel;
-        }
 
         private void OnDestroy()
         {

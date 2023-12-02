@@ -2,8 +2,7 @@ using UnityEngine;
 
 namespace Assets.Fight
 {
-    public class SpawnPoint : MonoBehaviour
-    {
-    }
-
+	public class SpawnPoint : MonoBehaviour
+	{
+	}
 }

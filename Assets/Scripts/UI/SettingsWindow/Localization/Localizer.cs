@@ -30,9 +30,7 @@ namespace Assets.UI.SettingsWindow.Localization
                 Game.GameSettings.OnLanguageChange -= ChangeLanguage;
         }
 
-        private void ChangeLanguage(string language)
-        {
+        private void ChangeLanguage(string language) =>
             _localization.SetCurrentLanguage(language);
-        }
     }
 }

@@ -40,13 +40,9 @@ namespace Assets.Scripts.GenerationSystem
                 for (int j = 0; j < grid.GetLength(1); j++)
                 {
                     if (grid[i, j] == GridSpace.Floor)
-                    {
-                        _spawnPosition.Add(new Vector2(i+gridOffset, j+gridOffset) - offset);
-                    }
+                        _spawnPosition.Add(new Vector2(i + gridOffset, j + gridOffset) - offset);
                     else if (grid[i, j] == GridSpace.Last)
-                    {
                         _bossPosition = new Vector2(i + gridOffset, j + gridOffset) - offset;
-                    }
                 }
             }
         }
@@ -79,16 +75,14 @@ namespace Assets.Scripts.GenerationSystem
                 float chance = Random.value;
 
                 if (chance <= items.ChanceSpawn)
-                {
                     countToInstantiate++;
-                }
             }
 
             for (int i = 0; i < countToInstantiate; i++)
             {
                 if (IsPossibleToInstantiate())
                 {
-                    var newPosition = _spawnPosition[0];
+                    Vector2 newPosition = _spawnPosition[0];
                     _spawnPosition.RemoveAt(0);
                     Instantiate(GetRandomObject(items.Template), newPosition, Quaternion.identity, _conteiner);
                     _numberOfObjectsCreated++;
@@ -96,31 +90,13 @@ namespace Assets.Scripts.GenerationSystem
             }
         }
 
-        private bool IsPossibleToInstantiate()
-        {
-            return _numberOfObjectsCreated < _maxCountOfSpawnItems && _spawnPosition.Count > 0;
-        }
+        private bool IsPossibleToInstantiate() =>
+            _numberOfObjectsCreated < _maxCountOfSpawnItems && _spawnPosition.Count > 0;
 
-        private GameObject GetRandomObject(GameObject[] gameObjects)
-        {
-            return gameObjects[Random.Range(0, gameObjects.Length)];
-        }
+        private GameObject GetRandomObject(GameObject[] gameObjects) =>
+            gameObjects[Random.Range(0, gameObjects.Length)];
 
-        private void SpawnBoss(Vector2 position)
-        {
+        private void SpawnBoss(Vector2 position) =>
             Instantiate(_bossTemplate, position, Quaternion.identity, _conteiner);
-        }
-    }
-
-    [System.Serializable]
-    public class SpawnerItem
-    {
-        [SerializeField] private GameObject[] _template;
-        [SerializeField] private int _maxCount;
-        [SerializeField] [Range(0, 1f)] private float _chanceSpawn = 0.05f;
-
-        public GameObject[] Template => _template;
-        public float ChanceSpawn => _chanceSpawn;
-        public int MaxCount => _maxCount;
     }
 }
