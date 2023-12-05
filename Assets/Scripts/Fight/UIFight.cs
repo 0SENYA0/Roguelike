@@ -30,6 +30,7 @@ namespace Assets.Fight
         private IPlayerPresenter _playerPresenter;
         private int _countOfEnemyForFight;
         private bool _isBoosFight;
+        private Rewarder _rewarder;
 
         public void SetActiveFightPlace(IPlayerPresenter playerPresenter, IEnemyPresenter enemyPresenter)
         {
@@ -41,6 +42,7 @@ namespace Assets.Fight
             _countOfEnemyForFight = enemyPresenter.Enemy.Count;
             var enemyType = enemyPresenter.Enemy.FirstOrDefault(x => x.IsBoss);
             _isBoosFight = enemyType?.IsBoss ?? false;
+            _rewarder = new Rewarder(_isBoosFight, _playerPresenter, _rewardPanel);
             
             _fightPlace.FightEnded += ShowRewardPanel;
             _fightPlace.Set(playerPresenter, enemyPresenter);
@@ -55,9 +57,9 @@ namespace Assets.Fight
             {
                 case FightResult.Win:
                     if (_isBoosFight)
-                        CreateBossReward();
+                        _rewarder.CreateBossReward(LoadNextLevel);
                     else
-                        CreateEnemyReward();
+                        _rewarder.CreateEnemyReward(ShowGlobalMap);
                     break;
                 case FightResult.Lose:
                     _losePanel.Show(_isBoosFight);
@@ -92,32 +94,6 @@ namespace Assets.Fight
             }
         }
 
-        private void CreateBossReward()
-        {
-            Armor randomArmor = ItemGenerator.Instance.GetRandomArmor(_isBoosFight);
-            Weapon randomWeapon = ItemGenerator.Instance.GetRandomWeapon(_isBoosFight);
-            int money = ItemGenerator.Instance.GetBossReward();
-            
-            Game.GameSettings.PlayerData.Money += money;
-            _playerPresenter.Player.InventoryPresenter.InventoryModel.AddItem(randomWeapon);
-            _playerPresenter.Player.InventoryPresenter.InventoryModel.AddItem(randomArmor);
-            
-            _rewardPanel.Show(randomArmor, randomWeapon, money);
-            _rewardPanel.OnButtonClickEvent += LoadNextLevel;
-        }
-
-        private void CreateEnemyReward()
-        {
-            IInventoryItem randomLoot = GetRandomLoot();
-            int money = ItemGenerator.Instance.GetEnemyReward();
-            
-            Game.GameSettings.PlayerData.Money += money;
-            _playerPresenter.Player.InventoryPresenter.InventoryModel.AddItem(randomLoot);
-            
-            _rewardPanel.Show(randomLoot, money);
-            _rewardPanel.OnButtonClickEvent += ShowGlobalMap;
-        }
-
         private void ShowGlobalMap()
         {
             _fightSound.Stop();
@@ -137,14 +113,6 @@ namespace Assets.Fight
             _fightSound.Stop();
             _rewardPanel.OnButtonClickEvent -= LoadNextLevel;
             _levelRoot.LoadNextLevel();
-        }
-
-        private IInventoryItem GetRandomLoot()
-        {
-            if (UnityEngine.Random.Range(0, 2) == 0)
-                return ItemGenerator.Instance.GetRandomArmor();
-            
-            return ItemGenerator.Instance.GetRandomWeapon();
         }
     }
 }
