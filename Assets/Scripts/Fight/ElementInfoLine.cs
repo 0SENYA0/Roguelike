@@ -7,7 +7,7 @@ namespace Assets.Fight
 	{
 		[SerializeField] private LineInfo _lineInfo;
 
-		[field: SerializeField] public Image Element { get; set; }
+		[field: SerializeField] public Image Element { get; private set; }
 
 		public ILineInfo InfoInLine => _lineInfo;
 	}

@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Assets.Infrastructure.DataStorageSystem
 {
-    public readonly struct GameStatistics
+    public struct GameStatistics
     {
         public readonly int NumberOfAttempts;
         public readonly int NumberOfEnemiesKilled;

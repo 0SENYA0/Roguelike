@@ -4,7 +4,7 @@ namespace Assets.Fight
 {
 	public interface IElementInfoLine
 	{
-		public Image Element { get; set; }
+		public Image Element { get; }
 
 		public ILineInfo InfoInLine { get; }
 	}

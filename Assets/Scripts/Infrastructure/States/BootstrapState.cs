@@ -7,12 +7,12 @@ namespace Assets.Infrastructure.States
 {
     public class BootstrapState : IState
     {
+        private const string MenuSceneName = "Menu";
+
         private readonly GameStateMachine _gameStateMachine;
         private readonly SdkLoader _sdkLoader;
-        private readonly SceneLoader _sceneLoader;
+        private readonly SceneLoader _sceneLoader;        
 
-        private const string MenuSceneName = "Menu"; 
-        
         public BootstrapState(GameStateMachine gameStateMachine, SdkLoader sdkLoader, SceneLoader sceneLoader)
         {
             _gameStateMachine = gameStateMachine;

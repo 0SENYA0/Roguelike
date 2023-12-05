@@ -61,8 +61,10 @@ namespace Assets.Fight
 		}
 
 		public event Action FightEnded;
-		public event Action ShowDice;
-		public event Action HideDice;
+
+        public event Action ShowDice;
+
+        public event Action HideDice;
 
 		public void Dispose()
 		{

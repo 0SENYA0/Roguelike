@@ -75,7 +75,7 @@ namespace Assets.Scripts.GenerationSystem
 		private Vector3Int CalculatePosition(float x, float y)
 		{
 			Vector2 offset = _roomSizeWorldUnits / 2.0f;
-			Vector2 spawnPos = new Vector2(x, y) * WorldUnitsInOneGridCell - offset;
+			Vector2 spawnPos = (new Vector2(x, y) * WorldUnitsInOneGridCell) - offset;
 			Vector3Int position = new Vector3Int((int)spawnPos.x, (int)spawnPos.y, 0);
 			return position;
 		}

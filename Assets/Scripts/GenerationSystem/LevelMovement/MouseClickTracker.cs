@@ -10,7 +10,6 @@ namespace Assets.Scripts.GenerationSystem.LevelMovement
         private readonly int _mouseKey = 0;
 
         private Vector3 _mousePosition;
-        private bool _isPointerOverUi;
         private Camera _camera;
 
         public UnityAction<Vector3> MoveClick;

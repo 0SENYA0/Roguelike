@@ -11,8 +11,11 @@ namespace Assets.Fight
 		[SerializeField] private Button _buttonAttack;
 
 		[field: SerializeField] public TMP_Text Damage { get; set; }
+
 		[field: SerializeField] public TMP_Text ChanceToSplash { get; set; }
+
 		[field: SerializeField] public TMP_Text ChanceCriticalDamage { get; set; }
+
 		[field: SerializeField] public TMP_Text ValueModifier { get; set; }
 
 		public Button ButtonAttack => _buttonAttack;

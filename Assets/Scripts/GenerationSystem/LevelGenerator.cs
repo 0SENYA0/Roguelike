@@ -68,8 +68,8 @@ namespace Assets.Scripts.GenerationSystem
 			_startXPosition = (int)spawnPosition.x;
 			_startYPosition = (int)spawnPosition.y;
 
-			newWalker.direction = GetRandomDirection();
-			newWalker.position = spawnPosition;
+			newWalker.Direction = GetRandomDirection();
+			newWalker.Position = spawnPosition;
 
 			_walkers.Add(newWalker);
 		}
@@ -116,8 +116,8 @@ namespace Assets.Scripts.GenerationSystem
 		{
 			foreach (Walker walker in _walkers)
 			{
-				_lastXPosition = (int)walker.position.x;
-				_lastYPosition = (int)walker.position.y;
+				_lastXPosition = (int)walker.Position.x;
+				_lastYPosition = (int)walker.Position.y;
 
 				_grid[_lastXPosition, _lastYPosition] = GridSpace.Floor;
 			}
@@ -142,7 +142,7 @@ namespace Assets.Scripts.GenerationSystem
 				if (Random.value < _chanceWalkerChangeDirection)
 				{
 					Walker walker = _walkers[i];
-					walker.direction = GetRandomDirection();
+					walker.Direction = GetRandomDirection();
 					_walkers[i] = walker;
 				}
 			}
@@ -154,7 +154,7 @@ namespace Assets.Scripts.GenerationSystem
 			{
 				if (Random.value < _chanceWalkerSpawn && _walkers.Count < _maxWalkers)
 				{
-					Walker newWalker = new Walker { direction = GetRandomDirection(), position = _walkers[i].position };
+					Walker newWalker = new Walker { Direction = GetRandomDirection(), Position = _walkers[i].Position };
 					_walkers.Add(newWalker);
 				}
 			}
@@ -165,7 +165,7 @@ namespace Assets.Scripts.GenerationSystem
 			for (int i = 0; i < _walkers.Count; i++)
 			{
 				Walker walker = _walkers[i];
-				walker.position += walker.direction;
+				walker.Position += walker.Direction;
 				CheckBoarderOfGrid(ref walker);
 				_walkers[i] = walker;
 			}
@@ -175,8 +175,8 @@ namespace Assets.Scripts.GenerationSystem
 		{
 			int offset = 2;
 
-			walker.position.x = Mathf.Clamp(walker.position.x, 1, _roomWidth - offset);
-			walker.position.y = Mathf.Clamp(walker.position.y, 1, _roomHeight - offset);
+			walker.Position.x = Mathf.Clamp(walker.Position.x, 1, _roomWidth - offset);
+			walker.Position.y = Mathf.Clamp(walker.Position.y, 1, _roomHeight - offset);
 		}
 
 		private int CountOfFloors()

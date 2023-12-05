@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 namespace Assets
 {
-	public abstract class InfoView : MonoBehaviour
-	{
+    public abstract class InfoView : MonoBehaviour
+    {
 		[SerializeField] private Button _buttonYes;
 		[SerializeField] private Button _buttonNo;
 

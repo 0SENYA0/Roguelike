@@ -6,6 +6,7 @@ namespace Assets.Infrastructure.States
     public class MainMenuState : IState, IButtonObserver
     {
         private const string GenerationStateName = "LevelGeneration";
+        
         private readonly SceneLoader _sceneLoader;
 
         public MainMenuState(SceneLoader sceneLoader) =>

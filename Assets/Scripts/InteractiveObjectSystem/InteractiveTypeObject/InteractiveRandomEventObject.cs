@@ -10,7 +10,8 @@ namespace Assets.Scripts.InteractiveObjectSystem
     {
         [SerializeField] private List<EnemyView> _enemyView;
 
-        public IEnemyPresenter GetRandomEnemy() => new EnemyPresenter(_enemyView[Random.Range(0, _enemyView.Count)]);
+        public IEnemyPresenter GetRandomEnemy() => 
+            new EnemyPresenter(_enemyView[Random.Range(0, _enemyView.Count)]);
 
         public IInventoryItem GetRandomLoot()
         {

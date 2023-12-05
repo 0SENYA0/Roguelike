@@ -5,8 +5,8 @@ namespace Assets.Scripts.GenerationSystem.LevelMovement
     public class CharacterDestinationMarker : MonoBehaviour
     {
         [SerializeField] private Transform _characterTarget;
-        [SerializeField] float _hidingDistance = 1.5f;
-        [SerializeField] float _blackAtDistance = 1f;
+        [SerializeField] private float _hidingDistance = 1.5f;
+        [SerializeField] private float _blackAtDistance = 1f;
         [SerializeField] private SpriteRenderer _renderer;
 
         private void Update()
