@@ -7,6 +7,8 @@ namespace Assets.Observces
 	{
 		private static MainMenuButtonPlayObserver _instance;
 
+		private List<IButtonObserver> _observers = new List<IButtonObserver>();
+
 		public static MainMenuButtonPlayObserver Instance
 		{
 			get
@@ -17,8 +19,6 @@ namespace Assets.Observces
 				return _instance;
 			}
 		}
-
-		private List<IButtonObserver> _observers = new List<IButtonObserver>();
 
 		public void Registry(IButtonObserver buttonObserver) =>
 			_observers.Add(buttonObserver);

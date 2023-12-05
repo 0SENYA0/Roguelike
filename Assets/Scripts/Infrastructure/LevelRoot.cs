@@ -106,8 +106,7 @@ namespace Assets.Infrastructure
             GameStatistics newGameStats = new GameStatistics(
                 gameStats.NumberOfAttempts,
                 gameStats.NumberOfEnemiesKilled + _numberOfEnemiesKilled,
-                gameStats.NumberOfBossesKilled + Convert.ToInt32(isBossKilled)
-                );
+                gameStats.NumberOfBossesKilled + Convert.ToInt32(isBossKilled) );
 
             Game.GameSettings.PlayerData.GameStatistics = newGameStats;
             Game.GameSettings.PlayerData.SaveData();

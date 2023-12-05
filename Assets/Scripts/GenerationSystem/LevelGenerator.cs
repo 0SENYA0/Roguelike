@@ -197,8 +197,10 @@ namespace Assets.Scripts.GenerationSystem
 			for (int x = 0; x < _roomWidth - 1; x++)
 			{
 				for (int y = 0; y < _roomHeight - 1; y++)
+				{
 					if (_grid[x, y] == GridSpace.Floor)
 						TryPlaceWalls(x, y);
+				}
 			}
 		}
 
@@ -222,8 +224,10 @@ namespace Assets.Scripts.GenerationSystem
 			for (int x = 0; x < _roomWidth - 1; x++)
 			{
 				for (int y = 0; y < _roomHeight - 1; y++)
+				{
 					if (_grid[x, y] == GridSpace.Wall)
 						CheckEachSide(x, y);
+				}
 			}
 		}
 

@@ -11,8 +11,8 @@ namespace Assets.Utils
 {
 	public class WeaponPanelElement : MonoBehaviour
 	{
-		[SerializeField] private ElementsSpriteView _elementsSprite;
 		[SerializeField] protected NameOfElementsScriptableObject _nameOfElements;
+		[SerializeField] private ElementsSpriteView _elementsSprite;
 		[SerializeField] private Image _image;
 		[SerializeField] private TMP_Text _name;
 		[SerializeField] private TMP_Text _damage;

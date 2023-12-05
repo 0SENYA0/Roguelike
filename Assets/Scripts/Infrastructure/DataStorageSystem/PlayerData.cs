@@ -17,14 +17,6 @@ namespace Assets.Infrastructure.DataStorageSystem
         public PlayerData() =>
             LoadData();
 
-        public override string ToString()
-        {
-            string message = $"money: {_money} | music: {_isMusicOn} | sfx: {_isSfxOn} |" +
-                             $"lang: {_localization} | stats: {_gameStatistics} | armor: {_armorLevel} |" +
-                             $"weapon: {_weaponLevel} | potion: {_potion} | idol: {_idol}";
-            return message;
-        }
-
         public int Money
         {
             get => _money;
@@ -141,6 +133,14 @@ namespace Assets.Infrastructure.DataStorageSystem
 
                 SaveData();
             }
+        }
+
+        public override string ToString()
+        {
+            string message = $"money: {_money} | music: {_isMusicOn} | sfx: {_isSfxOn} |" +
+                             $"lang: {_localization} | stats: {_gameStatistics} | armor: {_armorLevel} |" +
+                             $"weapon: {_weaponLevel} | potion: {_potion} | idol: {_idol}";
+            return message;
         }
 
         public void SaveData()

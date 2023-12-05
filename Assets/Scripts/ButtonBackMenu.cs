@@ -20,6 +20,6 @@ namespace Assets
             _button.onClick.RemoveListener(LoadMainMenu);
 
         private void LoadMainMenu() =>
-            Curtain.Instance.ShowAnimation(() => {Menu.Load();});
+            Curtain.Instance.ShowAnimation(() => {Menu.Load();} );
     }
 }
