@@ -2,7 +2,7 @@ using System;
 
 namespace Assets.Infrastructure.DataStorageSystem
 {
-    public class PlayerData: IPlayerData
+    public class PlayerData : IPlayerData
     {
         private int _money;
         private bool _isMusicOn;
@@ -13,7 +13,7 @@ namespace Assets.Infrastructure.DataStorageSystem
         private int _weaponLevel;
         private int _potion;
         private int _idol;
-        
+
         public PlayerData() =>
             LoadData();
 
@@ -37,7 +37,7 @@ namespace Assets.Infrastructure.DataStorageSystem
             {
                 if (value == _isMusicOn)
                     throw new AggregateException("Attempt to change the state to the same");
-                
+
                 _isMusicOn = value;
                 SaveData();
             }
@@ -81,8 +81,9 @@ namespace Assets.Infrastructure.DataStorageSystem
             set
             {
                 if (CheckValueForDifferenceInOne(_armorLevel, value) == false)
-                    throw new ArgumentException("The argument must differ from the old value by one and only increase the value");
-                
+                    throw new ArgumentException(
+                        "The argument must differ from the old value by one and only increase the value");
+
                 if (CheckForAnIncreaseInValue(_armorLevel, value) == false)
                     throw new ArgumentException("The argument should only increase the value");
 
@@ -97,8 +98,9 @@ namespace Assets.Infrastructure.DataStorageSystem
             set
             {
                 if (CheckValueForDifferenceInOne(_weaponLevel, value) == false)
-                    throw new ArgumentException("The argument must differ from the old value by one and only increase the value");
-                
+                    throw new ArgumentException(
+                        "The argument must differ from the old value by one and only increase the value");
+
                 if (CheckForAnIncreaseInValue(_weaponLevel, value) == false)
                     throw new ArgumentException("The argument should only increase the value");
 
@@ -115,8 +117,9 @@ namespace Assets.Infrastructure.DataStorageSystem
                 if (CheckValueForDifferenceInOne(_potion, value))
                     _potion = value;
                 else
-                    throw new ArgumentException("The argument must differ from the old value by one and only increase the value");
-                
+                    throw new ArgumentException(
+                        "The argument must differ from the old value by one and only increase the value");
+
                 SaveData();
             }
         }
@@ -155,14 +158,14 @@ namespace Assets.Infrastructure.DataStorageSystem
                 _weaponLevel,
                 _potion,
                 _idol);
-            
+
             DataService.SaveData(data);
         }
 
         private void LoadData()
         {
             Data data = DataService.GetData();
-            
+
             _money = data.Money;
             _isMusicOn = Convert.ToBoolean(data.Music);
             _isSfxOn = Convert.ToBoolean(data.Sfx);

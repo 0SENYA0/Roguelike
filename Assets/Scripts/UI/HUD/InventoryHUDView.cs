@@ -6,10 +6,10 @@ namespace Assets.UI.HUD
 {
     public class InventoryHUDView : MonoBehaviour
     {
+        private const float ArtificialDelayBeforeShowing = 1.5f;
+
         [SerializeField] private PlayerView _inventory;
         [SerializeField] private TMP_Text _text;
-
-        private const float ArtificialDelayBeforeShowing = 1.5f;
 
         private void Start() =>
             Invoke(nameof(InitSubscribe), ArtificialDelayBeforeShowing);
@@ -20,7 +20,8 @@ namespace Assets.UI.HUD
         private void InitSubscribe()
         {
             _inventory.InventoryPresenter.InventoryModel.CountItemsChangeEvent += OnCountItemsChange;
-            OnCountItemsChange(_inventory.InventoryPresenter.InventoryModel.MaxSize,
+            OnCountItemsChange(
+                _inventory.InventoryPresenter.InventoryModel.MaxSize,
                 _inventory.InventoryPresenter.InventoryModel.TotalSize);
         }
 

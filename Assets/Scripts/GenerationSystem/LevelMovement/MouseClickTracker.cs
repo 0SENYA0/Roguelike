@@ -23,10 +23,10 @@ namespace Assets.Scripts.GenerationSystem.LevelMovement
             if (Input.GetMouseButtonDown(_mouseKey))
             {
                 bool isPointerOverUi = EventSystem.current.IsPointerOverGameObject();
-                
-                if(isPointerOverUi)
+
+                if (isPointerOverUi)
                     return;
-                
+
                 _mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
 
                 if (TryGetInteractiveObject(out InteractiveObject selectedObject))
@@ -39,7 +39,7 @@ namespace Assets.Scripts.GenerationSystem.LevelMovement
         private bool TryGetInteractiveObject(out InteractiveObject data)
         {
             data = null;
-            
+
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
 

@@ -2,9 +2,9 @@ namespace Assets.Fight.Element
 {
     public static class ElementManager
     {
-        private readonly static float _normalModifier = 1f;
-        private readonly static float _increasedModifier = 2f;
-        private readonly static float _loweredModifier = 0.5f;
+        private const float _normalModifier = 1f;
+        private const float _increasedModifier = 2f;
+        private const float _loweredModifier = 0.5f;
 
         public static float GetDamageModifier(Element attack, Element defender)
         {
@@ -16,8 +16,10 @@ namespace Assets.Fight.Element
             int positiveFirstStep = 4;
             int positiveSecondStep = 3;
 
-            bool firstCondition = (defender - firstStep >= 0 ? defender - firstStep : defender + positiveFirstStep) == attack;
-            bool secondCondition = (defender - secondStep >= 0 ? defender - secondStep : defender + positiveSecondStep) == attack;
+            bool firstCondition = (defender - firstStep >= 0 ? defender - firstStep : defender + positiveFirstStep) ==
+                                  attack;
+            bool secondCondition =
+                (defender - secondStep >= 0 ? defender - secondStep : defender + positiveSecondStep) == attack;
 
             if (firstCondition || secondCondition)
                 return _increasedModifier;

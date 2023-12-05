@@ -25,7 +25,8 @@ namespace Assets.Infrastructure
             newState.Enter();
         }
 
-        private TState ChangeState<TState>() where TState : class, IExitableState
+        private TState ChangeState<TState>()
+            where TState : class, IExitableState
         {
             _currentState?.Exit();
 
@@ -35,7 +36,10 @@ namespace Assets.Infrastructure
             return newState;
         }
 
-        private TState GetState<TState>() where TState : class, IExitableState =>
-            _states[typeof(TState)] as TState;
+        private TState GetState<TState>()
+            where TState : class, IExitableState
+        {
+            return _states[typeof(TState)] as TState;
+        }
     }
 }

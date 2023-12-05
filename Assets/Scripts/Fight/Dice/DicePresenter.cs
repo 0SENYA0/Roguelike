@@ -5,82 +5,82 @@ using UnityEngine;
 
 namespace Assets.Fight.Dice
 {
-	public class DicePresenter : IDisposable
-	{
-		private readonly DiceView _diceView;
-		private readonly DiceModel _diceModel;
-		private readonly ICoroutineRunner _coroutineRunner;
+    public class DicePresenter : IDisposable
+    {
+        private readonly DiceView _diceView;
+        private readonly DiceModel _diceModel;
+        private readonly ICoroutineRunner _coroutineRunner;
 
-		private Coroutine _coroutine;
-		private int _countOfNeedClick = 2;
+        private Coroutine _coroutine;
+        private int _countOfNeedClick = 2;
 
-		public DicePresenter(DiceView diceView, DiceModel diceModel, ICoroutineRunner coroutineRunner)
-		{
-			_diceView = diceView;
-			_diceModel = diceModel;
-			_coroutineRunner = coroutineRunner;
-			WasShuffeled = false;
-			_diceView.Shuffled += StartAnimation;
-			CurrentNumberDice = 0;
-		}
+        public DicePresenter(DiceView diceView, DiceModel diceModel, ICoroutineRunner coroutineRunner)
+        {
+            _diceView = diceView;
+            _diceModel = diceModel;
+            _coroutineRunner = coroutineRunner;
+            WasShuffeled = false;
+            _diceView.Shuffled += StartAnimation;
+            CurrentNumberDice = 0;
+        }
 
-		public int CurrentNumberDice { get; private set; }
-		
-		public bool WasShuffeled { get; set; }
+        public int CurrentNumberDice { get; private set; }
 
-		public void Dispose() =>
-			_diceView.Shuffled -= StartAnimation;
+        public bool WasShuffeled { get; set; }
 
-		public void SetActive(string chance) =>
-			_diceView.SetActive(chance);
+        public void Dispose() =>
+            _diceView.Shuffled -= StartAnimation;
 
-		public void SetDisactive() =>
-			_diceView.SetDisactive();
+        public void SetActive(string chance) =>
+            _diceView.SetActive(chance);
 
-		private void StartAnimation()
-		{
-			_countOfNeedClick--;
+        public void SetDisactive() =>
+            _diceView.SetDisactive();
 
-			if (_countOfNeedClick <= 0)
-			{
-				_countOfNeedClick = 2;
-				WasShuffeled = true;
+        private void StartAnimation()
+        {
+            _countOfNeedClick--;
 
-				if (_coroutine != null)
-				{
-					_coroutineRunner.StopCoroutine(_coroutine);
-					_coroutine = null;
-				}
+            if (_countOfNeedClick <= 0)
+            {
+                _countOfNeedClick = 2;
+                WasShuffeled = true;
 
-				string value = _diceView.CurrentDiceSide[_diceView.CurrentDiceSide.Length - 1].ToString();
-				CurrentNumberDice = int.Parse(value) + 1;
-				SetDisactive();
-				return;
-			}
+                if (_coroutine != null)
+                {
+                    _coroutineRunner.StopCoroutine(_coroutine);
+                    _coroutine = null;
+                }
 
-			if (_coroutine != null)
-			{
-				_coroutineRunner.StopCoroutine(_coroutine);
-				_coroutine = null;
-				return;
-			}
+                string value = _diceView.CurrentDiceSide[_diceView.CurrentDiceSide.Length - 1].ToString();
+                CurrentNumberDice = int.Parse(value) + 1;
+                SetDisactive();
+                return;
+            }
 
-			_coroutine = _coroutineRunner.StartCoroutine(StartAnimationCoroutine());
-		}
+            if (_coroutine != null)
+            {
+                _coroutineRunner.StopCoroutine(_coroutine);
+                _coroutine = null;
+                return;
+            }
 
-		private IEnumerator StartAnimationCoroutine()
-		{
-			int step = 1000;
+            _coroutine = _coroutineRunner.StartCoroutine(StartAnimationCoroutine());
+        }
 
-			while (step > 0)
-			{
-				foreach (Sprite sprite in _diceModel.Sprites)
-				{
-					_diceView.SetSprite(sprite);
-					step--;
-					yield return null;
-				}
-			}
-		}
-	}
+        private IEnumerator StartAnimationCoroutine()
+        {
+            int step = 1000;
+
+            while (step > 0)
+            {
+                foreach (Sprite sprite in _diceModel.Sprites)
+                {
+                    _diceView.SetSprite(sprite);
+                    step--;
+                    yield return null;
+                }
+            }
+        }
+    }
 }

@@ -36,7 +36,8 @@ namespace Assets.User
 
 		private Player GetNewPlayer()
 		{
-			Player player = new Player(_playerView.Health,
+			Player player = new Player(
+				_playerView.Health,
 				_inventoryPresenter,
 				_playerView.SpriteAnimation);
 

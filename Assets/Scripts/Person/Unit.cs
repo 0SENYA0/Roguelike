@@ -62,7 +62,9 @@ namespace Assets.Person
 				_health = 0;
 			}
 			else
+			{
 				IsDie = false;
+			}
 		}
 
 		protected virtual void CalculateDamageMultiplier(IWeapon weapon, bool isCriticalDamage, bool isModifiedDamage)

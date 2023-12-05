@@ -19,14 +19,12 @@ namespace Assets.Inventory.Panel
         public void Init(IWeapon weapon)
         {
             _item = weapon as IInventoryItem;
-            
             _image.sprite = _elementsSprite.GetElementSprite(weapon.Element);
             _name.text = _nameOfElements.GetElementName(weapon.Element);
             _damage.text = $"{weapon.Damage:F1}";
             _splash.text = $"{weapon.ChanceToSplash}";
             _critical.text = $"{weapon.ChanceToCritical}";
             _modifier.text = $"{weapon.ChanceToModifier}";
-            
             _remove.onClick.AddListener(OnClickRemove);
         }
     }

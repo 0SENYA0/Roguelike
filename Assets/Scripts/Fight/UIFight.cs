@@ -38,12 +38,12 @@ namespace Assets.Fight
             _battlefieldMap.SetActive(true);
             _fightSound.Play();
             _globalMap.SetActive(false);
-            
+
             _countOfEnemyForFight = enemyPresenter.Enemy.Count;
             var enemyType = enemyPresenter.Enemy.FirstOrDefault(x => x.IsBoss);
             _isBoosFight = enemyType?.IsBoss ?? false;
             _rewarder = new Rewarder(_isBoosFight, _playerPresenter, _rewardPanel);
-            
+
             _fightPlace.FightEnded += ShowRewardPanel;
             _fightPlace.Set(playerPresenter, enemyPresenter);
         }
@@ -52,7 +52,7 @@ namespace Assets.Fight
         {
             _fightPlace.FightEnded -= ShowRewardPanel;
             _levelRoot.IncreaseKilledEnemies(_countOfEnemyForFight);
-            
+
             switch (fightResult)
             {
                 case FightResult.Win:
@@ -79,7 +79,7 @@ namespace Assets.Fight
             _losePanel.UserAnswerEvent -= OnLosePanelClick;
             _losePanel.Hide();
             Reborn reborn = new Reborn(_playerPresenter, _globalMap, _battlefieldMap, _interactiveObjectHandler);
-            
+
             switch (answers)
             {
                 case UserLossAnswers.Ad:
@@ -99,7 +99,7 @@ namespace Assets.Fight
             _fightSound.Stop();
             _rewardPanel.OnButtonClickEvent -= ShowGlobalMap;
             _rewardPanel.Hide();
-            
+
             Curtain.Instance.ShowAnimation(() =>
             {
                 _globalMap.SetActive(true);

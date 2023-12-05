@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Fight
 {
-    public class EnemyPoint :  SpawnPoint
+    public class EnemyPoint : SpawnPoint
     {
         [SerializeField] private List<Point> _points;
 

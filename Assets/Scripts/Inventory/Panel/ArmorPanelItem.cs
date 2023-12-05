@@ -15,11 +15,10 @@ namespace Assets.Inventory.Panel
         [SerializeField] private TMP_Text _body;
         [SerializeField] private TMP_Text _head;
         [SerializeField] private Button _use;
-        [Space] 
-        [SerializeField] private Image _background;
+        [Space] [SerializeField] private Image _background;
         [SerializeField] private Sprite _defaultSprite;
         [SerializeField] private Sprite _selectSprite;
-        
+
         public Action<IInventoryItem> OnItemUse;
 
         public void Init(Armor armor)
@@ -41,7 +40,6 @@ namespace Assets.Inventory.Panel
         public void CheckSelect()
         {
             Armor armor = _item as Armor;
-            
             if (armor.IsSelect)
                 _background.sprite = _selectSprite;
             else

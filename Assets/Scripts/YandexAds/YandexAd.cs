@@ -15,10 +15,11 @@ namespace Assets.YandexAds
 				return;
 			}
 
-			VideoAd.Show(onOpenCallback: Game.GameSettings.Sound.Pause,
+			VideoAd.Show(onOpenCallback: 
+				Game.GameSettings.Sound.Pause,
 				onRewardedCallback: rewardMethod.Invoke,
 				onCloseCallback: Game.GameSettings.Sound.UpPause,
-				onErrorCallback: (x) => { Game.GameSettings.Sound.UpPause(); } );
+				onErrorCallback: (x) => { Game.GameSettings.Sound.UpPause(); });
 		}
 
 		public void ShowInterstitialAd(Action callback)
@@ -29,12 +30,13 @@ namespace Assets.YandexAds
 				return;
 			}
 
-			InterstitialAd.Show(onOpenCallback: Game.GameSettings.Sound.Pause,
-				onCloseCallback: (x) =>
+			InterstitialAd.Show(onOpenCallback: 
+				Game.GameSettings.Sound.Pause,
+				(x) =>
 				{
 					Game.GameSettings.Sound.UpPause();
 					callback?.Invoke();
-				} );
+				});
 		}
 	}
 }

@@ -83,7 +83,8 @@ namespace Assets.Person
 
 			foreach (AnimationClip clip in spriteAnimationAnimationClips)
 			{
-				_clips.Add(new Clip(clip.Sprites,
+				_clips.Add(new Clip(
+					clip.Sprites,
 					clip.State,
 					clip.IsLoop,
 					clip.NextState,

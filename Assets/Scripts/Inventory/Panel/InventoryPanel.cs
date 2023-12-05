@@ -11,28 +11,23 @@ namespace Assets.Inventory.Panel
     public class InventoryPanel : MonoBehaviour
     {
         [SerializeField] private PlayerView _player;
-        [Space]
-        [SerializeField] private Button _openWeapon;
+        [Space] [SerializeField] private Button _openWeapon;
         [SerializeField] private Button _closeWeapon;
         [SerializeField] private GameObject _panelWeapon;
         [SerializeField] private WeaponPanelView _weapon;
-        [Space]
-        [SerializeField] private Button _openArmor;
+        [Space] [SerializeField] private Button _openArmor;
         [SerializeField] private Button _closeArmor;
         [SerializeField] private GameObject _panelArmor;
         [SerializeField] private ArmorPanelView _armor;
-        [Space] 
-        [SerializeField] private Button _potion;
+        [Space] [SerializeField] private Button _potion;
         [SerializeField] private TMP_Text _numberOfPotion;
 
         private void Awake()
         {
             _openWeapon.onClick.AddListener(OpenWeaponPanel);
             _closeWeapon.onClick.AddListener(CloseWeaponPanel);
-            
             _openArmor.onClick.AddListener(OpenArmorPanel);
             _closeArmor.onClick.AddListener(CloseArmorPanel);
-            
             _potion.onClick.AddListener(UsePotion);
             _numberOfPotion.text = Game.GameSettings.PlayerData.Potion.ToString();
         }
@@ -41,10 +36,8 @@ namespace Assets.Inventory.Panel
         {
             _openWeapon.onClick.RemoveListener(OpenWeaponPanel);
             _closeWeapon.onClick.RemoveListener(CloseWeaponPanel);
-            
             _openArmor.onClick.RemoveListener(OpenArmorPanel);
             _closeArmor.onClick.RemoveListener(CloseArmorPanel);
-            
             _potion.onClick.RemoveListener(UsePotion);
         }
 

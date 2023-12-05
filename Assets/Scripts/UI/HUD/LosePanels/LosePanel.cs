@@ -12,15 +12,12 @@ namespace Assets.UI.HUD.LosePanels
     {
         [SerializeField] private SoundService _loseSound;
         [SerializeField] private LevelRoot _levelRoot;
-        [Header("Final Loss")] 
-        [SerializeField] private GameObject _finalLossPanel;
+        [Header("Final Loss")] [SerializeField] private GameObject _finalLossPanel;
         [SerializeField] private Button _finalLossButton;
         [SerializeField] private TMP_Text _finalLossText;
         [SerializeField] private LocalizedText _localizedFinalLoss;
-        [Header("Idol")] 
-        [SerializeField] private RebirthSuggestionPanel _idolPanel;
-        [Header("AD")]
-        [SerializeField] private RebirthSuggestionPanel _adPanel;
+        [Header("Idol")] [SerializeField] private RebirthSuggestionPanel _idolPanel;
+        [Header("AD")] [SerializeField] private RebirthSuggestionPanel _adPanel;
         
         public event Action<UserLossAnswers> UserAnswerEvent; 
 

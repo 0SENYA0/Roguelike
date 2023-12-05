@@ -10,7 +10,8 @@ namespace Assets.User
 	{
 		private readonly InventoryPresenter _inventoryPresenter;
 
-		public Player(float health,
+		public Player(
+			float health,
 			InventoryPresenter inventoryPresenter,
 			SpriteAnimation spriteAnimation)
 			: base(health, null, null, spriteAnimation)

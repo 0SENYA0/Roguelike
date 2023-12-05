@@ -1,9 +1,10 @@
 using Assets.UI.SettingsWindow.Localization;
+using System;
 using UnityEngine;
 
 namespace Assets.UI.TrainingPanel
 {
-	[System.Serializable]
+	[Serializable]
 	public class LocalizedSprite
 	{
 		[SerializeField] private Sprite _rus;

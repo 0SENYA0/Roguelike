@@ -40,9 +40,11 @@ namespace Assets.Inventory.ItemGeneratorSystem
 				armorLevel = Game.GameSettings.PlayerData.ArmorLevel;
 
 			Element randomElement = _random.RandomElement();
-			Head head = new Head(_random.RandomValue(_stats.DefaultArmorStat.HeadStatValue.MinValue + armorLevel,
+			Head head = new Head(_random.RandomValue(
+				_stats.DefaultArmorStat.HeadStatValue.MinValue + armorLevel,
 				_stats.DefaultArmorStat.HeadStatValue.MaxValue + armorLevel));
-			Body body = new Body(_random.RandomValue(_stats.DefaultArmorStat.BodyStatValue.MinValue + armorLevel,
+			Body body = new Body(_random.RandomValue(
+					_stats.DefaultArmorStat.BodyStatValue.MinValue + armorLevel,
 					_stats.DefaultArmorStat.HeadStatValue.MaxValue + armorLevel),
 				randomElement);
 			Armor newArmor = new Armor(body, head, _random.RandomParticle(randomElement));
@@ -54,7 +56,8 @@ namespace Assets.Inventory.ItemGeneratorSystem
 
 			randomElement = _random.RandomElement();
 			WeaponStat dws = _stats.DefaultWeaponStat;
-			Weapon newWeapon = new Weapon(_random.RandomValue(dws.Damage.MinValue + weaponLevel, dws.Damage.MaxValue + weaponLevel),
+			Weapon newWeapon = new Weapon(
+				_random.RandomValue(dws.Damage.MinValue + weaponLevel, dws.Damage.MaxValue + weaponLevel),
 				randomElement,
 				_random.RandomDice(),
 				_random.RandomDice(),

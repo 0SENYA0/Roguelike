@@ -5,7 +5,7 @@ using Assets.UI.ShopWindow;
 
 namespace Assets.Infrastructure
 {
-    public class GameSettings: IDisposable
+    public class GameSettings : IDisposable
     {
         private Sound _sound;
         private PlayerData _playerData;
@@ -36,7 +36,7 @@ namespace Assets.Infrastructure
                 _playerData.IsMusicOn = !_playerData.IsMusicOn;
             else
                 _playerData.IsSfxOn = !_playerData.IsSfxOn;
-            
+
             _playerData.SaveData();
             _sound.UpdateSoundSettings(type);
         }
@@ -51,7 +51,7 @@ namespace Assets.Infrastructure
         public bool TryBueItem(ShopItemType type, int price)
         {
             bool isBue = false;
-            
+
             switch (type)
             {
                 case ShopItemType.Armor:
@@ -61,7 +61,7 @@ namespace Assets.Infrastructure
                         _playerData.ArmorLevel++;
                         isBue = true;
                     }
-                    
+
                     break;
                 case ShopItemType.Weapon:
                     if (CheckForPossibilityOfBuying(price))
@@ -70,7 +70,7 @@ namespace Assets.Infrastructure
                         _playerData.WeaponLevel++;
                         isBue = true;
                     }
-                    
+
                     break;
                 case ShopItemType.Potion:
                     if (CheckForPossibilityOfBuying(price))
@@ -79,7 +79,7 @@ namespace Assets.Infrastructure
                         _playerData.Potion++;
                         isBue = true;
                     }
-                    
+
                     break;
                 case ShopItemType.Idol:
                     if (CheckForPossibilityOfBuying(price))
@@ -88,12 +88,12 @@ namespace Assets.Infrastructure
                         _playerData.Idol++;
                         isBue = true;
                     }
-                    
+
                     break;
             }
-            
+
             PlayerData.SaveData();
-            
+
             return isBue;
         }
 

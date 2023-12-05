@@ -12,7 +12,7 @@ namespace Assets.Loot
         public void Show()
         {
             gameObject.SetActive(true);
-            
+
             _label.text = GetLocalizedText(LanguageConfig.RandomEventKey);
             _data.text = GetLocalizedText(LanguageConfig.EnemyOrLootKey);
         }

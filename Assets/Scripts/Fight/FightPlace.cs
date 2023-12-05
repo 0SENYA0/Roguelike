@@ -14,27 +14,25 @@ namespace Assets.Fight
 {
     public class FightPlace : MonoBehaviour, ICoroutineRunner
     {
-        [SerializeField] private PlayerPoint _playerPosition;
-        [SerializeField] private List<EnemyPoint> _spawnPoints;
-        [SerializeField] private StepFightView _stepFightView;
-
-        [Space(25)] 
-        [SerializeField] private DiceCanvasGroup _diceGroup;
-        [SerializeField] private DiceView _leftDice;
-        [SerializeField] private DiceView _centerDice;
-        [SerializeField] private DiceView _rightDice;
-
-        [Space(25)] 
-        [SerializeField] private PlayerWeaponPanel _elementsPanel;
-        [SerializeField] private PlayerAttackView _playerAttackView;
-        [SerializeField] private List<EnemyAttackView> _enemyAttackViews;
-        [SerializeField] private GameObject _popupReady;
-        [SerializeField] private CustomButton _customButtonReady;
-
         private const int Enemy = 1;
         private const int TwoEnemy = 2;
         private const int ThreeEnemy = 3;
         private const int Boss = 4;
+
+        [SerializeField] private PlayerPoint _playerPosition;
+        [SerializeField] private List<EnemyPoint> _spawnPoints;
+        [SerializeField] private StepFightView _stepFightView;
+
+        [Space(25)] [SerializeField] private DiceCanvasGroup _diceGroup;
+        [SerializeField] private DiceView _leftDice;
+        [SerializeField] private DiceView _centerDice;
+        [SerializeField] private DiceView _rightDice;
+
+        [Space(25)] [SerializeField] private PlayerWeaponPanel _elementsPanel;
+        [SerializeField] private PlayerAttackView _playerAttackView;
+        [SerializeField] private List<EnemyAttackView> _enemyAttackViews;
+        [SerializeField] private GameObject _popupReady;
+        [SerializeField] private CustomButton _customButtonReady;
 
         private Fight _fight;
         private EnemyPoint _spawnPoint;
@@ -70,10 +68,21 @@ namespace Assets.Fight
             return result;
         }
 
+        public void OnLeaveFight()
+        {
+            FightEnded?.Invoke(FightResult.Leave);
+            _fight.FightEnded -= EndFight;
+            _fight.ShowDice -= ShowDice;
+            _fight.HideDice -= HideDice;
+            _fight.Dispose();
+            _fight = null;
+            HideDice();
+        }
+
         public void Set(IPlayerPresenter playerPresenter, IEnemyPresenter enemyPresenter)
         {
             _playerPresenter = playerPresenter;
-            
+
             foreach (EnemyAttackView unitAttackView in _enemyAttackViews)
             {
                 unitAttackView.Reset();
@@ -81,15 +90,17 @@ namespace Assets.Fight
             }
 
             SelectEnemyUIPosition(enemyPresenter);
-            
-            PlayerAttackPresenter playerAttackPresenter = new PlayerAttackPresenter(playerPresenter.Player, _playerAttackView);
-            
+
+            PlayerAttackPresenter playerAttackPresenter =
+                new PlayerAttackPresenter(playerPresenter.Player, _playerAttackView);
+
             List<EnemyAttackPresenter> enemyAttackPresenters = new List<EnemyAttackPresenter>();
-            
+
             for (int i = 0; i < enemyPresenter.Enemy.Count; i++)
-                 enemyAttackPresenters.Add(new EnemyAttackPresenter(enemyPresenter.Enemy[i], _enemyAttackViews[i]));
-            
-            _fight = new Fight(this, enemyAttackPresenters, playerAttackPresenter, _stepFightView, GetDicePresenterAdapter(), _elementsDamagePanel, _popupReady, _customButtonReady);
+                enemyAttackPresenters.Add(new EnemyAttackPresenter(enemyPresenter.Enemy[i], _enemyAttackViews[i]));
+
+            _fight = new Fight(this, enemyAttackPresenters, playerAttackPresenter, _stepFightView,
+                GetDicePresenterAdapter(), _elementsDamagePanel, _popupReady, _customButtonReady);
             _fight.FightEnded += EndFight;
             _fight.ShowDice += ShowDice;
             _fight.HideDice += HideDice;
@@ -102,21 +113,12 @@ namespace Assets.Fight
         private void ShowDice() =>
             _diceGroup.ShowCanvas();
 
-        public void OnLeaveFight()
-        {
-            FightEnded?.Invoke(FightResult.Leave);
-            _fight.FightEnded -= EndFight;
-            _fight.ShowDice -= ShowDice;
-            _fight.HideDice -= HideDice;
-            _fight.Dispose();
-            _fight = null;
-            HideDice();
-        }
-
         private void EndFight()
         {
-            FightEnded?.Invoke(_playerPresenter.Player.Health > PlayerHealth.MinPlayerHealth ? FightResult.Win : FightResult.Lose);
-            
+            FightEnded?.Invoke(_playerPresenter.Player.Health > PlayerHealth.MinPlayerHealth
+                ? FightResult.Win
+                : FightResult.Lose);
+
             _fight.FightEnded -= EndFight;
             _fight.ShowDice -= ShowDice;
             _fight.HideDice -= HideDice;

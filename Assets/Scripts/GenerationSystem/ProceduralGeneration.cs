@@ -17,7 +17,7 @@ namespace Assets.Scripts.GenerationSystem
             _levelGenerator = GetComponent<LevelGenerator>();
             _levelView = GetComponent<LevelView>();
             _spawner = GetComponent<Spawner>();
-            
+
             _grid = _levelGenerator.GenerateLevel();
             _levelView.Init(_grid);
             _spawner.Init(_grid);

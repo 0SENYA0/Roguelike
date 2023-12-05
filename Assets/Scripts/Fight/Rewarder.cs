@@ -31,7 +31,7 @@ namespace Assets.Fight
             Game.GameSettings.PlayerData.Money += money;
             _playerPresenter.Player.InventoryPresenter.InventoryModel.AddItem(randomWeapon);
             _playerPresenter.Player.InventoryPresenter.InventoryModel.AddItem(randomArmor);
-            
+
             _rewardPanel.Show(randomArmor, randomWeapon, money);
             _rewardPanel.OnButtonClickEvent += successCallback;
         }
@@ -40,10 +40,10 @@ namespace Assets.Fight
         {
             IInventoryItem randomLoot = GetRandomLoot();
             int money = ItemGenerator.Instance.GetEnemyReward();
-            
+
             Game.GameSettings.PlayerData.Money += money;
             _playerPresenter.Player.InventoryPresenter.InventoryModel.AddItem(randomLoot);
-            
+
             _rewardPanel.Show(randomLoot, money);
             _rewardPanel.OnButtonClickEvent += successCallback;
         }
@@ -52,7 +52,7 @@ namespace Assets.Fight
         {
             if (UnityEngine.Random.Range(0, 2) == 0)
                 return ItemGenerator.Instance.GetRandomArmor();
-            
+
             return ItemGenerator.Instance.GetRandomWeapon();
         }
     }

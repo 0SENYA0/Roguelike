@@ -36,13 +36,13 @@ namespace Assets.Scripts.GenerationSystem.LevelMovement
         {
             float distance = Vector3.Distance(transform.position, _lastTranformPosition);
 
-            if(distance > _minDistance)
+            if (distance > _minDistance)
             {
                 if (_isAnimationPlaying == false)
                 {
                     _isAnimationPlaying = true;
                     _animation.SetClip(AnimationState.Walk);
-                }   
+                }
             }
             else
             {

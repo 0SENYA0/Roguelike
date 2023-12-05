@@ -11,7 +11,7 @@ namespace Assets.User
         [SerializeField] private AgentMovement _agentMovement;
 
         private float _timeLastStep;
-        
+
         private void Update()
         {
             if (_agentMovement.IsMovement)

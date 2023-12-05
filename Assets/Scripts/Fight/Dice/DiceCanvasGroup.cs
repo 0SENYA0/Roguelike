@@ -15,7 +15,7 @@ namespace Assets.Fight.Dice
         {
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
-            
+
             _coroutine = StartCoroutine(ChangeAlpha(0, 1, _time));
         }
 
@@ -23,7 +23,7 @@ namespace Assets.Fight.Dice
         {
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
-            
+
             _coroutine = StartCoroutine(ChangeAlpha(1, 0, _time));
         }
 
@@ -31,7 +31,7 @@ namespace Assets.Fight.Dice
         {
             _canvasGroup.alpha = startAlpha;
             float startTime = Time.time;
-            
+
             while (Time.time < startTime + duration)
             {
                 float time = (Time.time - startTime) / duration;
@@ -39,7 +39,7 @@ namespace Assets.Fight.Dice
 
                 yield return null;
             }
-            
+
             _canvasGroup.alpha = endAlpha;
             _coroutine = null;
         }

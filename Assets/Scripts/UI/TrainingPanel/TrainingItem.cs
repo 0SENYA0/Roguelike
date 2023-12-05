@@ -20,16 +20,16 @@ namespace Assets.UI.TrainingPanel
 
 		private void OnEnable()
 		{
-			Info info = _information.Information.FirstOrDefault(x => x.Step == _step);
+			BacgroundInfo bacgroundInfo = _information.Information.FirstOrDefault(x => x.Step == _step);
 
-			if (info == null)
+			if (bacgroundInfo == null)
 				throw new Exception($"There is no information about this ({_step}) training step");
 
 			string lang = Game.GameSettings.CurrentLocalization;
 
-			_label = info.Label.GetLocalization(lang);
-			_text.text = info.Text.GetLocalization(lang);
-			_image.sprite = info.Sprite.GetLocalization(lang);
+			_label = bacgroundInfo.Label.GetLocalization(lang);
+			_text.text = bacgroundInfo.Text.GetLocalization(lang);
+			_image.sprite = bacgroundInfo.Sprite.GetLocalization(lang);
 		}
 	}
 }

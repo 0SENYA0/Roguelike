@@ -13,7 +13,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
         public Weapon Weapon => _weapon;
 
         public Armor Armor => _armor;
-        
+
         protected override void OnStart()
         {
             base.OnStart();

@@ -13,8 +13,8 @@ namespace Assets.Scripts.InteractiveObjectSystem.CanvasInfoSystem
         [SerializeField] private LootInfoView _randomLootPanel;
         [SerializeField] private WarningMessage _warningMessage;
 
-        [Space] [Header("Player inventory")] 
-        [SerializeField] private PlayerView _inventory;
+        [Space] [Header("Player inventory")] [SerializeField]
+        private PlayerView _inventory;
 
         public event Action<bool> UserResponse;
 
@@ -36,7 +36,7 @@ namespace Assets.Scripts.InteractiveObjectSystem.CanvasInfoSystem
         {
             if (CheckForInventoryOverload(interactiveObject))
                 return;
-            
+
             if (interactiveObject.TryGetComponent(out EnemyView enemyView))
                 _enemyInfoPanel.Show(enemyView.EnemyPresenter);
             else if (interactiveObject.TryGetComponent(out InteractiveLootObject lootObject))
@@ -58,7 +58,7 @@ namespace Assets.Scripts.InteractiveObjectSystem.CanvasInfoSystem
 
                 return true;
             }
-            
+
             return false;
         }
 

@@ -24,8 +24,7 @@ namespace Assets.Infrastructure
         [SerializeField] private PlayerInfo _playerInfo;
         [SerializeField] private PlayerInfo _playerInfoBattle;
         [SerializeField] private YandexAdView _yandexAd;
-        [Space] 
-        [SerializeField] private PlayerView _player;
+        [Space] [SerializeField] private PlayerView _player;
 
         private readonly float _delayForNavmeshagent = 1.5f;
         
@@ -92,7 +91,8 @@ namespace Assets.Infrastructure
             {
                 LevelLoadingChooser.LoadScene(
                     _levelNumber + 1,
-                    new PlayerLevelData(_player.PlayerPresenter.Player.Health,
+                    new PlayerLevelData(
+                        _player.PlayerPresenter.Player.Health,
                         _player.PlayerPresenter.Player.InventoryPresenter));
             });
         }

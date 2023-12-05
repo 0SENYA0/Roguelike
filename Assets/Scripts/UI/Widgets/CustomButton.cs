@@ -14,7 +14,7 @@ namespace Assets.Scripts.UI.Widgets
             base.DoStateTransition(state, instant);
 
             DisableStates();
-            
+
             if (state == SelectionState.Highlighted)
                 _highlighted.SetActive(true);
             else if (state == SelectionState.Pressed)

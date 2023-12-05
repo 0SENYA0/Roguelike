@@ -64,7 +64,8 @@ namespace Assets.UI.ShopWindow
 			if (shopItem.Price.HasNextPrice(GetPlayerData(shopItem.ItemType)) == false)
 				item.OnBueItemEvent -= OnBueItem;
 
-			item.UpdateInformation(shopItem.Text.GetLocalization(_lang),
+			item.UpdateInformation(
+				shopItem.Text.GetLocalization(_lang),
 				$"{shopItem.Level.GetLocalization(_lang)}: {GetPlayerData(shopItem.ItemType)}",
 				cost,
 				price);

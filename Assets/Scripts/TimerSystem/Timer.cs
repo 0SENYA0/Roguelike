@@ -6,14 +6,14 @@ namespace Assets.TimerSystem
     {
         private float _time;
         private bool _isRun;
-        
+
         public float TimePerSeconds => _time;
 
         private void Update()
         {
             if (_isRun == false)
                 return;
-            
+
             _time += Time.deltaTime;
         }
 

@@ -16,14 +16,14 @@ namespace Assets.Scripts.GenerationSystem
         private List<Vector2> _spawnPosition = new List<Vector2>();
         private Vector2 _bossPosition;
         private int _numberOfObjectsCreated;
-        
+
         public void Init(GridSpace[,] grid)
         {
             _grid = grid;
 
             CreateSpawnPosition(_grid);
             ShuffleList(_spawnPosition);
-            
+
             SpawnObjects(_randomEvent);
             SpawnObjects(_randomLoot);
             SpawnObjects(_enemy);
@@ -34,7 +34,7 @@ namespace Assets.Scripts.GenerationSystem
         {
             Vector2 offset = new Vector2(_grid.GetLength(0), _grid.GetLength(1)) / 2.0f;
             float gridOffset = 0.5f;
-            
+
             for (int i = 0; i < grid.GetLength(0); i++)
             {
                 for (int j = 0; j < grid.GetLength(1); j++)
@@ -46,7 +46,7 @@ namespace Assets.Scripts.GenerationSystem
                 }
             }
         }
-        
+
         private void ShuffleList(List<Vector2> list)
         {
             int upperIndex = list.Count - 1;

@@ -25,7 +25,6 @@ namespace Assets.Scripts.InteractiveObjectSystem.CanvasInfoSystem
         {
             _selectedObject = selectedObject;
             _targetPosition = position;
-            
             _infoPanel.ShowPanel(_selectedObject);
             _infoPanel.UserResponse += MoveFixedAgent;
         }
@@ -33,9 +32,9 @@ namespace Assets.Scripts.InteractiveObjectSystem.CanvasInfoSystem
         private void MoveFixedAgent(bool isPositiveResponse)
         {
             _infoPanel.UserResponse -= MoveFixedAgent;
-            
+
             if (isPositiveResponse)
-                interactiveObjectHandler.ProduceInteraction(_selectedObject, _targetPosition);           
+                interactiveObjectHandler.ProduceInteraction(_selectedObject, _targetPosition);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Assets.Scripts.GenerationSystem.LevelMovement
         {
             float distance = (_characterTarget.position - transform.position).magnitude;
             distance -= _blackAtDistance;
-            
+
             float percentage = distance / _hidingDistance;
             percentage = Mathf.Clamp(percentage, 0, 1);
 

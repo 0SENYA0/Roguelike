@@ -20,19 +20,19 @@ namespace Assets.Enemy
         private Weapon _weapon;
 
         public IEnemyPresenter EnemyPresenter => _enemyPresenter;
-        
+
         public int Health => _health;
-        
+
         public Weapon Weapon => _weapon;
-        
+
         public Armor Armor => _armor;
-        
+
         public Sprite Sprite => _sprite;
-        
+
         public SpriteAnimation SpriteAnimation => _spriteAnimation;
-        
+
         public string Name => _translationName.GetLocalization(Game.GameSettings.CurrentLocalization);
-        
+
         protected override void OnStart()
         {
             _enemyPresenter = new EnemyPresenter(this);

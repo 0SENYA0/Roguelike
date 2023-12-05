@@ -5,7 +5,8 @@ namespace Assets.Person
 {
 	public class Clip
 	{
-		public Clip(Sprite[] sprites,
+		public Clip(
+			Sprite[] sprites,
 			AnimationState state,
 			bool isLoop,
 			AnimationState nextState,

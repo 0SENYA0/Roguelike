@@ -27,7 +27,6 @@ namespace Assets.UI.ShopWindow
             string lang = Game.GameSettings.CurrentLocalization;
             GameStatistics stats = Game.GameSettings.PlayerData.GameStatistics;
             int money = Game.GameSettings.PlayerData.Money;
-            
             string text = $"{_localized.NumberOfAttempts.GetLocalization(lang)}: {stats.NumberOfAttempts}\n\n" +
                           $"{_localized.NumberOfEnemy.GetLocalization(lang)}: {stats.NumberOfEnemiesKilled}\n\n" +
                           $"{_localized.NumberOfBoss.GetLocalization(lang)}: {stats.NumberOfBossesKilled}\n\n" +

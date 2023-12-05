@@ -8,7 +8,7 @@ namespace Assets.Enemy
         private readonly Enemy _enemy;
         private readonly EnemyAttackView _enemyAttackView;
 
-        public EnemyAttackPresenter(Enemy enemy, EnemyAttackView enemyAttackView) 
+        public EnemyAttackPresenter(Enemy enemy, EnemyAttackView enemyAttackView)
             : base(enemy, enemyAttackView)
         {
             _enemy = enemy;
@@ -21,8 +21,10 @@ namespace Assets.Enemy
 
         private void SetElementsSpriteForUI()
         {
-            _enemyAttackView.ArmorElement.sprite = EnemyAttackView.ElementsSpriteView.GetElementSprite(_enemy.Armor.Body.Element);
-            _enemyAttackView.WeaponElement.sprite = EnemyAttackView.ElementsSpriteView.GetElementSprite(_enemy.Weapon.Element);
+            _enemyAttackView.ArmorElement.sprite =
+                EnemyAttackView.ElementsSpriteView.GetElementSprite(_enemy.Armor.Body.Element);
+            _enemyAttackView.WeaponElement.sprite =
+                EnemyAttackView.ElementsSpriteView.GetElementSprite(_enemy.Weapon.Element);
         }
     }
 }

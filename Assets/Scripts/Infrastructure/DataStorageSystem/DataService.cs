@@ -29,13 +29,17 @@ namespace Assets.Infrastructure.DataStorageSystem
             int money = PlayerPrefs.HasKey(MoneyKey) ? PlayerPrefs.GetInt(MoneyKey) : MoneyDefault;
             int sound = PlayerPrefs.HasKey(MusicKey) ? PlayerPrefs.GetInt(MusicKey) : MusicDefault;
             int sfx = PlayerPrefs.HasKey(SfxKey) ? PlayerPrefs.GetInt(SfxKey) : SfxDefault;
-            string lang = PlayerPrefs.HasKey(LocalizationKey) ? PlayerPrefs.GetString(LocalizationKey) : LocalizationDefault;
-            string statistics = PlayerPrefs.HasKey(GameStatisticsKey) ? PlayerPrefs.GetString(GameStatisticsKey) : GameStatisticsDefault;
+            string lang = PlayerPrefs.HasKey(LocalizationKey)
+                ? PlayerPrefs.GetString(LocalizationKey)
+                : LocalizationDefault;
+            string statistics = PlayerPrefs.HasKey(GameStatisticsKey)
+                ? PlayerPrefs.GetString(GameStatisticsKey)
+                : GameStatisticsDefault;
             int armorLevel = PlayerPrefs.HasKey(ArmorKey) ? PlayerPrefs.GetInt(ArmorKey) : ArmorLevelDefault;
             int weaponLevel = PlayerPrefs.HasKey(WeaponKey) ? PlayerPrefs.GetInt(WeaponKey) : WeaponLevelDefault;
             int potion = PlayerPrefs.HasKey(PotionKey) ? PlayerPrefs.GetInt(PotionKey) : PotionDefault;
             int idol = PlayerPrefs.HasKey(IdolKey) ? PlayerPrefs.GetInt(IdolKey) : IdolDefault;
-            
+
             return new Data(money, sound, sfx, lang, statistics, armorLevel, weaponLevel, potion, idol);
         }
 

@@ -1,5 +1,5 @@
-using UnityEditor.UI;
 using UnityEditor;
+using UnityEditor.UI;
 
 namespace Assets.Scripts.UI.Widgets.Editor
 {
@@ -13,7 +13,6 @@ namespace Assets.Scripts.UI.Widgets.Editor
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_highlighted"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_pressed"));
             serializedObject.ApplyModifiedProperties();
-            
             base.OnInspectorGUI();
         }
     }

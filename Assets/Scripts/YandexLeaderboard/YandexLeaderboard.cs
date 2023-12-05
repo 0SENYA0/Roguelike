@@ -80,9 +80,10 @@ namespace Assets.YandexLeaderboard
 		{
 			LeaderboardEntryResponse response = new LeaderboardEntryResponse();
 
-			Leaderboard.GetPlayerEntry(leaderboardName: LeaderboardConfig.LeaderboardKey,
-				onSuccessCallback: (result) => response = result,
-				onErrorCallback: (result) => Debug.LogError($"[YandexLeaderboard] Error in receiving player records: {result}"));
+			Leaderboard.GetPlayerEntry(leaderboardName: 
+				LeaderboardConfig.LeaderboardKey,
+				(result) => response = result,
+				(result) => Debug.LogError($"[YandexLeaderboard] Error in receiving player records: {result}"));
 
 			int playerScore = CalculatePlayerScore();
 
@@ -103,7 +104,8 @@ namespace Assets.YandexLeaderboard
 		{
 			List<LeaderboardData> players = new List<LeaderboardData>();
 
-			Leaderboard.GetEntries(LeaderboardConfig.LeaderboardKey,
+			Leaderboard.GetEntries(
+				LeaderboardConfig.LeaderboardKey,
 				(result) =>
 				{
 					int resultAmount = Mathf.Clamp(result.entries.Length, 1, LeaderboardConfig.MaxNumberOfPlayersInLeaderboard);
@@ -129,15 +131,17 @@ namespace Assets.YandexLeaderboard
 		{
 			if (PlayerAccount.IsAuthorized == false)
 			{
-				_playerRanking.Initialize(new LeaderboardData(rank: 0,
+				_playerRanking.Initialize(
+					new LeaderboardData(rank: 0,
 					language: Game.GameSettings.CurrentLocalization,
 					nickName: LanguageConfig.GetAnonymous(Game.GameSettings.CurrentLocalization),
 					score: CalculatePlayerScore(),
-					picture: ""));
+					picture: string.Empty));
 			}
 			else
 			{
-				Leaderboard.GetPlayerEntry(LeaderboardConfig.LeaderboardKey,
+				Leaderboard.GetPlayerEntry(
+					LeaderboardConfig.LeaderboardKey,
 					(result) =>
 					{
 						int rank = result.rank;

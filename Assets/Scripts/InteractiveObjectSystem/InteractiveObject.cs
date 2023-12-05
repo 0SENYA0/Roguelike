@@ -6,7 +6,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
     [RequireComponent(typeof(Collider2D))]
     public class InteractiveObject : MonoBehaviour
     {
-        [SerializeField] private LocalizedText _translationName;
+        [SerializeField] protected LocalizedText _translationName;
         [SerializeField] private ObjectType _type;
         [SerializeField] private int _numberOfAwards = 1;
 

@@ -18,8 +18,7 @@ namespace Assets.Scripts.InteractiveObjectSystem
         [SerializeField] private MouseClickTracker _clickTracker;
         [SerializeField] private AgentMovement _agent;
         [SerializeField] private float _minDistanceToStartBattle = 10.1f;
-        [Space] 
-        [SerializeField] private LevelRoot _levelRoot;
+        [Space] [SerializeField] private LevelRoot _levelRoot;
         [SerializeField] private UIFight _battlefild;
 
         private InteractiveObject _targetObject;
@@ -40,7 +39,6 @@ namespace Assets.Scripts.InteractiveObjectSystem
                 openPanel = () =>
                 {
                     _levelRoot.PauseGlobalMap();
-                    
                     Curtain.Instance.ShowAnimation(() =>
                     {
                         _battlefild.SetActiveFightPlace(_playerPresenter, enemyView.EnemyPresenter);
@@ -53,7 +51,6 @@ namespace Assets.Scripts.InteractiveObjectSystem
                 {
                     IInventoryItem newItem = lootObject.Weapon != null ? lootObject.Weapon : lootObject.Armor;
                     _playerPresenter.PlayerView.InventoryPresenter.InventoryModel.AddItem(newItem);
-                    
                     _clickTracker.enabled = true;
                     _targetObject.DestroyObject();
                 };
@@ -85,17 +82,13 @@ namespace Assets.Scripts.InteractiveObjectSystem
                     {
                         _levelRoot.PauseGlobalMap();
                         Curtain.Instance.ShowAnimation(
-                            () =>
-                            {
-                                _battlefild.SetActiveFightPlace(player, randomEventObject.GetRandomEnemy());
-                            });
+                            () => { _battlefild.SetActiveFightPlace(player, randomEventObject.GetRandomEnemy()); });
                     };
                 case RandomEventType.Loot:
                     return () =>
                     {
                         IInventoryItem newItem = randomEventObject.GetRandomLoot();
                         _playerPresenter.PlayerView.InventoryPresenter.InventoryModel.AddItem(newItem);
-                    
                         _clickTracker.enabled = true;
                         _targetObject.DestroyObject();
                     };

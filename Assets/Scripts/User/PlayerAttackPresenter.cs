@@ -16,6 +16,7 @@ namespace Assets.User
         }
 
         public PlayerAttackView PlayerAttackView => _playerAttackView;
+
         public InventoryPresenter Inventory => _inventory;
     }
 }

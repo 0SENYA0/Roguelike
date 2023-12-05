@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Assets.UI.TrainingPanel
 {
 	[Serializable]
-	public class Info
+	public class BacgroundInfo
 	{
 		[SerializeField] private TrainingStep _step;
 		[SerializeField] private LocalizedSprite _sprite;

@@ -7,7 +7,7 @@ namespace Assets.Enemy
 {
     public class Enemy : Unit
     {
-        public Enemy(int health, IWeapon weapon, Armor armor,  SpriteAnimation spriteAnimation) 
+        public Enemy(int health, IWeapon weapon, Armor armor, SpriteAnimation spriteAnimation)
             : base(health, weapon, armor, spriteAnimation)
         {
         }

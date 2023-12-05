@@ -22,14 +22,14 @@ namespace Assets.UI.HUD
         [SerializeField] private TMP_Text _name;
         [SerializeField] private TMP_Text _data;
         [SerializeField] private Image _element;
-        [SerializeField] private ElementsSpriteView _elementsSpriteView;
-        
+        [SerializeField] private ElementsSpriteView _elementsSpriteView; 
+
         public event Action OnButtonClickEvent; 
 
         public void Show(IInventoryItem loot, int money)
         {
             ActiveLootPanel();
-            
+
             if (loot is Armor armor)
                 ShowArmorLootInfo(armor, money);
             else if (loot is Weapon weapon)
@@ -66,7 +66,6 @@ namespace Assets.UI.HUD
             _defendImage.gameObject.SetActive(false);
             _attackImage.gameObject.SetActive(true);
             _element.sprite = _elementsSpriteView.GetElementSprite(weapon.Element);
-            
             _name.text = "Ты победил!";
             _data.text = $"Твоя награда:\n" +
                          $"{GetLocalizedText(LanguageConfig.MoneyKey)}: +{money}$\n" +
@@ -82,7 +81,6 @@ namespace Assets.UI.HUD
             _attackImage.gameObject.SetActive(false);
             _defendImage.gameObject.SetActive(true);
             _element.sprite = _elementsSpriteView.GetElementSprite(armor.Body.Element);
-            
             _name.text = "Ты победил!";
             _data.text = $"Твоя награда:\n" +
                          $"{GetLocalizedText(LanguageConfig.MoneyKey)}: +{money}$\n" +
@@ -95,7 +93,6 @@ namespace Assets.UI.HUD
         {
             _attackImage.gameObject.SetActive(true);
             _defendImage.gameObject.SetActive(true);
-            
             _name.text = "Ты победил!";
             _data.text = $"Твоя награда:\n" +
                          $"{GetLocalizedText(LanguageConfig.MoneyKey)}: +{money}$\n" +

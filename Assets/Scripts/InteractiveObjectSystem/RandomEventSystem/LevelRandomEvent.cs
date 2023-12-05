@@ -4,7 +4,7 @@ namespace Assets.Scripts.InteractiveObjectSystem.RandomEventSystem
 {
     public class LevelRandomEvent
     {
-        private readonly float _chanceForEnemy = 0.4f; 
+        private readonly float _chanceForEnemy = 0.4f;
         private readonly float _chanceForAD = 0.01f;
 
         public RandomEventType GetRandomEvent()
