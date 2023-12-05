@@ -13,10 +13,12 @@ namespace Assets.Enemy
 
 		private List<Enemy> _enemy;
 		private int _count;
+		private EnemyFactory _enemyFactory;
 
 		public EnemyPresenter(EnemyView enemyView)
 		{
 			_enemyView = enemyView;
+			_enemyFactory = new EnemyFactory();
 			Start();
 		}
 
@@ -31,7 +33,7 @@ namespace Assets.Enemy
 
 			for (int i = 0; i < _count; i++)
 			{
-				Enemy enemy = CreateEnemy();
+				Enemy enemy = _enemyFactory.CreateEnemy(_enemyView);
 				enemy.Sprite = _enemyView.Sprite;
 
 				if (_enemyView.Type == ObjectType.Boos)
@@ -39,14 +41,6 @@ namespace Assets.Enemy
 
 				_enemy.Add(enemy);
 			}
-		}
-
-		private Enemy CreateEnemy()
-		{
-			IWeapon weapon = ItemGenerator.Instance.GetRandomWeapon();
-			Armor armor = ItemGenerator.Instance.GetRandomArmor();
-
-			return new Enemy(_enemyView.Health, weapon, armor, _enemyView.SpriteAnimation);
 		}
 
 		private int GenerateRandomCountEnemy() =>
