@@ -25,8 +25,5 @@ namespace Assets.Scripts.InteractiveObjectSystem
         protected virtual void OnStart()
         {
         }
-
-        protected Element GetRandomElement() =>
-            (Element)Random.Range(0, 5);
     }
 }

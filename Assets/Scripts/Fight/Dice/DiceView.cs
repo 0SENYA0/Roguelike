@@ -14,8 +14,6 @@ namespace Assets.Fight.Dice
         public event Action Shuffled;
 
         public string CurrentDiceSide => _diceImage.sprite.name;
-
-        public TMP_Text Text => _text;
         
         private void OnEnable() =>
             _button.onClick.AddListener(Shuffle);
